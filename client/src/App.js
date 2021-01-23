@@ -2,22 +2,24 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const getResidents = async () => {
-    const response = await fetch('http://localhost:3001/residents');
+  const getUsers = async () => {
+    const response = await fetch('http://localhost:3001/app/residents');
     const result = await response.json();
-    console.log('Residents fetch status:', result);
+    console.log('Users fetch status:', result);
   };
 
-  const getOneResidentSucces = async () => {
-    const response = await fetch('http://localhost:3001/residents/random2');
+  const getOneUserSucces = async () => {
+    const response = await fetch('http://localhost:3001/app/residents/random2');
     const result = await response.json();
-    console.log('Resident fetch status:', result);
+    console.log('User fetch status:', result);
   };
 
-  const getOneResidentFail = async () => {
-    const response = await fetch('http://localhost:3001/residents/random444');
+  const getOneUserFail = async () => {
+    const response = await fetch(
+      'http://localhost:3001/app/residents/random444'
+    );
     const result = await response.json();
-    console.log('Resident fetch status:', result);
+    console.log('User fetch status:', result);
   };
 
   return (
@@ -27,9 +29,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <button onClick={getResidents}>Fetch all users</button>
-        <button onClick={getOneResidentSucces}>Fetch one user (succesful)</button>
-        <button onClick={getOneResidentFail}>Fetch one user (failing)</button>
+        <button onClick={getUsers}>Fetch all residents</button>
+        <button onClick={getOneUserSucces}>Fetch one user (succesful)</button>
+        <button onClick={getOneUserFail}>Fetch one user (failing)</button>
       </header>
     </div>
   );
