@@ -2,8 +2,7 @@ const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 
 //Using and initializing dotenv to read MongoDB URI from .env file
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config();
 
 /* 
 
