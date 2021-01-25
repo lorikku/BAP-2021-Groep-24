@@ -41,12 +41,24 @@ function App() {
 
         //If common interest is found, add interest to interests[] array in newMatch obj
         if (
-          resident.interests.findIndex(
-            (residentInterest) =>
-              matcheeInterest.interestId === residentInterest.interestId
-          ) !== -1
+          resident.interests.findIndex((residentInterest) => {
+            /* 
+            First, we will check if an interest contains a dependency interest (subcategory) and add it to the
+            newMatch interests array if it's not yet in there. We need to check this because multiple different interests
+            can have the same dependency interest
+            */
+
+            if (matcheeInterest.dependency && residentInterest.dependency) {
+              if (matcheeInterest.dependency._id === residentInterest.dependency._id) {
+                if (newMatch.interests.findIndex((interest) =>(interest.name = matcheeInterest.dependency.name)) === -1) {
+                  newMatch.interests.push(matcheeInterest.dependency.name);
+                }
+              }
+            }
+            
+            return matcheeInterest._id === residentInterest._id;}) !== -1
         ) {
-          newMatch.interests.push(matcheeInterest.displayName);
+          newMatch.interests.push(matcheeInterest.name);
         }
       });
 
@@ -63,34 +75,6 @@ function App() {
     console.log('Resident fetch status:', result);
   };
 
-  const getDependencies = async () => {
-    const response = await fetch('http://localhost:3001/app/dependencies');
-    const result = await response.json();
-    console.log('Dependencies fetch status:', result);
-  };
-
-  const getDependencyById = async (id) => {
-    const response = await fetch(
-      `http://localhost:3001/app/dependencies/${id}`
-    );
-    const result = await response.json();
-    console.log('Dependency fetch status:', result);
-  };
-
-  const getCategories = async () => {
-    const response = await fetch('http://localhost:3001/app/categories');
-    const result = await response.json();
-    console.log('Categories fetch status:', result);
-  };
-
-  const getCategoryById = async (id) => {
-    const response = await fetch(
-      `http://localhost:3001/app/categories/${id}`
-    );
-    const result = await response.json();
-    console.log('Category fetch status:', result);
-  };
-
   const getInterests = async () => {
     const response = await fetch('http://localhost:3001/app/interests');
     const result = await response.json();
@@ -98,9 +82,7 @@ function App() {
   };
 
   const getInterestById = async (id) => {
-    const response = await fetch(
-      `http://localhost:3001/app/interests/${id}`
-    );
+    const response = await fetch(`http://localhost:3001/app/interests/${id}`);
     const result = await response.json();
     console.log('Interest fetch status:', result);
   };
@@ -121,20 +103,6 @@ function App() {
         </button>
         <button onClick={() => getResidentById('example-invalid-resident-id')}>
           Fetch one resident (failing) {'=>'} in console
-        </button>
-        <br />
-        <button onClick={getDependencies}>
-          Fetch all dependencies {'=>'} in console
-        </button>
-        <button onClick={() => getDependencyById('600d759be07deded29ebe454')}>
-          Fetch one dependency {'=>'} in console
-        </button>
-        <br />
-        <button onClick={getCategories}>
-          Fetch all categories {'=>'} in console
-        </button>
-        <button onClick={() => getCategoryById('600d7543e07deded29ebe453')}>
-          Fetch one category {'=>'} in console
         </button>
         <br />
         <button onClick={getInterests}>
