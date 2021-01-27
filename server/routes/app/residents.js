@@ -2,21 +2,22 @@ const express = require('express');
 const { ObjectID } = require('mongodb');
 const route = express.Router();
 
-const statusMessages = require('../statusMessages')
+const statusMessages = require('../statusMessages');
 
 /* /app/residents */
 route.get('/', async (req, res) => {
-
   let residents = [];
   //Fetch residents from app database and turn into array. If an error occured in the query, send 500 with error message and return
   try {
     residents = await req.app.mongodb
-    .db('app')
-    .collection('residents')
-    .find()
-    .toArray();
+      .db('app')
+      .collection('residents')
+      .find()
+      .toArray();
   } catch (err) {
-    res.status(statusMessages.INTERNAL_ERROR.statusCode).json({ message: statusMessages.INTERNAL_ERROR.message });
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
     return;
   }
 
@@ -42,7 +43,9 @@ route.get('/:residentId', async (req, res) => {
   try {
     _id = ObjectID(residentId);
   } catch (err) {
-    res.status(statusMessages.INVALID_OBJECTID.statusCode).json({ message: statusMessages.INVALID_OBJECTID.message });
+    res
+      .status(statusMessages.INVALID_OBJECTID.statusCode)
+      .json({ message: statusMessages.INVALID_OBJECTID.message });
     return;
   }
 
@@ -56,9 +59,11 @@ route.get('/:residentId', async (req, res) => {
     resident = await req.app.mongodb
       .db('app')
       .collection('residents')
-      .findOne(query)
+      .findOne(query);
   } catch (err) {
-    res.status(statusMessages.INTERNAL_ERROR.statusCode).json({ message: statusMessages.INTERNAL_ERROR.message });
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
     return;
   }
 

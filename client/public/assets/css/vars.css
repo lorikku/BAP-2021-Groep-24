@@ -1,0 +1,25 @@
+:root {
+    /* colors */
+    --colorCopyMain: #07005A;
+    --colorCopyMisc: #7384C2;
+    --colorCTA: #476FF5;
+    --colorBgMain: #ffffff;
+    --colorBgDark: #E1E9FE;
+    --colorBgMedium: #F2F6FF;
+    --colorBgLight: #F6F9FF;
+
+    /* font sizes */
+    --fontSizeHuge: 1.5625rem; /* 25px */
+    --fontSizeBig: 1rem; /* 16px */
+    --fontSizeNormal: 0.9375rem; /* 15px */
+    --fontSizeBody: 0.875rem; /* 14px */
+    --fontSizeSmall: 0.75rem; /* 12px */
+    --fontSizeTiny: 0.625rem; /* 10px */
+
+    /* font weights */
+    --fontWeightBold: bold;
+    --fontWeightSemiBold: 600;
+    --fontWeightMedium: 500;
+    --fontWeightRegular: normal;
+    --fontWeightLight: 300;
+}

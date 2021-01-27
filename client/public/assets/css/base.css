@@ -1,0 +1,78 @@
+
+
+html {
+  box-sizing: border-box;
+  background-color: var(--colorBgMain);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  color: var(--colorCopyMain);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  margin: 0;
+}
+
+fieldset {
+  outline: none;
+  border: none;
+}
+
+/* -- MEDIA QUERIES -- */
+
+/* orientation must be landscape */
+@media only screen and (orientation:portrait) {
+  #wrapper {
+    display: none;
+  }
+
+  #warning-message {
+    display: block;
+  }
+}
+
+@media only screen and (orientation:landscape) {
+  #warning-message {
+    display: none;
+  }
+}
+
+/* ipad/tablet - landscape */
+@media only screen and (min-width: 960px) {
+
+}
+
+/* desktop - landscape */
+@media only screen and (min-width: 1200px) {
+
+}
