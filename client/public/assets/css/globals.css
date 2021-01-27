@@ -1,3 +1,12 @@
 .visually-hidden {
   display: none;
 }
+
+.button {
+  color: white;
+  font-weight: var(--fontWeightSemiBold);
+
+  background-color: var(--colorCTA);
+  border-radius: var(--borderRadius);
+  padding: var(--spacerButtonNormal);;
+}

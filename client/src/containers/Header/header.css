@@ -8,7 +8,24 @@
     align-items: center;
 }
 
-.title {
+.header__title {
     font-size: var(--fontSizeBig);
     font-weight: var(--fontWeightSemiBold);
+}
+
+.header__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 30px 10px;
+}
+
+.header__newresident {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+
+    font-size: var(--fontSizeBig);
 }

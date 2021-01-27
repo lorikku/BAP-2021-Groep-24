@@ -14,7 +14,6 @@
     --fontSizeNormal: 0.9375rem; /* 15px */
     --fontSizeBody: 0.875rem; /* 14px */
     --fontSizeSmall: 0.75rem; /* 12px */
-    --fontSizeTiny: 0.625rem; /* 10px */
 
     /* font weights */
     --fontWeightBold: bold;
@@ -22,4 +21,12 @@
     --fontWeightMedium: 500;
     --fontWeightRegular: normal;
     --fontWeightLight: 300;
+
+    /* spacers */
+    --spacerBig: 1.8rem;
+    --spacerMain: 1.25rem; /* 20px */
+    --spacerButtonNormal: 0.6rem 1.4rem;
+
+    /* others */
+    --borderRadius: 0.4rem
 }

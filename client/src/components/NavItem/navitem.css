@@ -1,0 +1,27 @@
+.navitem {
+    display: flex;
+    align-items: center;
+
+    padding: var(--spacerBig) var(--spacerMain);
+}
+
+.navitem.active {
+    background-color: var(--colorBgDark);
+    border-right: solid 4px var(--colorCTA);
+}
+
+.navitem.logout {
+    background-color: var(--colorBgDark);
+    padding: var(--spacerBig);
+}
+
+.navitem__text {
+    font-size: var(--fontSizeBig);
+    font-weight: var(--fontWeightSemiBold);
+
+    padding-left: var(--spacerMain);
+}
+
+.navitem__text.active {
+    color: var(--colorCTA);
+}
