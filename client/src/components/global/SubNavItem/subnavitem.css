@@ -1,0 +1,18 @@
+.subnavitem {
+    font-size: var(--fontSizeNormal);
+    font-weight: var(--fontWeightSemiBold);
+    text-transform: capitalize;
+    
+    padding: var(--spacerMain) var(--spacerBig);
+    padding-bottom: var(--spacerMain);
+    margin-bottom: -2px;
+
+    border-top-left-radius: var(--borderRadius);
+    border-top-right-radius: var(--borderRadius);
+}
+
+.subnavitem--active {
+    color: var(--colorCTA);
+    background-color: var(--colorBgDark);
+    border-bottom: 2px solid var(--colorCTA);
+}

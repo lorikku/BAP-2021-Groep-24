@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import paths from '../../../consts/paths';
 
-import NavItem from '../../../components/nav/NavItem';
+import NavItem from '../../../components/header/NavItem';
 import ActivitiesIcon from '../../../components/icons/ActivitiesIcon';
 import MatchingIcon from '../../../components/icons/MatchingIcon';
 import ResidentsIcon from '../../../components/icons/ResidentsIcon';
@@ -14,24 +14,24 @@ import './navbar.css';
 //Navigation items go in this array
 const navItems = [
   {
-    icon: (active) => <ResidentsIcon active={active} />,
-    text: 'Bewoners',
-    path: paths.PATH_HOME,
+    icon: (isActive) => <ResidentsIcon isActive={isActive} />,
+    text: 'bewoners',
+    path: paths.PATH_RESIDENTS.ROOT,
   },
   {
-    icon: (active) => <ActivitiesIcon active={active} />,
-    text: 'Activiteiten',
-    path: paths.PATH_ACTIVITIES,
+    icon: (isActive) => <ActivitiesIcon isActive={isActive} />,
+    text: 'activiteiten',
+    path: paths.PATH_ACTIVITIES.ROOT,
   },
   {
-    icon: (active) => <MatchingIcon active={active} />,
-    text: 'Matching',
-    path: paths.PATH_MATCHING,
+    icon: (isActive) => <MatchingIcon isActive={isActive} />,
+    text: 'matching',
+    path: paths.PATH_MATCHING.ROOT,
   },
   {
     icon: () => <LogoutIcon />,
-    text: 'Uitloggen',
-    path: paths.PATH_LOGOUT,
+    text: 'uitloggen',
+    path: paths.PATH_LOGOUT.ROOT,
   },
 ];
 
@@ -39,7 +39,7 @@ const NavBar = () => {
   /* useLocation hook from react-router to get info about current path */
   const location = useLocation();
   const getRootFromPath = (path) => '/' + path.split('/')[1];
-  const isPathActive = (path1, path2) => path1 === path2;
+  const isPathActive = (path) => path === currentRootPath;
 
   /* path handling, to check which nav item is active (styling purposes) */
   const [currentRootPath, setCurrentRootPath] = React.useState(
@@ -57,32 +57,31 @@ const NavBar = () => {
       <ul className="navbar__list">
         {/* For every navigation item in the array, make a new navitem with icon and text */}
         {navItems.map((navItem, index) => {
+          const { path, icon, text } = navItem;
           if (navItem === lastNavItem) return null;
           return (
-            <li key={index} >
-              <NavLink to={navItem.path}>
+            <li key={index}>
+              <Link to={path}>
                 <NavItem
                   /* if currentRootPath state equals the path of the navItem -> navitem & icon = active */
-                  active={isPathActive(currentRootPath, navItem.path)}
-                  icon={navItem.icon(
-                    isPathActive(currentRootPath, navItem.path)
-                  )}
-                  text={navItem.text}
+                  isActive={isPathActive(path)}
+                  icon={icon(isPathActive(path))}
+                  text={text}
                 />
-              </NavLink>
+              </Link>
             </li>
           );
         })}
       </ul>
-      <NavLink className="navbar__logout" to={lastNavItem.path}>
+      <Link className="navbar__logout" to={lastNavItem.path}>
         <NavItem
           /* if currentRootPath state equals the path of the navItem -> navitem & icon = active */
-          active={isPathActive(currentRootPath, lastNavItem.path)}
+          isActive={isPathActive(lastNavItem.path)}
           icon={lastNavItem.icon()}
           text={lastNavItem.text}
           logout
         />
-      </NavLink>
+      </Link>
     </nav>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-const MatchingIcon = ({ active }) => {
-  const getColor = () => (active ? '#476FF5' : '#07005A');
+const MatchingIcon = ({ isActive }) => {
+  const getColor = () => (isActive ? '#476FF5' : '#07005A');
 
   return <svg
     width="30"

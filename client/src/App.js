@@ -4,10 +4,12 @@ import Div100vh from 'react-div-100vh';
 
 import paths from './consts/paths';
 
-import Header from './containers/nav/Header';
+import Header from './containers/header/Header';
+import ResidentsPage from './pages/ResidentsPages';
+import ActivitiesPage from './pages/ActivitiesPages';
+import MatchingPage from './pages/MatchingPages';
 
 import './App.css';
-
 
 const App = () => {
   return (
@@ -16,17 +18,21 @@ const App = () => {
       <Header />
       <main className="page">
         <Switch>
-          <Route path={paths.PATH_ACTIVITIES}>
-            <p>Activities page</p>
+          {/* Activities pages */}
+          <Route path={paths.PATH_ACTIVITIES.ROOT}>
+            <ActivitiesPage paths={paths.PATH_ACTIVITIES} />
           </Route>
-          <Route path={paths.PATH_MATCHING}>
-            <p>Matching page</p>
+          {/* Matching pages */}
+          <Route path={paths.PATH_MATCHING.ROOT}>
+            <MatchingPage paths={paths.PATH_MATCHING} />
           </Route>
-          <Route path={paths.PATH_HOME}>
-            <p>Residents page</p>
+          {/* Residents pages */}
+          <Route path={paths.PATH_RESIDENTS.ROOT}>
+            <ResidentsPage paths={paths.PATH_RESIDENTS} />
           </Route>
+          {/* Redirect if no route was found */}
           <Route>
-            <Redirect to={paths.PATH_HOME} />
+            <Redirect to={paths.PATH_RESIDENTS.ROOT} />
           </Route>
         </Switch>
       </main>

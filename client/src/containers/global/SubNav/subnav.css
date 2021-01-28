@@ -1,0 +1,5 @@
+.subnav {
+    display: flex;
+    margin-bottom: var(--spacerMain);
+    border-bottom: 2px solid var(--colorBgMedium);
+}

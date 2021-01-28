@@ -18,6 +18,7 @@
 .navitem__text {
     font-size: var(--fontSizeBig);
     font-weight: var(--fontWeightSemiBold);
+    text-transform: capitalize;
 
     padding-left: var(--spacerMain);
 }

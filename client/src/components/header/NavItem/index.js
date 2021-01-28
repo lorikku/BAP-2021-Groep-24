@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import './navitem.css';
 
-const NavItem = ({ active, icon, text, logout }) => {
+const NavItem = ({ isActive, icon, text, logout }) => {
   return (
     <div
-      className={`navitem${active ? ' navitem--active' : ''}${
+      className={`navitem${isActive ? ' navitem--active' : ''}${
         logout ? ' navitem--logout' : ''
       }`}
     >
       {icon}
-      <p className={`navitem__text${active ? ' navitem__text--active' : ''}`}>
+      <p className={`navitem__text${isActive ? ' navitem__text--active' : ''}`}>
         {text}
       </p>
     </div>

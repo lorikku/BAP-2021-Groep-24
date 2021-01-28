@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-const ResidentsIcon = ({ active }) => {
-  const getColor = () => (active ? '#476FF5' : '#07005A');
+const ResidentsIcon = ({ isActive }) => {
+  const getColor = () => (isActive ? '#476FF5' : '#07005A');
 
   return <svg
     width="30"
