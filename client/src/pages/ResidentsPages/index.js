@@ -24,6 +24,9 @@ const ResidentsPages = ({ paths }) => {
       path: (detail = paths.DETAIL) =>
         paths.ROOT + detail + paths.DETAIL_PLANNING,
     },
+    NEW_RESIDENT: {
+      path: () => paths.ROOT + paths.NEW_RESIDENT,
+    },
   };
 
   //These will be used in the SubNavs
@@ -44,6 +47,10 @@ const ResidentsPages = ({ paths }) => {
           <SubNav navItems={homePages} />
           <p>Overzicht MIJN bewoners</p>
         </Route>
+        {/* Add new resident page */}
+        <Route path={pages.NEW_RESIDENT.path()} exact>
+          <p>Nieuwe bewoner toevoegen</p>
+        </Route>
         {/* ---DETAIL PAGES--- */}
         <Route path={paths.ROOT + paths.DETAIL} strict>
           <SubNav navItems={detailPages} />
@@ -59,7 +66,9 @@ const ResidentsPages = ({ paths }) => {
             {/* If ResidentID was filled in URL, without specifying /general or /planning 
             as trailing path => generate /general trailing path per default */}
             <Route>
-              <AddGeneralTrailingPath pathNameGenerator={pages.DETAIL_GENERAL.path} />
+              <AddGeneralTrailingPath
+                pathNameGenerator={pages.DETAIL_GENERAL.path}
+              />
             </Route>
           </Switch>
         </Route>

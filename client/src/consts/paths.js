@@ -4,10 +4,12 @@ const paths = {
     ROOT: '/residents',
     OVERVIEW: '/overview',
     MY_RESIDENTS: '/my-residents',
-    // User detail
+    // Resident detail
     DETAIL: '/:residentId',
     DETAIL_GENERAL: '/general',
     DETAIL_PLANNING: '/planning',
+    // New resident
+    NEW_RESIDENT: '/new-resident',
   },
   PATH_ACTIVITIES: {
     // Root
@@ -15,7 +17,7 @@ const paths = {
     OVERVIEW: '/overview',
     WEEK: '/:week',
     // Adding new activity
-    NEW: '/new',
+    NEW_ACTIVITY: '/new-activity',
     // Activity detail
     DETAIL: '/:activityId',
   },

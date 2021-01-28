@@ -7,7 +7,7 @@ const ActivitiesPages = ({ paths }) => {
       <Route path={paths.ROOT + paths.OVERVIEW + paths.WEEK} exact>
         <p>Overzicht activiteiten</p>
       </Route>
-      <Route path={paths.ROOT + paths.NEW} exact>
+      <Route path={paths.ROOT + paths.NEW_ACTIVITY} exact>
         <p>Nieuwe activiteit</p>
       </Route>
       <Route path={paths.ROOT + paths.DETAIL} exact>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import paths from '../../../consts/paths';
 
 import NavBar from '../NavBar';
 
@@ -19,7 +20,7 @@ const Header = () => {
         />
         <p className="header__title">Heilig Hart</p>
         <Link
-          to="/residents/newResident"
+          to={paths.PATH_RESIDENTS.ROOT + paths.PATH_RESIDENTS.NEW_RESIDENT}
           className="button header__newresident"
         >
           <p>Nieuwe bewoner</p>
