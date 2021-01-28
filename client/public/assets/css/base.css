@@ -1,5 +1,3 @@
-
-
 html {
   box-sizing: border-box;
   background-color: var(--colorBgMain);
@@ -57,7 +55,7 @@ fieldset {
 
 /* orientation must be landscape */
 @media only screen and (orientation:portrait) {
-  #wrapper {
+  #root {
     display: none;
   }
 

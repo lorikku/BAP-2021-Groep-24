@@ -1,19 +1,20 @@
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import Div100vh from 'react-div-100vh';
 
 import paths from './consts/paths';
 
-import Header from './containers/Header';
+import Header from './containers/nav/Header';
 
 import './App.css';
 
 
 const App = () => {
   return (
-    <div className="content">
+    /* Div100vh calculates div height for accurate display */
+    <Div100vh className="content">
       <Header />
-      <main>
+      <main className="page">
         <Switch>
           <Route path={paths.PATH_ACTIVITIES}>
             <p>Activities page</p>
@@ -29,7 +30,7 @@ const App = () => {
           </Route>
         </Switch>
       </main>
-    </div>
+    </Div100vh>
   );
 };
 

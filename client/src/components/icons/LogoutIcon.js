@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const LogoutIcon = ({}) => {
+const LogoutIcon = () => {
   return (
     <svg
       width="30"

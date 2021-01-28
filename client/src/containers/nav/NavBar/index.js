@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import paths from '../../consts/paths';
+import paths from '../../../consts/paths';
 
-import NavItem from '../../components/NavItem';
-import ActivitiesIcon from '../../components/icons/ActivitiesIcon';
-import MatchingIcon from '../../components/icons/MatchingIcon';
-import ResidentsIcon from '../../components/icons/ResidentsIcon';
-import LogoutIcon from '../../components/icons/LogoutIcon';
+import NavItem from '../../../components/nav/NavItem';
+import ActivitiesIcon from '../../../components/icons/ActivitiesIcon';
+import MatchingIcon from '../../../components/icons/MatchingIcon';
+import ResidentsIcon from '../../../components/icons/ResidentsIcon';
+import LogoutIcon from '../../../components/icons/LogoutIcon';
 
 import './navbar.css';
 
@@ -30,7 +30,7 @@ const navItems = [
   },
   {
     icon: () => <LogoutIcon />,
-    text: 'Logout',
+    text: 'Uitloggen',
     path: paths.PATH_LOGOUT,
   },
 ];
@@ -57,7 +57,7 @@ const NavBar = () => {
       <ul className="navbar__list">
         {/* For every navigation item in the array, make a new navitem with icon and text */}
         {navItems.map((navItem, index) => {
-          if (navItem === lastNavItem) return;
+          if (navItem === lastNavItem) return null;
           return (
             <li key={index} >
               <NavLink to={navItem.path}>
