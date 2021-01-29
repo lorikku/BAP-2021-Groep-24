@@ -3,6 +3,7 @@ import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
 import SubNav from '../../containers/residents/SubNav';
 import MyResidentsPage from './MyResidentsPage';
+import OverviewPage from './OverviewPage';
 
 import './residentspage.css';
 
@@ -42,7 +43,7 @@ const ResidentsPages = ({ paths }) => {
         {/* Overview page */}
         <Route path={pages.OVERVIEW.path()} exact>
           <SubNav navItems={homePages} />
-          <p>Overview van bewoners</p>
+          <OverviewPage/>
         </Route>
         {/* My residents page */}
         <Route path={pages.MY_RESIDENTS.path()} exact>

@@ -7,7 +7,7 @@
 .residents__filter {
     display: flex;
     flex-direction: column;
-
+    
     height: 3.75rem; /* 60 px */
     width: 32%;
 }

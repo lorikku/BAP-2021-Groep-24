@@ -7,8 +7,8 @@
     padding-bottom: var(--spacerMain);
     margin-bottom: -2px;
 
-    border-top-left-radius: var(--borderRadius);
-    border-top-right-radius: var(--borderRadius);
+    border-top-left-radius: var(--borderRadiusBig);
+    border-top-right-radius: var(--borderRadiusBig);
 }
 
 .subnavitem--active {

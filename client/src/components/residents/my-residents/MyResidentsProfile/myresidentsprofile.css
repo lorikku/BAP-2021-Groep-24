@@ -8,7 +8,7 @@
     height:240px;
 
     background-color: var(--colorBgMedium);
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadiusBig);
 
     padding: 15px;
     margin-bottom: var(--spacerMain);

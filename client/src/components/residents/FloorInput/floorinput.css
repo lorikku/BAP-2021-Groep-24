@@ -1,0 +1,30 @@
+.residents__filter__floor {
+    align-self: flex-end;
+}
+
+#filter__floor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.residents__filter__flooroption {
+    font-size: var(--fontSizeBig);
+    font-weight: var(--fontWeightSemiBold);
+
+    background-color: var(--colorOrangeLight);
+    border-radius: var(--borderRadius);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    margin-right: 10px;
+}
+
+.residents__filter__flooroption--active {
+    background-color: var(--colorOrange);
+}

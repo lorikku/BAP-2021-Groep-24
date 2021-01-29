@@ -7,6 +7,8 @@
     --colorBgDark: #E1E9FE;
     --colorBgMedium: #F2F6FF;
     --colorBgLight: #F6F9FF;
+    --colorOrange: #FFC268;
+    --colorOrangeLight: #FFEED4;
 
     /* font sizes */
     --fontSizeHuge: 1.5625rem; /* 25px */
@@ -29,5 +31,6 @@
     --width1: 32%;
 
     /* others */
-    --borderRadius: 5%;
+    --borderRadius: 6px;
+    --borderRadiusBig: 10px;
 }
