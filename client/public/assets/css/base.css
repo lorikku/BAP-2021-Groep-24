@@ -51,6 +51,11 @@ fieldset {
   border: none;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
 /* -- MEDIA QUERIES -- */
 
 /* orientation must be landscape */

@@ -1,0 +1,10 @@
+.residents__filter__name {
+    background-color: var(--colorBgMedium);
+
+    padding: 8px;
+}
+
+.residents__filter__name::placeholder {
+    color: var(--colorCopyMisc);
+}
+

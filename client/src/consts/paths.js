@@ -9,17 +9,17 @@ const paths = {
     DETAIL_GENERAL: '/general',
     DETAIL_PLANNING: '/planning',
     // New resident
-    NEW_RESIDENT: '/new-resident',
+    NEW_RESIDENT: '/new',
   },
   PATH_ACTIVITIES: {
     // Root
     ROOT: '/activities',
     OVERVIEW: '/overview',
     WEEK: '/:week',
-    // Adding new activity
-    NEW_ACTIVITY: '/new-activity',
     // Activity detail
     DETAIL: '/:activityId',
+    // Adding new activity
+    NEW_ACTIVITY: '/new',
   },
   PATH_MATCHING: {
     ROOT: '/matching',

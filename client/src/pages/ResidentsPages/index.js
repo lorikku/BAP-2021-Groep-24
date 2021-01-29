@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
-import SubNav from '../../containers/global/SubNav';
-import OverviewPage from './OverviewPage';
+import SubNav from '../../containers/residents/SubNav';
+import MyResidentsPage from './MyResidentsPage';
+
+import './residentspage.css';
 
 const ResidentsPages = ({ paths }) => {
   const pages = {
@@ -40,12 +42,12 @@ const ResidentsPages = ({ paths }) => {
         {/* Overview page */}
         <Route path={pages.OVERVIEW.path()} exact>
           <SubNav navItems={homePages} />
-          <OverviewPage />
+          <p>Overview van bewoners</p>
         </Route>
         {/* My residents page */}
         <Route path={pages.MY_RESIDENTS.path()} exact>
           <SubNav navItems={homePages} />
-          <p>Overzicht MIJN bewoners</p>
+          <MyResidentsPage />
         </Route>
         {/* Add new resident page */}
         <Route path={pages.NEW_RESIDENT.path()} exact>

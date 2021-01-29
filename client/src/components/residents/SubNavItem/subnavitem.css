@@ -13,6 +13,6 @@
 
 .subnavitem--active {
     color: var(--colorCTA);
-    background-color: var(--colorBgDark);
+    background-color: var(--colorBgMedium);
     border-bottom: 2px solid var(--colorCTA);
 }

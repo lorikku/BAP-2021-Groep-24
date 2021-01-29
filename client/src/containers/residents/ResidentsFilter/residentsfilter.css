@@ -1,0 +1,23 @@
+.residents__filterwrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacerMain);
+}
+
+.residents__filter {
+    display: flex;
+    flex-direction: column;
+
+    height: 3.75rem; /* 60 px */
+    width: 32%;
+}
+
+.residents__filter--child {
+    height: 40px;
+}
+
+.residents__filter__label {
+    font-weight: var(--fontWeightSemiBold);
+
+    margin-bottom: 8px;
+}

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import SubNavItem from '../../../components/global/SubNavItem';
+
+import SubNavItem from '../../../components/residents/SubNavItem';
 
 import './subnav.css';
 

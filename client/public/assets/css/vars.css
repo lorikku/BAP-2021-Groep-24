@@ -26,7 +26,8 @@
     --spacerBig: 1.8rem;
     --spacerMain: 1.25rem; /* 20px */
     --spacerButtonNormal: 0.6rem 1.4rem;
+    --width1: 32%;
 
     /* others */
-    --borderRadius: 0.4rem
+    --borderRadius: 5%;
 }
