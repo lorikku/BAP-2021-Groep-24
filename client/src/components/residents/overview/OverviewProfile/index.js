@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import './overviewprofile.css';
 
 const OverviewProfile = ({ resident }) => {
-  const { id, name, roomNr, photoUri, isPermanent, isHeart, isNew } = resident;
-  const [activeHeart, setHeart] = React.useState(isHeart);
+  const { _id, name, roomNr, photoUri, isPermanent, isNew } = resident;
+  const [activeHeart, setHeart] = React.useState(false);
 
   const toggleHeart = () => setHeart((prevHeart) => !prevHeart);
 
   return (
     <li className={`residents-overview__overviewprofile`}>
       <div className="residents-myresidents__overviewprofile__container">
-        <Link className="residents-myresidents__overviewprofile__link" to={id}>
+        <Link className="residents-myresidents__overviewprofile__link" to={_id}>
           <div className="residents-myresidents__overviewprofile__wrapper">
             {isNew ? (
               <p className="residents-myresidents__overviewprofile__nieuw">

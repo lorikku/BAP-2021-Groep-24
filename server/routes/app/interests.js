@@ -6,7 +6,7 @@ const statusMessages = require('../statusMessages');
 
 /* /app/interests */
 route.get('/', async (req, res) => {
-  let interests = [];
+  let interests;
   //Fetch interests from app database and turn into array. If an error occured in the query, send 500 with error message and return
   try {
     interests = await req.app.mongodb

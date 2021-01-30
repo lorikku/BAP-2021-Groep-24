@@ -21,6 +21,10 @@
   padding: var(--spacerButtonNormal);;
 }
 
+.notification {
+  margin-top: var(--spacerMain);
+}
+
 /* Scrollbar */
 
 .apply-scrollbar {
@@ -32,6 +36,11 @@
 }
 
 .apply-scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
+  width: 0;
+  border-radius: 0rem;
   background: var(--colorSpotlight);
+}
+
+.apply-scrollbar::-webkit-scrollbar-track {
+  width: 0;
 }

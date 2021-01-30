@@ -12,9 +12,9 @@ require('dotenv').config();
 const app = express();
 const port = 3001;
 
-//Set Access-Control-Allow-Origin header for all responses to http://localhost:3000 for debugging purposes
+//Set Access-Control-Allow-Origin header for all requests
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   if (!req.app.mongodb) {
     res.status(503).json({

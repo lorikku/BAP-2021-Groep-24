@@ -24,9 +24,34 @@ const ResidentsFilter = ({ setResidents }) => {
   const [sorting, setSorting] = React.useState(sortingOptions[0]);
   const [floor, setFloor] = React.useState(floorOptions[0]);
 
-  React.useEffect(() => {}, [name, sorting, floor]);
+  //Fetch runs automatically after input/filter change, with 200ms timeout so that the server doesn't get spammed
+  React.useEffect(() => {
+    setResidents(undefined);
 
-  React.useEffect(() => console.log('yes!'), []);
+    //Fetching residents from db
+    const fetchResidents = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/app/residents?name=${name}&floor=${floor}&sorting=${sorting.value}`
+        );
+        const result = await response.json();
+
+        if (!response.ok) {
+          setResidents(null);
+          return;
+        }
+
+        setResidents(result.residents);
+      } catch (err) {
+        setResidents(null);
+        console.log(err);
+      }
+    };
+
+    //This is to prevent that users spam requests from server (whenever the name field changes, for example) => 200 ms delays between input/filter changes
+    const timeout = setTimeout(fetchResidents, 200);
+    return () => clearInterval(timeout);
+  }, [name, sorting, floor, setResidents]);
 
   return (
     <div className="residents__filterwrapper">

@@ -9,7 +9,7 @@ const NameInput = ({ name, setName }) => {
         Zoek een bewoner
       </label>
       <input
-        placeholder="Gerda Willems"
+        placeholder="Gerda Willems, 202"
         type="text"
         className="residents__filter__name residents__filter--child"
         id="filter__name"

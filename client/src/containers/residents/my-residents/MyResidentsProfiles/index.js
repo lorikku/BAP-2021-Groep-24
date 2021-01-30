@@ -4,13 +4,17 @@ import MyResidentProfile from '../../../../components/residents/my-residents/MyR
 
 import './myresidentsprofiles.css';
 
-const MyResidentsProfiles = ({residents}) => {
-  return (
-    <ul className="residents-myresidents__profiles">
+const MyResidentsProfiles = ({ residents }) => {
+  return residents ? (
+    <ul className="residents-myresidents__profiles apply-scrollbar">
       {residents.map((resident, index) => {
         return <MyResidentProfile key={index} resident={resident} />;
       })}
     </ul>
+  ) : residents === null ? (
+    <p className="notification">Er werden geen bewoners gevonden met jouw zoekopties</p>
+  ) : (
+    <p className="notification">Mijn bewoners ophalen...</p>
   );
 };
 

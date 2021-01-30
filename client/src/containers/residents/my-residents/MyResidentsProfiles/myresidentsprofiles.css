@@ -6,6 +6,5 @@
     overflow: scroll;
 
     padding-bottom: calc(var(--heightMyResidentProfile) / 3);
-    
     margin-top: var(--spacerMain);
 }
