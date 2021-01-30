@@ -1,34 +1,35 @@
-import * as React from 'react';
-import { Redirect, Route, Switch, useParams } from 'react-router-dom';
+import * as React from "react";
+import { Redirect, Route, Switch, useParams } from "react-router-dom";
+import DetailHeader from "../../containers/residents/detail/DetailHeader";
 
-import SubNav from '../../containers/residents/SubNav';
-import MyResidentsPage from './MyResidentsPage';
-import OverviewPage from './OverviewPage';
+import SubNav from "../../containers/residents/SubNav";
+import MyResidentsPage from "./MyResidentsPage";
+import OverviewPage from "./OverviewPage";
 
-import './residentspage.css';
+import "./residentspage.css";
 
 const ResidentsPages = ({ paths }) => {
   const pages = {
     OVERVIEW: {
-      text: 'alle bewoners',
+      text: "alle bewoners",
       path: () => paths.ROOT + paths.OVERVIEW,
     },
     MY_RESIDENTS: {
-      text: 'mijn bewoners',
+      text: "mijn bewoners",
       path: () => paths.ROOT + paths.MY_RESIDENTS,
     },
     DETAIL_GENERAL: {
-      text: 'algemene informatie',
+      text: "algemene informatie",
       path: (detail = paths.DETAIL) =>
         paths.ROOT + detail + paths.DETAIL_GENERAL,
     },
     DETAIL_PLANNING: {
-      text: 'persoonlijke planning',
+      text: "persoonlijke planning",
       path: (detail = paths.DETAIL) =>
         paths.ROOT + detail + paths.DETAIL_PLANNING,
     },
     DETAIL_ADD_CONTACT: {
-      text: 'persoonlijke planning',
+      text: "persoonlijke planning",
       path: (detail = paths.DETAIL) =>
         paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
     },
@@ -64,8 +65,12 @@ const ResidentsPages = ({ paths }) => {
           <Switch>
             {/* Detail page with general info */}
             <Route path={pages.DETAIL_GENERAL.path()} exact>
-              <SubNav navItems={detailPages} />
-              <p>Detail pagina bewoner: algemene info</p>
+              <div className="residents-detailresident fit-height flex-content">
+                <DetailHeader />
+                <SubNav navItems={detailPages} />
+                {/* profile interests + contacts */}
+                <p>Detail pagina bewoner: algemene info</p>
+              </div>
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
@@ -98,7 +103,7 @@ const AddGeneralTrailingPath = ({ pathNameGenerator }) => {
   const params = useParams();
   const firstParam = params[Object.keys(params)[0]];
 
-  return <Redirect to={pathNameGenerator('/' + firstParam)} />;
+  return <Redirect to={pathNameGenerator("/" + firstParam)} />;
 };
 
 export default ResidentsPages;
