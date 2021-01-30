@@ -5,14 +5,33 @@
     
     padding: var(--spacerMain) var(--spacerBig);
     padding-bottom: var(--spacerMain);
-    margin-bottom: -2px;
+    margin-bottom: calc(0px - var(--borderWidthSubNav)) /* going over border */;
 
     border-top-left-radius: var(--borderRadiusBig);
     border-top-right-radius: var(--borderRadiusBig);
+
+    max-height: 53px;
+}
+
+.subnavitem.subnavitem--myresidents {
+    color: var(--colorRed);
 }
 
 .subnavitem--active {
     color: var(--colorCTA);
     background-color: var(--colorBgMedium);
-    border-bottom: 2px solid var(--colorCTA);
+    border-bottom: var(--borderWidthSubNav) solid var(--colorCTA);
+}
+
+.subnavitem--active.subnavitem--myresidents {
+    background-color: var(--colorRedLight);
+    border-bottom: var(--borderWidthSubNav) solid var(--colorRed);
+}
+
+.subnavitem__wrapper {
+    display: flex;
+}
+
+.subnavitem__img {
+    margin-right: 15px;
 }

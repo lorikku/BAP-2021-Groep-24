@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import SubNavItem from '../../../components/residents/SubNavItem';
+import paths from '../../../consts/paths';
 
 import './subnav.css';
 
@@ -12,6 +13,8 @@ const SubNav = ({ navItems }) => {
   /* useLocation hook from react-router to get info about current path */
   const location = useLocation();
   const isPathActive = (path) => path === location.pathname;
+  const isPathMyResidents = (path) =>
+    path === paths.PATH_RESIDENTS.ROOT + paths.PATH_RESIDENTS.MY_RESIDENTS;
 
   return (
     <ul className="subnav">
@@ -25,6 +28,7 @@ const SubNav = ({ navItems }) => {
         return (
           <SubNavItem
             key={index}
+            isMyResidents={isPathMyResidents(path)}
             isActive={isPathActive(path)}
             path={path}
             text={navItem.text}

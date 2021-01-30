@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './nameinput.css';
 
-const NameInput = () => {
+const NameInput = ({ name, setName }) => {
   return (
     <div className="residents__filter">
       <label className="residents__filter__label" htmlFor="filter__name">
@@ -13,6 +13,8 @@ const NameInput = () => {
         type="text"
         className="residents__filter__name residents__filter--child"
         id="filter__name"
+        value={name}
+        onChange={(newName) => setName(newName.currentTarget.value)}
       />
     </div>
   );

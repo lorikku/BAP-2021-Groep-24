@@ -1,9 +1,10 @@
 .content {
     display: flex;
+    overflow: hidden;
 }
 
 .page {
     flex: 1;
     
-    margin: var(--spacerMain);
+    padding: var(--spacerMain);
 }

@@ -3,13 +3,22 @@ import { Link } from 'react-router-dom';
 
 import './subnavitem.css';
 
-const SubNavItem = ({ path, text, isActive }) => {
+const SubNavItem = ({ path, text, isActive, isMyResidents }) => {
   return (
-    <li>
-      <Link to={path}>
-        <p className={`subnavitem${isActive ? ' subnavitem--active' : ''}`}>
-          {text}
-        </p>
+    <li
+      className={`subnavitem${isActive ? ' subnavitem--active' : ''} ${
+        isMyResidents ? ' subnavitem--myresidents' : ''
+      }`}
+    >
+      <Link className="subnavitem__wrapper" to={path}>
+        {isMyResidents ? (
+          <img
+            alt="Een foto van een gevuld hartje."
+            className="subnavitem__img"
+            src="/assets/img/heart-filled.svg"
+          />
+        ) : null}
+        <p>{text}</p>
       </Link>
     </li>
   );

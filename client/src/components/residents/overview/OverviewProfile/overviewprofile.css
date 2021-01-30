@@ -1,0 +1,100 @@
+.residents-overview__overviewprofile {
+    background-color: var(--colorBgMedium);
+    border-radius: var(--borderRadius);
+    
+    height: var(--heightOverviewProfile);
+
+    margin-bottom: var(--spacerOverviewProfile);
+
+    overflow: hidden;
+}
+
+.residents-myresidents__overviewprofile__container {
+    height: 100%;
+    display: flex;
+}
+
+.residents-myresidents__overviewprofile__link {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.residents-myresidents__overviewprofile__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.residents-myresidents__overviewprofile__nieuw {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: var(--spacerMain);
+    
+    font-weight: var(--fontWeightSemiBold);
+    color: white;
+    background-color: var(--colorCTA);
+}
+
+.residents-myresidents__overviewprofile__img {
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:50%;
+
+    margin-left: var(--spacerMain);
+    margin-right: var(--spacerBig);
+}
+
+.residents-myresidents__overviewprofile__wrapper--name {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.residents-myresidents__overviewprofile__name {
+    font-size: var(--fontSizeBig);
+    font-weight: var(--fontWeightSemiBold);
+
+    margin-bottom: var(--spacerSmall);
+}
+
+.residents-myresidents__overviewprofile__ispermanent {
+    font-size: var(--fontSizeSmall);
+}
+
+.residents-myresidents__overviewprofile__wrapper--room {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--colorBgDark);
+
+    padding: var(--spacerMain);
+}
+
+.residents-myresidents__overviewprofile__roomtext {
+    font-size: var(--fontSizeSmall);
+    text-transform: uppercase;
+
+    margin-bottom: var(--spacerSmall);
+}
+
+.residents-myresidents__overviewprofile__roomnr {
+    font-size: var(--fontSizeRoom);
+    text-transform: capitalize;
+    font-weight: var(--fontWeightSemiBold);
+}
+
+.residents-myresidents__overviewprofile__heart {
+    padding: var(--spacerMain);
+}
+
+.residents-myresidents__overviewprofile__heart--active {
+    background-color: var(--colorRed);
+}

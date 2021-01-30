@@ -7,7 +7,7 @@
 
 .navitem--active {
     background-color: var(--colorBgDark);
-    border-right: solid 4px var(--colorCTA);
+    border-right: solid var(--borderWidthNav) var(--colorCTA);
 }
 
 .navitem--logout {

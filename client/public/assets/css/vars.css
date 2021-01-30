@@ -9,9 +9,13 @@
     --colorBgLight: #F6F9FF;
     --colorOrange: #FFC268;
     --colorOrangeLight: #FFEED4;
+    --colorRed: #FF8585;
+    --colorRedLight: #FFF2F2;
+    --colorSpotlight: #FFB13E;
 
     /* font sizes */
     --fontSizeHuge: 1.5625rem; /* 25px */
+    --fontSizeRoom: 1.25rem; /* 20px */
     --fontSizeBig: 1rem; /* 16px */
     --fontSizeNormal: 0.9375rem; /* 15px */
     --fontSizeBody: 0.875rem; /* 14px */
@@ -28,7 +32,15 @@
     --spacerBig: 1.8rem;
     --spacerMain: 1.25rem; /* 20px */
     --spacerButtonNormal: 0.6rem 1.4rem;
+    --spacerOverviewProfile: 0.5rem;
+    --spacerSmall: 0.3rem;
+
+    /* dimensions */
     --width1: 32%;
+    --borderWidthNav: 4px;
+    --borderWidthSubNav: 2px;
+    --heightOverviewProfile: 4.1875rem; /* 67px */
+    --heightMyResidentProfile: 15rem;
 
     /* others */
     --borderRadius: 6px;

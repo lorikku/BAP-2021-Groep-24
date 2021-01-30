@@ -1,4 +1,6 @@
 html {
+  height:100%;
+  
   box-sizing: border-box;
   background-color: var(--colorBgMain);
 }
@@ -10,6 +12,8 @@ html {
 }
 
 body {
+  height:100%;
+
   margin: 0;
   font-size: var(--fontSizeBody);
   font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Oxygen',

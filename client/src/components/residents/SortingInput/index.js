@@ -3,31 +3,18 @@ import Select from 'react-select';
 
 import './selectinput.css';
 
-const options = [
-  {
-    value: 1,
-    label: 'Niew - Oud',
-  },
-  {
-    value: 2,
-    label: 'Oud - Nieuw',
-  },
-];
-
-const SelectInput = () => {
+const SortingInput = ({ options, sorting, setSorting }) => {
   return (
     <div className="residents__filter">
-      <label
-        className="residents__filter__label"
-        htmlFor="filter__sorting"
-      >
+      <label className="residents__filter__label" htmlFor="filter__sorting">
         Volgorde
       </label>
       <div id="filter__sorting">
         <Select
+          onChange={(newSorting) => setSorting(newSorting)}
           className="residents__filter__sorting"
           isSearchable={false}
-          defaultValue={options[0]}
+          defaultValue={sorting}
           options={options}
           theme={(theme) => ({
             ...theme,
@@ -44,4 +31,4 @@ const SelectInput = () => {
   );
 };
 
-export default SelectInput;
+export default SortingInput;

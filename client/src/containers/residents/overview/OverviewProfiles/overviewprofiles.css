@@ -1,0 +1,6 @@
+.residents-overview_profiles {
+    overflow: scroll;
+    
+    padding-bottom: var(--heightOverviewProfile);
+    margin-top: var(--spacerMain);
+}

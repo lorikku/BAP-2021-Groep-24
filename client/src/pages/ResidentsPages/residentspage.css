@@ -2,6 +2,6 @@
 
 /* -- OVERVIEW -- */
 
-.residents-overview {
-    
+.residents {
+    overflow: hidden;
 }

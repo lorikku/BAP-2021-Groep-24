@@ -1,4 +1,11 @@
 .residents-myresidents__profiles {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+
+    overflow: scroll;
+
+    padding-bottom: calc(var(--heightMyResidentProfile) / 3);
+    
+    margin-top: var(--spacerMain);
 }

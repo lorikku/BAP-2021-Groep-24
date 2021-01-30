@@ -4,22 +4,23 @@ const paths = {
     ROOT: '/residents',
     OVERVIEW: '/overview',
     MY_RESIDENTS: '/my-residents',
+    // New resident
+    NEW_RESIDENT: '/new',
     // Resident detail
     DETAIL: '/:residentId',
     DETAIL_GENERAL: '/general',
     DETAIL_PLANNING: '/planning',
-    // New resident
-    NEW_RESIDENT: '/new',
+    DETAIL_ADD_CONTACT: '/add-contact',
   },
   PATH_ACTIVITIES: {
     // Root
     ROOT: '/activities',
     OVERVIEW: '/overview',
     WEEK: '/:week',
-    // Activity detail
-    DETAIL: '/:activityId',
     // Adding new activity
     NEW_ACTIVITY: '/new',
+    // Activity detail
+    DETAIL: '/:activityId',
   },
   PATH_MATCHING: {
     ROOT: '/matching',

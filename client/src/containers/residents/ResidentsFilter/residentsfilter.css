@@ -1,7 +1,6 @@
 .residents__filterwrapper {
     display: flex;
     justify-content: space-between;
-    margin-bottom: var(--spacerMain);
 }
 
 .residents__filter {

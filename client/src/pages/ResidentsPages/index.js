@@ -27,6 +27,11 @@ const ResidentsPages = ({ paths }) => {
       path: (detail = paths.DETAIL) =>
         paths.ROOT + detail + paths.DETAIL_PLANNING,
     },
+    DETAIL_ADD_CONTACT: {
+      text: 'persoonlijke planning',
+      path: (detail = paths.DETAIL) =>
+        paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
+    },
     NEW_RESIDENT: {
       path: () => paths.ROOT + paths.NEW_RESIDENT,
     },
@@ -37,13 +42,13 @@ const ResidentsPages = ({ paths }) => {
   const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
 
   return (
-    <section>
+    <section className="residents fit-height">
       <Switch>
         {/* ---HOME PAGES--- */}
         {/* Overview page */}
         <Route path={pages.OVERVIEW.path()} exact>
           <SubNav navItems={homePages} />
-          <OverviewPage/>
+          <OverviewPage />
         </Route>
         {/* My residents page */}
         <Route path={pages.MY_RESIDENTS.path()} exact>
@@ -56,15 +61,20 @@ const ResidentsPages = ({ paths }) => {
         </Route>
         {/* ---DETAIL PAGES--- */}
         <Route path={paths.ROOT + paths.DETAIL} strict>
-          <SubNav navItems={detailPages} />
           <Switch>
             {/* Detail page with general info */}
             <Route path={pages.DETAIL_GENERAL.path()} exact>
+              <SubNav navItems={detailPages} />
               <p>Detail pagina bewoner: algemene info</p>
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
+              <SubNav navItems={detailPages} />
               <p>Detail pagina bewoner: persoonlijke plannen</p>
+            </Route>
+            {/* Add new contact to resident */}
+            <Route path={pages.DETAIL_ADD_CONTACT.path()} exact>
+              <p>Nieuw contact toevoegen</p>
             </Route>
             {/* If ResidentID was filled in URL, without specifying /general or /planning 
             as trailing path => generate /general trailing path per default */}

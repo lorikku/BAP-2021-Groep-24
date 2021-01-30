@@ -16,7 +16,7 @@ const App = () => {
     /* Div100vh calculates div height for accurate display */
     <Div100vh className="content">
       <Header />
-      <main className="page">
+      <main className="page fit-height">
         <Switch>
           {/* Activities pages */}
           <Route path={paths.PATH_ACTIVITIES.ROOT}>
