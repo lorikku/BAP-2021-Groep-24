@@ -1,0 +1,28 @@
+.weekdiviser-container {
+  background-color: var(--colorRedLight);
+  border-radius: var(--borderRadius);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: var(--spacerMain);
+}
+
+.weekdiviser {
+  display: flex;
+  align-items: center;
+  padding: 10px var(--spacerMain);
+}
+
+.weekdiviser-week {
+  font-size: var(--fontSizeRoom);
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.weekdiviser-border {
+  border-right: solid 1.5px var(--colorCopyMain);
+  padding-right: var(--spacerMain);
+}
+
+.weekdiviser-date {
+  margin-left: var(--spacerMain);
+}

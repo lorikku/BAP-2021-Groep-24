@@ -1,0 +1,117 @@
+.radius {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 6px;
+}
+
+.bubble-rest {
+  background-color: var(--colorBgDark);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dayactivity-bubbles {
+  display: flex;
+}
+
+.dayactivity-container {
+  background-color: var(--colorBgLight);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 90px;
+}
+
+.dayactivity-left-component {
+  display: flex;
+  margin-left: 15px;
+  align-items: center;
+}
+
+.dayactivity-right-component {
+  display: flex;
+  margin-right: 30px;
+}
+
+.dayactivity-calendar {
+  border-radius: var(--borderRadiusBig);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin: 12px 0px;
+}
+
+.calendar-today {
+  background-color: var(--colorCTA);
+}
+
+.calendar-future {
+  background-color: var(--colorOrange);
+}
+
+.date-future {
+  color: var(--colorCopyMain);
+}
+
+.calendar-unplanned {
+  color: var(--colorBgGrey);
+}
+
+.date-today {
+  color: var(--colorBgMain);
+}
+
+.dayactivity-date {
+  font-weight: var(--fontWeightBold);
+  font-size: var(--fontSizeRoom);
+}
+
+.dayactivity-day {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeSmall);
+}
+
+.dayactivity-location-time-wrapper {
+  display: flex;
+  margin-top: 4px;
+}
+
+.dayactivity-main-info {
+  margin-left: 12px;
+}
+
+.dayactivity-title {
+  font-size: var(--fontSizeBig);
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.dayactivity-location {
+  color: var(--colorCopyMisc);
+  font-weight: var(--fontWeightMedium);
+  padding-right: var(--spacerMain);
+}
+
+.dayactivity-location-border {
+  border-right: 1.5px solid var(--colorCopyMisc);
+}
+.dayactivity-time {
+  color: var(--colorCopyMisc);
+  font-weight: var(--fontWeightMedium);
+  margin-left: var(--spacerMain);
+}
+
+.dayactivity-present-container {
+  margin-left: 40px;
+}
+
+.bubbles-title {
+  font-weight: var(--fontWeightMedium);
+  margin-bottom: 5px;
+}
