@@ -1,0 +1,72 @@
+/*     <div className="activity-small-container">
+      <div className="activity-small-calendar-date">
+        <p className="activity-small-date">{date}</p>
+      </div>
+      <div className="activity-small-info">
+        <p className="activity-small-name">{name}</p>
+        <div className="activity-small-location-hour-wrapper">
+          <p>{location}</p>
+          <div className="activity-small-hour-border">
+            <p>{hour}</p>
+          </div>
+        </div>
+      </div>
+    </div> */
+
+.activity-small-container {
+  background-color: var(--colorBgLight);
+  display: flex;
+  align-items: center;
+  border-radius: var(--borderRadiusBig);
+  padding: 14px 9px;
+}
+
+.activity-small-calendar-date {
+  background-color: var(--colorOrange);
+  border-radius: var(--borderRadiusBig);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.activity-small-date {
+  font-weight: var(--fontWeightBold);
+  font-size: var(--fontSizeRoom);
+}
+
+.activity-small-day {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeSmall);
+}
+
+.activity-small-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-left: 15px;
+}
+
+.activity-small-location-hour-wrapper {
+  display: flex;
+  margin-top: 8px;
+}
+
+.activity-small-location {
+  font-size: var(--fontSizeSmall);
+  color: var(--colorCopyMisc);
+}
+
+.activity-small-hour {
+  font-size: var(--fontSizeSmall);
+  color: var(--colorCopyMisc);
+  margin-left: 10px;
+  border-left: solid 1px var(--colorCopyMisc);
+  padding-left: 10px;
+}
+
+.activity-small-name {
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeBig);
+}

@@ -1,0 +1,5 @@
+.detailresident-interesting-title {
+  font-size: var(--fontSizeNormal);
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: var(--spacerMain);
+}

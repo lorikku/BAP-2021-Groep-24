@@ -1,5 +1,44 @@
 .detailresident-activities-title {
-    font-size: var(--fontSizeNormal);
-    font-weight: var(--fontWeightSemiBold);
-    margin-bottom: var(--spacerMain);
-  }
+  font-size: var(--fontSizeNormal);
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: var(--spacerMain);
+}
+
+.activities-toggle-btn {
+  display: flex;
+  background-color: var(--colorCTA);
+  width: max-content;
+  padding: 2px;
+  border-radius: var(--borderRadiusBig);
+  align-items: center;
+}
+
+/* active style btn -> */
+.activities-toggle-planned {
+  background-color: var(--colorBgMain);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.activities-toggle-planned-text {
+  color: var(--colorCTA);
+  font-weight: var(--fontWeightMedium);
+}
+/* <- */
+
+/* non-active -> */
+.activities-toggle-passed {
+  background-color: var(--colorCTA);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.activities-toggle-passed-text {
+  color: var(--colorBgMain);
+  font-weight: var(--fontWeightMedium);
+}
+/* <-s */
+
+.activities-list {
+    margin-top: var(--spacerMain);
+}

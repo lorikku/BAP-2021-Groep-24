@@ -10,6 +10,7 @@ import OverviewPage from "./OverviewPage";
 import DetailGeneralPage from "./DetailGeneralPage";
 
 import "./residentspage.css";
+import DetailInteresting from "../../containers/residents/detail/DetailHeader/DetailInteresting";
 
 const ResidentsPages = ({ paths }) => {
   const pages = {
@@ -68,14 +69,16 @@ const ResidentsPages = ({ paths }) => {
           <Switch>
             {/* Detail page with general info */}
             <Route path={pages.DETAIL_GENERAL.path()} exact>
-             <DetailGeneralPage navItems={detailPages}/>
+              <DetailGeneralPage navItems={detailPages} />
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
               <DetailHeader />
               <SubNav navItems={detailPages} />
-              <DetailActivities name={{ first: "Mathilda" }} />
-              <p>Detail pagina bewoner: persoonlijke plannen</p>
+              <div className="detailresident-personal-planning">
+                <DetailActivities name={{ first: "Mathilda" }} />
+                <DetailInteresting name={{ first: "Mathilda" }} />
+              </div>
             </Route>
             {/* Add new contact to resident */}
             <Route path={pages.DETAIL_ADD_CONTACT.path()} exact>

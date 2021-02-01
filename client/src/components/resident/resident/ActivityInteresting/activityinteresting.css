@@ -1,0 +1,126 @@
+/*     <div className="activity-interesting-container">
+      <div className="activity-interesting-add-btn">
+        <img
+          className="activity-interesting-add-vector"
+          alt="een plusknop om activiteit toe te voegen"
+          src="/assets/img/plus-circle-btn.svg"
+        ></img>
+      </div>
+      <div className="activity-interesting-main-info">
+        <p className="activity-interesting-title">{activity.title}</p>
+        <div className="activity-interesting-time-location-wrapper">
+          <div className="activity-interesting-time-icon-wrapper">
+            <img
+              className="activity-interesting-time-icon"
+              alt="een klok icoontje"
+              src="/assets/img/clock-icon.svg"
+            ></img>
+            <p className="activity-interesting-time">{activity.time}</p>
+          </div>
+          <div className="activity-interesting-location-icon-wrapper">
+            <img
+              className="activity-interesting-location-icon"
+              alt="een locatie icoontje"
+              src="/assets/img/location-icon.svg"
+            ></img>
+            <p className="activity-interesting-location">{activity.location}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="activity-interesting-date-calendar">
+        <p className="activity-interesting-day">{activity.day}</p>
+        <p className="activity-interesting-date-number">{activity.dateNr}</p>
+        <p className="activity-interesting-month">{activity.month}</p>
+      </div>
+    </div> */
+
+.activity-interesting-container {
+  background-color: var(--colorBgLight);
+  border-radius: var(--borderRadiusBig);
+  display: flex;
+  justify-content: space-between;
+  min-height: 137px;
+}
+
+.activity-interesting-add-btn {
+  background-color: var(--colorOrange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: var(--borderRadiusBig);
+  border-bottom-left-radius: var(--borderRadiusBig);
+}
+
+.activity-interesting-add-vector {
+  margin: 0px 10px;
+}
+
+.activity-interesting-main-info {
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacerMain) 15px;
+}
+
+.activity-interesting-title {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeBig);
+}
+
+.activity-interesting-time-location-wrapper {
+  margin-top: var(--spacerMain);
+}
+
+.activity-interesting-time-icon-wrapper {
+  display: flex;
+}
+
+.activity-interesting-location-icon-wrapper {
+  display: flex;
+  margin-top: 13px;
+}
+
+.activity-interesting-time {
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeSmall);
+  color: var(--colorCopyMisc);
+  margin-left: 8px;
+}
+
+.activity-interesting-location {
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeSmall);
+  color: var(--colorCopyMisc);
+  margin-left: 8px;
+}
+
+.activity-interesting-date-calendar {
+  width: 110px;
+  background-color: var(--colorCTA);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: var(--borderRadiusBig);
+  border-bottom-right-radius: var(--borderRadiusBig);
+  padding: var(--spacerMain);
+}
+
+.activity-interesting-day {
+  color: var(--colorBgMain);
+  text-transform: uppercase;
+  font-size: var(--fontSizeSmall);
+  margin-bottom: 15px;
+}
+
+.activity-interesting-date-number {
+  font-size: 34px;
+  font-weight: var(--fontWeightBold);
+  color: var(--colorBgMain);
+}
+
+.activity-interesting-month {
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeSmall);
+  color: var(--colorBgMain);
+}

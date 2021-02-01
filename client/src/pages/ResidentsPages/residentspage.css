@@ -11,3 +11,8 @@
   grid-template-columns: 1fr 1.5fr;
   gap: var(--spacerMain)
 }
+
+.detailresident-personal-planning {
+  display: flex;
+  justify-content: space-between;
+}
