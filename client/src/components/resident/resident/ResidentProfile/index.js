@@ -2,18 +2,18 @@ import * as React from "react";
 
 import "./residentprofile.css";
 
-const ResidentProfile = ({ name, status, room }) => {
+const ResidentProfile = ({ name, status, room, photoUri }) => {
   return (
     <div className="resident-profile-container">
       <div className="resident-profile-card">
         <img
           className="res-profile-pic"
           alt="foto van bewoner"
-          src="https://1tsip9tt643kufi0v3m1s4is-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/accessories-for-elderly-women.jpg"
+          src={photoUri}
         ></img>
         <div className="res-profile-info-wrapper">
           <div className="res-profile-name-heart-wrapper">
-            <p className="res-profile-name">{name.first + " " + name.last}</p>
+            <p className="res-profile-name">{name}</p>
             <img
               className="res-profile-heart-btn"
               alt="knop om bewoner toe te voegen aan 'mijn bewoners'"

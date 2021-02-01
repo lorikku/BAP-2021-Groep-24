@@ -16,7 +16,7 @@ route.get('/', async (req, res) => {
   /* Setting the query */
   const query = {};
 
-  /* Add name to db query if it was set in GET query, NAME CAN ALSO BE ROOM NUMBER! 'i' stands for case-insensitive */
+  // Add name to db query if it was set in GET query, NAME CAN ALSO BE ROOM NUMBER! 'i' stands for case-insensitive
   if (name) {
     if (!isNaN(parseInt(name))) {
        // If name was a number -> treat as room number query 
@@ -99,6 +99,7 @@ route.get('/:residentId', async (req, res) => {
     return;
   }
 
+  /* Setting the query */
   const query = {
     _id,
   };
