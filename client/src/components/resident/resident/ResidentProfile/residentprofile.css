@@ -1,0 +1,117 @@
+.resident-profile-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: var(--spacerMain);
+  gap: var(--spacerMain);
+}
+
+.resident-profile-card {
+  display: flex;
+}
+
+.res-profile-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: var(--spacerMain);
+}
+
+.res-profile-pic {
+  width: 150px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 5%;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.res-profile-name-heart-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.res-profile-heart-btn {
+  width: 30px;
+  height: 30px;
+  margin-left: var(--spacerMain);
+}
+
+.res-profile-name {
+  font-size: var(--fontSizeInBetween);
+  font-weight: var(--fontWeightSemiBold);
+  width: 156px;
+}
+
+.res-profile-status {
+  grid-column: 2;
+  grid-row: 2;
+  font-weight: var(--fontWeightMedium);
+}
+
+.res-profile-room-edit-wrapper {
+  grid-column: 2;
+  grid-row: 3;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.res-profile-room {
+  font-size: var(--fontSizeSmall);
+  font-weight: var(--fontWeightSemiBold);
+  background-color: var(--colorBgDark);
+  padding: 0.5rem 1rem;
+  height: max-content;
+  border-radius: var(--borderRadius);
+}
+
+.res-profile-edit-btn {
+  width: 30px;
+  height: 30px;
+}
+
+.resident-spotlight-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorBgLight);
+    border-top-left-radius: var(--borderRadiusBig);
+    border-bottom-left-radius: var(--borderRadiusBig);
+}
+
+.spotlight-text{
+  font-weight: var(--fontWeightMedium);
+}
+
+.spotlight-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  margin-left: var(--spacerMain);
+  margin-right: var(--spacerMain);
+}
+
+.spotlight-btn {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--colorSpotlight);
+    padding: var(--spacerButtonNormal);
+    width: max-content;
+    border-radius: var(--borderRadiusBig);
+    background-color: var(--colorBgMain);
+}
+
+.spotlight-btn-star {
+    margin-right: .5rem;
+}
+
+.spotlight-btn-text {
+    font-weight: var(--fontWeightSemiBold);
+    color: var(--colorSpotlight);
+}

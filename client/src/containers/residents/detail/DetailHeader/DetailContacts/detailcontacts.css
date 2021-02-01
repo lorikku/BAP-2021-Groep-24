@@ -1,0 +1,20 @@
+.detailresident-contact-title {
+  font-size: var(--fontSizeNormal);
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: var(--spacerMain);
+}
+
+.detailresident-add-contact-btn {
+  background-color: var(--colorBgMain);
+  border: solid 2px var(--colorCTA);
+  border-radius: var(--borderRadius);
+  margin-top: var(--spacerMain);
+}
+
+.detailresident-add-contact-text {
+  padding: var(--spacerButtonNormal);
+  color: var(--colorCTA);
+  font-size: var(--fontSizeBig);
+  font-weight: var(--fontWeightSemiBold);
+  text-align: center;
+}

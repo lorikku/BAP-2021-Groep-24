@@ -3,5 +3,11 @@
 /* -- OVERVIEW -- */
 
 .residents {
-    overflow: hidden;
+  overflow: hidden;
+}
+
+.detailresident-general-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--spacerMain)
 }

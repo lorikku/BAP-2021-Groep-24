@@ -1,0 +1,16 @@
+.goback-arrow-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.goback-arrow {
+    padding-right: 1rem;
+}
+
+.goback-text {
+    font-weight: var(--fontWeightSemiBold);
+}
+
+.goback-container {
+    margin-bottom: var(--spacerMain);
+}

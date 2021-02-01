@@ -1,0 +1,26 @@
+.detailresident-int-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.detailresident-int-title {
+    font-size: var(--fontSizeNormal);
+    font-weight: var(--fontWeightSemiBold);
+    margin-bottom: var(--spacerMain);
+  }
+  
+  .detailresident-edit-int-btn {
+    background-color: var(--colorBgMain);
+    border: solid 2px var(--colorCTA);
+    border-radius: var(--borderRadius);
+    height: 38px;
+    margin-top: -12px;
+  }
+  
+  .detailresident-edit-int-text {
+    padding: var(--spacerButtonNormal);
+    color: var(--colorCTA);
+    font-weight: var(--fontWeightMedium);
+    text-align: center;
+  }

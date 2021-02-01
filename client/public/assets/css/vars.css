@@ -1,48 +1,50 @@
 :root {
-    /* colors */
-    --colorCopyMain: #07005A;
-    --colorCopyMisc: #7384C2;
-    --colorCTA: #476FF5;
-    --colorBgMain: #ffffff;
-    --colorBgDark: #E1E9FE;
-    --colorBgMedium: #F2F6FF;
-    --colorBgLight: #F6F9FF;
-    --colorOrange: #FFC268;
-    --colorOrangeLight: #FFEED4;
-    --colorRed: #FF8585;
-    --colorRedLight: #FFF2F2;
-    --colorSpotlight: #FFB13E;
+  /* colors */
+  --colorCopyMain: #07005a;
+  --colorCopyMisc: #7384c2;
+  --colorCTA: #476ff5;
+  --colorBgMain: #ffffff;
+  --colorBgDark: #e1e9fe;
+  --colorBgMedium: #f2f6ff;
+  --colorBgLight: #f6f9ff;
+  --colorOrange: #ffc268;
+  --colorOrangeLight: #ffeed4;
+  --colorRed: #ff8585;
+  --colorRedLight: #fff2f2;
+  --colorSpotlight: #ffb13e;
 
-    /* font sizes */
-    --fontSizeHuge: 1.5625rem; /* 25px */
-    --fontSizeRoom: 1.25rem; /* 20px */
-    --fontSizeBig: 1rem; /* 16px */
-    --fontSizeNormal: 0.9375rem; /* 15px */
-    --fontSizeBody: 0.875rem; /* 14px */
-    --fontSizeSmall: 0.75rem; /* 12px */
+  /* font sizes */
+  --fontSizeHuge: 1.5625rem; /* 25px */
+  --fontSizeInBetween: 1.375rem; /* 22px */
+  --fontSizeRoom: 1.25rem; /* 20px */
+  --fontSizeBig: 1rem; /* 16px */
+  --fontSizeNormal: 0.9375rem; /* 15px */
+  --fontSizeBody: 0.875rem; /* 14px */
+  --fontSizeSmall: 0.75rem; /* 12px */
+  --fontSizeTiny: 0.625rem; /* 10px */
 
-    /* font weights */
-    --fontWeightBold: bold;
-    --fontWeightSemiBold: 600;
-    --fontWeightMedium: 500;
-    --fontWeightRegular: normal;
-    --fontWeightLight: 300;
+  /* font weights */
+  --fontWeightBold: bold;
+  --fontWeightSemiBold: 600;
+  --fontWeightMedium: 500;
+  --fontWeightRegular: normal;
+  --fontWeightLight: 300;
 
-    /* spacers */
-    --spacerBig: 1.8rem;
-    --spacerMain: 1.25rem; /* 20px */
-    --spacerButtonNormal: 0.6rem 1.4rem;
-    --spacerOverviewProfile: 0.5rem;
-    --spacerSmall: 0.3rem;
+  /* spacers */
+  --spacerBig: 1.8rem;
+  --spacerMain: 1.25rem; /* 20px */
+  --spacerButtonNormal: 0.6rem 1.4rem;
+  --spacerOverviewProfile: 0.5rem;
+  --spacerSmall: 0.3rem;
 
-    /* dimensions */
-    --width1: 32%;
-    --borderWidthNav: 4px;
-    --borderWidthSubNav: 2px;
-    --heightOverviewProfile: 4.1875rem; /* 67px */
-    --heightMyResidentProfile: 15rem;
+  /* dimensions */
+  --width1: 32%;
+  --borderWidthNav: 4px;
+  --borderWidthSubNav: 2px;
+  --heightOverviewProfile: 4.1875rem; /* 67px */
+  --heightMyResidentProfile: 15rem;
 
-    /* others */
-    --borderRadius: 6px;
-    --borderRadiusBig: 10px;
+  /* others */
+  --borderRadius: 6px;
+  --borderRadiusBig: 10px;
 }

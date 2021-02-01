@@ -1,0 +1,28 @@
+.tag-container {
+  background-color: var(--colorBgMain);
+  border-radius: 30px;
+  border: solid 2px var(--colorSpotlight);
+  width: max-content;
+  height: 30px;
+  padding: .3rem .6rem;
+  display: flex;
+  justify-content: center;
+  margin-right: 6px;
+  margin-top: 10px;
+}
+
+.tag-color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--colorSpotlight);
+}
+
+.tag-name {
+  color: var(--colorCopyMain);
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeSmall);
+  text-align: bottom;
+  padding-left: 8px;
+  margin-top: 1px;
+}

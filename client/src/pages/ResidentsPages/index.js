@@ -1,12 +1,14 @@
 import * as React from "react";
 import { Redirect, Route, Switch, useParams } from "react-router-dom";
-import DetailHeader from "../../containers/residents/detail/DetailHeader";
+import DetailHeader from "../../containers/residents/detail/DetailHeader/DetailHeader";
+import DetailContacts from "../../containers/residents/detail/DetailHeader/DetailContacts";
 
 import SubNav from "../../containers/residents/SubNav";
 import MyResidentsPage from "./MyResidentsPage";
 import OverviewPage from "./OverviewPage";
 
 import "./residentspage.css";
+import DetailInterests from "../../containers/residents/detail/DetailHeader/DetailInterests";
 
 const ResidentsPages = ({ paths }) => {
   const pages = {
@@ -68,8 +70,10 @@ const ResidentsPages = ({ paths }) => {
               <div className="residents-detailresident fit-height flex-content">
                 <DetailHeader />
                 <SubNav navItems={detailPages} />
-                {/* profile interests + contacts */}
-                <p>Detail pagina bewoner: algemene info</p>
+                <div className="detailresident-general-grid">
+                  <DetailContacts />
+                  <DetailInterests name={{ first: "Gerda" }} />
+                </div>
               </div>
             </Route>
             {/* Detail page with personal planning */}

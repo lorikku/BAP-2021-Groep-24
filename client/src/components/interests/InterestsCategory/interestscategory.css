@@ -1,0 +1,38 @@
+.interests-category {
+  background-color: var(--colorSpotlight);
+  width: 120px;
+  border-radius: var(--borderRadiusBig);
+  margin: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.interests-category-name {
+  font-weight: var(--fontWeightBold);
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.2rem;
+}
+
+.interests-category-container {
+  background-color: var(--colorBgLight);
+  display: flex;
+  border-radius: var(--borderRadiusBig);
+}
+
+.interest-tags {
+  margin-top: 5px;
+  margin-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-content: flex-start;
+  
+}
+
+.category-vector {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+}
