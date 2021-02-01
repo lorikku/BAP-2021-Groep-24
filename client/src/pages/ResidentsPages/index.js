@@ -2,6 +2,7 @@ import * as React from "react";
 import { Redirect, Route, Switch, useParams } from "react-router-dom";
 import DetailHeader from "../../containers/residents/detail/DetailHeader/DetailHeader";
 import DetailContacts from "../../containers/residents/detail/DetailHeader/DetailContacts";
+import DetailActivities from "../../containers/residents/detail/DetailHeader/DetailActivities";
 
 import SubNav from "../../containers/residents/SubNav";
 import MyResidentsPage from "./MyResidentsPage";
@@ -72,13 +73,15 @@ const ResidentsPages = ({ paths }) => {
                 <SubNav navItems={detailPages} />
                 <div className="detailresident-general-grid">
                   <DetailContacts />
-                  <DetailInterests name={{ first: "Gerda" }} />
+                  <DetailInterests name={{ first: "Mathilda" }} />
                 </div>
               </div>
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
+              <DetailHeader />
               <SubNav navItems={detailPages} />
+              <DetailActivities name={{ first: "Mathilda" }} />
               <p>Detail pagina bewoner: persoonlijke plannen</p>
             </Route>
             {/* Add new contact to resident */}

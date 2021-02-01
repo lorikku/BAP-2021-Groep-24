@@ -19,6 +19,7 @@
   background-color: var(--colorBgLight);
   display: flex;
   border-radius: var(--borderRadiusBig);
+  margin-bottom: 8px;
 }
 
 .interest-tags {
