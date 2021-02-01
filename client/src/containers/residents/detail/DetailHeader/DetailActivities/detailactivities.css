@@ -1,3 +1,9 @@
+.detailresident-activities {
+    min-width: 423px;
+    padding-right: var(--spacerMain);
+    border-right: solid 2px var(--colorBgDark);
+}
+
 .detailresident-activities-title {
   font-size: var(--fontSizeNormal);
   font-weight: var(--fontWeightSemiBold);

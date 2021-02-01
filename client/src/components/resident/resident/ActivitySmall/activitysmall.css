@@ -14,11 +14,19 @@
     </div> */
 
 .activity-small-container {
-  background-color: var(--colorBgLight);
   display: flex;
   align-items: center;
   border-radius: var(--borderRadiusBig);
   padding: 14px 9px;
+  margin-bottom: 5px;
+}
+
+.activity-small-container:hover {
+  background-color: var(--colorBgLight);
+}
+
+.activity-small-border-bottom {
+  border-bottom: solid 2px var(--colorBgDark);
 }
 
 .activity-small-calendar-date {

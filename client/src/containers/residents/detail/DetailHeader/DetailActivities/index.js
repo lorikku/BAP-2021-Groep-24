@@ -26,6 +26,18 @@ const DetailActivities = ({ name }) => {
             location={"Centrum Stad Kortrijk"}
             hour={"14:00 - 15:15"}
           />
+                    <ActivitySmall
+            name={"Wandeltocht: 't park van Kortrijk"}
+            date={{ dateNr: "26", day: "Do" }}
+            location={"Centrum Stad Kortrijk"}
+            hour={"14:00 - 15:15"}
+          />
+                    <ActivitySmall
+            name={"Wandeltocht: 't park van Kortrijk"}
+            date={{ dateNr: "26", day: "Do" }}
+            location={"Centrum Stad Kortrijk"}
+            hour={"14:00 - 15:15"}
+          />
         </div>
       </div>
     </>

@@ -22,6 +22,16 @@ const DetailInteresting = ({ name }) => {
               month: "November",
             }}
           />
+          <ActivityInteresting
+            activity={{
+              title: "Een uitstapje met de meiden langs het strand",
+              hour: "14:00 - 16:00",
+              location: "Centrum Kortrijk",
+              day: "Maandag",
+              dateNr: "15",
+              month: "November",
+            }}
+          />
         </div>
       </div>
     </>

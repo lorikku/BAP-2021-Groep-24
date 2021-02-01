@@ -3,3 +3,7 @@
   font-weight: var(--fontWeightSemiBold);
   margin-bottom: var(--spacerMain);
 }
+
+.detailresident-interesting {
+  padding-left: var(--spacerMain);
+}
