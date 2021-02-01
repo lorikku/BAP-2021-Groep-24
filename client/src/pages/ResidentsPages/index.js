@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Redirect, Route, Switch, useParams } from "react-router-dom";
+
 import DetailHeader from "../../containers/residents/detail/DetailHeader/DetailHeader";
-import DetailContacts from "../../containers/residents/detail/DetailHeader/DetailContacts";
 import DetailActivities from "../../containers/residents/detail/DetailHeader/DetailActivities";
 
 import SubNav from "../../containers/residents/SubNav";
 import MyResidentsPage from "./MyResidentsPage";
 import OverviewPage from "./OverviewPage";
+import DetailGeneralPage from "./DetailGeneralPage";
 
 import "./residentspage.css";
-import DetailInterests from "../../containers/residents/detail/DetailHeader/DetailInterests";
 
 const ResidentsPages = ({ paths }) => {
   const pages = {
@@ -68,14 +68,7 @@ const ResidentsPages = ({ paths }) => {
           <Switch>
             {/* Detail page with general info */}
             <Route path={pages.DETAIL_GENERAL.path()} exact>
-              <div className="residents-detailresident fit-height flex-content">
-                <DetailHeader />
-                <SubNav navItems={detailPages} />
-                <div className="detailresident-general-grid">
-                  <DetailContacts />
-                  <DetailInterests name={{ first: "Mathilda" }} />
-                </div>
-              </div>
+             <DetailGeneralPage navItems={detailPages}/>
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
