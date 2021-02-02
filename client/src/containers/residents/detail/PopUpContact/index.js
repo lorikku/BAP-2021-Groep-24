@@ -15,11 +15,11 @@ const PopUpContact = () => {
       </div>
       <div className="popup-left-container">
         <div className="popup-left-title-input-wrapper">
-          <p className="popup-left-title">
+          <p className="popup-title">
             Voeg een ander bewoner toe aan<br></br> het netwerk van deze bewoner
           </p>
           <div className="popup-left-input-wrapper">
-            <input type="text"></input>
+            <input className="popup-left-input" type="text"></input>
             <div className="popup-left-add-btn">
               <img
                 className="popup-left-add-icon"
@@ -35,8 +35,8 @@ const PopUpContact = () => {
       </div>
       <div className="popup-right-container">
         <div className="popup-right-wrapper">
-          <p className="popup-right-title">
-            Vind een bewoner met gemeenschappelijke interesses
+          <p className="popup-title">
+            Vind een bewoner met <br></br> gemeenschappelijke interesses
           </p>
           <div className="popup-right-match-btn">
             <p className="popup-right-btn-text">Matching</p>

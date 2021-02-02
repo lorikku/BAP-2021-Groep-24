@@ -1,20 +1,21 @@
-import * as React from 'react';
-import { Redirect, Route, Switch, useParams } from 'react-router-dom';
+import * as React from "react";
+import { Redirect, Route, Switch, useParams } from "react-router-dom";
 
-import SubNav from '../../containers/residents/SubNav';
-import MyResidentsPage from './MyResidentsPage';
-import OverviewPage from './OverviewPage';
-import DetailGeneralPage from './DetailGeneralPage';
-import DetailPlanningPage from './DetailPlanningPage';
+import SubNav from "../../containers/residents/SubNav";
+import MyResidentsPage from "./MyResidentsPage";
+import OverviewPage from "./OverviewPage";
+import DetailGeneralPage from "./DetailGeneralPage";
+import DetailPlanningPage from "./DetailPlanningPage";
 
-import './residentspage.css';
-import DetailHeader from '../../containers/residents/detail/DetailHeader';
-import GoBack from '../../components/residents/detail/GoBack';
-import { fetchResident, getPagesObj } from './funcs';
+import "./residentspage.css";
+import DetailHeader from "../../containers/residents/detail/DetailHeader";
+import GoBack from "../../components/residents/detail/GoBack";
+import PopUpContact from "../../containers/residents/detail/PopUpContact";
+import { fetchResident, getPagesObj } from "./funcs";
 
 const ResidentsPages = ({ paths }) => {
   //Pages that are in /residents route
-  const pages = getPagesObj(paths)
+  const pages = getPagesObj(paths);
 
   //These will be used in the SubNavs
   const homePages = [pages.OVERVIEW, pages.MY_RESIDENTS];
@@ -33,7 +34,6 @@ const ResidentsPages = ({ paths }) => {
     fetchResident(residentId, setResident);
   }, [residentId]);
 
-  
   return (
     <section className="residents fit-height">
       <Switch>
@@ -58,7 +58,7 @@ const ResidentsPages = ({ paths }) => {
             <>
               <GoBack
                 path={pages.OVERVIEW.path()}
-                text={'Terug naar overzicht'}
+                text={"Terug naar overzicht"}
               />
               <DetailHeader resident={resident} />
             </>
@@ -82,6 +82,7 @@ const ResidentsPages = ({ paths }) => {
             </Route>
             {/* Add new contact to resident */}
             <Route path={pages.DETAIL_ADD_CONTACT.path()} exact>
+              <PopUpContact />
               <p>Nieuw contact toevoegen</p>
             </Route>
             {/* If ResidentID was filled in URL, without specifying /general or /planning 
@@ -106,7 +107,7 @@ const AddGeneralTrailingPath = ({ pathNameGenerator }) => {
   const params = useParams();
   const firstParam = params[Object.keys(params)[0]];
 
-  return <Redirect to={pathNameGenerator('/' + firstParam)} />;
+  return <Redirect to={pathNameGenerator("/" + firstParam)} />;
 };
 
 export default ResidentsPages;
