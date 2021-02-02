@@ -7,7 +7,7 @@ const SelectedInts = () => {
     <div className="match-header-right">
       <p className="match-header-right-title">Geselecteerde Interesses</p>
       <ul className="match-header-right-tags">
-        <Tag />
+        <Tag name={"Pop Smoke"} />
       </ul>
     </div>
   );
