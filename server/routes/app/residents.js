@@ -4,13 +4,18 @@ const route = express.Router();
 
 const statusMessages = require('../statusMessages');
 
-/* /app/residents */
+/* -- ALL RESIDENTS QUERIES -- */
+/* /app/residents?name&sorting&floor */
 route.get('/', async (req, res) => {
+
   let { name, sorting, floor } = req.query;
 
   /* Setting the options (which data do we need?) */
   const options = {
-    interests: 0,
+    projection: {
+      interests: 0,
+      contacts: 0,
+    },
   };
 
   /* Setting the query */
@@ -19,7 +24,7 @@ route.get('/', async (req, res) => {
   // Add name to db query if it was set in GET query, NAME CAN ALSO BE ROOM NUMBER! 'i' stands for case-insensitive
   if (name) {
     if (!isNaN(parseInt(name))) {
-       // If name was a number -> treat as room number query 
+      // If name was a number -> treat as room number query
       query.roomNr = new RegExp(name, 'i');
     } else {
       // Else, search on residential names
@@ -84,8 +89,9 @@ route.get('/', async (req, res) => {
   }
 });
 
-/* /app/residents/:residentId */
-route.get('/:residentId', async (req, res) => {
+/* -- SINGLE RESIDENTS QUERIES -- */
+
+const getResidentData = async (req, res, projection) => {
   const residentId = req.params.residentId;
 
   let _id;
@@ -96,8 +102,13 @@ route.get('/:residentId', async (req, res) => {
     res
       .status(statusMessages.INVALID_OBJECTID.statusCode)
       .json({ message: statusMessages.INVALID_OBJECTID.message });
-    return;
+    return 'ERROR_ID';
   }
+
+  /* Setting the options */
+  const options = {
+    projection,
+  };
 
   /* Setting the query */
   const query = {
@@ -110,13 +121,33 @@ route.get('/:residentId', async (req, res) => {
     resident = await req.app.mongodb
       .db('app')
       .collection('residents')
-      .findOne(query);
+      .findOne(query, options);
   } catch (err) {
     res
       .status(statusMessages.INTERNAL_ERROR.statusCode)
       .json({ message: statusMessages.INTERNAL_ERROR.message });
     return;
   }
+
+  //Send found resident, else null
+  if (resident) {
+    return resident;
+  } else {
+    return null;
+  }
+};
+
+/* -- GET RESIDENT BY ID -- */
+/* /app/residents/:residentId */
+route.get('/:residentId', async (req, res) => {
+  const resident = await getResidentData(req, res, {
+    interests: false,
+    contacts: false,
+  });
+  console.log('fetched');
+
+  //If resident ID error occured => response has already been sent => return function
+  if (resident === 'ERROR_ID') return;
 
   //Send found resident, else 404
   if (resident) {
@@ -126,6 +157,56 @@ route.get('/:residentId', async (req, res) => {
     });
   } else {
     res.status(404).json({ message: 'Resident not found!' });
+  }
+});
+
+/* -- GET RESIDENT INTERESTS BY RESIDENT ID -- */
+/* /app/residents/:residentId/interests */
+route.get('/:residentId/interests', async (req, res) => {
+  const resident = await getResidentData(req, res, { interests: 1 });
+
+  //If resident was not found, send 404
+  if (!resident) {
+    res.status(404).json({ message: 'Resident not found!' });
+    return;
+  }
+
+  //If resident ID error occured => response has already been sent => return function
+  if (resident === 'ERROR_ID') return;
+
+  //Send found resident's interests, else 404
+  if (resident.interests) {
+    res.status(200).json({
+      message: 'Resident interests found!',
+      interest: resident.interests,
+    });
+  } else {
+    res.status(404).json({ message: 'Resident interests not found!' });
+  }
+});
+
+/* -- GET RESIDENT CONTACTS BY RESIDENT ID -- */
+/* /app/residents/:residentId/contacts */
+route.get('/:residentId/contacts', async (req, res) => {
+  const resident = await getResidentData(req, res, { contacts: 1 });
+
+  //If resident was not found, send 404
+  if (!resident) {
+    res.status(404).json({ message: 'Resident not found!' });
+    return;
+  }
+
+  //If resident ID error occured => response has already been sent => return function
+  if (resident === 'ERROR_ID') return;
+
+  //Send found resident's contacts, else 404
+  if (resident.contacts) {
+    res.status(200).json({
+      message: 'Resident contacts found!',
+      contacts: resident.contacts,
+    });
+  } else {
+    res.status(404).json({ message: 'Resident contacts not found!' });
   }
 });
 

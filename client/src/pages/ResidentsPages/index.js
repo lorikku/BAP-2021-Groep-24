@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
-
 import SubNav from '../../containers/residents/SubNav';
 import MyResidentsPage from './MyResidentsPage';
 import OverviewPage from './OverviewPage';
@@ -9,9 +8,11 @@ import DetailGeneralPage from './DetailGeneralPage';
 import DetailPlanningPage from './DetailPlanningPage';
 
 import './residentspage.css';
-
+import DetailHeader from '../../containers/residents/detail/DetailHeader';
+import GoBack from '../../components/residents/detail/GoBack';
 
 const ResidentsPages = ({ paths }) => {
+  //Pages that are in /residents route
   const pages = {
     OVERVIEW: {
       text: 'alle bewoners',
@@ -41,6 +42,39 @@ const ResidentsPages = ({ paths }) => {
     },
   };
 
+  //Fetching resident single from db
+  const [resident, setResident] = React.useState(undefined);
+  const [residentId, setResidentId] = React.useState(undefined);
+
+  React.useEffect(() => {
+    if(!residentId) {
+      setResident(null);
+      return;
+    }
+
+    const fetchResident = async () => {
+      setResident(undefined);
+      try {
+        const response = await fetch(
+          `http://localhost:3001/app/residents/${residentId}`
+        );
+        const result = await response.json();
+
+        if (!response.ok) {
+          setResident(null);
+          return;
+        }
+
+        setResident(result.resident);
+      } catch (err) {
+        setResident(null);
+        console.log(err);
+      }
+    };
+
+    fetchResident();
+  }, [residentId]);
+
   //These will be used in the SubNavs
   const homePages = [pages.OVERVIEW, pages.MY_RESIDENTS];
   const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
@@ -65,14 +99,31 @@ const ResidentsPages = ({ paths }) => {
         </Route>
         {/* ---DETAIL PAGES--- */}
         <Route path={paths.ROOT + paths.DETAIL} strict>
+          {resident ? (
+            <>
+              <GoBack
+                path={pages.OVERVIEW.path()}
+                text={'Terug naar overzicht'}
+              />
+              <DetailHeader resident={resident} />
+            </>
+          ) : null}
           <Switch>
             {/* Detail page with general info */}
             <Route path={pages.DETAIL_GENERAL.path()} exact>
-              <DetailGeneralPage navItems={detailPages} />
+              <DetailGeneralPage
+                resident={resident}
+                setResidentId={(residentId) => setResidentId(residentId)}
+                navItems={detailPages}
+              />
             </Route>
             {/* Detail page with personal planning */}
             <Route path={pages.DETAIL_PLANNING.path()} exact>
-              <DetailPlanningPage navItems={detailPages} />
+              <DetailPlanningPage
+                resident={resident}
+                setResidentId={(residentId) => setResidentId(residentId)}
+                navItems={detailPages}
+              />
             </Route>
             {/* Add new contact to resident */}
             <Route path={pages.DETAIL_ADD_CONTACT.path()} exact>

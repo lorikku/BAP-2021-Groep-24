@@ -7,11 +7,5 @@ route.use('/staff', (req, res) => {
     .json({ message: 'Staff authentication API still under construction' });
 });
 
-route.use('/residents', (req, res) => {
-  res
-    .status(403)
-    .json({ message: 'Residents authentication API still under construction' });
-});
-
 //Export this route to use in server.js
 module.exports = route;

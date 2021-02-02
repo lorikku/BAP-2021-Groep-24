@@ -40,7 +40,7 @@ const ResidentProfile = ({ name, status, room, photoUri }) => {
         ></img>
         <div className="spotlight-text-wrapper">
           <p className="spotlight-text">
-            Geef {name.first} meer aandacht door haar profiel bovenaan het
+            Geef {name} meer aandacht door haar profiel bovenaan het
             overzicht te zetten.
           </p>
           <div className="spotlight-btn">
