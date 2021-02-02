@@ -2,7 +2,7 @@ import * as React from 'react';
 import Contact from '../../../../components/residents/detail/Contact';
 import './detailcontacts.css';
 
-const DetailContacts = () => {
+const DetailContacts = ({ contacts }) => {
   return (
     <>
       <h2 className="visually-hidden">Contactpersonen bewoner</h2>
@@ -10,46 +10,9 @@ const DetailContacts = () => {
         <h3 className="detailresident-contact-title">Contactpersonen</h3>
         {/* contact lijstje, hier al de component */}
         <ul className="detailresident-contactslist">
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
-          <Contact
-            name={{ first: 'Mathilda', last: 'Dejonckheere' }}
-            type={'Match'}
-          />
+          {contacts.map((contact, index) => (
+            <Contact key={index} contact={contact} />
+          ))}
         </ul>
 
         <div className="detailresident-add-contact-btn">

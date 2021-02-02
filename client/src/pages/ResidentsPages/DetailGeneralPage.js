@@ -20,8 +20,8 @@ const DetailGeneralPage = ({ navItems, resident, setResidentId }) => {
         <div className="residents-detailresident fit-height">
           <SubNav navItems={navItems} />
           <div className="detailresident-general fit-height">
-            <DetailContacts resident={resident}/>
-            <DetailInterests resident={resident} />
+            <DetailContacts contacts={resident.contacts}/>
+            <DetailInterests name={resident.name} interests={resident.interests} />
           </div>
         </div>
       ) : resident === null ? (

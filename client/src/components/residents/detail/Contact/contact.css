@@ -31,13 +31,16 @@
   margin-bottom: 6px;
 }
 
+.contact-type--contact {
+  background-color: var(--colorSpotlight)
+}
+
 .contact-info-wrapper {
   display: flex;
   flex-direction: column;
   align-self: center;
 
-  margin-left: 0.625rem;
-  margin-right: calc(var(--spacerMain) + var(--spacerOverviewProfile));
+  margin-left: calc(0px - var(--spacerMain));
 }
 
 .contact-info-btn {

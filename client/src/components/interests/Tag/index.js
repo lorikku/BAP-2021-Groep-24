@@ -1,11 +1,11 @@
 import * as React from "react";
 import "./tag.css";
 
-const Tag = () => {
+const Tag = ({name}) => {
   return (
     <li className="tag-container">
         <div className="tag-color"></div>
-        <p className="tag-name">Pop Smoke</p>
+        <p className="tag-name">{name}</p>
     </li>
   );
 };

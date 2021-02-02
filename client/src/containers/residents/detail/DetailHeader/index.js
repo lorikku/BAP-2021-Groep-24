@@ -6,13 +6,7 @@ import ResidentSpotlight from '../../../../components/residents/detail/ResidentS
 import './detailheader.css';
 
 const DetailHeader = ({ resident }) => {
-  const { name, isPermanent, roomNr, photoUri } = {
-    name: 'JOS',
-    isPermanent: true,
-    roomNr: 202,
-    photoUri:
-      'https://i.pinimg.com/564x/c3/b5/c5/c3b5c5920634a9267ca6244b980f801f.jpg',
-  };
+  const { name, isPermanent, roomNr, photoUri } = resident;
 
   return (
     <>

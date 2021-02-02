@@ -178,7 +178,7 @@ route.get('/:residentId/interests', async (req, res) => {
   if (resident.interests) {
     res.status(200).json({
       message: 'Resident interests found!',
-      interest: resident.interests,
+      interests: resident.interests,
     });
   } else {
     res.status(404).json({ message: 'Resident interests not found!' });

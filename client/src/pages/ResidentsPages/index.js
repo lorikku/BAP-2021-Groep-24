@@ -10,75 +10,30 @@ import DetailPlanningPage from './DetailPlanningPage';
 import './residentspage.css';
 import DetailHeader from '../../containers/residents/detail/DetailHeader';
 import GoBack from '../../components/residents/detail/GoBack';
+import { fetchResident, getPagesObj } from './funcs';
 
 const ResidentsPages = ({ paths }) => {
   //Pages that are in /residents route
-  const pages = {
-    OVERVIEW: {
-      text: 'alle bewoners',
-      path: () => paths.ROOT + paths.OVERVIEW,
-    },
-    MY_RESIDENTS: {
-      text: 'mijn bewoners',
-      path: () => paths.ROOT + paths.MY_RESIDENTS,
-    },
-    DETAIL_GENERAL: {
-      text: 'algemene informatie',
-      path: (detail = paths.DETAIL) =>
-        paths.ROOT + detail + paths.DETAIL_GENERAL,
-    },
-    DETAIL_PLANNING: {
-      text: 'persoonlijke planning',
-      path: (detail = paths.DETAIL) =>
-        paths.ROOT + detail + paths.DETAIL_PLANNING,
-    },
-    DETAIL_ADD_CONTACT: {
-      text: 'persoonlijke planning',
-      path: (detail = paths.DETAIL) =>
-        paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
-    },
-    NEW_RESIDENT: {
-      path: () => paths.ROOT + paths.NEW_RESIDENT,
-    },
-  };
+  const pages = getPagesObj(paths)
+
+  //These will be used in the SubNavs
+  const homePages = [pages.OVERVIEW, pages.MY_RESIDENTS];
+  const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
 
   //Fetching resident single from db
   const [resident, setResident] = React.useState(undefined);
   const [residentId, setResidentId] = React.useState(undefined);
 
   React.useEffect(() => {
-    if(!residentId) {
+    if (!residentId) {
       setResident(null);
       return;
     }
 
-    const fetchResident = async () => {
-      setResident(undefined);
-      try {
-        const response = await fetch(
-          `http://localhost:3001/app/residents/${residentId}`
-        );
-        const result = await response.json();
-
-        if (!response.ok) {
-          setResident(null);
-          return;
-        }
-
-        setResident(result.resident);
-      } catch (err) {
-        setResident(null);
-        console.log(err);
-      }
-    };
-
-    fetchResident();
+    fetchResident(residentId, setResident);
   }, [residentId]);
 
-  //These will be used in the SubNavs
-  const homePages = [pages.OVERVIEW, pages.MY_RESIDENTS];
-  const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
-
+  
   return (
     <section className="residents fit-height">
       <Switch>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./contact.css";
 
-const Contact = ({ name, type }) => {
+const Contact = ({ contact }) => {
   return (
     <li className="contact-container">
       <img
@@ -10,9 +10,9 @@ const Contact = ({ name, type }) => {
         src="https://1tsip9tt643kufi0v3m1s4is-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/accessories-for-elderly-women.jpg"
       ></img>
       <div className="contact-info-wrapper">
-        <p className="contact-name">{name.first + " " + name.last}</p>
-        <div className="contact-type">
-          <p className="contact-type-text">{type}</p>
+        <p className="contact-name">{contact.name}</p>
+        <div className={`contact-type${contact.interests.length > 0 ? '  contact-type--contact' : ''}`}>
+          <p className="contact-type-text">{contact.interests.length > 0 ? 'Match' : 'Contact'}</p>
         </div>
       </div>
       <div className="contact-info-btn">
