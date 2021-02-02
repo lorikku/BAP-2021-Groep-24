@@ -1,0 +1,47 @@
+.present-pic {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 1.2rem;
+}
+
+.present-name {
+  font-weight: var(--fontWeightMedium);
+  margin-bottom: 0.4rem;
+}
+
+.present-type {
+  font-size: var(--fontSizeSmall);
+  width: max-content;
+}
+.present-container {
+  display: flex;
+  justify-content: space-between;
+
+  background-color: var(--colorBgLight);
+  border-radius: var(--borderRadiusBig);
+  margin-bottom: 6px;
+}
+
+.present-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  margin-left: 0.625rem;
+  margin-right: calc(var(--spacerMain) + var(--spacerOverviewProfile));
+}
+
+.present-info-btn {
+  width: 46px;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorRed);
+  justify-self: flex-end;
+  border-top-right-radius: var(--borderRadiusBig);
+  border-bottom-right-radius: var(--borderRadiusBig);
+}

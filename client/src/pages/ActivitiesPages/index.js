@@ -6,6 +6,9 @@ import OverviewAllActivities from "../../containers/activities/OverviewAllActivi
 import OverviewHeader from "../../containers/activities/OverviewHeader";
 import GoBack from "../../components/residents/detail/GoBack/index.js";
 import DetailActivityHeader from "../../containers/activities/DetailActivityHeader";
+import DetailActivityPresent from "../../containers/activities/DetailActivityPresent";
+import DetailActivityInterested from "../../containers/activities/DetailActivityInterested";
+import "./activitiespage.css";
 
 const ActivitiesPages = ({ paths }) => {
   return (
@@ -22,7 +25,10 @@ const ActivitiesPages = ({ paths }) => {
       <Route path={paths.ROOT + paths.DETAIL} exact>
         <GoBack text={"terug naar agenda"} />
         <DetailActivityHeader />
-        <p>Detail activiteit</p>
+        <div className="dtl-act-present-int-container">
+          <DetailActivityPresent />
+          <DetailActivityInterested />
+        </div>
       </Route>
       <Route>
         <Redirect to={paths.ROOT + paths.OVERVIEW + "/" + Date.now()} />

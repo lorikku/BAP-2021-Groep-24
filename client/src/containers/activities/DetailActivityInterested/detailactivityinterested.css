@@ -1,0 +1,26 @@
+.dtl-act-int-container {
+  margin-left: 34px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dtl-act-int-title {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeBig);
+  margin-bottom: 15px;
+}
+
+.dtl-act-int-btn {
+  border: 2px solid var(--colorCTA);
+  padding: var(--spacerButtonNormal);
+  border-radius: var(--borderRadius);
+  text-align: center;
+  margin-top: 17px;
+}
+
+.dtl-act-int-btn-text {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeBig);
+  color: var(--colorCTA);
+}

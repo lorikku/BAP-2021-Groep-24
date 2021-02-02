@@ -1,14 +1,108 @@
-.dtl-act-head-container {
+.dtl-act-head-top-container {
   background-color: var(--colorBgLight);
   display: grid;
-  grid-template-columns: 1fr 2fr 0.5fr;
+  grid-template-columns: 124px 2fr 0.5fr;
+  border-top-right-radius: var(--borderRadiusBig);
+  border-top-left-radius: var(--borderRadiusBig);
+}
+
+.dtl-act-head-container {
+  margin-bottom: 24px;
 }
 
 .dtl-act-head-calendar {
   background-color: var(--colorCTA);
   max-width: 124px;
+  min-height: 124px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  padding: var(--spacerMain) 0;
+  border-top-left-radius: var(--borderRadiusBig);
+}
+
+.white {
+  color: var(--colorBgMain);
+}
+
+.dtl-act-calendar-day {
+  font-weight: var(--fontWeightMedium);
+  text-transform: uppercase;
+}
+
+.dtl-act-calendar-date {
+  font-size: 34px;
+  font-weight: var(--fontWeightBold);
+}
+
+.dtl-act-calendar-month {
+  font-weight: var(--fontWeightSemiBold);
+  font-size: var(--fontSizeBig);
+}
+
+.dtl-act-head-time-loc-wrapper {
+  display: flex;
+}
+
+.dtl-act-head-time {
+  display: flex;
+  margin-right: 40px;
+}
+
+.dtl-act-head-time-icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.dtl-act-head-loc {
+  display: flex;
+}
+
+.dtl-act-head-loc-icon {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.dtl-act-head-title {
+  font-weight: var(--fontWeightBold);
+  font-size: var(--fontSizeInBetween);
+  margin-bottom: var(--spacerMain);
+}
+
+.dtl-act-head-info {
+  align-self: center;
+  margin-left: var(--spacerMain);
+}
+
+.dtl-act-head-edit {
+  align-self: flex-start;
+  justify-self: flex-end;
+  margin: 1rem;
+}
+
+.dtl-act-head-bottom-container {
+  background-color: var(--colorBgDark);
+  display: flex;
+  min-height: 58px;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-right-radius: var(--borderRadiusBig);
+  border-bottom-left-radius: var(--borderRadiusBig);
+}
+
+.dtl-act-head-chevronleft {
+  margin-left: var(--spacerMain);
+}
+
+.dtl-act-head-chevronright {
+  margin-right: var(--spacerMain);
+}
+
+.dtl-act-head-tags {
+  margin-top: -10px;
 }
