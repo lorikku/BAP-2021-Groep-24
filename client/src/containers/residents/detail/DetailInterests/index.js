@@ -21,7 +21,11 @@ const DetailInterests = ({ name, interests }) => {
       newCategories[interest.category._id].interests.push(interest);
     });
 
-    setCategories(newCategories);
+    if (newCategories === {}) {
+      setCategories(undefined);
+    } else {
+      setCategories(newCategories);
+    }
   }, [interests, setCategories]);
 
   return (

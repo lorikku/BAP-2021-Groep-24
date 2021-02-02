@@ -10,9 +10,13 @@ const DetailContacts = ({ contacts }) => {
         <h3 className="detailresident-contact-title">Contactpersonen</h3>
         {/* contact lijstje, hier al de component */}
         <ul className="detailresident-contactslist">
-          {contacts.map((contact, index) => (
-            <Contact key={index} contact={contact} />
-          ))}
+          {contacts
+            ? contacts.length > 0
+              ? contacts.map((contact, index) => (
+                  <Contact key={index} contact={contact} />
+                ))
+              : 'Geen contactpersonen gevonden'
+            : 'Contactpersonen ophalen...'}
         </ul>
 
         <div className="detailresident-add-contact-btn">

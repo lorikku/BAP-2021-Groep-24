@@ -8,15 +8,15 @@
   height: 100;
 }
 
-.colorbar-today {
+.dayactivity-colorbar.colorbar-today {
   background-color: var(--colorCTA);
 }
 
-.colorbar-future {
+.dayactivity-colorbar.colorbar-future {
   background-color: var(--colorOrange);
 }
 
-.colorbar-unplanned {
+.dayactivity-colorbar.colorbar-unplanned {
   background-color: var(--colorBgGrey);
 }
 
