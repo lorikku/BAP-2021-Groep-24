@@ -4,7 +4,7 @@ import "./interestscategory.css";
 
 const InterestsCategory = () => {
   return (
-    <div className="interests-category-container">
+    <li className="interests-category-container">
       <div className="interests-category">
         <div className="category-vector">
           <p>
@@ -16,15 +16,15 @@ const InterestsCategory = () => {
           Muzikale <br></br> Activiteiten
         </p>
       </div>
-      <div className="interest-tags">
+      <ul className="interest-tags">
         <Tag />
         <Tag />
         <Tag />
         <Tag />
         <Tag />
         <Tag />
-      </div>
-    </div>
+      </ul>
+    </li>
   );
 };
 

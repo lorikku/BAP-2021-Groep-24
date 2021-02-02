@@ -1,3 +1,13 @@
+.detailresident-contacts {
+  margin-right: var(--spacerMain);
+  padding-bottom: 20rem;
+  max-width: 20rem;
+}
+
+.detailresident-contactslist {
+  overflow: scroll;
+}
+
 .detailresident-contact-title {
   font-size: var(--fontSizeNormal);
   font-weight: var(--fontWeightSemiBold);

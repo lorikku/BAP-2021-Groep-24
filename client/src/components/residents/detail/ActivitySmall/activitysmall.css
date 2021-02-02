@@ -1,18 +1,3 @@
-/*     <div className="activity-small-container">
-      <div className="activity-small-calendar-date">
-        <p className="activity-small-date">{date}</p>
-      </div>
-      <div className="activity-small-info">
-        <p className="activity-small-name">{name}</p>
-        <div className="activity-small-location-hour-wrapper">
-          <p>{location}</p>
-          <div className="activity-small-hour-border">
-            <p>{hour}</p>
-          </div>
-        </div>
-      </div>
-    </div> */
-
 .activity-small-container {
   display: flex;
   align-items: center;
@@ -52,7 +37,7 @@
 .activity-small-info {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   margin-left: 15px;
 }
 

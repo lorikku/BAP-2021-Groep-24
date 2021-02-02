@@ -23,8 +23,9 @@
   border-radius: var(--borderRadius);
 }
 .contact-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  display: flex;
+  justify-content: space-between;
+
   background-color: var(--colorBgLight);
   border-radius: var(--borderRadiusBig);
   margin-bottom: 6px;
@@ -34,7 +35,9 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  margin-left: .625rem;
+
+  margin-left: 0.625rem;
+  margin-right: calc(var(--spacerMain) + var(--spacerOverviewProfile));
 }
 
 .contact-info-btn {

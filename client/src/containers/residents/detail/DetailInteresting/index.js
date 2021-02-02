@@ -1,5 +1,5 @@
 import * as React from "react";
-import ActivityInteresting from "../../../../../components/resident/resident/ActivityInteresting";
+import ActivityInteresting from "../../../../components/residents/detail/ActivityInteresting";
 import "./detailinteresting.css";
 
 const DetailInteresting = ({ name }) => {

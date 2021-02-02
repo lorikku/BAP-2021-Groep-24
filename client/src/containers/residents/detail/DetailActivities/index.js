@@ -1,5 +1,5 @@
 import * as React from "react";
-import ActivitySmall from "../../../../../components/resident/resident/ActivitySmall";
+import ActivitySmall from "../../../../components/residents/detail/ActivitySmall";
 import "./detailactivities.css";
 
 const DetailActivities = ({ name }) => {

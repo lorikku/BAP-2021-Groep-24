@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
-import DetailHeader from '../../containers/residents/detail/DetailHeader/DetailHeader';
-import DetailActivities from '../../containers/residents/detail/DetailHeader/DetailActivities';
-import DetailInteresting from '../../containers/residents/detail/DetailHeader/DetailInteresting';
+import DetailHeader from '../../containers/residents/detail/DetailHeader';
+import DetailActivities from '../../containers/residents/detail/DetailActivities';
+import DetailInteresting from '../../containers/residents/detail/DetailInteresting';
 
 import SubNav from '../../containers/residents/SubNav';
-import GoBack from '../../components/resident/resident/GoBack';
+import GoBack from '../../components/residents/detail/GoBack';
 import paths from '../../consts/paths';
 
 const DetailPlanningPage = ({ navItems }) => {

@@ -6,10 +6,9 @@
   overflow: hidden;
 }
 
-.detailresident-general-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--spacerMain)
+.detailresident-general {
+  display: flex;
+  flex-direction: row;
 }
 
 .detailresident-personal-planning {

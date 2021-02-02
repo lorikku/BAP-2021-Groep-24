@@ -3,7 +3,7 @@ import "./contact.css";
 
 const Contact = ({ name, type }) => {
   return (
-    <div className="contact-container">
+    <li className="contact-container">
       <img
         className="contact-pic"
         alt="fototje van contactpersoon"
@@ -22,7 +22,7 @@ const Contact = ({ name, type }) => {
           src="/assets/img/chevron-down.svg"
         ></img>
       </div>
-    </div>
+    </li>
   );
 };
 

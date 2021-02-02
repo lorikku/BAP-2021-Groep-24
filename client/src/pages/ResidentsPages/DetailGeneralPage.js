@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
 
-import DetailHeader from '../../containers/residents/detail/DetailHeader/DetailHeader';
-import DetailContacts from '../../containers/residents/detail/DetailHeader/DetailContacts';
-import DetailInterests from '../../containers/residents/detail/DetailHeader/DetailInterests';
+import DetailHeader from '../../containers/residents/detail/DetailHeader';
+import DetailContacts from '../../containers/residents/detail/DetailContacts';
+import DetailInterests from '../../containers/residents/detail/DetailInterests';
 
 import SubNav from '../../containers/residents/SubNav';
-import GoBack from '../../components/resident/resident/GoBack';
+import GoBack from '../../components/residents/detail/GoBack';
 import paths from '../../consts/paths';
 
 const DetailGeneralPage = ({ navItems }) => {
@@ -48,7 +48,7 @@ const DetailGeneralPage = ({ navItems }) => {
         <div className="residents-detailresident fit-height">
           <DetailHeader resident={resident}/>
           <SubNav navItems={navItems} />
-          <div className="detailresident-general-grid fit-height flex-content">
+          <div className="detailresident-general fit-height">
             <DetailContacts resident={resident}/>
             <DetailInterests resident={resident} />
           </div>

@@ -3,10 +3,10 @@ import "./tag.css";
 
 const Tag = () => {
   return (
-    <div className="tag-container">
+    <li className="tag-container">
         <div className="tag-color"></div>
         <p className="tag-name">Pop Smoke</p>
-    </div>
+    </li>
   );
 };
 

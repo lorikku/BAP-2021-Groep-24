@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ResidentProfile from '../../../../../components/resident/resident/ResidentProfile';
+import ResidentProfile from '../../../../components/residents/detail/ResidentProfile';
 
 import './detailheader.css';
 
