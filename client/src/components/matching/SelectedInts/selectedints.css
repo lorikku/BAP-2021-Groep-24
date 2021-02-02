@@ -1,0 +1,15 @@
+.match-header-right-title {
+  font-weight: var(--fontWeightSemiBold);
+  text-align: center;
+  margin: 15px 0;
+}
+
+.match-header-right {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--borderRadiusBig);
+}
+
+.match-header-right-tags {
+  margin: 0 15px;
+}

@@ -40,7 +40,6 @@
 
 .res-profile-room-edit-wrapper {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
 }
@@ -58,4 +57,3 @@
   width: 30px;
   height: 30px;
 }
-

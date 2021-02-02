@@ -1,0 +1,10 @@
+.match-header-profile {
+  display: flex;
+  align-items: center;
+}
+
+.match-header-right {
+  height: 196px;
+  background-color: var(--colorBgLight);
+  width: 100%;
+}
