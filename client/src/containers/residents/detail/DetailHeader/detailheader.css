@@ -1,0 +1,8 @@
+.detailresident-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-bottom: var(--spacerMain);
+    gap: var(--spacerMain);
+  }
+  

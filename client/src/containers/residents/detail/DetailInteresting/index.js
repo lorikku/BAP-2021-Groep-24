@@ -10,7 +10,7 @@ const DetailInteresting = ({ name }) => {
         <h3 className="detailresident-interesting-title">
           Wellicht interessant voor {name.first}
         </h3>
-        <div className="interesting-list">
+        <ul className="interesting-list">
           {/* interesting-activity component */}
           <ActivityInteresting
             activity={{
@@ -32,7 +32,7 @@ const DetailInteresting = ({ name }) => {
               month: "November",
             }}
           />
-        </div>
+        </ul>
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import "./activitysmall.css";
 
 const ActivitySmall = ({ name, date, hour, location }) => {
   return (
-    <div className="activity-small-border-bottom">
+    <li className="activity-small-border-bottom">
       <div className="activity-small-container">
         <div className="activity-small-calendar-date">
           <p className="activity-small-date">{date.dateNr}</p>
@@ -19,7 +19,7 @@ const ActivitySmall = ({ name, date, hour, location }) => {
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 

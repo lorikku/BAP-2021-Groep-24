@@ -1,56 +1,37 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./residentprofile.css";
+import './residentprofile.css';
 
-const ResidentProfile = ({ name, status, room, photoUri }) => {
+const ResidentProfile = ({ name, status, room, photoUri, showIcons }) => {
   return (
-    <div className="resident-profile-container">
-      <div className="resident-profile-card">
-        <img
-          className="res-profile-pic"
-          alt="foto van bewoner"
-          src={photoUri}
-        ></img>
-        <div className="res-profile-info-wrapper">
-          <div className="res-profile-name-heart-wrapper">
-            <p className="res-profile-name">{name}</p>
+    <div className="resident-profile-card">
+      <img
+        className="res-profile-pic"
+        alt="foto van bewoner"
+        src={photoUri}
+      ></img>
+      <div className="res-profile-info-wrapper">
+        <div className="res-profile-name-heart-wrapper">
+          <p className="res-profile-name">{name}</p>
+          {showIcons ? (
             <img
               className="res-profile-heart-btn"
               alt="knop om bewoner toe te voegen aan 'mijn bewoners'"
               src="/assets/img/heart-btn.svg"
             ></img>
-          </div>
+          ) : null}
+        </div>
 
-          <p className="res-profile-status">{status}</p>
-          <div className="res-profile-room-edit-wrapper">
+        <p className="res-profile-status">{status}</p>
+        <div className="res-profile-room-edit-wrapper">
+          <div className="res-profile-room">{room}</div>
+          {showIcons ? (
             <img
               className="res-profile-edit-btn"
               alt="profiel van bewoner wijzigen"
               src="/assets/img/edit-resident.svg"
             ></img>
-            <div className="res-profile-room">{room}</div>
-          </div>
-        </div>
-      </div>
-      <div className="resident-spotlight-container">
-        <img
-          className="spotlight-vector"
-          alt="a spotlight vector illustration"
-          src="/assets/img/spotlight-pop.svg"
-        ></img>
-        <div className="spotlight-text-wrapper">
-          <p className="spotlight-text">
-            Geef {name} meer aandacht door haar profiel bovenaan het
-            overzicht te zetten.
-          </p>
-          <div className="spotlight-btn">
-            <img
-              className="spotlight-btn-star"
-              alt="spotlight star icon inside button"
-              src="/assets/img/star-filled.svg"
-            ></img>
-            <p className="spotlight-btn-text">Zet in Spotlight</p>
-          </div>
+          ) : null}
         </div>
       </div>
     </div>

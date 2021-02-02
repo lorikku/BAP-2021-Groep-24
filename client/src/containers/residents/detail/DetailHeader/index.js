@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import ResidentProfile from '../../../../components/residents/detail/ResidentProfile';
+import ResidentSpotlight from '../../../../components/residents/detail/ResidentSpotlight';
 
 import './detailheader.css';
 
@@ -21,7 +22,9 @@ const DetailHeader = ({ resident }) => {
           status={isPermanent ? 'Vast verblijver' : 'Kort verblijver'}
           room={`Kamer ${roomNr}`}
           photoUri={photoUri}
+          showIcons
         />
+        <ResidentSpotlight name={name} />
       </div>
     </>
   );

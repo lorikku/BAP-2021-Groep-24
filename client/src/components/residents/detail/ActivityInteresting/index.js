@@ -3,7 +3,7 @@ import "./activityinteresting.css";
 
 const ActivityInteresting = ({ activity }) => {
   return (
-    <div className="activity-interesting-container">
+    <li className="activity-interesting-container">
       <div className="activity-interesting-add-btn">
         <img
           className="activity-interesting-add-vector"
@@ -38,7 +38,7 @@ const ActivityInteresting = ({ activity }) => {
         <p className="activity-interesting-date-number">{activity.dateNr}</p>
         <p className="activity-interesting-month">{activity.month}</p>
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -1,11 +1,3 @@
-.resident-profile-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  margin-bottom: var(--spacerMain);
-  gap: var(--spacerMain);
-}
-
 .resident-profile-card {
   display: flex;
 }
@@ -22,16 +14,12 @@
   height: 160px;
   object-fit: cover;
   border-radius: 5%;
-  grid-column: 1;
-  grid-row: 1;
 }
 
 .res-profile-name-heart-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  grid-column: 2;
-  grid-row: 1;
 }
 
 .res-profile-heart-btn {
@@ -47,14 +35,10 @@
 }
 
 .res-profile-status {
-  grid-column: 2;
-  grid-row: 2;
   font-weight: var(--fontWeightMedium);
 }
 
 .res-profile-room-edit-wrapper {
-  grid-column: 2;
-  grid-row: 3;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -75,43 +59,3 @@
   height: 30px;
 }
 
-.resident-spotlight-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--colorBgLight);
-    border-top-left-radius: var(--borderRadiusBig);
-    border-bottom-left-radius: var(--borderRadiusBig);
-}
-
-.spotlight-text{
-  font-weight: var(--fontWeightMedium);
-}
-
-.spotlight-text-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100%;
-  margin-left: var(--spacerMain);
-  margin-right: var(--spacerMain);
-}
-
-.spotlight-btn {
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--colorSpotlight);
-    padding: var(--spacerButtonNormal);
-    width: max-content;
-    border-radius: var(--borderRadiusBig);
-    background-color: var(--colorBgMain);
-}
-
-.spotlight-btn-star {
-    margin-right: .5rem;
-}
-
-.spotlight-btn-text {
-    font-weight: var(--fontWeightSemiBold);
-    color: var(--colorSpotlight);
-}

@@ -1,0 +1,40 @@
+.resident-spotlight-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--colorBgLight);
+    border-top-left-radius: var(--borderRadiusBig);
+    border-bottom-left-radius: var(--borderRadiusBig);
+}
+
+.spotlight-text{
+  font-weight: var(--fontWeightMedium);
+}
+
+.spotlight-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  margin-left: var(--spacerMain);
+  margin-right: var(--spacerMain);
+}
+
+.spotlight-btn {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--colorSpotlight);
+    padding: var(--spacerButtonNormal);
+    width: max-content;
+    border-radius: var(--borderRadiusBig);
+    background-color: var(--colorBgMain);
+}
+
+.spotlight-btn-star {
+    margin-right: .5rem;
+}
+
+.spotlight-btn-text {
+    font-weight: var(--fontWeightSemiBold);
+    color: var(--colorSpotlight);
+}

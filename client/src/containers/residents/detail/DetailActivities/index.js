@@ -18,7 +18,7 @@ const DetailActivities = ({ name }) => {
             <p className="activities-toggle-passed-text">Afgelopen</p>
           </div>
         </div>
-        <div className="activities-list">
+        <ul className="activities-list">
           {/* activity component small */}
           <ActivitySmall
             name={"Wandeltocht: 't park van Kortrijk"}
@@ -38,7 +38,7 @@ const DetailActivities = ({ name }) => {
             location={"Centrum Stad Kortrijk"}
             hour={"14:00 - 15:15"}
           />
-        </div>
+        </ul>
       </div>
     </>
   );
