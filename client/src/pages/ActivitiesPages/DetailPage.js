@@ -4,7 +4,7 @@ import DetailActivityHeader from '../../containers/activities/DetailActivityHead
 import DetailActivityPresent from '../../containers/activities/DetailActivityPresent';
 import DetailActivityInterested from '../../containers/activities/DetailActivityInterested';
 
-import GoBack from '../../components/residents/detail/GoBack';
+import GoBack from '../../components/global/GoBack';
 import paths from '../../consts/paths';
 
 const DetailPage = () => {

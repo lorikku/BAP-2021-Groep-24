@@ -1,8 +1,8 @@
 import * as React from 'react';
-import FloorInput from '../../../components/residents/FloorInput';
+import FloorInput from '../../../components/global/FloorInput';
 
-import NameInput from '../../../components/residents/NameInput';
-import SortingInput from '../../../components/residents/SortingInput';
+import NameInput from '../../../components/global/NameInput';
+import SortingInput from '../../../components/global/SortingInput';
 
 import './residentsfilter.css';
 
@@ -26,7 +26,9 @@ const ResidentsFilter = ({ setResidents }) => {
 
   //Fetch runs automatically after input/filter change, with 200ms timeout so that the server doesn't get spammed
   React.useEffect(() => {
-    setResidents(undefined);
+    // componentMounted will be used to see if the component is mounted before using setResidents to prevent UI from updating when component is unmounted
+    let componentMounted = true;
+    if (componentMounted) setResidents(undefined);
 
     //Fetching residents from db
     const fetchResidents = async () => {
@@ -37,20 +39,23 @@ const ResidentsFilter = ({ setResidents }) => {
         const result = await response.json();
 
         if (!response.ok) {
-          setResidents(null);
+          if (componentMounted) setResidents(null);
           return;
         }
 
-        setResidents(result.residents);
+        if (componentMounted) setResidents(result.residents);
       } catch (err) {
-        setResidents(null);
+        if (componentMounted) setResidents(null);
         console.log(err);
       }
     };
 
     //This is to prevent that users spam requests from server (whenever the name field changes, for example) => 200 ms delays between input/filter changes
     const timeout = setTimeout(fetchResidents, 200);
-    return () => clearInterval(timeout);
+    return () => {
+      clearInterval(timeout);
+      componentMounted = false;
+    };
   }, [name, sorting, floor, setResidents]);
 
   return (

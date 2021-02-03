@@ -1,17 +1,17 @@
-import * as React from "react";
-import { Redirect, Route, Switch, useParams } from "react-router-dom";
+import * as React from 'react';
+import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
-import SubNav from "../../containers/residents/SubNav";
-import MyResidentsPage from "./MyResidentsPage";
-import OverviewPage from "./OverviewPage";
-import DetailGeneralPage from "./DetailGeneralPage";
-import DetailPlanningPage from "./DetailPlanningPage";
+import SubNav from '../../containers/residents/SubNav';
+import MyResidentsPage from './MyResidentsPage';
+import OverviewPage from './OverviewPage';
+import DetailGeneralPage from './DetailGeneralPage';
+import DetailPlanningPage from './DetailPlanningPage';
 
-import "./residentspage.css";
-import DetailHeader from "../../containers/residents/detail/DetailHeader";
-import GoBack from "../../components/residents/detail/GoBack";
-import PopUpContact from "../../containers/residents/detail/PopUpContact";
-import { fetchResident, getPagesObj } from "./funcs";
+import './residentspage.css';
+import DetailHeader from '../../containers/residents/detail/DetailHeader';
+import GoBack from '../../components/global/GoBack';
+import PopUpContact from '../../containers/residents/detail/PopUpContact';
+import { fetchResident, getPagesObj } from './funcs';
 
 const ResidentsPages = ({ paths }) => {
   //Pages that are in /residents route
@@ -26,12 +26,16 @@ const ResidentsPages = ({ paths }) => {
   const [residentId, setResidentId] = React.useState(undefined);
 
   React.useEffect(() => {
+    let componentMounted = true;
+
     if (!residentId) {
       setResident(null);
       return;
     }
 
-    fetchResident(residentId, setResident);
+    fetchResident(residentId, setResident, componentMounted);
+
+    return () => (componentMounted = false);
   }, [residentId]);
 
   return (
@@ -58,7 +62,7 @@ const ResidentsPages = ({ paths }) => {
             <>
               <GoBack
                 path={pages.OVERVIEW.path()}
-                text={"Terug naar overzicht"}
+                text={'Terug naar overzicht'}
               />
               <DetailHeader resident={resident} />
             </>
@@ -107,7 +111,7 @@ const AddGeneralTrailingPath = ({ pathNameGenerator }) => {
   const params = useParams();
   const firstParam = params[Object.keys(params)[0]];
 
-  return <Redirect to={pathNameGenerator("/" + firstParam)} />;
+  return <Redirect to={pathNameGenerator('/' + firstParam)} />;
 };
 
 export default ResidentsPages;

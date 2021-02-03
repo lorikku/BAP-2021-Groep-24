@@ -1,6 +1,7 @@
 /* FETCHING SINGLE RESIDENT AND HIS INTERESTS/CONTACTS */
-const fetchResident = async (residentId, setResident) => {
-  setResident(undefined);
+const fetchResident = async (residentId, setResident, componentMounted) => {
+  if(componentMounted) setResident(undefined);
+
   let fetchedResident = undefined;
 
   // FETCHING RESIDENT
@@ -47,39 +48,39 @@ const fetchResident = async (residentId, setResident) => {
     console.log(err);
   }
 
-  setResident(fetchedResident);
+  if(componentMounted) setResident(fetchedResident);
 };
 
 /* GETTING PAGES FOR RESIDENTS */
 const getPagesObj = (paths) => {
-    return {
-        OVERVIEW: {
-          text: 'alle bewoners',
-          path: () => paths.ROOT + paths.OVERVIEW,
-        },
-        MY_RESIDENTS: {
-          text: 'mijn bewoners',
-          path: () => paths.ROOT + paths.MY_RESIDENTS,
-        },
-        DETAIL_GENERAL: {
-          text: 'algemene informatie',
-          path: (detail = paths.DETAIL) =>
-            paths.ROOT + detail + paths.DETAIL_GENERAL,
-        },
-        DETAIL_PLANNING: {
-          text: 'persoonlijke planning',
-          path: (detail = paths.DETAIL) =>
-            paths.ROOT + detail + paths.DETAIL_PLANNING,
-        },
-        DETAIL_ADD_CONTACT: {
-          text: 'persoonlijke planning',
-          path: (detail = paths.DETAIL) =>
-            paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
-        },
-        NEW_RESIDENT: {
-          path: () => paths.ROOT + paths.NEW_RESIDENT,
-        },
-      };
-}
+  return {
+    OVERVIEW: {
+      text: 'alle bewoners',
+      path: () => paths.ROOT + paths.OVERVIEW,
+    },
+    MY_RESIDENTS: {
+      text: 'mijn bewoners',
+      path: () => paths.ROOT + paths.MY_RESIDENTS,
+    },
+    DETAIL_GENERAL: {
+      text: 'algemene informatie',
+      path: (detail = paths.DETAIL) =>
+        paths.ROOT + detail + paths.DETAIL_GENERAL,
+    },
+    DETAIL_PLANNING: {
+      text: 'persoonlijke planning',
+      path: (detail = paths.DETAIL) =>
+        paths.ROOT + detail + paths.DETAIL_PLANNING,
+    },
+    DETAIL_ADD_CONTACT: {
+      text: 'persoonlijke planning',
+      path: (detail = paths.DETAIL) =>
+        paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
+    },
+    NEW_RESIDENT: {
+      path: () => paths.ROOT + paths.NEW_RESIDENT,
+    },
+  };
+};
 
 export { fetchResident, getPagesObj };

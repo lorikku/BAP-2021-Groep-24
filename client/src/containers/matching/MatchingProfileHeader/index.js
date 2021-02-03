@@ -1,5 +1,5 @@
 import * as React from "react";
-import GoBack from "../../../components/residents/detail/GoBack";
+import GoBack from "../../../components/global/GoBack";
 import "./matchingprofileheader.css";
 import ResidentProfile from "./../../../components/residents/detail/ResidentProfile";
 import SelectedInts from "../../../components/matching/SelectedInts";

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import NewActivityHeader from '../../components/activities/NewActivityHeader';
-import GoBack from '../../components/residents/detail/GoBack';
+import GoBack from '../../components/global/GoBack';
 import paths from '../../consts/paths';
 import NewActivityOne from '../../containers/activities/NewActivityOne';
 
