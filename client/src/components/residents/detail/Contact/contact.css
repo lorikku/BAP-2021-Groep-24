@@ -9,7 +9,7 @@
 
 .contact-name {
   font-weight: var(--fontWeightMedium);
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
 
 .contact-type {
@@ -19,7 +19,7 @@
   background-color: var(--colorCTA);
   color: var(--colorBgMain);
   width: max-content;
-  padding: .3rem .8rem;
+  padding: 0.3rem 0.8rem;
   border-radius: var(--borderRadius);
 }
 .contact-container {
@@ -32,7 +32,7 @@
 }
 
 .contact-type--contact {
-  background-color: var(--colorSpotlight)
+  background-color: var(--colorSpotlight);
 }
 
 .contact-info-wrapper {
@@ -44,12 +44,14 @@
 }
 
 .contact-info-btn {
-    width: 46px;
-    height: 68px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--colorBgDark);
-    justify-self: flex-end;
-    border-radius: 10px;
+  width: 46px;
+  height: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorBgDark);
+  justify-self: flex-end;
+  border-radius: 10px;
 }
+
+
