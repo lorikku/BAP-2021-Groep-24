@@ -6,7 +6,7 @@ import './myresidentsprofiles.css';
 
 const MyResidentsProfiles = ({ residents }) => {
   return residents ? (
-    <ul className="residents-myresidents__profiles apply-scrollbar">
+    <ul className="residents-myresidents__profiles">
       {residents.map((resident, index) => {
         return <MyResidentProfile key={index} resident={resident} />;
       })}

@@ -31,7 +31,7 @@ const DayActivity = () => {
       <div className="dayactivity-right-component">
         <div className="dayactivity-interested-container">
           <p className="interested-title bubbles-title">
-            Wellicht geïnteresseerd:
+            Wellicht geïnteresseerd
           </p>
           <div className="dayactivity-bubbles">
             {/* max 2, 3de is bubble met aantal */}
@@ -51,7 +51,7 @@ const DayActivity = () => {
           </div>
         </div>
         <div className="dayactivity-present-container">
-          <p className="present-title bubbles-title">Aanwezigen:</p>
+          <p className="present-title bubbles-title">Aanwezigen</p>
           <div className="dayactivity-bubbles">
             {/* max 2, 3de is bubble met aantal */}
             <img

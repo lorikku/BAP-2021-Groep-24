@@ -6,7 +6,7 @@ import './overviewprofiles.css';
 
 const OverviewProfiles = ({ residents }) => {
   return residents ? (
-    <ul className="residents-overview_profiles apply-scrollbar">
+    <ul className="residents-overview_profiles">
       {residents.map((resident, index) => {
         return <OverviewProfile key={index} resident={resident} />;
       })}

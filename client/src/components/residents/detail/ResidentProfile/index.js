@@ -1,15 +1,12 @@
 import * as React from 'react';
+import ResidentProfilePicture from '../ResidentProfilePicture';
 
 import './residentprofile.css';
 
 const ResidentProfile = ({ name, status, room, photoUri, showIcons }) => {
   return (
     <div className="resident-profile-card">
-      <img
-        className="res-profile-pic"
-        alt="foto van bewoner"
-        src={photoUri}
-      ></img>
+      <ResidentProfilePicture src={photoUri}/>
       <div className="res-profile-info-wrapper">
         <div className="res-profile-name-heart-wrapper">
           <p className="res-profile-name">{name}</p>

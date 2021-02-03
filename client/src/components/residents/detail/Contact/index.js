@@ -11,8 +11,8 @@ const Contact = ({ contact }) => {
       ></img>
       <div className="contact-info-wrapper">
         <p className="contact-name">{contact.name}</p>
-        <div className={`contact-type${contact.interests.length > 0 ? '  contact-type--contact' : ''}`}>
-          <p className="contact-type-text">{contact.interests.length > 0 ? 'Match' : 'Contact'}</p>
+        <div className={`contact-type${contact.matchedInterests.length > 0 ? '  contact-type--contact' : ''}`}>
+          <p className="contact-type-text">{contact.matchedInterests.length > 0 ? 'Match' : 'Vriend'}</p>
         </div>
       </div>
       <div className="contact-info-btn">

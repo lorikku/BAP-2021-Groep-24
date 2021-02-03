@@ -1,26 +1,23 @@
 import * as React from 'react';
+
 import InterestsCategory from '../../../../components/interests/InterestsCategory';
+
+import { getCategoriesFromInterests } from './funcs';
+
 import './detailinterests.css';
 
-const DetailInterests = ({ name, interests }) => {
+const DetailInterests = ({ resident, interests }) => {
   const [categories, setCategories] = React.useState(undefined);
 
   React.useEffect(() => {
+    //If no interests exists => return
     if (!interests) return;
 
+    //Set it to null to tell UI that it is loading
     setCategories(null);
-    const newCategories = {};
+    const newCategories = getCategoriesFromInterests(interests);
 
-    interests.forEach((interest) => {
-      if (!newCategories[interest.category._id]) {
-        newCategories[interest.category._id] = {
-          name: interest.category.name,
-          interests: [],
-        };
-      }
-      newCategories[interest.category._id].interests.push(interest);
-    });
-
+    //If categories is empty => interests was an empty array
     if (newCategories === {}) {
       setCategories(undefined);
     } else {
@@ -31,14 +28,16 @@ const DetailInterests = ({ name, interests }) => {
   return (
     <>
       <div className="detailresident-interests fit-height flex-content">
-        <div className="detailresident-int-wrapper">
-          <h3 className="detailresident-int-title">
-            Interesses van {`${name}`}
-          </h3>
-          <div className="detailresident-edit-int-btn">
-            <p className="detailresident-edit-int-text">Wijzig interesses</p>
+        {resident ? (
+          <div className="detailresident-int-wrapper">
+            <h3 className="detailresident-int-title">
+              Interesses van {`${resident.name}`}
+            </h3>
+            <div className="detailresident-edit-int-btn">
+              <p className="detailresident-edit-int-text">Wijzig interesses</p>
+            </div>
           </div>
-        </div>
+        ) : null}
         <ul className="detailresident-int-collection">
           {categories
             ? Object.keys(categories).map((key) => (
