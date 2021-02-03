@@ -1,10 +1,10 @@
 .content {
-    display: flex;
-    overflow: hidden;
+  display: flex;
+  overflow: hidden;
 }
 
 .page {
-    flex: 1;
-    
-    padding: var(--spacerMain);
+  flex: 1;
+  padding: var(--spacerMain);
+  position: relative;
 }
