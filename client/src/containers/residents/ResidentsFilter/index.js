@@ -52,7 +52,7 @@ const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
       clearInterval(timeout);
       componentMounted = false;
     };
-  }, [name, sorting, floor, setResidents]);
+  }, [name, sorting, floor, setResidents, isMyResidentsPage]);
 
   return (
     <div className="residents__filterwrapper">
