@@ -3,6 +3,10 @@ const { ObjectId } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
+const { convertToObjectId, stopExecution } = require('../util');
+
+//Dummy login
+const loggedInStaffId = '601acc5f47326585f23b2ade';
 
 /* /auth/staff/my-residents */
 route.get('/my-residents', async (req, res) => {
@@ -63,14 +67,14 @@ route.get('/my-residents', async (req, res) => {
       .db('auth')
       .collection('staff')
       .aggregate([
-        { $match: { _id: ObjectId('601acc5f47326585f23b2ade') } },
+        { $match: { _id: ObjectId(loggedInStaffId) } },
         { $unwind: '$myResidents' },
         { $sort: sorting },
         { $group: { _id: '$_id', myResidents: { $push: '$myResidents' } } },
       ])
       .next();
 
-      if(result) myResidents = result.myResidents;
+    if (result) myResidents = result.myResidents;
   } catch (err) {
     console.log(err);
     res
@@ -79,7 +83,7 @@ route.get('/my-residents', async (req, res) => {
     return;
   }
 
-  //Send found interests, else 404
+  //Send found myResidents, else 404
   if (myResidents.length === 0) {
     res.status(404).json({
       message:
@@ -88,9 +92,52 @@ route.get('/my-residents', async (req, res) => {
   } else {
     res.status(200).json({
       message: 'My residents found!',
-      myResidents
+      myResidents,
     });
   }
+});
+
+const getMyResidentById = async (myResidentId, req, res) => {
+  const _id = convertToObjectId(myResidentId, req, res);
+
+  let myResident;
+  try {
+    result = await req.app.mongodb
+      .db('auth')
+      .collection('staff')
+      .findOne(
+        { _id: ObjectId(loggedInStaffId) },
+        {
+          projection: {
+            myResidents: {
+              $elemMatch: { _id },
+            },
+          },
+        }
+      );
+
+    myResident = result.myResidents[0];
+  } catch (err) {
+    console.log(err);
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    stopExecution();
+    return;
+  }
+
+  return myResident;
+};
+
+route.get('/get', async (req, res) => {});
+
+route.post('/my-residents', async (req, res) => {
+  const { _id, name, roomNr, floor, photoUri, spotlightTimestamp } = req.body;
+  const myResident = await getMyResidentById(
+    _id,
+    req,
+    res
+  );
 });
 
 //Export this route to use in index.js

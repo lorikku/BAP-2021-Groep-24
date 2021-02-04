@@ -3,6 +3,7 @@ const { ObjectID } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
+const { stopExecution, convertToObjectId } = require('../util');
 
 /* -- ALL RESIDENTS QUERIES -- */
 /* /app/residents?name&sorting&floor */
@@ -98,17 +99,7 @@ route.get('/', async (req, res) => {
 
 const getResidentData = async (req, res, projection) => {
   const residentId = req.params.residentId;
-
-  let _id;
-  //Try converting residentId to an ObjectID for querying. If this fails => invalid id has been submitted.
-  try {
-    _id = ObjectID(residentId);
-  } catch (err) {
-    res
-      .status(statusMessages.INVALID_OBJECTID.statusCode)
-      .json({ message: statusMessages.INVALID_OBJECTID.message });
-    return 'ERROR_ID';
-  }
+  const _id = convertToObjectId(residentId);
 
   /* Setting the options */
   const options = {
@@ -150,9 +141,6 @@ route.get('/:residentId', async (req, res) => {
     contacts: false,
   });
 
-  //If resident ID error occured => response has already been sent => return function
-  if (resident === 'ERROR_ID') return;
-
   //Send found resident, else 404
   if (resident) {
     res.status(200).json({
@@ -175,9 +163,6 @@ route.get('/:residentId/interests', async (req, res) => {
     return;
   }
 
-  //If resident ID error occured => response has already been sent => return function
-  if (resident === 'ERROR_ID') return;
-
   //Send found resident's interests, else 404
   if (resident.interests) {
     res.status(200).json({
@@ -199,9 +184,6 @@ route.get('/:residentId/contacts', async (req, res) => {
     res.status(404).json({ message: 'Resident not found!' });
     return;
   }
-
-  //If resident ID error occured => response has already been sent => return function
-  if (resident === 'ERROR_ID') return;
 
   //Send found resident's contacts, else 404
   if (resident.contacts) {

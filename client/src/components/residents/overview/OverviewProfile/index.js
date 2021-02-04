@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 
 import './overviewprofile.css';
 import { isTimestampNew } from '../../timeStampFuncs';
+import { deleteMyResident, postMyResident } from '../../../../services/ResidentsService';
 
 const OverviewProfile = ({ resident }) => {
   const {
     _id,
     name,
     roomNr,
+    floor,
     photoUri,
     isPermanent,
     spotlightTimestamp,
   } = resident;
+
 
   //Gets created timestamp from _id (BSON ID)
   const createdAtDate = ObjectID(_id).getTimestamp();
@@ -22,9 +25,36 @@ const OverviewProfile = ({ resident }) => {
   //Checks if resident is still in spotlight
   const isSpotlight = isTimestampNew(spotlightTimestamp);
 
-  const [isMyResident, setIsMyResident] = React.useState(resident.isMyResident);
-  const toggleIsMyResident = () => setIsMyResident((prevState) => !prevState);
 
+  let isMyResidentLoading = false;
+  const [isMyResident, setIsMyResident] = React.useState(resident.isMyResident);
+
+  const toggleIsMyResident = async () => {
+    if (isMyResidentLoading) {
+      return;
+    }
+
+    isMyResidentLoading = true;
+    
+    let myResidentUpdate;
+    if (!resident.isMyResident) {
+      myResidentUpdate = await postMyResident({
+        _id,
+        name,
+        roomNr,
+        floor,
+        photoUri,
+        spotlightTimestamp,
+      });
+    } else {
+      myResidentUpdate = true;
+    }
+
+    console.log(myResidentUpdate);
+    if (myResidentUpdate) setIsMyResident((prevState) => !prevState);
+  };
+
+  
   return (
     <li className={`residents-overview__overviewprofile`}>
       <div className="residents-myresidents__overviewprofile__container">

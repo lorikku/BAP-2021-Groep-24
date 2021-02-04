@@ -3,6 +3,7 @@ const { ObjectID } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
+const {convertToObjectId} = require('../util');
 
 /* /app/interests */
 route.get('/', async (req, res) => {
@@ -37,17 +38,7 @@ route.get('/', async (req, res) => {
 /* /app/interests/:interestId */
 route.get('/:interestId', async (req, res) => {
   const interestId = req.params.interestId;
-
-  let _id;
-  //Try converting interestId to an ObjectID for querying. If this fails => invalid id has been submitted.
-  try {
-    _id = ObjectID(interestId);
-  } catch (err) {
-    res
-      .status(statusMessages.INVALID_OBJECTID.statusCode)
-      .json({ message: statusMessages.INVALID_OBJECTID.message });
-    return;
-  }
+  const _id = await convertToObjectId(interestId);
 
   const query = {
     _id,

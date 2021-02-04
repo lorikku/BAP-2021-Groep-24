@@ -1,8 +1,19 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 
 //Using and initializing dotenv to read MongoDB URI from .env file
 require('dotenv').config();
+
+process.on('unhandledRejection', (err) => {
+  if (err.message === 'stopExecution') {
+    console.log(
+      'NodeJS process execution was intentionally stopped, like PHP.exit(), probably because a response was sent and there was no need for other code to run.'
+    );
+  } else {
+    console.error(err);
+  }
+});
 
 /* 
 
@@ -13,8 +24,11 @@ const app = express();
 const port = 3001;
 
 //Set Access-Control-Allow-Origin header for all requests
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', '*');
+  res.setHeader('Access-Control-Allow-Headers', '*');
 
   if (!req.app.mongodb) {
     res.status(503).json({
@@ -30,7 +44,6 @@ app.use((req, res, next) => {
 app.use('/app', require('./routes/app'));
 //Defining the /auth API route prefix for all authentication-related requests
 app.use('/auth', require('./routes/auth'));
-
 
 /* 
 
