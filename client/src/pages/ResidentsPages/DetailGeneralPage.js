@@ -6,8 +6,17 @@ import DetailInterests from '../../containers/residents/detail/DetailInterests';
 
 import SubNav from '../../containers/residents/SubNav';
 
-const DetailGeneralPage = ({ navItems, resident, setResidentId }) => {
+const DetailGeneralPage = ({
+  navItems,
+  resident,
+  setResidentId,
+  setShowHeader,
+}) => {
   const { residentId } = useParams();
+
+  React.useEffect(() => {
+    setShowHeader(true);
+  }, [setShowHeader]);
 
   React.useEffect(() => {
     setResidentId(residentId);
@@ -15,13 +24,18 @@ const DetailGeneralPage = ({ navItems, resident, setResidentId }) => {
 
   return (
     <>
-      <h2 className="visually-hidden">Algemene informatie van bepaalde bewoner</h2>
+      <h2 className="visually-hidden">
+        Algemene informatie van bepaalde bewoner
+      </h2>
       {resident ? (
         <div className="residents-detailresident fit-height">
           <SubNav navItems={navItems} />
           <div className="detailresident-general fit-height">
-            <DetailContacts contacts={resident.contacts}/>
-            <DetailInterests resident={resident} interests={resident.interests} />
+            <DetailContacts contacts={resident.contacts} />
+            <DetailInterests
+              resident={resident}
+              interests={resident.interests}
+            />
           </div>
         </div>
       ) : resident === null ? (

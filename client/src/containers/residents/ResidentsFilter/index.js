@@ -1,34 +1,24 @@
 import * as React from 'react';
-import FloorInput from '../../../components/global/FloorInput';
 
+import FloorInput from '../../../components/global/FloorInput';
 import NameInput from '../../../components/global/NameInput';
 import SortingInput from '../../../components/global/SortingInput';
 
-import {fetchMyResidents, fetchResidents} from '../../../services/ResidentsService';
+import {
+  fetchMyResidents,
+  fetchResidents,
+} from '../../../services/ResidentsService';
+
+import { floorOptions, sortingOptionsMyResidents, sortingOptions } from './filterOptions';
 
 import './residentsfilter.css';
-
-const sortingOptions = [
-  {
-    value: 'spotlight',
-    label: 'Spotlight',
-  },
-  {
-    value: 'new-old',
-    label: 'Niew - Oud',
-  },
-  {
-    value: 'old-new',
-    label: 'Oud - Nieuw',
-  },
-];
-
-const floorOptions = ['all', 0, 1, 2, 3];
 
 const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
   const [name, setName] = React.useState('');
   const [floor, setFloor] = React.useState(floorOptions[0]);
-  const [sorting, setSorting] = React.useState(sortingOptions[0]);
+  const [sorting, setSorting] = React.useState(
+    isMyResidentsPage ? sortingOptionsMyResidents[0] : sortingOptions[0]
+  );
 
   //Fetch runs automatically after input/filter change, with 200ms timeout so that the server doesn't get spammed
   React.useEffect(() => {
@@ -58,7 +48,7 @@ const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
     <div className="residents__filterwrapper">
       <NameInput name={name} setName={setName} />
       <SortingInput
-        options={sortingOptions}
+        options={isMyResidentsPage ? sortingOptionsMyResidents : sortingOptions}
         sorting={sorting}
         setSorting={setSorting}
       />

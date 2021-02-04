@@ -28,6 +28,10 @@
   margin-left: var(--spacerMain);
 }
 
+.res-profile-heart-btn--active {
+  background-color: var(--colorRed);
+}
+
 .res-profile-name {
   font-size: var(--fontSizeInBetween);
   font-weight: var(--fontWeightSemiBold);

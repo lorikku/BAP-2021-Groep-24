@@ -1,11 +1,11 @@
 const express = require('express');
-const { ObjectID } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
-const { stopExecution, convertToObjectId } = require('../util');
+const { convertToObjectId, stopExecution } = require('../util');
 
-/* -- ALL RESIDENTS QUERIES -- */
+/* -------------- GET QUERIES -------------- */
+
 /* /app/residents?name&sorting&floor */
 route.get('/', async (req, res) => {
   let { name, sorting, floor } = req.query;
@@ -99,7 +99,7 @@ route.get('/', async (req, res) => {
 
 const getResidentData = async (req, res, projection) => {
   const residentId = req.params.residentId;
-  const _id = convertToObjectId(residentId);
+  const _id = convertToObjectId(residentId, res);
 
   /* Setting the options */
   const options = {
@@ -129,7 +129,9 @@ const getResidentData = async (req, res, projection) => {
   if (resident) {
     return resident;
   } else {
-    return null;
+    res.status(404).json({ message: 'Resident not found!' });
+    stopExecution();
+    return;
   }
 };
 
@@ -141,15 +143,11 @@ route.get('/:residentId', async (req, res) => {
     contacts: false,
   });
 
-  //Send found resident, else 404
-  if (resident) {
-    res.status(200).json({
-      message: 'Resident found!',
-      resident,
-    });
-  } else {
-    res.status(404).json({ message: 'Resident not found!' });
-  }
+  //Send found resident
+  res.status(200).json({
+    message: 'Resident found!',
+    resident,
+  });
 });
 
 /* -- GET RESIDENT INTERESTS BY RESIDENT ID -- */
@@ -157,14 +155,8 @@ route.get('/:residentId', async (req, res) => {
 route.get('/:residentId/interests', async (req, res) => {
   const resident = await getResidentData(req, res, { interests: 1 });
 
-  //If resident was not found, send 404
-  if (!resident) {
-    res.status(404).json({ message: 'Resident not found!' });
-    return;
-  }
-
   //Send found resident's interests, else 404
-  if (resident.interests) {
+  if (resident.interests && resident.interests.length > 0) {
     res.status(200).json({
       message: 'Resident interests found!',
       interests: resident.interests,
@@ -179,20 +171,61 @@ route.get('/:residentId/interests', async (req, res) => {
 route.get('/:residentId/contacts', async (req, res) => {
   const resident = await getResidentData(req, res, { contacts: 1 });
 
-  //If resident was not found, send 404
-  if (!resident) {
-    res.status(404).json({ message: 'Resident not found!' });
-    return;
-  }
-
   //Send found resident's contacts, else 404
-  if (resident.contacts) {
+  if (resident.contacts && resident.contacts.length > 0) {
     res.status(200).json({
       message: 'Resident contacts found!',
       contacts: resident.contacts,
     });
   } else {
     res.status(404).json({ message: 'Resident contacts not found!' });
+  }
+});
+
+/* -------------- PUT QUERIES -------------- */
+
+route.put('/:residentId', async (req, res) => {
+  const query = {
+    _id: convertToObjectId(req.params.residentId, res),
+  };
+
+  const update = {
+    $set: req.body,
+  };
+
+  const options = {
+    returnOriginal: false,
+    projection: {
+      interests: 0,
+      contacts: 0
+    }
+  };
+
+  let resident;
+  //Fetch resident from app database. If an error occured in the query, send 500 with error message and return
+  try {
+    const result = await req.app.mongodb
+      .db('app')
+      .collection('residents')
+      .findOneAndUpdate(query, update, options);
+
+    resident = result.value;
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    return;
+  }
+
+  if (resident) {
+    res.status(200).json({
+      message: 'Resident was updated!',
+      newResident: resident,
+    });
+  } else {
+    res
+      .status(404)
+      .json({ message: 'Resident was not found, or update failed.' });
   }
 });
 

@@ -6,19 +6,14 @@ import ResidentSpotlight from '../../../../components/residents/detail/ResidentS
 import './detailheader.css';
 
 const DetailHeader = ({ resident }) => {
-  const { name, isPermanent, roomNr, photoUri } = resident;
-
   return (
     <>
       <div className="detailresident-header">
         <ResidentProfile
-          name={name}
-          status={isPermanent ? 'Vast verblijver' : 'Kort verblijver'}
-          room={`Kamer ${roomNr}`}
-          photoUri={photoUri}
+          resident={resident}
           showIcons
         />
-        <ResidentSpotlight name={name} />
+        <ResidentSpotlight resident={resident} />
       </div>
     </>
   );

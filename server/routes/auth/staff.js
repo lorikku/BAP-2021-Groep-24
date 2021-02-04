@@ -1,19 +1,24 @@
 const express = require('express');
-const { ObjectId } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
 const { convertToObjectId, stopExecution } = require('../util');
 
 //Dummy login
-const loggedInStaffId = '601acc5f47326585f23b2ade';
+const loggedInStaffId = convertToObjectId('601acc5f47326585f23b2ade');
 
-/* /auth/staff/my-residents */
+/* -------------- GET QUERIES -------------- */
+
+/* GET ALL OF MY RESIDENTS */
 route.get('/my-residents', async (req, res) => {
   let { name, sorting, floor } = req.query;
 
   /* Setting the query */
-  const query = {};
+  const query = {
+    name: '',
+    roomNr: '',
+    floor: '',
+  };
 
   // Add name to db query if it was set in GET query, NAME CAN ALSO BE ROOM NUMBER! 'i' stands for case-insensitive
   if (name) {
@@ -35,27 +40,21 @@ route.get('/my-residents', async (req, res) => {
 
   /* Sorting the results */
   switch (sorting) {
-    case 'spotlight':
-      sorting = {
-        'myResidents.spotlightTimestamp': -1,
-      };
-      break;
-
     case 'new-old':
       sorting = {
-        _id: -1,
+        'myResidents._id': -1,
       };
       break;
 
     case 'old-new':
       sorting = {
-        _id: 1,
+        'myResidents._id': 1,
       };
       break;
 
     default:
       sorting = {
-        'myResidents.spotlightTimestamp': -1,
+        'myResidents._id': -1,
       };
       break;
   }
@@ -67,8 +66,24 @@ route.get('/my-residents', async (req, res) => {
       .db('auth')
       .collection('staff')
       .aggregate([
-        { $match: { _id: ObjectId(loggedInStaffId) } },
+        { $match: { _id: loggedInStaffId } },
         { $unwind: '$myResidents' },
+        {
+          $match: {
+            'myResidents.name': {
+              $regex: query.name,
+              $options: 'i',
+            },
+            'myResidents.roomNr': {
+              $regex: query.roomNr,
+              $options: 'i',
+            },
+            'myResidents.floor': {
+              $regex: query.floor,
+              $options: 'i',
+            },
+          },
+        },
         { $sort: sorting },
         { $group: { _id: '$_id', myResidents: { $push: '$myResidents' } } },
       ])
@@ -76,7 +91,6 @@ route.get('/my-residents', async (req, res) => {
 
     if (result) myResidents = result.myResidents;
   } catch (err) {
-    console.log(err);
     res
       .status(statusMessages.INTERNAL_ERROR.statusCode)
       .json({ message: statusMessages.INTERNAL_ERROR.message });
@@ -97,16 +111,15 @@ route.get('/my-residents', async (req, res) => {
   }
 });
 
-const getMyResidentById = async (myResidentId, req, res) => {
-  const _id = convertToObjectId(myResidentId, req, res);
-
+/* GETTING ONE RESIDENT FROM MYRESIDENTS BY ID */
+const getMyResidentById = async (_id, req, res) => {
   let myResident;
   try {
     result = await req.app.mongodb
       .db('auth')
       .collection('staff')
       .findOne(
-        { _id: ObjectId(loggedInStaffId) },
+        { _id: loggedInStaffId },
         {
           projection: {
             myResidents: {
@@ -116,9 +129,10 @@ const getMyResidentById = async (myResidentId, req, res) => {
         }
       );
 
-    myResident = result.myResidents[0];
+    if (result.myResidents) {
+      myResident = result.myResidents[0];
+    }
   } catch (err) {
-    console.log(err);
     res
       .status(statusMessages.INTERNAL_ERROR.statusCode)
       .json({ message: statusMessages.INTERNAL_ERROR.message });
@@ -129,15 +143,112 @@ const getMyResidentById = async (myResidentId, req, res) => {
   return myResident;
 };
 
-route.get('/get', async (req, res) => {});
+/* GETTING ONE RESIDENT FROM MY RESIDENTS */
+route.get('/my-residents/:residentId', async (req, res) => {
+  const residentId = req.params.residentId;
+  const _id = convertToObjectId(residentId, res);
 
+  const myResident = await getMyResidentById(_id, req, res);
+
+  if (myResident) {
+    res.status(200).json({
+      message: 'My resident found!',
+    });
+  } else {
+    res.status(404).json({
+      message: 'This resident is not in my residents list',
+    });
+  }
+});
+
+/* -------------- POST QUERIES -------------- */
+
+/* ADDING RESIDENT TO MY RESIDENTS */
 route.post('/my-residents', async (req, res) => {
-  const { _id, name, roomNr, floor, photoUri, spotlightTimestamp } = req.body;
-  const myResident = await getMyResidentById(
-    _id,
-    req,
+  const _id = convertToObjectId(req.body._id, res);
+
+  const myResident = await getMyResidentById(_id, req, res);
+
+  if (myResident) {
     res
-  );
+      .status(409)
+      .json({ message: 'This resident is already in my residents' });
+    return;
+  }
+
+  try {
+    req.app.mongodb
+      .db('auth')
+      .collection('staff')
+      .updateOne(
+        {
+          _id: loggedInStaffId,
+        },
+        {
+          $push: {
+            myResidents: {
+              ...req.body,
+              _id,
+            },
+          },
+        }
+      );
+
+    res.status(200).json({ message: 'Resident is added to my residents!' });
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    return;
+  }
+});
+
+/* -------------- PUT QUERIES -------------- */
+
+
+
+
+/* -------------- DELETE QUERIES -------------- */
+
+/* DELETE ONE RESIDENT FROM MY RESIDENTS */
+route.delete('/my-residents/:residentId', async (req, res) => {
+  const residentId = req.params.residentId;
+  const _id = convertToObjectId(residentId, res);
+
+  const myResident = await getMyResidentById(_id, req, res);
+
+  if (!myResident) {
+    res
+      .status(409)
+      .json({ message: 'This resident is not in my residents yet' });
+    return;
+  }
+
+  try {
+    req.app.mongodb
+      .db('auth')
+      .collection('staff')
+      .updateOne(
+        {
+          _id: loggedInStaffId,
+        },
+        {
+          $pull: {
+            myResidents: {
+              ...req.body,
+              _id,
+            },
+          },
+        }
+      );
+
+    res.status(200).json({ message: 'Resident is removed from my residents!' });
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    return;
+  }
 });
 
 //Export this route to use in index.js

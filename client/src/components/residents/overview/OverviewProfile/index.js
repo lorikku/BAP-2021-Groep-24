@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 import './overviewprofile.css';
 import { isTimestampNew } from '../../timeStampFuncs';
-import { deleteMyResident, postMyResident } from '../../../../services/ResidentsService';
+import {
+  deleteMyResident,
+  postMyResident,
+} from '../../../../services/ResidentsService';
 
 const OverviewProfile = ({ resident }) => {
   const {
@@ -17,7 +20,6 @@ const OverviewProfile = ({ resident }) => {
     spotlightTimestamp,
   } = resident;
 
-
   //Gets created timestamp from _id (BSON ID)
   const createdAtDate = ObjectID(_id).getTimestamp();
   const isNew = isTimestampNew(createdAtDate.getTime());
@@ -25,19 +27,20 @@ const OverviewProfile = ({ resident }) => {
   //Checks if resident is still in spotlight
   const isSpotlight = isTimestampNew(spotlightTimestamp);
 
-
   let isMyResidentLoading = false;
   const [isMyResident, setIsMyResident] = React.useState(resident.isMyResident);
 
   const toggleIsMyResident = async () => {
+    //Check if another fetch is already running (so button cant get spammed)
     if (isMyResidentLoading) {
       return;
     }
-
+    //Loading -> calling this function disallowed
     isMyResidentLoading = true;
-    
+
     let myResidentUpdate;
-    if (!resident.isMyResident) {
+    if (!isMyResident) {
+      //If not my resident -> add to my residents
       myResidentUpdate = await postMyResident({
         _id,
         name,
@@ -47,14 +50,17 @@ const OverviewProfile = ({ resident }) => {
         spotlightTimestamp,
       });
     } else {
-      myResidentUpdate = true;
+      //If my resident -> delete from my residents
+      myResidentUpdate = await deleteMyResident(_id);
     }
 
-    console.log(myResidentUpdate);
-    if (myResidentUpdate) setIsMyResident((prevState) => !prevState);
+    //If myResidentUpdate returned something -> fetch was complete
+    if (myResidentUpdate) setIsMyResident(myResidentUpdate.newValue);
+
+    //Not loading -> calling this function allowed
+    isMyResidentLoading = false;
   };
 
-  
   return (
     <li className={`residents-overview__overviewprofile`}>
       <div className="residents-myresidents__overviewprofile__container">
@@ -82,7 +88,7 @@ const OverviewProfile = ({ resident }) => {
                 <img
                   alt="Foto van een ster"
                   className="residents-myresidents__overviewprofile__star"
-                  src="/assets/img/star-filled.svg"
+                  src="/assets/img/star-filled-border.svg"
                 />
               ) : null}
             </div>

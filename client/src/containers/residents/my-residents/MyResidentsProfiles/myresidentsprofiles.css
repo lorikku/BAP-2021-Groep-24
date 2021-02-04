@@ -1,7 +1,7 @@
 .residents-myresidents__profiles {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
+    gap: var(--spacerMain);
 
     overflow: scroll;
 

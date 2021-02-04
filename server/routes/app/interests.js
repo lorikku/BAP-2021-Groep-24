@@ -1,9 +1,8 @@
 const express = require('express');
-const { ObjectID } = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
-const {convertToObjectId} = require('../util');
+const { convertToObjectId } = require('../util');
 
 /* /app/interests */
 route.get('/', async (req, res) => {
@@ -38,7 +37,7 @@ route.get('/', async (req, res) => {
 /* /app/interests/:interestId */
 route.get('/:interestId', async (req, res) => {
   const interestId = req.params.interestId;
-  const _id = await convertToObjectId(interestId);
+  const _id = convertToObjectId(interestId, res);
 
   const query = {
     _id,

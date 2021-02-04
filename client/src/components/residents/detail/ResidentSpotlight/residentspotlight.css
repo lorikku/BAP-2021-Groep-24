@@ -5,10 +5,24 @@
     background-color: var(--colorBgLight);
     border-top-left-radius: var(--borderRadiusBig);
     border-bottom-left-radius: var(--borderRadiusBig);
+    border: 3px solid transparent;
+
+    overflow: hidden;
+}
+
+.resident-spotlight-container--active {
+  background-color: var(--colorBgMain);
+  border: 3px solid var(--colorSpotlight);
+  border-radius: calc(var(--borderRadiusBig) * 2);
 }
 
 .spotlight-text{
   font-weight: var(--fontWeightMedium);
+}
+
+.spotlight-text--underline {
+  font-weight: var(--fontWeightBold);
+  text-decoration: underline;
 }
 
 .spotlight-text-wrapper {
@@ -16,8 +30,9 @@
   flex-direction: column;
   justify-content: space-evenly;
   height: 100%;
-  margin-left: var(--spacerMain);
+
   margin-right: var(--spacerMain);
+  max-width: 10rem;
 }
 
 .spotlight-btn {
@@ -28,6 +43,11 @@
     width: max-content;
     border-radius: var(--borderRadiusBig);
     background-color: var(--colorBgMain);
+   
+}
+
+.spotlight-btn--active {
+  background-color: var(--colorSpotlight);
 }
 
 .spotlight-btn-star {
@@ -37,4 +57,8 @@
 .spotlight-btn-text {
     font-weight: var(--fontWeightSemiBold);
     color: var(--colorSpotlight);
+}
+
+.spotlight-btn-text--active {
+  color: var(--colorBgMain);
 }

@@ -78,6 +78,11 @@ input {
   outline: none;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 /* -- MEDIA QUERIES -- */
 
 /* orientation must be landscape */

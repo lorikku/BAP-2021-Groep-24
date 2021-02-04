@@ -6,8 +6,17 @@ import DetailInteresting from '../../containers/residents/detail/DetailInteresti
 
 import SubNav from '../../containers/residents/SubNav';
 
-const DetailPlanningPage = ({ navItems, resident, setResidentId }) => {
+const DetailPlanningPage = ({
+  navItems,
+  resident,
+  setResidentId,
+  setShowHeader,
+}) => {
   const { residentId } = useParams();
+
+  React.useEffect(() => {
+    setShowHeader(true);
+  }, [setShowHeader]);
 
   React.useEffect(() => {
     setResidentId(residentId);

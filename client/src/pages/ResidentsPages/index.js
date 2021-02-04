@@ -26,6 +26,7 @@ const ResidentsPages = ({ paths }) => {
   //Fetching resident single from db
   const [resident, setResident] = React.useState(undefined);
   const [residentId, setResidentId] = React.useState(undefined);
+  const [showHeader, setShowHeader] = React.useState(true);
 
   React.useEffect(() => {
     let componentMounted = true;
@@ -66,7 +67,7 @@ const ResidentsPages = ({ paths }) => {
       </Route>
       {/* ---DETAIL PAGES--- */}
       <Route path={paths.ROOT + paths.DETAIL} strict>
-        {resident ? (
+        {resident && showHeader ? (
           <>
             <GoBack
               path={pages.OVERVIEW.path()}
@@ -79,6 +80,7 @@ const ResidentsPages = ({ paths }) => {
           {/* Detail page with general info */}
           <Route path={pages.DETAIL_GENERAL.path()} exact>
             <DetailGeneralPage
+              setShowHeader={setShowHeader}
               resident={resident}
               setResidentId={(residentId) => setResidentId(residentId)}
               navItems={detailPages}
@@ -87,6 +89,7 @@ const ResidentsPages = ({ paths }) => {
           {/* Detail page with personal planning */}
           <Route path={pages.DETAIL_PLANNING.path()} exact>
             <DetailPlanningPage
+              setShowHeader={setShowHeader}
               resident={resident}
               setResidentId={(residentId) => setResidentId(residentId)}
               navItems={detailPages}

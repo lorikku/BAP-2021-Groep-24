@@ -17,10 +17,6 @@
     align-items: center;
 }
 
-.residents-myresidents__profiles__profile--spacer {
-    margin: 0 var(--spacerMain);
-}
-
 .residents-myresidents__profiles__profilewrapper {
     width: 100%;
     display: flex;
