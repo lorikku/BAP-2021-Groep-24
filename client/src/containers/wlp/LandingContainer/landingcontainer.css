@@ -1,0 +1,66 @@
+.landing-container {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.landing-right {
+  display: block;
+  grid-column: 2;
+  grid-row: 1;
+  background-color: var(--colorCopyMisc);
+}
+
+.landing-left {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 100px;
+}
+
+.left-logo-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+.left-link {
+  text-decoration: underline;
+  font-size: var(--fontSizeBig);
+  margin-left: 3rem;
+}
+
+.welcome-title {
+  font-size: 34px;
+  font-weight: var(--fontWeightBold);
+}
+
+.welcome-sub {
+  font-size: var(--fontSizeBig);
+  font-weight: var(--fontWeightMedium);
+  line-height: 1.2rem;
+  margin-top: 32px;
+  margin-bottom: 52px;
+}
+
+.landing-next-btn {
+  background-color: var(--colorCopyMisc);
+  padding: var(--spacerButtonNormal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+  width: max-content;
+}
+
+.landing-next-btn-text {
+  color: var(--colorBgMain);
+  font-size: var(--fontSizeBig);
+  font-weight: var(--fontWeightSemiBold);
+  margin-right: 1rem;
+}

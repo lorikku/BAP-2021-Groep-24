@@ -1,0 +1,29 @@
+.progress-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-ball {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--colorCopyMisc);
+  border-radius: 50%;
+}
+
+.progress-nr {
+  font-size: var(--fontSizeRoom);
+  font-weight: var(--fontWeightSemiBold);
+  color: var(--colorBgMain);
+}
+
+.progress-title {
+  font-weight: var(--fontWeightSemiBold);
+  margin-top: 18px;
+  max-width: 179px;
+  text-align: center;
+}

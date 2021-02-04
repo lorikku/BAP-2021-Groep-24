@@ -1,0 +1,21 @@
+
+.input-tag {
+  background-color: var(--colorCopyMisc);
+  border-radius: var(--borderRadius);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  margin: .1rem;
+}
+
+.tag-cross {
+  margin-left: 0.5rem;
+}
+
+.input-tag-text {
+  font-size: var(--fontSizeSmall);
+  font-weight: var(--fontWeightMedium);
+  color: var(--colorBgMain);
+}

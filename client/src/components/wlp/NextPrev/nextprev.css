@@ -1,0 +1,36 @@
+.wlp-next-btn {
+  background-color: var(--colorCopyMisc);
+  padding: var(--spacerButtonNormal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+  width: max-content;
+}
+
+.wlp-next-btn-text {
+  color: var(--colorBgMain);
+  font-size: var(--fontSizeBig);
+  font-weight: var(--fontWeightSemiBold);
+  margin-right: 1rem;
+  text-transform: uppercase;
+}
+
+.wlp-prev-btn {
+  background-color: var(--colorMiscLight);
+  padding: var(--spacerButtonNormal);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+  width: max-content;
+  margin-right: 1rem;
+}
+
+.wlp-btns {
+  display: flex;
+  width: max-content;
+  position: absolute;
+  left: 65%;
+  top: 88%;
+}

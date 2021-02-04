@@ -1,0 +1,31 @@
+.wlp-input-wrapper {
+  display: flex;
+}
+
+.wlp-icon-div {
+  background-color: var(--colorBgMain);
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+}
+
+.place-input {
+  border-radius: var(--borderRadius);
+  color: var(--colorCopyMisc);
+  font-size: var(--fontSizeBig);
+}
+
+.wlp-input-title {
+  font-size: var(--fontSizeBig);
+}
+
+.place-wrapper {
+  width: max-content;
+}
+
+.input-wlp-container {
+  margin-left: 2rem;
+}

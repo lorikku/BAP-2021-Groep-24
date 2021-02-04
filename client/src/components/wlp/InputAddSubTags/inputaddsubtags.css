@@ -1,0 +1,57 @@
+.wlp-input-wrapper {
+  display: flex;
+}
+
+.wlp-icon-div {
+  background-color: var(--colorBgMain);
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--borderRadius);
+}
+
+.birth-input {
+  border-radius: var(--borderRadius);
+  color: var(--colorCopyMisc);
+  font-size: var(--fontSizeBig);
+}
+
+.wlp-input-title {
+  font-size: var(--fontSizeBig);
+}
+
+.birth-wrapper {
+  width: max-content;
+}
+
+.input-plus {
+  height: 50px;
+  width: 50px;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--colorCopyMisc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5rem;
+}
+
+.input-plus-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.input-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.input-tags-wrapper {
+  max-width: 288px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

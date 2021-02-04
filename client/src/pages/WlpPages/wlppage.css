@@ -1,0 +1,34 @@
+.wlp-page {
+  color: var(--colorCopyMisc);
+  flex: 1;
+}
+
+.wlp-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url(./wl-bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: var(--spacerMain);
+}
+
+.content-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.wlp-input {
+  width: 230px;
+  height: 50px;
+  border-radius: var(--borderRadius);
+  border: 2px solid var(--colorCopyMisc);
+  margin-top: 10px;
+  background-color: var(--colorBgMain);
+}
+
+.wlp-input-style {
+  color: var(--colorCopyMisc);
+  font-size: var(--fontSizeBody);
+}

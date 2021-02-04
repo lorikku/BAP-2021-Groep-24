@@ -1,0 +1,50 @@
+.input-amount-container {
+}
+
+.input-amount-title {
+  font-size: var(--fontSizeBigger);
+  font-weight: var(--fontWeightMedium);
+  margin-bottom: 0.5rem;
+}
+
+.input-amount-vector {
+  width: 280px;
+  height: 200px;
+  border: 2px solid var(--colorCopyMisc);
+  border-radius: var(--borderRadius);
+  background-color: var(--colorBgMain);
+}
+
+.input-amount-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  border: 2px solid var(--colorCopyMisc);
+  border-radius: var(--borderRadius);
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.amount-btn {
+  background-color: var(--colorCopyMisc);
+  border-radius: var(--borderRadius);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-amount {
+  font-size: 28px;
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.input-amount-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}

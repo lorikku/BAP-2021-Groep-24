@@ -2,10 +2,11 @@
   /* colors */
   --colorCopyMain: #07005a;
   --colorCopyMisc: #7384c2;
+  --colorMiscLight: #cdd3e7;
   --colorCTA: #476ff5;
   --colorBgMain: #ffffff;
   --colorBgDark: #e1e9fe;
-  --colorBgGrey: #DBDBDB;
+  --colorBgGrey: #dbdbdb;
   --colorBgMedium: #f2f6ff;
   --colorBgLight: #f6f9ff;
   --colorOrange: #ffc268;
@@ -18,6 +19,7 @@
   --fontSizeHuge: 1.5625rem; /* 25px */
   --fontSizeInBetween: 1.375rem; /* 22px */
   --fontSizeRoom: 1.25rem; /* 20px */
+  --fontSizeBigger: 1.125rem; /* 18px */
   --fontSizeBig: 1rem; /* 16px */
   --fontSizeNormal: 0.9375rem; /* 15px */
   --fontSizeBody: 0.875rem; /* 14px */
