@@ -93,9 +93,5 @@ route.get('/my-residents', async (req, res) => {
   }
 });
 
-route.post('/my-residents', async (req, res) => {
-    
-})
-
 //Export this route to use in index.js
 module.exports = route;

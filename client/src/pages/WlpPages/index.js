@@ -1,7 +1,5 @@
 import * as React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import MatchingProfileHeader from "../../containers/matching/MatchingProfileHeader";
-import MatchResult from "../../containers/matching/MatchResult";
 
 const WlpPages = ({ paths }) => {
   return (
