@@ -1,56 +1,3 @@
-/* FETCHING SINGLE RESIDENT AND HIS INTERESTS/CONTACTS */
-const fetchResident = async (residentId, setResident, componentMounted) => {
-  if(componentMounted) setResident(undefined);
-
-  let fetchedResident = undefined;
-
-  // FETCHING RESIDENT
-  try {
-    const response = await fetch(
-      `http://localhost:3001/app/residents/${residentId}`
-    );
-    const result = await response.json();
-
-    if (!response.ok) {
-      fetchedResident = null;
-      return;
-    }
-
-    fetchedResident = result.resident;
-  } catch (err) {
-    fetchedResident = null;
-    console.log(err);
-  }
-
-  // FETCHING RESIDENT INTEREST
-  try {
-    const response = await fetch(
-      `http://localhost:3001/app/residents/${residentId}/interests`
-    );
-    const result = await response.json();
-
-    fetchedResident.interests = result.interests;
-  } catch (err) {
-    fetchedResident.interests = null;
-    console.log(err);
-  }
-
-  // FETCHING RESIDENT CONACTS
-  try {
-    const response = await fetch(
-      `http://localhost:3001/app/residents/${residentId}/contacts`
-    );
-    const result = await response.json();
-
-    fetchedResident.contacts = result.contacts;
-  } catch (err) {
-    fetchedResident.contacts = null;
-    console.log(err);
-  }
-
-  if(componentMounted) setResident(fetchedResident);
-};
-
 /* GETTING PAGES FOR RESIDENTS */
 const getPagesObj = (paths) => {
   return {
@@ -83,4 +30,4 @@ const getPagesObj = (paths) => {
   };
 };
 
-export { fetchResident, getPagesObj };
+export { getPagesObj };

@@ -1,11 +1,10 @@
 const express = require('express');
 const route = express.Router();
 
-route.use('/staff', (req, res) => {
-  res
-    .status(403)
-    .json({ message: 'Staff authentication API still under construction' });
-});
+//Import endpoint routes from other files
+const staff = require('./staff');
+
+route.use('/staff', staff);
 
 //Export this route to use in server.js
 module.exports = route;

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import InterestsCategory from '../../../../components/interests/InterestsCategory';
 
-import { getCategoriesFromInterests } from './funcs';
+import { getCategoriesFromInterests } from './categoriseInterests';
 
 import './detailinterests.css';
 

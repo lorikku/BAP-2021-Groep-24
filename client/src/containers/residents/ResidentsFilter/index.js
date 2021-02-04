@@ -4,9 +4,15 @@ import FloorInput from '../../../components/global/FloorInput';
 import NameInput from '../../../components/global/NameInput';
 import SortingInput from '../../../components/global/SortingInput';
 
+import {fetchMyResidents, fetchResidents} from '../../../services/ResidentsService';
+
 import './residentsfilter.css';
 
 const sortingOptions = [
+  {
+    value: 'spotlight',
+    label: 'Spotlight',
+  },
   {
     value: 'new-old',
     label: 'Niew - Oud',
@@ -17,12 +23,12 @@ const sortingOptions = [
   },
 ];
 
-const floorOptions = [123, 1, 2, 3];
+const floorOptions = ['all', 0, 1, 2, 3];
 
-const ResidentsFilter = ({ setResidents }) => {
+const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
   const [name, setName] = React.useState('');
-  const [sorting, setSorting] = React.useState(sortingOptions[0]);
   const [floor, setFloor] = React.useState(floorOptions[0]);
+  const [sorting, setSorting] = React.useState(sortingOptions[0]);
 
   //Fetch runs automatically after input/filter change, with 200ms timeout so that the server doesn't get spammed
   React.useEffect(() => {
@@ -30,28 +36,18 @@ const ResidentsFilter = ({ setResidents }) => {
     let componentMounted = true;
     if (componentMounted) setResidents(undefined);
 
-    //Fetching residents from db
-    const fetchResidents = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3001/app/residents?name=${name}&floor=${floor}&sorting=${sorting.value}`
-        );
-        const result = await response.json();
-
-        if (!response.ok) {
-          if (componentMounted) setResidents(null);
-          return;
-        }
-
-        if (componentMounted) setResidents(result.residents);
-      } catch (err) {
-        if (componentMounted) setResidents(null);
-        console.log(err);
+    const filterResidents = async () => {
+      let residents;
+      if (isMyResidentsPage) {
+        residents = await fetchMyResidents(name, floor, sorting);
+      } else {
+        residents = await fetchResidents(name, floor, sorting);
       }
+      if (componentMounted) setResidents(residents);
     };
 
     //This is to prevent that users spam requests from server (whenever the name field changes, for example) => 200 ms delays between input/filter changes
-    const timeout = setTimeout(fetchResidents, 200);
+    const timeout = setTimeout(filterResidents, 200);
     return () => {
       clearInterval(timeout);
       componentMounted = false;

@@ -1,5 +1,5 @@
 .residents-myresidents__profiles__profile {
-    width: 32%;
+    width: 240px;
     height:var(--heightMyResidentProfile);
 
     background-color: var(--colorBgMedium);
@@ -36,6 +36,9 @@
     height:120px;
     object-fit:cover;
     border-radius:50%;
+
+    padding: 2px;
+    border: var(--colorRed) solid 4px;
 }
 
 .residents-myresidents__profiles__name {

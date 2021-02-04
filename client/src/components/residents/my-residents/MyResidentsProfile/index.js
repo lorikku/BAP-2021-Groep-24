@@ -7,7 +7,7 @@ const MyResidentsProfile = ({ resident }) => {
   const { _id, roomNr, photoUri, isPermanent, name } = resident;
   return (
     <li className="residents-myresidents__profiles__profile">
-      <Link className="residents-myresidents__profiles__link" to={_id}>
+      <Link className="residents-myresidents__profiles__link" to={_id + '/general'}>
         <div className="residents-myresidents__profiles__profilewrapper">
           <p className="residents-myresidents__profiles__roomnr">
             {'Kamer ' + roomNr}

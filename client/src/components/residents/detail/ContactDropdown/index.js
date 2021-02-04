@@ -2,7 +2,7 @@ import * as React from "react";
 import "./contactdropdown.css";
 import Tag from "../../../interests/Tag";
 
-const Contact = () => {
+const ContactDropdown = () => {
   return (
     <li className="contact-dropdown">
       <div className="contact-dropdown-grid">
@@ -28,4 +28,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactDropdown;

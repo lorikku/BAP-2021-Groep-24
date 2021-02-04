@@ -7,7 +7,6 @@ const statusMessages = require('../statusMessages');
 /* -- ALL RESIDENTS QUERIES -- */
 /* /app/residents?name&sorting&floor */
 route.get('/', async (req, res) => {
-
   let { name, sorting, floor } = req.query;
 
   /* Setting the options (which data do we need?) */
@@ -32,35 +31,41 @@ route.get('/', async (req, res) => {
     }
   }
 
-  // If floor is in boundaries, use it to query, otherwise ignore floor
+  // If floor is in boundaries (0 - 3), use it to query, otherwise ignore floor
   if (floor) {
-    if (0 < floor && floor < 4) {
+    if (-1 < floor && floor < 4) {
       query.floor = floor;
     }
   }
 
   /* Sorting the results */
   switch (sorting) {
-    case 'new-old':
+    case 'spotlight':
       sorting = {
-        _id: 1,
+        spotlightTimestamp: -1,
       };
       break;
 
-    case 'old-new':
+    case 'new-old':
       sorting = {
         _id: -1,
       };
       break;
 
-    default:
+    case 'old-new':
       sorting = {
         _id: 1,
       };
       break;
+
+    default:
+      sorting = {
+        spotlightTimestamp: -1,
+      };
+      break;
   }
 
-  let residents;
+  let residents = [];
   //Fetch residents from app database and turn into array. If an error occured in the query, send 500 with error message and return
   try {
     residents = await req.app.mongodb
@@ -144,7 +149,6 @@ route.get('/:residentId', async (req, res) => {
     interests: false,
     contacts: false,
   });
-  console.log('fetched');
 
   //If resident ID error occured => response has already been sent => return function
   if (resident === 'ERROR_ID') return;

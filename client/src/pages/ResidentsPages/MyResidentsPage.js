@@ -9,7 +9,7 @@ const MyResidentsPage = () => {
     <>
       <h2 className="visually-hidden">Mijn bewoners</h2>
       <div className="residents-myresidents fit-height flex-content">
-        <ResidentsFilter setResidents={setResidents} />
+        <ResidentsFilter setResidents={setResidents} isMyResidentsPage/>
         <MyResidentsProfiles residents={residents} />
       </div>
     </>

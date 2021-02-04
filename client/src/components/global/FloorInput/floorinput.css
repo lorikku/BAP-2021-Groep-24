@@ -11,6 +11,7 @@
 .residents__filter__flooroption {
     font-size: var(--fontSizeBig);
     font-weight: var(--fontWeightSemiBold);
+    text-transform: capitalize;
 
     background-color: var(--colorOrangeLight);
     border-radius: var(--borderRadius);

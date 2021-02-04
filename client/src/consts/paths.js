@@ -25,6 +25,10 @@ const paths = {
   PATH_MATCHING: {
     ROOT: '/matching',
   },
+  PATH_WLP: {
+    //Woon-en-leefplan
+    ROOT: '/wlp',
+  },
   PATH_LOGOUT: {
     ROOT: '/logout',
   },
