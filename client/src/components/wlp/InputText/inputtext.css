@@ -18,10 +18,6 @@
   font-size: var(--fontSizeBig);
 }
 
-.wlp-input-title {
-  font-size: var(--fontSizeBig);
-}
-
 .place-wrapper {
   width: max-content;
 }

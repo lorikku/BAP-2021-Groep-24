@@ -1,0 +1,44 @@
+.wlp-container {
+  margin-top: 80px;
+}
+
+.wlp-title {
+  font-size: 34px;
+  font-weight: var(--fontWeightBold);
+}
+
+.wlp-input-container {
+  margin-top: 50px;
+  display: flex;
+}
+
+.wlp-division {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.wlp-division-left {
+  grid-column: 1;
+  justify-self: center;
+  align-self: center;
+}
+
+.wlp-division-right {
+  grid-column: 2;
+  justify-self: center;
+  align-self: center;
+}
+
+.division-title {
+  font-size: 34px;
+  font-weight: var(--fontWeightBold);
+  width: 387px;
+}
+
+.division-subtext {
+  font-size: var(--fontSizeBigger);
+  font-weight: var(--fontWeightMedium);
+  margin-top: 3rem;
+  width: 387px;
+  line-height: 1.2rem;
+}

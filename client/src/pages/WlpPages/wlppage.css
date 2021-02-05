@@ -32,3 +32,10 @@
   color: var(--colorCopyMisc);
   font-size: var(--fontSizeBody);
 }
+
+
+.wlp-input-title {
+    font-size: var(--fontSizeBig);
+    height: max-content;
+  }
+

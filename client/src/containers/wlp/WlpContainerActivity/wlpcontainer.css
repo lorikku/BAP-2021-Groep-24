@@ -1,0 +1,20 @@
+.wlp-activity-container {
+  margin-top: var(--spacerMain);
+  display: flex;
+}
+
+.wlp-activities-list {
+  margin-left: var(--spacerMain);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: min-content;
+  width: 100%;
+  gap: var(--spacerMain);
+}
+
+  
+.wlp-act-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}

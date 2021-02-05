@@ -2,11 +2,11 @@ import * as React from "react";
 import SubTag from "../SubTag";
 import "./inputaddsubtags.css";
 
-const InputAddSubtags = () => {
+const InputAddSubtags = ({ title, icon, placeholder, inputId }) => {
   return (
     <div className="input-wlp-container">
-      <label className="wlp-input-title" for="birth">
-        Woonplaats
+      <label className="wlp-input-title" for={inputId}>
+        {title}
       </label>
       <div className="input-tags-wrapper">
         <div className="input-plus-wrapper">
@@ -15,13 +15,13 @@ const InputAddSubtags = () => {
               <img
                 className="wlp-icon"
                 alt="present icon"
-                src="/assets/img/wlp-house.svg"
+                src={`/assets/img/wlp-` + icon + `.svg`}
               ></img>
             </div>
             <input
               className="birth-input wlp-input-style"
-              id="birth"
-              placeholder="Voeg woonplaats toe"
+              id={inputId}
+              placeholder={placeholder}
             ></input>
           </div>
           <div className="input-plus">
@@ -33,8 +33,9 @@ const InputAddSubtags = () => {
           </div>
         </div>
         <div className="input-tags-list">
-          <SubTag text={"Lendelede"}/>
-          <SubTag text={"Lendelede"}/><SubTag text={"Lendelede"}/>
+          <SubTag text={"Postzegelverzamelen"} />
+          <SubTag text={"Schilderen"} />
+          <SubTag text={"Schaken"} />
         </div>
       </div>
     </div>
