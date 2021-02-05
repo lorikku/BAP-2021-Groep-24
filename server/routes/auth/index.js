@@ -1,10 +1,11 @@
 const express = require('express');
 const route = express.Router();
 
-//Import endpoint routes from other files
-const staff = require('./staff');
-
-route.use('/staff', staff);
+route.use('/staff', async (req, res) => {
+  res.status(403).json({
+    message: 'This API endpoint is still under development',
+  });
+});
 
 //Export this route to use in server.js
 module.exports = route;

@@ -14,7 +14,7 @@ const loggedInStaffId = convertToObjectId('601acc5f47326585f23b2ade');
 /* -------------- GET QUERIES -------------- */
 
 /* GET ALL OF MY RESIDENTS */
-route.get('/my-residents', async (req, res) => {
+route.get('', async (req, res) => {
   let { name, sorting, floor } = req.query;
 
   /* Setting the query */
@@ -76,15 +76,12 @@ route.get('/my-residents', async (req, res) => {
           $match: {
             'myResidents.name': {
               $regex: query.name,
-              $options: 'i',
             },
             'myResidents.roomNr': {
               $regex: query.roomNr,
-              $options: 'i',
             },
             'myResidents.floor': {
               $regex: query.floor,
-              $options: 'i',
             },
           },
         },
@@ -148,7 +145,7 @@ const getMyResidentById = async (_id, req, res) => {
 };
 
 /* GETTING ONE RESIDENT FROM MY RESIDENTS */
-route.get('/my-residents/:residentId', async (req, res) => {
+route.get('/:residentId', async (req, res) => {
   const residentId = req.params.residentId;
   const _id = convertToObjectId(residentId, res);
 
@@ -168,7 +165,7 @@ route.get('/my-residents/:residentId', async (req, res) => {
 /* -------------- POST QUERIES -------------- */
 
 /* ADDING RESIDENT TO MY RESIDENTS */
-route.post('/my-residents', async (req, res) => {
+route.post('', async (req, res) => {
   const _id = convertToObjectId(req.body._id, res);
 
   const myResident = await getMyResidentById(_id, req, res);
@@ -212,7 +209,7 @@ route.post('/my-residents', async (req, res) => {
 /* -------------- DELETE QUERIES -------------- */
 
 /* DELETE ONE RESIDENT FROM MY RESIDENTS */
-route.delete('/my-residents/:residentId', async (req, res) => {
+route.delete('/:residentId', async (req, res) => {
   const residentId = req.params.residentId;
   const _id = convertToObjectId(residentId, res);
 

@@ -7,7 +7,7 @@ import { isTimestampNew } from '../../timeStampFuncs';
 import {
   deleteMyResident,
   postMyResident,
-} from '../../../../services/ResidentsService';
+} from '../../../../services/MyResidentsService';
 
 const OverviewProfile = ({ resident }) => {
   const {

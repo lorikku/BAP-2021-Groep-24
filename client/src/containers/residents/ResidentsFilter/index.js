@@ -4,12 +4,14 @@ import FloorInput from '../../../components/global/FloorInput';
 import NameInput from '../../../components/global/NameInput';
 import SortingInput from '../../../components/global/SortingInput';
 
-import {
-  fetchMyResidents,
-  fetchResidents,
-} from '../../../services/ResidentsService';
+import { fetchResidents } from '../../../services/ResidentsService';
+import { fetchMyResidents } from '../../../services/MyResidentsService';
 
-import { floorOptions, sortingOptionsMyResidents, sortingOptions } from './filterOptions';
+import {
+  floorOptions,
+  sortingOptionsMyResidents,
+  sortingOptions,
+} from './filterOptions';
 
 import './residentsfilter.css';
 

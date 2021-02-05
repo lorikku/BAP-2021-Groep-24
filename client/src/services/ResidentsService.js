@@ -1,3 +1,7 @@
+import { fetchMyResidents } from './MyResidentsService';
+
+const apiRoute = '/app/residents/';
+
 /* -------------- GET FUNCTIONS -------------- */
 
 /* Fetching single resident and their interests/contacts */
@@ -7,7 +11,7 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/app/residents/${residentId}`
+      process.env.REACT_APP_API_URL + apiRoute + residentId
     );
     const result = await response.json();
 
@@ -25,7 +29,7 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT INTERESTS
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/app/residents/${residentId}/interests`
+      process.env.REACT_APP_API_URL + apiRoute + residentId + '/interests'
     );
     const result = await response.json();
 
@@ -38,7 +42,7 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT CONACTS
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/app/residents/${residentId}/contacts`
+      process.env.REACT_APP_API_URL + apiRoute + residentId + '/contacts'
     );
     const result = await response.json();
 
@@ -53,10 +57,10 @@ const fetchResident = async (residentId) => {
 
 /* Fetching ALL residents */
 const fetchResidents = async (name, floor, sorting) => {
+  const query = `?name=${name}&floor=${floor}&sorting=${sorting.value}`;
+
   try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/app/residents?name=${name}&floor=${floor}&sorting=${sorting.value}`
-    );
+    const response = await fetch(process.env.REACT_APP_API_URL + apiRoute + query);
     const result = await response.json();
 
     if (!response.ok) {
@@ -86,83 +90,17 @@ const fetchResidents = async (name, floor, sorting) => {
   }
 };
 
-/* Fetching MY resident */
-const fetchMyResident = async (residentId) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/auth/staff/my-residents/${residentId}`
-    );
-
-    if (!response.ok) {
-      return null;
-    }
-
-    return true;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-};
-
-/* Fetching MY residents */
-const fetchMyResidents = async (name, floor, sorting) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/auth/staff/my-residents?name=${name}&floor=${floor}&sorting=${sorting.value}`
-    );
-    const result = await response.json();
-
-    if (!response.ok) {
-      return null;
-    }
-
-    return result.myResidents;
-  } catch (err) {
-    console.log(err);
-    return null;
-  }
-};
-
-export { fetchResidents, fetchMyResidents, fetchResident, fetchMyResident };
+export { fetchResidents, fetchResident };
 
 /* -------------- POST FUNCTIONS -------------- */
 
-/* Posting to MY residents */
-
-const postMyResident = async (data) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/auth/staff/my-residents`,
-      {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-      }
-    );
-
-    if (!response.ok) {
-      return false;
-    }
-
-    return {
-      newValue: true,
-    };
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
-export { postMyResident };
-
 /* -------------- PUT FUNCTIONS -------------- */
 
+/* Update one resident */
 const updateResident = async (residentId, data) => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/app/residents/${residentId}`,
+      process.env.REACT_APP_API_URL + apiRoute + residentId,
       {
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -187,28 +125,3 @@ const updateResident = async (residentId, data) => {
 export { updateResident };
 
 /* -------------- DELETE FUNCTIONS -------------- */
-
-/* Delete a resident from my residents */
-const deleteMyResident = async (_id) => {
-  try {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/auth/staff/my-residents/${_id}`,
-      {
-        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-      }
-    );
-
-    if (!response.ok) {
-      return false;
-    }
-
-    return {
-      newValue: false,
-    };
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
-export { deleteMyResident };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { updateResident } from '../../../../services/ResidentsService';
+import {updateResident} from '../../../../services/ResidentsService';
 import { getMsUntilExpired, isTimestampNew } from '../../timeStampFuncs';
 
 import './residentspotlight.css';

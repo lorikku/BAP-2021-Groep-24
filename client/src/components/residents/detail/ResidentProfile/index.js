@@ -5,7 +5,7 @@ import {
   deleteMyResident,
   fetchMyResident,
   postMyResident,
-} from '../../../../services/ResidentsService';
+} from '../../../../services/MyResidentsService';
 
 import ResidentProfilePicture from '../ResidentProfilePicture';
 

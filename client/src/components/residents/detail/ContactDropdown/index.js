@@ -56,8 +56,8 @@ const ContactDropdown = ({ contact, deleteContact }) => {
         <div className="dropdown-tags-container">
           <p className="dropdown-tags-title">Gematched op</p>
           <ul className="dropdown-tags-list">
-            {matchedInterests.map((interest) => (
-              <Tag name={interest.name} />
+            {matchedInterests.map((interest, index) => (
+              <Tag key={index} name={interest.name} />
             ))}
           </ul>
         </div>
