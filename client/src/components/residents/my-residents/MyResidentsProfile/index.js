@@ -16,7 +16,7 @@ const MyResidentsProfile = ({ resident }) => {
         </div>
         <img
           className="residents-myresidents__profiles__img"
-          src={photoUri}
+          src={photoUri ? photoUri : '/assets/img/emptystate-profile.svg'}
           alt={`Foto van ${name}.`}
         />
         <p className="residents-myresidents__profiles__name">{name}</p>

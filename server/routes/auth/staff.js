@@ -2,7 +2,11 @@ const express = require('express');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
-const { convertToObjectId, stopExecution } = require('../util');
+const {
+  convertToObjectId,
+  convertToRegExp,
+  stopExecution,
+} = require('../util');
 
 //Dummy login
 const loggedInStaffId = convertToObjectId('601acc5f47326585f23b2ade');
@@ -24,10 +28,10 @@ route.get('/my-residents', async (req, res) => {
   if (name) {
     if (!isNaN(parseInt(name))) {
       // If name was a number -> treat as room number query
-      query.roomNr = new RegExp(name, 'i');
+      query.roomNr = convertToRegExp(name, 'i', res);
     } else {
       // Else, search on residential names
-      query.name = new RegExp(name, 'i');
+      query.name = convertToRegExp(name, 'i', res);
     }
   }
 
@@ -204,9 +208,6 @@ route.post('/my-residents', async (req, res) => {
 });
 
 /* -------------- PUT QUERIES -------------- */
-
-
-
 
 /* -------------- DELETE QUERIES -------------- */
 

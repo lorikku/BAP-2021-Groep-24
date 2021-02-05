@@ -20,9 +20,9 @@ const SubNav = ({ navItems }) => {
     <ul className="subnav">
       {/* For every navigation item in the array, make a new navitem with icon and text */}
       {navItems.map((navItem, index) => {
-        const firstParam = params[Object.keys(params)[0]];
-        const path = firstParam
-          ? navItem.path('/' + firstParam)
+        const {residentId} = params;
+        const path = residentId
+          ? navItem.path('/' + residentId)
           : navItem.path();
 
         return (

@@ -1,20 +1,19 @@
-import * as React from "react";
+import * as React from 'react';
 
-import "./confirmdialog.css";
+import './confirmdialog.css';
 
-const ConfirmDialog = ({ dialogText }) => {
+const ConfirmDialog = ({ confirmDialog }) => {
+  const { dialogText, cancel, confirm } = confirmDialog;
   return (
-    <div className="confirm-container-black">
-      <div className="confirm-container">
-        <p className="confirm-text">{dialogText}</p>
+    <div className="confirm-container">
+      <p className="confirm-text">{dialogText}</p>
 
-        <div className="confirm-buttons">
-          <div className="cancel-btn">
-            <p className="cancel-btn-text">Annuleren</p>
-          </div>
-          <div className="confirm-btn">
-            <p className="confirm-btn-text">Verwijderen</p>
-          </div>
+      <div className="confirm-buttons">
+        <div onClick={confirm.callback} className="cancel-btn">
+          <p className="cancel-btn-text">{confirm.text}</p>
+        </div>
+        <div onClick={cancel.callback} className="confirm-btn">
+          <p className="confirm-btn-text">{cancel.text}</p>
         </div>
       </div>
     </div>

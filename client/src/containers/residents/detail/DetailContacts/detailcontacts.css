@@ -19,6 +19,8 @@
   border: solid 2px var(--colorCTA);
   border-radius: var(--borderRadius);
   margin-top: var(--spacerMain);
+
+  cursor: pointer;
 }
 
 .detailresident-add-contact-text {

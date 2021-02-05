@@ -26,6 +26,8 @@
   width: 30px;
   height: 30px;
   margin-left: var(--spacerMain);
+
+  cursor: pointer;
 }
 
 .res-profile-heart-btn--active {

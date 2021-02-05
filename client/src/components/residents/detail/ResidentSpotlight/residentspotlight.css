@@ -36,14 +36,15 @@
 }
 
 .spotlight-btn {
-    display: flex;
-    align-items: center;
-    border: 2px solid var(--colorSpotlight);
-    padding: var(--spacerButtonNormal);
-    width: max-content;
-    border-radius: var(--borderRadiusBig);
-    background-color: var(--colorBgMain);
-   
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--colorSpotlight);
+  padding: var(--spacerButtonNormal);
+  width: max-content;
+  border-radius: var(--borderRadiusBig);
+  background-color: var(--colorBgMain);
+
+  cursor: pointer;
 }
 
 .spotlight-btn--active {

@@ -2,7 +2,7 @@ const express = require('express');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
-const { convertToObjectId, stopExecution } = require('../util');
+const { convertToObjectId, convertToRegExp, stopExecution } = require('../util');
 
 /* -------------- GET QUERIES -------------- */
 
@@ -25,10 +25,10 @@ route.get('/', async (req, res) => {
   if (name) {
     if (!isNaN(parseInt(name))) {
       // If name was a number -> treat as room number query
-      query.roomNr = new RegExp(name, 'i');
+      query.roomNr = convertToRegExp(name, 'i', res);
     } else {
       // Else, search on residential names
-      query.name = new RegExp(name, 'i');
+      query.name = convertToRegExp(name, 'i', res);
     }
   }
 

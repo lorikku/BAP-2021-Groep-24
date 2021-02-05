@@ -24,6 +24,8 @@
     height: 40px;
 
     margin-right: 10px;
+
+    cursor: pointer;
 }
 
 .residents__filter__flooroption--active {

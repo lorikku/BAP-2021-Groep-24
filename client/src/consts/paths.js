@@ -11,6 +11,7 @@ const paths = {
     DETAIL_GENERAL: '/general',
     DETAIL_PLANNING: '/planning',
     DETAIL_ADD_CONTACT: '/add-contact',
+    DETAIL_EDIT: '/edit'
   },
   PATH_ACTIVITIES: {
     // Root
@@ -24,6 +25,8 @@ const paths = {
   },
   PATH_MATCHING: {
     ROOT: '/matching',
+    // Matching detail
+    DETAIL: '/:residentId',
   },
   PATH_WLP: {
     //Woon-en-leefplan

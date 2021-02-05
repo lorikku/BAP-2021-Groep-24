@@ -2,10 +2,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px 1fr;
+
   min-height: 504px;
+  width: 95%;
+
   background-color: var(--colorBgLight);
   flex-direction: column;
   border-radius: var(--borderRadiusBig);
+
+  position: absolute;
+  bottom: var(--spacerMain);
 }
 
 .popup-close {
@@ -17,6 +23,8 @@
   margin: 1rem;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
 }
 
 .popup-close-text {

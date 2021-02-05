@@ -20,9 +20,12 @@ const getPagesObj = (paths) => {
         paths.ROOT + detail + paths.DETAIL_PLANNING,
     },
     DETAIL_ADD_CONTACT: {
-      text: 'persoonlijke planning',
-      path: (detail = paths.DETAIL) =>
-        paths.ROOT + detail + paths.DETAIL_ADD_CONTACT,
+      text: 'contact toevoegen',
+      path: () => paths.ROOT + paths.DETAIL + paths.DETAIL_ADD_CONTACT,
+    },
+    DETAIL_EDIT: {
+      text: 'bewoner aanpassen',
+      path: () => paths.ROOT + paths.DETAIL + paths.DETAIL_EDIT,
     },
     NEW_RESIDENT: {
       path: () => paths.ROOT + paths.NEW_RESIDENT,

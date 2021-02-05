@@ -34,6 +34,8 @@
   grid-row: 1;
   grid-column: 1;
   margin: 0.5rem;
+
+  cursor: pointer;
 }
 
 .dropdown-tags-title {

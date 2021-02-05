@@ -12,14 +12,14 @@ const fetchResident = async (residentId) => {
     const result = await response.json();
 
     if (!response.ok) {
-      fetchedResident = null;
+      return null;
       return;
     }
 
     fetchedResident = result.resident;
   } catch (err) {
-    fetchedResident = null;
     console.log(err);
+    return null;
   }
 
   // FETCHING RESIDENT INTERESTS
@@ -184,7 +184,7 @@ const updateResident = async (residentId, data) => {
   }
 };
 
-export {updateResident};
+export { updateResident };
 
 /* -------------- DELETE FUNCTIONS -------------- */
 

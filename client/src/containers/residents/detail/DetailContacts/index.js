@@ -1,8 +1,23 @@
 import * as React from 'react';
 import Contact from '../../../../components/residents/detail/Contact';
+import { useGlobalState } from '../../../../global-states';
 import './detailcontacts.css';
 
-const DetailContacts = ({ contacts }) => {
+const DetailContacts = ({ resident }) => {
+  const { _id, contacts } = resident;
+
+  const [_, setAddNewContact] = useGlobalState('addNewContact');
+  const toggleAddNewContact = () => {
+    setAddNewContact({
+      residentId: _id,
+      closeWindow: () => setAddNewContact(null),
+    });
+  };
+
+  const deleteContact = () => {
+    console.log('contact deleted');
+  };
+
   return (
     <>
       <h2 className="visually-hidden">Vriendschappen bewoner</h2>
@@ -13,13 +28,22 @@ const DetailContacts = ({ contacts }) => {
           {contacts
             ? contacts.length > 0
               ? contacts.map((contact, index) => (
-                  <Contact key={index} contact={contact} />
+                  <Contact
+                    key={index}
+                    contact={contact}
+                    deleteContact={deleteContact}
+                  />
                 ))
               : 'Geen vriendschappen gevonden'
-            : 'Vriendschappen ophalen...'}
+            : contacts === null
+            ? 'Geen vriendschappen gevonden'
+            : 'Geen vriendschappen gevonden'}
         </ul>
 
-        <div className="detailresident-add-contact-btn">
+        <div
+          onClick={toggleAddNewContact}
+          className="detailresident-add-contact-btn"
+        >
           <p className="detailresident-add-contact-text">
             Nieuw contactpersoon
           </p>

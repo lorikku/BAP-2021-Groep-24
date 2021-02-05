@@ -108,6 +108,7 @@
 
 .residents-myresidents__overviewprofile__heart {
     padding: var(--spacerMain);
+    cursor: pointer;
 }
 
 .residents-myresidents__overviewprofile__heart--active {

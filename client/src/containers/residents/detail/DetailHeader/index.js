@@ -5,15 +5,16 @@ import ResidentSpotlight from '../../../../components/residents/detail/ResidentS
 
 import './detailheader.css';
 
-const DetailHeader = ({ resident }) => {
+const DetailHeader = ({ resident, showIcons, customImg }) => {
   return (
     <>
       <div className="detailresident-header">
-        <ResidentProfile
-          resident={resident}
-          showIcons
-        />
-        <ResidentSpotlight resident={resident} />
+        <ResidentProfile resident={resident} showIcons={showIcons} />
+        {customImg === undefined ? (
+          <ResidentSpotlight resident={resident} />
+        ) : customImg === null ? null : (
+          <img src={customImg}></img>
+        )}
       </div>
     </>
   );

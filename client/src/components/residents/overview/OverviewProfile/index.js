@@ -82,7 +82,7 @@ const OverviewProfile = ({ resident }) => {
                     ? '  residents-myresidents__overviewprofile__img--acitve'
                     : ''
                 }`}
-                src={photoUri}
+                src={photoUri ? photoUri : '/assets/img/emptystate-profile.svg'}
               />
               {isNew || isSpotlight ? (
                 <img

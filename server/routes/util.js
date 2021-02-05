@@ -31,7 +31,25 @@ const convertToObjectId = (id, res) => {
   return _id;
 };
 
+const convertToRegExp = (value, option, res) => {
+  let regValue;
+
+  try {
+    regValue = new RegExp(value, option);
+  } catch (err) {
+    res
+      .status(statusMessages.INVALID_OBJECTID.statusCode)
+      .json({ message: statusMessages.INVALID_OBJECTID.message });
+    //Execution is stopped here to prevent other routes of sending more responses after an error occured here
+    stopExecution();
+    return;
+  }
+
+  return regValue;
+};
+
 module.exports = {
   convertToObjectId,
+  convertToRegExp,
   stopExecution,
 };

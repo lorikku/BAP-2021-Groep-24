@@ -52,6 +52,8 @@
   background-color: var(--colorBgDark);
   justify-self: flex-end;
   border-radius: 10px;
+
+  cursor: pointer;
 }
 
 

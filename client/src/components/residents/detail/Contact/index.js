@@ -1,8 +1,11 @@
-import * as React from "react";
-import "./contact.css";
-import ContactDropdown from "../ContactDropdown";
+import * as React from 'react';
+import './contact.css';
+import ContactDropdown from '../ContactDropdown';
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, deleteContact }) => {
+  const [isDropdownActive, setDropdownActive] = React.useState(false);
+  const toggleDropdown = () => setDropdownActive((prevState) => !prevState);
+
   return (
     <>
       <li className="contact-container">
@@ -16,24 +19,30 @@ const Contact = ({ contact }) => {
           <div
             className={`contact-type${
               contact.matchedInterests.length > 0
-                ? "  contact-type--contact"
-                : ""
+                ? '  contact-type--contact'
+                : ''
             }`}
           >
             <p className="contact-type-text">
-              {contact.matchedInterests.length > 0 ? "Match" : "Vriend"}
+              {contact.matchedInterests.length > 0 ? 'Match' : 'Vriend'}
             </p>
           </div>
         </div>
-        <div className="contact-info-btn">
+        <div onClick={toggleDropdown} className="contact-info-btn">
           <img
             className="contact-info-btn-vector"
             alt="chevron down icon"
-            src="/assets/img/chevron-down.svg"
+            src={
+              isDropdownActive
+                ? '/assets/img/chevron-up.svg'
+                : '/assets/img/chevron-down.svg'
+            }
           ></img>
         </div>
       </li>
-      <ContactDropdown />
+      {isDropdownActive ? (
+        <ContactDropdown contact={contact} deleteContact={deleteContact} />
+      ) : null}
     </>
   );
 };

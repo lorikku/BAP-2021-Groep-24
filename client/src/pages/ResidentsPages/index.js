@@ -1,19 +1,22 @@
 import * as React from 'react';
 import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
-import SubNav from '../../containers/residents/SubNav';
 import MyResidentsPage from './MyResidentsPage';
 import OverviewPage from './OverviewPage';
 import DetailGeneralPage from './DetailGeneralPage';
 import DetailPlanningPage from './DetailPlanningPage';
+import DetailEditPage from './DetailEditPage';
 
-import './residentspage.css';
 import DetailHeader from '../../containers/residents/detail/DetailHeader';
 import GoBack from '../../components/global/GoBack';
 import PopUpContact from '../../containers/residents/detail/PopUpContact';
+import SubNav from '../../containers/residents/SubNav';
 
-import { getPagesObj } from './funcs';
+import { getPagesObj } from './pages';
 import { fetchResident } from '../../services/ResidentsService';
+
+import './residentspage.css';
+import DetailPage from './DetailPage';
 
 const ResidentsPages = ({ paths }) => {
   //Pages that are in /residents route
@@ -26,7 +29,6 @@ const ResidentsPages = ({ paths }) => {
   //Fetching resident single from db
   const [resident, setResident] = React.useState(undefined);
   const [residentId, setResidentId] = React.useState(undefined);
-  const [showHeader, setShowHeader] = React.useState(true);
 
   React.useEffect(() => {
     let componentMounted = true;
@@ -67,41 +69,44 @@ const ResidentsPages = ({ paths }) => {
       </Route>
       {/* ---DETAIL PAGES--- */}
       <Route path={paths.ROOT + paths.DETAIL} strict>
-        {resident && showHeader ? (
-          <>
-            <GoBack
-              path={pages.OVERVIEW.path()}
-              text={'Terug naar overzicht'}
-            />
-            <DetailHeader resident={resident} />
-          </>
-        ) : null}
         <Switch>
           {/* Detail page with general info */}
           <Route path={pages.DETAIL_GENERAL.path()} exact>
-            <DetailGeneralPage
-              setShowHeader={setShowHeader}
+            <DetailPage
+              showIcons={true}
               resident={resident}
               setResidentId={(residentId) => setResidentId(residentId)}
-              navItems={detailPages}
-            />
+            >
+              <DetailGeneralPage resident={resident} navItems={detailPages} />
+            </DetailPage>
           </Route>
           {/* Detail page with personal planning */}
           <Route path={pages.DETAIL_PLANNING.path()} exact>
-            <DetailPlanningPage
-              setShowHeader={setShowHeader}
+            <DetailPage
+              showIcons={true}
               resident={resident}
               setResidentId={(residentId) => setResidentId(residentId)}
-              navItems={detailPages}
-            />
+            >
+              <DetailPlanningPage resident={resident} navItems={detailPages} />
+            </DetailPage>
+          </Route>
+          {/* Edit resident */}
+          <Route path={pages.DETAIL_EDIT.path()} exact>
+            <DetailPage
+              showIcons={false}
+              customImg={null}
+              resident={resident}
+              setResidentId={(residentId) => setResidentId(residentId)}
+            >
+              <DetailEditPage resident={resident} />
+            </DetailPage>
           </Route>
           {/* Add new contact to resident */}
           <Route path={pages.DETAIL_ADD_CONTACT.path()} exact>
             <PopUpContact />
-            <p>Nieuw contact toevoegen</p>
           </Route>
-          {/* If ResidentID was filled in URL, without specifying /general or /planning 
-            as trailing path => generate /general trailing path per default */}
+          {/* If ResidentID was filled in URL, without specifying trailing path (like /general)
+            => generate /general trailing path per default */}
           <Route>
             <AddGeneralTrailingPath
               pathNameGenerator={pages.DETAIL_GENERAL.path}
@@ -119,9 +124,9 @@ const ResidentsPages = ({ paths }) => {
 
 const AddGeneralTrailingPath = ({ pathNameGenerator }) => {
   const params = useParams();
-  const firstParam = params[Object.keys(params)[0]];
+  const {residentId} = params;
 
-  return <Redirect to={pathNameGenerator('/' + firstParam)} />;
+  return <Redirect to={pathNameGenerator('/' + residentId)} />;
 };
 
 export default ResidentsPages;

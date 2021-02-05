@@ -6,42 +6,19 @@ import DetailInteresting from '../../containers/residents/detail/DetailInteresti
 
 import SubNav from '../../containers/residents/SubNav';
 
-const DetailPlanningPage = ({
-  navItems,
-  resident,
-  setResidentId,
-  setShowHeader,
-}) => {
-  const { residentId } = useParams();
-
-  React.useEffect(() => {
-    setShowHeader(true);
-  }, [setShowHeader]);
-
-  React.useEffect(() => {
-    setResidentId(residentId);
-  }, [setResidentId, residentId]);
-
+const DetailPlanningPage = ({ navItems, resident }) => {
   return (
     <>
       <h2 className="visually-hidden">
-        Algemene informatie van bepaalde bewoner
+        Informatie over planning van een bewoner
       </h2>
-      {resident ? (
-        <div className="residents-detailresident fit-height">
-          <SubNav navItems={navItems} />
-          <div className="detailresident-personal-planning">
-            <DetailActivities name={{ first: 'Mathilda' }} />
-            <DetailInteresting name={{ first: 'Mathilda' }} />
-          </div>
+      <div className="residents-detailresident fit-height">
+        <SubNav navItems={navItems} />
+        <div className="detailresident-personal-planning">
+          <DetailActivities name={{ first: 'Mathilda' }} />
+          <DetailInteresting name={{ first: 'Mathilda' }} />
         </div>
-      ) : resident === null ? (
-        <p className="notification">
-          Er werd geen bewoner gevonden met deze identificatiecode
-        </p>
-      ) : (
-        <p className="notification">Bewoner ophalen...</p>
-      )}
+      </div>
     </>
   );
 };
