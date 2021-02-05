@@ -14,7 +14,7 @@ const SortingInput = ({ options, defaultValue, setSorting }) => {
           onChange={(newSorting) => setSorting(newSorting)}
           className="residents__filter__sorting"
           isSearchable={false}
-          defaultValue={sorting}
+          defaultValue={defaultValue}
           options={options}
           theme={(theme) => ({
             ...theme,

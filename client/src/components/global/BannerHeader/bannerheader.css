@@ -1,13 +1,3 @@
-/*     <div className="newactivity-header-container">
-      <div className="newactivity-header-titles-wrapper">
-        <p className="newactivity-header-title">Plan je activiteit</p>
-        <p className="newactivity-header-subtitle">
-          Vul de nodige gegevens in om je activiteit tot leven te wekken
-        </p>
-      </div>
-      <p>Illustratie</p>
-    </div> */
-
 .newactivity-header-container {
   background-color: var(--colorOrangeLight);
   display: flex;
@@ -15,6 +5,10 @@
   min-height: 150px;
   align-items: center;
   border-radius: var(--borderRadiusBig);
+}
+
+.newactivity-header-container.color-blue {
+  background-color: var(--colorBgLight);
 }
 
 .newactivity-header-titles-wrapper {
@@ -28,7 +22,7 @@
 }
 
 .newactivity-header-subtitle {
-  max-width: 220px;
+  max-width: 300px;
   margin-top: 16px;
   line-height: 1.2rem;
 }

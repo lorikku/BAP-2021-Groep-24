@@ -1,0 +1,105 @@
+.newresident-container {
+  display: grid;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  margin-top: var(--spacerMain);
+}
+
+.newresident-welkom-left {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.newresident-welkom-right {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: var(--colorBgLight);
+  border-radius: var(--borderRadiusBig);
+  padding: 0rem 2.5rem;
+}
+
+.newresident-welkom-title {
+  font-size: var(--fontSizeRoom);
+  font-weight: var(--fontWeightMedium);
+  margin: 50px 0px;
+}
+
+.newresident-name {
+  font-size: var(--fontSizeInBetween);
+  font-weight: var(--fontWeightSemiBold);
+  margin-top: 15px;
+}
+
+.newresident-status {
+  font-weight: var(--fontWeightMedium);
+  margin-top: 15px;
+}
+
+.newresident-room-div {
+  font-weight: var(--fontWeightSemiBold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem;
+  width: max-content;
+  background-color: var(--colorBgDark);
+  border-radius: var(--borderRadius);
+  margin-top: 2rem;
+}
+
+.newresident-profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-home-btn {
+  padding: 1rem 2rem;
+  background-color: var(--colorCTA);
+  border-radius: var(--borderRadius);
+  width: max-content;
+}
+
+.back-home-btn-text {
+  font-weight: var(--fontWeightMedium);
+  color: var(--colorBgMain);
+  font-size: var(--fontSizeBig);
+}
+
+.clipboard-btn {
+  background-color: var(--colorBgDark);
+  padding: 0.6rem 1rem;
+  border-radius: var(--borderRadiusBig);
+  width: max-content;
+  margin-left: 0.5rem;
+}
+
+.newresident-link-instruction {
+  font-weight: var(--fontWeightMedium);
+}
+
+.newresident-link-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+}
+
+.newresident-link {
+  border-radius: var(--borderRadius);
+  width: 296px;
+  background-color: var(--colorBgMain);
+  padding: 0.9rem;
+}
+
+.newresident-link-title {
+  font-weight: var(--fontWeightMedium);
+  margin-bottom: 0.5rem;
+}

@@ -1,4 +1,5 @@
 import * as React from "react";
+import ToggleBtn from "../../../../components/global/ToggleBtn";
 import ActivitySmall from "../../../../components/residents/detail/ActivitySmall";
 import "./detailactivities.css";
 
@@ -10,14 +11,9 @@ const DetailActivities = ({ name }) => {
         <h3 className="detailresident-activities-title">
           {name.first}'s Activiteiten
         </h3>
-        <div className="activities-toggle-btn">
-          <div className="activities-toggle-planned">
-            <p className="activities-toggle-planned-text">Gepland</p>
-          </div>
-          <div className="activities-toggle-passed">
-            <p className="activities-toggle-passed-text">Afgelopen</p>
-          </div>
-        </div>
+
+        <ToggleBtn option1={"Gepland"} option2={"Afgelopen"} />
+
         <ul className="activities-list">
           {/* activity component small */}
           <ActivitySmall
@@ -26,13 +22,13 @@ const DetailActivities = ({ name }) => {
             location={"Centrum Stad Kortrijk"}
             hour={"14:00 - 15:15"}
           />
-                    <ActivitySmall
+          <ActivitySmall
             name={"Wandeltocht: 't park van Kortrijk"}
             date={{ dateNr: "26", day: "Do" }}
             location={"Centrum Stad Kortrijk"}
             hour={"14:00 - 15:15"}
           />
-                    <ActivitySmall
+          <ActivitySmall
             name={"Wandeltocht: 't park van Kortrijk"}
             date={{ dateNr: "26", day: "Do" }}
             location={"Centrum Stad Kortrijk"}
