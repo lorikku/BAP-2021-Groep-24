@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 import './selectinput.css';
 
-const SortingInput = ({ options, sorting, setSorting }) => {
+const SortingInput = ({ options, defaultValue, setSorting }) => {
   return (
     <div className="residents__filter">
       <label className="residents__filter__label" htmlFor="filter__sorting">

@@ -9,6 +9,7 @@ const DetailPage = ({
   customImg,
   resident,
   setResidentId,
+  setResident,
   // props.children will return all children the parent component (DetailPage) has
   children,
 }) => {
@@ -25,6 +26,7 @@ const DetailPage = ({
         customImg={customImg}
         showIcons={showIcons}
         resident={resident}
+        setResident={setResident}
       />
       {children}
     </>

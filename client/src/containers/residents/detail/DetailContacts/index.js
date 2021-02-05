@@ -1,21 +1,46 @@
 import * as React from 'react';
 import Contact from '../../../../components/residents/detail/Contact';
 import { useGlobalState } from '../../../../global-states';
+import { deleteContactFromResident } from '../../../../services/ResidentsService';
 import './detailcontacts.css';
 
 const DetailContacts = ({ resident }) => {
-  const { _id, contacts } = resident;
+  const { contacts } = resident;
 
-  const [_, setAddNewContact] = useGlobalState('addNewContact');
+  const setResident = useGlobalState('resident')[1];
+  const setAddNewContact = useGlobalState('addNewContact')[1];
+
   const toggleAddNewContact = () => {
     setAddNewContact({
-      residentId: _id,
+      residentId: resident._id,
       closeWindow: () => setAddNewContact(null),
     });
   };
 
-  const deleteContact = () => {
-    console.log('contact deleted');
+  let contactLoading = false;
+  const deleteContact = async (contactId) => {
+    if (contactLoading) {
+      return;
+    }
+
+    contactLoading = true;
+
+    const succes = await deleteContactFromResident(resident._id, contactId);
+
+    if (succes) {
+      //setResident to newResident with update contacts
+      setResident((prevState) => {
+        const newResident = Object.assign({}, prevState);
+
+        const index = newResident.contacts.findIndex(
+          (contact) => contact._id === contactId
+        );
+        newResident.contacts.splice(index, 1);
+        return newResident;
+      });
+    }
+
+    contactLoading = false;
   };
 
   return (
@@ -31,7 +56,7 @@ const DetailContacts = ({ resident }) => {
                   <Contact
                     key={index}
                     contact={contact}
-                    deleteContact={deleteContact}
+                    deleteContact={() => deleteContact(contact._id)}
                   />
                 ))
               : 'Geen vriendschappen gevonden'

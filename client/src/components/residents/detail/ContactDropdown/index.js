@@ -4,10 +4,10 @@ import Tag from '../../../interests/Tag';
 import { useGlobalState } from '../../../../global-states';
 
 const ContactDropdown = ({ contact, deleteContact }) => {
-  const { matchedInterests, createdAt } = contact;
+  const { matchedInterests } = contact;
 
   //Global state for handling the confirm dialog
-  const [_, setConfirmDialog] = useGlobalState('confirmDialog');
+  const setConfirmDialog = useGlobalState('confirmDialog')[1];
 
   const confirmDeletion = () => {
     const dialog = {

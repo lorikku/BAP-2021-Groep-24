@@ -17,6 +17,7 @@ import { fetchResident } from '../../services/ResidentsService';
 
 import './residentspage.css';
 import DetailPage from './DetailPage';
+import {useGlobalState} from '../../global-states';
 
 const ResidentsPages = ({ paths }) => {
   //Pages that are in /residents route
@@ -27,7 +28,7 @@ const ResidentsPages = ({ paths }) => {
   const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
 
   //Fetching resident single from db
-  const [resident, setResident] = React.useState(undefined);
+  const [resident, setResident] = useGlobalState('resident');
   const [residentId, setResidentId] = React.useState(undefined);
 
   React.useEffect(() => {
@@ -49,6 +50,8 @@ const ResidentsPages = ({ paths }) => {
 
     return () => (componentMounted = false);
   }, [residentId]);
+
+
 
   return (
     <Switch>

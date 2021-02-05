@@ -233,8 +233,7 @@ route.delete('/:residentId', async (req, res) => {
         {
           $pull: {
             myResidents: {
-              ...req.body,
-              _id,
+              _id
             },
           },
         }

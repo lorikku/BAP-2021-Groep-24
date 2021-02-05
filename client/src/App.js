@@ -26,7 +26,7 @@ const App = () => {
   React.useEffect(() => {
     setConfirmDialog(null);
     setAddNewContact(null);
-  }, [path]);
+  }, [path, setConfirmDialog, setAddNewContact]);
 
   return (
     /* Div100vh calculates div height for accurate display */

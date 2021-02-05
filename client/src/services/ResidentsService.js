@@ -1,6 +1,6 @@
 import { fetchMyResidents } from './MyResidentsService';
 
-const apiRoute = '/app/residents/';
+const apiRoute = '/app/residents';
 
 /* -------------- GET FUNCTIONS -------------- */
 
@@ -11,13 +11,12 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT
   try {
     const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + residentId
+      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`
     );
     const result = await response.json();
 
     if (!response.ok) {
       return null;
-      return;
     }
 
     fetchedResident = result.resident;
@@ -29,7 +28,7 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT INTERESTS
   try {
     const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + residentId + '/interests'
+      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/interests`
     );
     const result = await response.json();
 
@@ -42,7 +41,7 @@ const fetchResident = async (residentId) => {
   // FETCHING RESIDENT CONACTS
   try {
     const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + residentId + '/contacts'
+      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/contacts`
     );
     const result = await response.json();
 
@@ -60,7 +59,9 @@ const fetchResidents = async (name, floor, sorting) => {
   const query = `?name=${name}&floor=${floor}&sorting=${sorting.value}`;
 
   try {
-    const response = await fetch(process.env.REACT_APP_API_URL + apiRoute + query);
+    const response = await fetch(
+      process.env.REACT_APP_API_URL + apiRoute + query
+    );
     const result = await response.json();
 
     if (!response.ok) {
@@ -100,7 +101,7 @@ export { fetchResidents, fetchResident };
 const updateResident = async (residentId, data) => {
   try {
     const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + residentId,
+      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`,
       {
         method: 'PUT', // *GET, POST, PUT, DELETE, etc.
         headers: {
@@ -125,3 +126,31 @@ const updateResident = async (residentId, data) => {
 export { updateResident };
 
 /* -------------- DELETE FUNCTIONS -------------- */
+
+/* Update one resident */
+const deleteContactFromResident = async (residentId, contactId) => {
+  try {
+    const response = await fetch(
+      process.env.REACT_APP_API_URL +
+        apiRoute +
+        `/${residentId}` +
+        `/contacts/${contactId}`,
+      {
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export { deleteContactFromResident };

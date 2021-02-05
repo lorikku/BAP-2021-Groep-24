@@ -51,7 +51,7 @@ const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
       <NameInput name={name} setName={setName} />
       <SortingInput
         options={isMyResidentsPage ? sortingOptionsMyResidents : sortingOptions}
-        sorting={sorting}
+        defaultValue={sorting}
         setSorting={setSorting}
       />
       <FloorInput options={floorOptions} floor={floor} setFloor={setFloor} />
