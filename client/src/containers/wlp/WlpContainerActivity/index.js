@@ -19,11 +19,17 @@ const WlpContainerActivity = ({ section, category }) => {
             alt="illustratie activiteit"
             src="/assets/img/activity-vector.svg"
           ></img>
-          <div className="wlp-activities-list">
-            <InputActivity label={"Het Nieuwsblad"} />
-            <InputActivity label={"Het Nieuwsblad"} />
-            <InputActivity label={"Het Nieuwsblad"} />
-            <InputActivity label={"Het Nieuwsblad"} />
+          <div className="activities-list-wrapper">
+            <div className="wlp-activities-list">
+              <InputActivity label={"Het Nieuwsblad"} />
+              <InputActivity label={"Het Nieuwsblad"} />
+              <InputActivity label={"Het Nieuwsblad"} />
+              <InputActivity label={"Het Nieuwsblad"} />
+            </div>
+            <InputAddSubtags
+              icon={"book"}
+              title={"Voeg een andere optie toe"}
+            />
           </div>
         </div>
       </div>

@@ -1,0 +1,28 @@
+import * as React from "react";
+
+import ResidentsFilter from "../../containers/residents/ResidentsFilter";
+import OverviewProfiles from "../../containers/residents/overview/OverviewProfiles";
+import GoBack from "../../components/global/GoBack";
+import BannerHeader from "../../components/global/BannerHeader";
+import NewResidentForm from "../../containers/residents/new-resident/NewResidentForm";
+
+const NewResidentPage = () => {
+  return (
+    <>
+      <h2 className="visually-hidden">Nieuwe bewoner aanmaken</h2>
+      <div className="new-resident-container fit-height">
+        <GoBack text={"Annuleren"} />
+        <BannerHeader
+          title={"Hallo!"}
+          subtext={
+            "Laten we samen een nieuwe bewoner in het platform toevoegen"
+          }
+          isNewResident
+        />
+        <NewResidentForm />
+      </div>
+    </>
+  );
+};
+
+export default NewResidentPage;

@@ -25,6 +25,7 @@ const WlpPages = ({ paths }) => {
           <div className="wlp-bg fit-height">
             <div className="content-container">
               <ProgressBar />
+              {/* check zeker dat je alle juiste props meegeeft met de containers/components */}
               <WlpContainerActivity
                 section={"Activiteiten & Participatie"}
                 category={"Mentaal stimulerende activiteiten"}

@@ -4,17 +4,20 @@
 }
 
 .wlp-activities-list {
-  margin-left: var(--spacerMain);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: min-content;
   width: 100%;
   gap: var(--spacerMain);
+  margin-bottom: 2rem;
 }
 
-  
 .wlp-act-container {
   display: flex;
   flex-direction: column;
   margin-top: 32px;
+}
+
+.activities-list-wrapper {
+  margin-left: var(--spacerMain);
 }
