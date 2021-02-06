@@ -4,7 +4,7 @@ import "./matchresult.css";
 
 const MatchResult = ({ name }) => {
   return (
-    <div className="result-head-container">
+    <li className="result-head-container">
       <div className="result-head-top-container">
         <div className="main-info-wrapper">
           <div className="result-head-percentage">
@@ -52,7 +52,7 @@ const MatchResult = ({ name }) => {
           src="/assets/img/chevron-right.svg"
         ></img>
       </div>
-    </div>
+    </li>
   );
 };
 export default MatchResult;

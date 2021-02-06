@@ -9,12 +9,16 @@ const MatchingPages = ({ paths }) => {
     <Switch>
       <Route path={paths.ROOT} exact>
         <MatchingProfileHeader />
-        <div className="results-list">
+        <div className="results-list fit-height flex-content">
           <p className="results-title">12 resultaten</p>
           <img className="close-results" alt="kruisje" src="/assets/img/cross-white.svg"></img>
-          <MatchResult />
-          <MatchResult />
-          <MatchResult />
+          <ul className="results-scrolllist">
+            <MatchResult />
+            <MatchResult />
+            <MatchResult />
+            <MatchResult />
+            <MatchResult />
+          </ul>
         </div>
       </Route>
       <Route>

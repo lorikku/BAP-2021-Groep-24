@@ -14,6 +14,19 @@
   font-weight: var(--fontWeightSemiBold);
 }
 
+.results-title {
+  text-align: center;
+  color: var(--colorBgMain);
+  font-size: var(--fontSizeBigger);
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.results-scrolllist {
+  overflow: scroll;
+  padding-bottom: 12rem;
+  margin-top: .5rem;
+}
+
 .close-results {
   position: absolute;
   right: 20px;
