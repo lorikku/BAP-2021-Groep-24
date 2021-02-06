@@ -17,8 +17,8 @@ const MatchResult = ({ name }) => {
           <div className="match-user-wrapper">
             <img
               className="match-user-pic"
-              alt="edit icoon"
-              src="https://www.pngitem.com/pimgs/m/208-2085309_old-woman-png-stock-photo-old-lady-transparent.png"
+              alt="bewoner foto"
+              src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
             ></img>
             <p className="result-name">
               Mathilda <br></br> Dejonckheere
