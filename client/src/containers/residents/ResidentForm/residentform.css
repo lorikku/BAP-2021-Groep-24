@@ -3,14 +3,15 @@
   flex-direction: column;
 }
 
-.form-title {
+.residentform-title {
   display: flex;
   flex-direction: column;
   font-weight: var(--fontWeightSemiBold);
   margin-bottom: 0.5rem;
 }
 
-.input-height {
+
+.residentform-input {
   height: 36px;
   background-color: var(--colorBgLight);
   font-weight: var(--fontWeightMedium);
@@ -19,23 +20,29 @@
   color: var(--colorCopyMain);
 }
 
-.residentform-name-input {
+.residentform-input--name {
   max-width: 243px;
 }
 
-.residentform-room-input {
+.residentform-input--room {
   max-width: 60px;
 }
 
 .residentform-right {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-left: 50px;
   grid-column: 2;
-  grid-row: 1;
   justify-self: flex-start;
   margin-left: 3rem;
+}
+
+.residentform-right--wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 70%;
 }
 
 .residentform-left {
@@ -43,18 +50,14 @@
   flex-direction: column;
   /* border-right: 2px solid var(--colorBgDark); */
   grid-column: 1;
-  grid-row: 1;
   justify-self: flex-end;
   margin-right: 3rem;
 }
 
 .residentform-container {
-  max-width: 1140px;
-  margin: 0 auto;
   margin-top: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 0.3fr;
   justify-content: center;
 }
 
@@ -115,10 +118,7 @@
   justify-content: center;
   align-items: center;
   max-width: max-content;
-  margin-top: 3rem;
-  grid-column: 2;
-  grid-row: 2;
-  margin-left: 3rem;
+  align-self: flex-end;
 }
 
 .create-wlp-btn-text {
@@ -134,13 +134,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: max-content;
-  margin-top: 3rem;
+
   border: 2px solid var(--colorRed);
-  grid-column: 1;
-  grid-row: 2;
-  justify-self: flex-end;
-  margin-right: 6rem;
+  margin-top: 2rem;
 }
 
 .delete-wlp-btn-text {

@@ -1,7 +1,7 @@
-import * as React from "react";
-import ToggleBtn from "../../../components/global/ToggleBtn";
+import * as React from 'react';
+import ToggleBtn from '../../../components/global/ToggleBtn';
 
-import "./residentform.css";
+import './residentform.css';
 
 const ResidentForm = () => {
   return (
@@ -21,39 +21,42 @@ const ResidentForm = () => {
           </div>
         </div>
         <p className="pic-notice">Dit kan later nog toegevoegd worden</p>
-      </div>
-      {/* delete-btn enkel bij edit resident */}
-      <div className="delete-wlp-btn">
-        <p className="delete-wlp-btn-text">Verwijder bewoner</p>
-      </div>
-      <div className="residentform-right">
-        <label className="residentform-name form-title">
-          Naam bewoner
-          <input
-            className="residentform-name-input input-height"
-            type="text"
-          ></input>
-        </label>
-        <label className="residentform-room form-title">
-          Kamernummer
-          <input
-            className="residentform-room-input input-height"
-            type="text"
-          ></input>
-        </label>
-
-        <div className="residentform-stay">
-          <p className=" form-title">Verblijf</p>
-          <ToggleBtn option1={"Vast verblijf"} option2={"Kort verblijf"} />
+        {/* delete-btn enkel bij edit resident */}
+        <div className="delete-wlp-btn">
+          <p className="delete-wlp-btn-text">Verwijder bewoner</p>
         </div>
       </div>
-      <div className="create-wlp-btn">
-        <p className="create-wlp-btn-text">Woon- en leefplan maken</p>
-        <img
-          className="create-wlp-arrow"
-          alt="pijl naar rechts"
-          src="/assets/img/arrow-right-white.svg"
-        ></img>
+
+      <div className="residentform-right">
+        <div className="residentform-right--wrapper">
+          <label className="residentform-title residentform-name">
+            Naam bewoner
+            <input
+              className="residentform-input residentform-input--name"
+              type="text"
+            ></input>
+          </label>
+          <label className="residentform-title residentform-room">
+            Kamernummer
+            <input
+              className="residentform-input residentform-input--room"
+              type="text"
+            ></input>
+          </label>
+  
+          <div className="residentform-stay">
+            <p className=" form-title">Verblijf</p>
+            <ToggleBtn option1={'Vast verblijf'} option2={'Kort verblijf'} />
+          </div>
+        </div>
+        <div className="create-wlp-btn">
+          <p className="create-wlp-btn-text">Woon- en leefplan maken</p>
+          <img
+            className="create-wlp-arrow"
+            alt="pijl naar rechts"
+            src="/assets/img/arrow-right-white.svg"
+          ></img>
+        </div>
       </div>
     </div>
   );
