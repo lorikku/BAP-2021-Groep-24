@@ -1,0 +1,36 @@
+.add-new-tag-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.residents-editinterests {
+  display: flex;
+  gap: var(--spacerMain);
+}
+
+.add-new-tag-title {
+  font-size: var(--fontSizeNormal);
+  font-weight: var(--fontWeightSemiBold);
+  margin-bottom: var(--spacerMain);
+}
+
+.add-new-tag-inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-new-tag-search {
+  margin-bottom: 2rem;
+}
+
+.add-new-tag-input {
+  height: 36px;
+  background-color: var(--colorBgLight);
+  margin-top: 0.5rem;
+}

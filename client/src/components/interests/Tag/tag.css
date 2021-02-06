@@ -6,7 +6,7 @@
   height: 30px;
   padding: .3rem .6rem;
   display: flex;
-  justify-content: center;
+  align-items: center;
   margin-right: 6px;
   margin-top: 10px;
 }
@@ -24,5 +24,10 @@
   font-size: var(--fontSizeSmall);
   text-align: bottom;
   padding-left: 8px;
+  margin-top: 1px;
+}
+
+.tag-delete-cross {
+  margin-left: 5px;
   margin-top: 1px;
 }

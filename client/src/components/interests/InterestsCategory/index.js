@@ -1,22 +1,18 @@
-import * as React from 'react';
-import Tag from '../Tag';
-import './interestscategory.css';
+import * as React from "react";
+import Tag from "../Tag";
+import "./interestscategory.css";
 
-const InterestsCategory = ({ category }) => {
+const InterestsCategory = ({ category, isEdit }) => {
   return (
     <li className="interests-category-container">
       <div className="interests-category">
-        <div className="category-vector">
+        <div className="category-vector"></div>
 
-        </div>
-
-        <p className="interests-category-name">
-          {category.name}
-        </p>
+        <p className="interests-category-name">{category.name}</p>
       </div>
       <ul className="interest-tags">
         {category.interests.map((interest, index) => (
-          <Tag key={index} name={interest.name} />
+          <Tag key={index} name={interest.name} isEdit={isEdit} />
         ))}
       </ul>
     </li>

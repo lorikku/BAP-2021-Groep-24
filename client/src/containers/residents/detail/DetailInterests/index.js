@@ -1,12 +1,12 @@
-import * as React from 'react';
+import * as React from "react";
 
-import InterestsCategory from '../../../../components/interests/InterestsCategory';
+import InterestsCategory from "../../../../components/interests/InterestsCategory";
 
-import { getCategoriesFromInterests } from './categoriseInterests';
+import { getCategoriesFromInterests } from "./categoriseInterests";
 
-import './detailinterests.css';
+import "./detailinterests.css";
 
-const DetailInterests = ({ resident, interests }) => {
+const DetailInterests = ({ resident, interests, isEdit }) => {
   const [categories, setCategories] = React.useState(undefined);
 
   React.useEffect(() => {
@@ -31,21 +31,36 @@ const DetailInterests = ({ resident, interests }) => {
         {resident ? (
           <div className="detailresident-int-wrapper">
             <h3 className="detailresident-int-title">
-              Interesses van {`${resident.name}`}
+              {isEdit ? "Verwijder " : ""}Interesses
+              {isEdit ? "" : (" van " + `${resident.name}`)}
             </h3>
-            <div className="detailresident-edit-int-btn">
-              <p className="detailresident-edit-int-text">Wijzig interesses</p>
+            <div
+              className={`detailresident-edit-int-btn${
+                isEdit ? " edit-confirm-btn" : ""
+              }`}
+            >
+              <p
+                className={`detailresident-edit-int-text${
+                  isEdit ? " edit-confirm-btn-text" : ""
+                }`}
+              >
+                {isEdit ? "Wijzigingen toepassen" : "Wijzig interesses"}
+              </p>
             </div>
           </div>
         ) : null}
         <ul className="detailresident-int-collection">
           {categories
             ? Object.keys(categories).map((key) => (
-                <InterestsCategory key={key} category={categories[key]} />
+                <InterestsCategory
+                  key={key}
+                  category={categories[key]}
+                  isEdit={isEdit}
+                />
               ))
             : categories === null
-            ? 'Bewoners interesses ophalen...'
-            : 'Geen interesses gevonden'}
+            ? "Bewoners interesses ophalen..."
+            : "Geen interesses gevonden"}
         </ul>
       </div>
     </>
