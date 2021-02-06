@@ -5,8 +5,8 @@ import "./detaileditinterests.css";
 
 const DetailEditInterests = ({ resident }) => {
   return (
-    <div className="residents-editinterests">
-      <div className="add-new-tag-container">
+    <div className="residents-editinterests fit-height">
+      <div className="add-new-tag-container fit-height">
         <div className="add-new-tag-titles-wrapper">
           <p className="add-new-tag-title">Tag toevoegen</p>
           <p className="add-new-tag-subtext">

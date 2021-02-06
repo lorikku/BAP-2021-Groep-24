@@ -32,7 +32,6 @@ route.get('/', async (req, res) => {
 
 /* DELETE ONE RESIDENT FROM CONTACTS */
 route.delete('/:contactId', async (req, res) => {
-  console.log('ran');
   const residentId = req.residentId;
   const { contactId } = req.params;
   const _residentId = convertToObjectId(residentId, res);

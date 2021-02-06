@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  padding-bottom: 4rem;
+}
+
+.add-new-tag-container > div {
+  flex: 1;
 }
 
 .residents-editinterests {

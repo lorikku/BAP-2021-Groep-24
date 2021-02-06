@@ -8,6 +8,7 @@ const { getResidentData } = require('../../globalQueries');
 //Routes to use later on
 const contactsRouter = require('./contacts');
 const activitiesRouter = require('./activities');
+const interestsRouter = require('./interests');
 
 /* -------------- GET QUERIES -------------- */
 
@@ -198,7 +199,7 @@ route.use(
     req.residentId = req.params.residentId;
     next();
   },
-  activitiesRouter
+  interestsRouter
 );
 
 //Export this route to use in index.js
