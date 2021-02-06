@@ -3,7 +3,7 @@ import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Div100vh from 'react-div-100vh';
 
 import paths from './consts/paths';
-import { useGlobalState } from './global-states';
+import { useGlobalState } from './global/states';
 
 import Header from './containers/header/Header';
 import ResidentsPage from './pages/ResidentsPages';

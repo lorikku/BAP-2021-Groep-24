@@ -13,7 +13,7 @@ import SubNav from "../../containers/residents/SubNav";
 
 import { getPagesObj } from "./pages";
 import { fetchResident } from "../../services/ResidentsService";
-import {useGlobalState} from '../../global-states';
+import {useGlobalState} from '../../global/states';
 
 import DetailPage from './DetailPage';
 

@@ -1,12 +1,13 @@
 const express = require('express');
 const route = express.Router();
 
-const statusMessages = require('../statusMessages');
-const {
-  convertToObjectId,
-  convertToRegExp,
-  stopExecution,
-} = require('../util');
+const statusMessages = require('../../statusMessages');
+const { convertToObjectId, convertToRegExp } = require('../../util');
+const { getResidentData } = require('../../globalQueries');
+
+//Routes to use later on
+const contactsRouter = require('./contacts');
+const activitiesRouter = require('./activities');
 
 /* -------------- GET QUERIES -------------- */
 
@@ -99,44 +100,10 @@ route.get('/', async (req, res) => {
   }
 });
 
-/* -- SINGLE RESIDENTS QUERIES -- */
-
-const getResidentData = async (req, res, projection) => {
-  const residentId = req.params.residentId;
-  const _id = convertToObjectId(residentId, res);
-
-  /* Setting the options */
-  const options = {
-    projection,
-  };
-
-  /* Setting the query */
-  const query = {
-    _id,
-  };
-
-  let resident;
-  //Fetch resident from app database. If an error occured in the query, send 500 with error message and return
-  try {
-    resident = await req.app.mongodb
-      .db('app')
-      .collection('residents')
-      .findOne(query, options);
-  } catch (err) {
-    res
-      .status(statusMessages.INTERNAL_ERROR.statusCode)
-      .json({ message: statusMessages.INTERNAL_ERROR.message });
-    return;
-  }
-
-  //Send found resident, else null
-  return resident;
-};
-
 /* -- GET RESIDENT BY ID -- */
 /* /app/residents/:residentId */
 route.get('/:residentId', async (req, res) => {
-  const resident = await getResidentData(req, res, {
+  const resident = await getResidentData(req, res, req.params.residentId, {
     interests: false,
     contacts: false,
   });
@@ -150,48 +117,6 @@ route.get('/:residentId', async (req, res) => {
   } else {
     res.status(404).json({ message: 'Resident not found!' });
     return;
-  }
-});
-
-/* -- GET RESIDENT INTERESTS BY RESIDENT ID -- */
-/* /app/residents/:residentId/interests */
-route.get('/:residentId/interests', async (req, res) => {
-  const resident = await getResidentData(req, res, { interests: true });
-
-  if (!resident) {
-    res.status(404).json({ message: 'Resident not found!' });
-    return;
-  }
-
-  //Send found resident's interests, else 404
-  if (resident.interests && resident.interests.length > 0) {
-    res.status(200).json({
-      message: 'Resident interests found!',
-      interests: resident.interests,
-    });
-  } else {
-    res.status(404).json({ message: 'Resident interests not found!' });
-  }
-});
-
-/* -- GET RESIDENT CONTACTS BY RESIDENT ID -- */
-/* /app/residents/:residentId/contacts */
-route.get('/:residentId/contacts', async (req, res) => {
-  const resident = await getResidentData(req, res, { contacts: true });
-
-  if (!resident) {
-    res.status(404).json({ message: 'Resident not found!' });
-    return;
-  }
-
-  //Send found resident's contacts, else 404
-  if (resident.contacts && resident.contacts.length > 0) {
-    res.status(200).json({
-      message: 'Resident contacts found!',
-      contacts: resident.contacts,
-    });
-  } else {
-    res.status(404).json({ message: 'Resident contacts not found!' });
   }
 });
 
@@ -244,37 +169,37 @@ route.put('/:residentId', async (req, res) => {
 
 /* -------------- DELETE QUERIES -------------- */
 
-/* DELETE ONE RESIDENT FROM CONTACTS */
-route.delete('/:residentId/contacts/:contactId', async (req, res) => {
-  const { residentId, contactId } = req.params;
-  const _residentId = convertToObjectId(residentId, res);
-  const _contactId = convertToObjectId(contactId, res);
+/* -------------- OTHER ROUTES -------------- */
 
-  try {
-    req.app.mongodb
-      .db('app')
-      .collection('residents')
-      .updateOne(
-        {
-          _id: _residentId,
-        },
-        {
-          $pull: {
-            contacts: {
-              _id: _contactId,
-            },
-          },
-        }
-      );
+//Resident's contacts route
+route.use(
+  '/:residentId/contacts',
+  (req, res, next) => {
+    req.residentId = req.params.residentId;
+    next();
+  },
+  contactsRouter
+);
 
-    res.status(200).json({ message: 'Contact is removed from contacts list!' });
-  } catch (err) {
-    res
-      .status(statusMessages.INTERNAL_ERROR.statusCode)
-      .json({ message: statusMessages.INTERNAL_ERROR.message });
-    return;
-  }
-});
+//Resident's activities route
+route.use(
+  '/:residentId/activities',
+  (req, res, next) => {
+    req.residentId = req.params.residentId;
+    next();
+  },
+  activitiesRouter
+);
+
+//Resident's interests route
+route.use(
+  '/:residentId/interests',
+  (req, res, next) => {
+    req.residentId = req.params.residentId;
+    next();
+  },
+  activitiesRouter
+);
 
 //Export this route to use in index.js
 module.exports = route;

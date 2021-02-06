@@ -3,7 +3,7 @@ import ObjectID from 'bson-objectid';
 import { Link } from 'react-router-dom';
 
 import './overviewprofile.css';
-import { isTimestampNew } from '../../timeStampFuncs';
+import { isTimestampNew } from '../../../../global/timeStampFuncs';
 import {
   deleteMyResident,
   postMyResident,

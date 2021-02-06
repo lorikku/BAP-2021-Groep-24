@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useGlobalState } from '../../../../global-states';
+import { useGlobalState } from '../../../../global/states';
 import { updateResident } from '../../../../services/ResidentsService';
-import { getMsUntilExpired, isTimestampNew } from '../../timeStampFuncs';
+import { getMsUntilExpired, isTimestampNew } from '../../../../global/timeStampFuncs';
 
 import './residentspotlight.css';
 

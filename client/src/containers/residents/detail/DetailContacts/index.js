@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Contact from '../../../../components/residents/detail/Contact';
-import { useGlobalState } from '../../../../global-states';
+import { useGlobalState } from '../../../../global/states';
 import { deleteContactFromResident } from '../../../../services/ResidentsService';
 import './detailcontacts.css';
 

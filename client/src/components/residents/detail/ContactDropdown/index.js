@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './contactdropdown.css';
 import Tag from '../../../interests/Tag';
-import { useGlobalState } from '../../../../global-states';
+import { useGlobalState } from '../../../../global/states';
 
 const ContactDropdown = ({ contact, deleteContact }) => {
   const { matchedInterests } = contact;
