@@ -31,6 +31,6 @@
   display: flex;
   width: max-content;
   position: absolute;
-  left: 65%;
-  top: 88%;
+  right: 20px;
+  bottom: 50px;
 }

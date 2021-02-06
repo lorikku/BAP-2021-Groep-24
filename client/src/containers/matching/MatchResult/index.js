@@ -4,49 +4,53 @@ import "./matchresult.css";
 
 const MatchResult = ({ name }) => {
   return (
-    <div className="match-result-container">
-      <div className="match-user">
-        <div className="match-user-wrapper">
-          <img
-            className="match-user-pic"
-            alt="foto bewoner"
-            src="https://st3.depositphotos.com/1606463/17951/i/1600/depositphotos_179510558-stock-photo-smiling-old-man.jpg"
-          ></img>
-          <p className="match-user-name">
-            {name.first} <br></br>
-            {name.last}
-          </p>
+    <div className="result-head-container">
+      <div className="result-head-top-container">
+        <div className="main-info-wrapper">
+          <div className="result-head-percentage">
+            <p className="result-top-match">Top Match</p>
+            <div className="result-circle">
+              <p className="result-percentage">85%</p>
+            </div>
+          </div>
+
+          <div className="match-user-wrapper">
+            <img
+              className="match-user-pic"
+              alt="edit icoon"
+              src="https://www.pngitem.com/pimgs/m/208-2085309_old-woman-png-stock-photo-old-lady-transparent.png"
+            ></img>
+            <p className="result-name">
+              Mathilda <br></br> Dejonckheere
+            </p>
+          </div>
         </div>
-        <div className="match-user-btn">
+        <div className="result-add-btn">
           <img
-            className="match-user-icon"
-            alt="bewoner toevoegen icoon"
+            className="add-icon"
+            alt="add icon"
             src="/assets/img/add-user-blue.svg"
           ></img>
-          <p className="match-user-btn-text">Voeg toe aan profiel</p>
+          <p className="result-add-btn-text">Voeg toe aan profiel</p>
         </div>
       </div>
-      <div className="match-percent">
-        <p className="match-percent-title">Top Match</p>
-        <div className="match-percent-circle">
-          <p className="match-percent-amount">85%</p>
-        </div>
-      </div>
-      <div className="match-ints">
-        <p className="match-ints-title">
-          {name.first} heeft deze gelijke interesses:
-        </p>
-        <ul className="match-ints-list">
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
-          <Tag name={"Pop Smoke"} />
+      <div className="result-head-bottom-container">
+        <img
+          className="result-head-chevronleft"
+          alt="chevron links"
+          src="/assets/img/chevron-left.svg"
+        ></img>
+        <ul className="result-head-tags">
+          <Tag name={"Golf"} />
+          <Tag name={"Bakken"} />
+          <Tag name={"Het Laatste Nieuws"} />
+          <Tag name={"Petanque"} />
         </ul>
+        <img
+          className="result-head-chevronright"
+          alt="chevron rechts"
+          src="/assets/img/chevron-right.svg"
+        ></img>
       </div>
     </div>
   );
