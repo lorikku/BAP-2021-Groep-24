@@ -18,7 +18,7 @@ const NewResidentPage = () => {
           }
           
         />
-        <ResidentForm />
+        <ResidentForm confirmText={"woon- en leefplan maken"}/>
         {/* <NewResidentCreated/> */}
       </div>
     </>

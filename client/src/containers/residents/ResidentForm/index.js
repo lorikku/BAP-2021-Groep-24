@@ -1,9 +1,9 @@
-import * as React from 'react';
-import ToggleBtn from '../../../components/global/ToggleBtn';
+import * as React from "react";
+import ToggleBtn from "../../../components/global/ToggleBtn";
 
-import './residentform.css';
+import "./residentform.css";
 
-const ResidentForm = () => {
+const ResidentForm = ({ isEdit, confirmText }) => {
   return (
     <div className="residentform-container">
       <div className="residentform-left">
@@ -20,11 +20,21 @@ const ResidentForm = () => {
             <p className="pic-btn-text">Kies foto</p>
           </div>
         </div>
-        <p className="pic-notice">Dit kan later nog toegevoegd worden</p>
-        {/* delete-btn enkel bij edit resident */}
-        <div className="delete-wlp-btn">
-          <p className="delete-wlp-btn-text">Verwijder bewoner</p>
-        </div>
+        {isEdit ? (
+          ""
+        ) : (
+          <p className="pic-notice">Dit kan later nog toegevoegd worden</p>
+        )}
+
+        {isEdit ? (
+          <div className="delete-wlp-btn">
+            <p className="delete-wlp-btn-text">Verwijder bewoner</p>
+          </div>
+        ) : (
+          ""
+        )}
+
+        {}
       </div>
 
       <div className="residentform-right">
@@ -43,14 +53,14 @@ const ResidentForm = () => {
               type="text"
             ></input>
           </label>
-  
+
           <div className="residentform-stay">
-            <p className=" form-title">Verblijf</p>
-            <ToggleBtn option1={'Vast verblijf'} option2={'Kort verblijf'} />
+            <p className=" form-title residentform-status-title">Verblijf</p>
+            <ToggleBtn option1={"Vast verblijf"} option2={"Kort verblijf"} />
           </div>
         </div>
         <div className="create-wlp-btn">
-          <p className="create-wlp-btn-text">Woon- en leefplan maken</p>
+          <p className="create-wlp-btn-text">{confirmText}</p>
           <img
             className="create-wlp-arrow"
             alt="pijl naar rechts"

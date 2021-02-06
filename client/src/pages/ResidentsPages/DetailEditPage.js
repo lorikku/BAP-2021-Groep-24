@@ -1,13 +1,12 @@
-import * as React from 'react';
+import * as React from "react";
+import ResidentForm from "../../containers/residents/ResidentForm";
 
 const DetailEditPage = ({ resident }) => {
   return (
     <>
       <h2 className="visually-hidden">Bewerken van een bewoner</h2>
       <div className="residents-editresident fit-height">
-        <div className="editresident-content fit-height">
-          <p>Edit bewoner hier</p>
-        </div>
+        <ResidentForm confirmText={"Wijzigingen toepassen"} isEdit />
       </div>
     </>
   );

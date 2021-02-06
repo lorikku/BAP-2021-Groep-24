@@ -10,7 +10,6 @@
   margin-bottom: 0.5rem;
 }
 
-
 .residentform-input {
   height: 36px;
   background-color: var(--colorBgLight);
@@ -143,4 +142,9 @@
   color: var(--colorRed);
   font-weight: var(--fontWeightMedium);
   margin-right: 0.5rem;
+}
+
+.residentform-status-title {
+  margin-bottom: 0.5rem;
+  font-weight: var(--fontWeightSemiBold);
 }
