@@ -1,0 +1,21 @@
+.results-list {
+  background-color: var(--colorCTA);
+  padding: 1rem;
+  position: relative;
+  border-top-left-radius: var(--borderRadiusBig);
+  border-top-right-radius: var(--borderRadiusBig);
+  margin-top: var(--spacerMain);
+}
+
+.results-title {
+  text-align: center;
+  color: var(--colorBgMain);
+  font-size: var(--fontSizeBigger);
+  font-weight: var(--fontWeightSemiBold);
+}
+
+.close-results {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
