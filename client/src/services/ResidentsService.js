@@ -1,11 +1,13 @@
+import { fetchContactsByResidentId } from './ContactsService';
+import { fetchInterestByResidentId } from './InterestsService';
 import { fetchMyResidents } from './MyResidentsService';
 
 const apiRoute = '/app/residents';
 
 /* -------------- GET FUNCTIONS -------------- */
 
-/* Fetching single resident and their interests/contacts */
-const fetchResident = async (residentId) => {
+/* Fetching single resident and their interests/contacts/planned activities/ */
+const fetchResident = async (residentId, isMatchingPage) => {
   let fetchedResident = undefined;
 
   // FETCHING RESIDENT
@@ -26,36 +28,18 @@ const fetchResident = async (residentId) => {
   }
 
   // FETCHING RESIDENT INTERESTS
-  try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/interests`
-    );
-    const result = await response.json();
+  fetchedResident.interests = await fetchInterestByResidentId(residentId);
 
-    fetchedResident.interests = result.interests;
-  } catch (err) {
-    fetchedResident.interests = null;
-    console.log(err);
-  }
-
-  // FETCHING RESIDENT CONACTS
-  try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/contacts`
-    );
-    const result = await response.json();
-
-    fetchedResident.contacts = result.contacts;
-  } catch (err) {
-    fetchedResident.contacts = null;
-    console.log(err);
+  if (!isMatchingPage) {
+    // FETCHING RESIDENT CONACTS
+    fetchedResident.contacts = await fetchContactsByResidentId(residentId);
   }
 
   return fetchedResident;
 };
 
 /* Fetching ALL residents */
-const fetchResidents = async (name, floor, sorting) => {
+const fetchResidents = async (name, floor, sorting, isMatchingPage) => {
   const query = `?name=${name}&floor=${floor}&sorting=${sorting.value}`;
 
   try {
@@ -70,17 +54,20 @@ const fetchResidents = async (name, floor, sorting) => {
 
     const residents = result.residents;
 
-    //Checking which resident is seen as 'my resident' (for coloring the heart)
-    const myResidents = await fetchMyResidents(name, floor, sorting);
-    if (myResidents) {
-      if (myResidents.length > 0) {
-        myResidents.forEach((myResident) => {
-          //If myResident was found in residents overview -> isMyResident = true -> color heart
-          const resident = residents.find(
-            (resident) => myResident._id === resident._id
-          );
-          if (resident) resident.isMyResident = true;
-        });
+    if (!isMatchingPage) {
+      //Checking which resident is seen as 'my resident' (for coloring the heart)
+      //NOT USED ON MATCHING PAGE!
+      const myResidents = await fetchMyResidents(name, floor, sorting);
+      if (myResidents) {
+        if (myResidents.length > 0) {
+          myResidents.forEach((myResident) => {
+            //If myResident was found in residents overview -> isMyResident = true -> color heart
+            const resident = residents.find(
+              (resident) => myResident._id === resident._id
+            );
+            if (resident) resident.isMyResident = true;
+          });
+        }
       }
     }
 

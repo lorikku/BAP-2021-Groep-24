@@ -1,8 +1,9 @@
-import * as React from "react";
-import Tag from "../../../components/interests/Tag";
-import "./matchresult.css";
+import * as React from 'react';
+import Tag from '../../../components/interests/Tag';
+import './matchresult.css';
 
-const MatchResult = ({ name }) => {
+const MatchResult = ({ match }) => {
+  const {percentage, resident, matchedInterests} = match;
   return (
     <li className="result-head-container">
       <div className="result-head-top-container">
@@ -10,7 +11,7 @@ const MatchResult = ({ name }) => {
           <div className="result-head-percentage">
             <p className="result-top-match">Top Match</p>
             <div className="result-circle">
-              <p className="result-percentage">85%</p>
+              <p className="result-percentage">{percentage}%</p>
             </div>
           </div>
 
@@ -18,11 +19,9 @@ const MatchResult = ({ name }) => {
             <img
               className="match-user-pic"
               alt="bewoner foto"
-              src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
+              src={resident.photoUri ? resident.photoUri : '/assets/img/emptystate-profile.svg'}
             ></img>
-            <p className="result-name">
-              Mathilda <br></br> Dejonckheere
-            </p>
+            <p className="result-name">{resident.name}</p>
           </div>
         </div>
         <div className="result-add-btn">
@@ -41,10 +40,9 @@ const MatchResult = ({ name }) => {
           src="/assets/img/chevron-left.svg"
         ></img>
         <ul className="result-head-tags">
-          <Tag name={"Golf"} />
-          <Tag name={"Bakken"} />
-          <Tag name={"Het Laatste Nieuws"} />
-          <Tag name={"Petanque"} />
+          {matchedInterests.map((matchedInterest, index) => (
+            <Tag key={index} interest={matchedInterest} />
+          ))}
         </ul>
         <img
           className="result-head-chevronright"

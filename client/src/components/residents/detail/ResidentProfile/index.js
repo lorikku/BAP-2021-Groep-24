@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import paths from '../../../../consts/paths';
 import {
   deleteMyResident,
-  fetchMyResident,
+  myResidentExists,
   postMyResident,
 } from '../../../../services/MyResidentsService';
 
@@ -30,7 +30,7 @@ const ResidentProfile = ({ resident, showIcons }) => {
 
     if (showIcons) {
       const checkIsMyResident = async () => {
-        const bool = await fetchMyResident(_id);
+        const bool = await myResidentExists(_id);
         if (componentMounted) setIsMyResident(bool);
       };
       checkIsMyResident();

@@ -8,8 +8,9 @@ import {
   deleteMyResident,
   postMyResident,
 } from '../../../../services/MyResidentsService';
+import paths from '../../../../consts/paths';
 
-const OverviewProfile = ({ resident }) => {
+const OverviewProfile = ({ resident, isMatchingPage }) => {
   const {
     _id,
     name,
@@ -66,7 +67,11 @@ const OverviewProfile = ({ resident }) => {
       <div className="residents-myresidents__overviewprofile__container">
         <Link
           className="residents-myresidents__overviewprofile__link"
-          to={_id + '/general'}
+          to={
+            isMatchingPage
+              ? paths.PATH_MATCHING.ROOT + '/' + _id
+              : paths.PATH_RESIDENTS.ROOT + '/' + _id
+          }
         >
           <div className="residents-myresidents__overviewprofile__wrapper">
             {isNew ? (
@@ -110,16 +115,18 @@ const OverviewProfile = ({ resident }) => {
             </p>
           </div>
         </Link>
-        <img
-          alt="Hartje om bewoner toe te voegen aan Mijn Bewoners."
-          onClick={toggleIsMyResident}
-          className={`residents-myresidents__overviewprofile__heart${
-            isMyResident
-              ? ' residents-myresidents__overviewprofile__heart--active'
-              : ''
-          }`}
-          src="/assets/img/heart-empty.svg"
-        />
+        {isMatchingPage ? null : (
+          <img
+            alt="Hartje om bewoner toe te voegen aan Mijn Bewoners."
+            onClick={toggleIsMyResident}
+            className={`residents-myresidents__overviewprofile__heart${
+              isMyResident
+                ? ' residents-myresidents__overviewprofile__heart--active'
+                : ''
+            }`}
+            src="/assets/img/heart-empty.svg"
+          />
+        )}
       </div>
     </li>
   );

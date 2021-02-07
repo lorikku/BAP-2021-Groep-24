@@ -15,7 +15,11 @@ import {
 
 import './residentsfilter.css';
 
-const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
+const ResidentsFilter = ({
+  setResidents,
+  isMyResidentsPage,
+  isMatchingPage,
+}) => {
   const [name, setName] = React.useState('');
   const [floor, setFloor] = React.useState(floorOptions[0]);
   const [sorting, setSorting] = React.useState(
@@ -33,7 +37,7 @@ const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
       if (isMyResidentsPage) {
         residents = await fetchMyResidents(name, floor, sorting);
       } else {
-        residents = await fetchResidents(name, floor, sorting);
+        residents = await fetchResidents(name, floor, sorting, isMatchingPage);
       }
       if (componentMounted) setResidents(residents);
     };
@@ -44,11 +48,16 @@ const ResidentsFilter = ({ setResidents, isMyResidentsPage }) => {
       clearInterval(timeout);
       componentMounted = false;
     };
-  }, [name, sorting, floor, setResidents, isMyResidentsPage]);
+  }, [name, sorting, floor, setResidents, isMyResidentsPage, isMatchingPage]);
 
   return (
     <div className="residents__filterwrapper">
-      <NameInput name={name} setName={setName} />
+      <NameInput
+        name={name}
+        setName={setName}
+        labelText="Zoek een bewoner"
+        placeholderText="Gerda Willems, 202"
+      />
       <SortingInput
         options={isMyResidentsPage ? sortingOptionsMyResidents : sortingOptions}
         defaultValue={sorting}

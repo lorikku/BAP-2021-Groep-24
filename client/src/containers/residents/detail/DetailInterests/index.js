@@ -1,12 +1,22 @@
-import * as React from "react";
+import * as React from 'react';
 
-import InterestsCategory from "../../../../components/interests/InterestsCategory";
+import InterestsCategory from '../../../../components/interests/InterestsCategory';
 
-import { getCategoriesFromInterests } from "./categoriseInterests";
+import { getCategoriesFromInterests } from '../../../../global/interestsFuncs';
 
-import "./detailinterests.css";
+import './detailinterests.css';
 
-const DetailInterests = ({ resident, interests, isEdit }) => {
+const DetailInterests = ({
+  resident,
+  interests,
+  //Edit profile props
+  isEdit,
+  //Matching page props
+  isMatchingPage,
+  selectedInterests,
+  toggleInterest,
+  changedInput
+}) => {
   const [categories, setCategories] = React.useState(undefined);
 
   React.useEffect(() => {
@@ -15,7 +25,8 @@ const DetailInterests = ({ resident, interests, isEdit }) => {
 
     //Set it to null to tell UI that it is loading
     setCategories(null);
-    const newCategories = getCategoriesFromInterests(interests);
+
+    const newCategories = getCategoriesFromInterests(interests, isMatchingPage);
 
     //If categories is empty => interests was an empty array
     if (newCategories === {}) {
@@ -23,30 +34,34 @@ const DetailInterests = ({ resident, interests, isEdit }) => {
     } else {
       setCategories(newCategories);
     }
-  }, [interests, setCategories]);
+  }, [interests, setCategories, isMatchingPage]);
 
   return (
     <>
       <div className="detailresident-interests fit-height flex-content">
         {resident ? (
           <div className="detailresident-int-wrapper">
-            <h3 className="detailresident-int-title">
-              {isEdit ? "Verwijder " : ""}Interesses
-              {isEdit ? "" : (" van " + `${resident.name}`)}
-            </h3>
-            <div
-              className={`detailresident-edit-int-btn${
-                isEdit ? " edit-confirm-btn" : ""
-              }`}
-            >
-              <p
-                className={`detailresident-edit-int-text${
-                  isEdit ? " edit-confirm-btn-text" : ""
+            {isMatchingPage ? null : (
+              <h3 className="detailresident-int-title">
+                {isEdit ? 'Verwijder ' : ''}Interesses
+                {isEdit ? '' : ` van ${resident.name}`}
+              </h3>
+            )}
+            {isMatchingPage ? null : (
+              <div
+                className={`detailresident-edit-int-btn${
+                  isEdit ? ' edit-confirm-btn' : ''
                 }`}
               >
-                {isEdit ? "Wijzigingen toepassen" : "Wijzig interesses"}
-              </p>
-            </div>
+                <p
+                  className={`detailresident-edit-int-text${
+                    isEdit ? ' edit-confirm-btn-text' : ''
+                  }`}
+                >
+                  {isEdit ? 'Wijzigingen toepassen' : 'Wijzig interesses'}
+                </p>
+              </div>
+            )}
           </div>
         ) : null}
         <ul className="detailresident-int-collection">
@@ -56,11 +71,16 @@ const DetailInterests = ({ resident, interests, isEdit }) => {
                   key={key}
                   category={categories[key]}
                   isEdit={isEdit}
+
+                  isMatchingPage={isMatchingPage}
+                  selectedInterests={selectedInterests }
+                  toggleInterest={toggleInterest}
+                  changedInput={changedInput}
                 />
               ))
             : categories === null
-            ? "Bewoners interesses ophalen..."
-            : "Geen interesses gevonden"}
+            ? 'Bewoners interesses ophalen...'
+            : 'Geen interesses gevonden'}
         </ul>
       </div>
     </>

@@ -7,8 +7,8 @@ import './detailcontacts.css';
 const DetailContacts = ({ resident }) => {
   const { contacts } = resident;
 
-  const setResident = useGlobalState('resident')[1];
-  const setAddNewContact = useGlobalState('addNewContact')[1];
+  const [,setResident] = useGlobalState('resident');
+  const [,setAddNewContact] = useGlobalState('addNewContact');
 
   const toggleAddNewContact = () => {
     setAddNewContact({

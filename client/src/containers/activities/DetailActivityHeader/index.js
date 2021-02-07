@@ -1,6 +1,6 @@
-import * as React from "react";
-import "./detailactivityheader.css";
-import Tag from "./../../../components/interests/Tag";
+import * as React from 'react';
+import './detailactivityheader.css';
+import Tag from './../../../components/interests/Tag';
 
 const DetailActivityHeader = () => {
   return (
@@ -47,7 +47,7 @@ const DetailActivityHeader = () => {
           src="/assets/img/chevron-left.svg"
         ></img>
         <ul className="dtl-act-head-tags">
-          <Tag className="dtl-act-head-tag" />
+          <Tag interest={{ name: 'test' }} className="dtl-act-head-tag" />
         </ul>
         <img
           className="dtl-act-head-chevronright"

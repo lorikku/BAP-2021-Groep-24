@@ -7,7 +7,7 @@ const ContactDropdown = ({ contact, deleteContact }) => {
   const { matchedInterests } = contact;
 
   //Global state for handling the confirm dialog
-  const setConfirmDialog = useGlobalState('confirmDialog')[1];
+  const [,setConfirmDialog] = useGlobalState('confirmDialog');
 
   const confirmDeletion = () => {
     const dialog = {

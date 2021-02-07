@@ -14,18 +14,30 @@ const interestsRouter = require('./interests');
 
 /* /app/residents?name&sorting&floor */
 route.get('/', async (req, res) => {
-  let { name, sorting, floor } = req.query;
+  let { name, sorting, floor, interests } = req.query;
 
   /* Setting the options (which data do we need?) */
-  const options = {
-    projection: {
-      interests: false,
-      contacts: false,
-    },
-  };
+  const options = interests
+    ? {
+        projection: {
+          interests: true,
+          name: true,
+          photoUri: true,
+
+        },
+      }
+    : {
+        projection: {
+          interests: false,
+          contacts: false,
+          isActive: false
+        },
+      };
 
   /* Setting the query */
-  const query = {};
+  const query = {
+    isActive: true,
+  };
 
   // Add name to db query if it was set in GET query, NAME CAN ALSO BE ROOM NUMBER! 'i' stands for case-insensitive
   if (name) {

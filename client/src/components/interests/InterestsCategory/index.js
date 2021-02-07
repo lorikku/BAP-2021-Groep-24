@@ -1,8 +1,16 @@
-import * as React from "react";
-import Tag from "../Tag";
-import "./interestscategory.css";
+import * as React from 'react';
+import Tag from '../Tag';
+import './interestscategory.css';
 
-const InterestsCategory = ({ category, isEdit }) => {
+const InterestsCategory = ({
+  category,
+  isEdit,
+  //Matching page
+  isMatchingPage,
+  selectedInterests,
+  toggleInterest,
+  changedInput
+}) => {
   return (
     <li className="interests-category-container">
       <div className="interests-category">
@@ -12,7 +20,16 @@ const InterestsCategory = ({ category, isEdit }) => {
       </div>
       <ul className="interest-tags">
         {category.interests.map((interest, index) => (
-          <Tag key={index} name={interest.name} isEdit={isEdit} />
+          <Tag
+            key={index}
+            interest={interest}
+            isEdit={isEdit}
+
+            selectedInterests={selectedInterests}
+            toggleInterest={toggleInterest}
+            isMatchingPage={isMatchingPage}
+            changedInput={changedInput}
+          />
         ))}
       </ul>
     </li>

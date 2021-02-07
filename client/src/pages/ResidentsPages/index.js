@@ -49,7 +49,7 @@ const ResidentsPages = ({ paths }) => {
     getResident();
 
     return () => (componentMounted = false);
-  }, [residentId]);
+  }, [residentId, setResident]);
 
 
 

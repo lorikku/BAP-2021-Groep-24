@@ -1,10 +1,13 @@
 .match-header-profile {
   display: flex;
   align-items: center;
+
+  justify-content: space-between;
 }
 
 .match-header-right {
   height: 196px;
   background-color: var(--colorBgLight);
-  width: 100%;
+  width: 60%;
+  overflow: scroll;
 }

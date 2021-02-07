@@ -1,14 +1,19 @@
 import * as React from 'react';
+
 import { useGlobalState } from '../../../../global/states';
 import { updateResident } from '../../../../services/ResidentsService';
-import { getMsUntilExpired, isTimestampNew } from '../../../../global/timeStampFuncs';
+import {
+  getSecUntilExpired,
+  isTimestampNew,
+  toSec,
+} from '../../../../global/timeStampFuncs';
 
 import './residentspotlight.css';
 
 const ResidentSpotlight = ({ resident }) => {
   const { _id, spotlightTimestamp, name } = resident;
 
-  const setResident = useGlobalState('resident')[1];
+  const [, setResident] = useGlobalState('resident');
 
   const [spotlightTimestampState, setSpotlightTimestamp] = React.useState(
     spotlightTimestamp
@@ -35,7 +40,7 @@ const ResidentSpotlight = ({ resident }) => {
     if (!isSpotlight) {
       //If not my resident -> add to my residents
       updatedResident = await updateResident(_id, {
-        spotlightTimestamp: Date.now(),
+        spotlightTimestamp: toSec(Date.now()),
       });
     } else {
       //If my resident -> delete from my residents
@@ -91,8 +96,8 @@ const ResidentSpotlight = ({ resident }) => {
           <p>
             <span className="spotlight-text--underline">
               {Math.round(
-                getMsUntilExpired(spotlightTimestampState) /
-                  (1000 * 60 * 60 * 24)
+                getSecUntilExpired(spotlightTimestampState) /
+                  (60 * 60 * 24)
               )}
             </span>{' '}
             dagen resterend...

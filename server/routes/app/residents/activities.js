@@ -48,7 +48,7 @@ route.get('/', async (req, res) => {
       activities,
     });
   } else {
-    res.status(404).json({ message: 'Activities not found!' });
+    res.status(404).json({ message: 'No activities for this resident, or resident, found!' });
   }
 });
 

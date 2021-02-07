@@ -3,7 +3,7 @@ const apiRoute = '/app/my-residents';
 /* -------------- GET FUNCTIONS -------------- */
 
 /* Fetching MY resident */
-const fetchMyResident = async (residentId) => {
+const myResidentExists = async (residentId) => {
   try {
     const response = await fetch(
       process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`
@@ -41,7 +41,7 @@ const fetchMyResidents = async (name, floor, sorting) => {
   }
 };
 
-export { fetchMyResident, fetchMyResidents };
+export { myResidentExists, fetchMyResidents };
 
 /* -------------- POST FUNCTIONS -------------- */
 

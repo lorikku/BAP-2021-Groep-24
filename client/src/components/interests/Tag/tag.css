@@ -11,11 +11,24 @@
   margin-top: 10px;
 }
 
+.tag-container--selected {
+  background-color: var(--colorCTA);
+  border: solid 2px var(--colorCTA);
+}
+
+.tag-container--matching {
+  cursor: pointer;
+}
+
 .tag-color {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background-color: var(--colorSpotlight);
+}
+
+.tag-color--selected{
+  background-color: var(--colorBgMain)
 }
 
 .tag-name {
@@ -25,6 +38,10 @@
   text-align: bottom;
   padding-left: 8px;
   margin-top: 1px;
+}
+
+.tag-name--selected {
+  color: var(--colorBgMain);
 }
 
 .tag-delete-cross {

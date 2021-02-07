@@ -4,11 +4,11 @@ import OverviewProfile from '../../../../components/residents/overview/OverviewP
 
 import './overviewprofiles.css';
 
-const OverviewProfiles = ({ residents }) => {
+const OverviewProfiles = ({ residents, isMatchingPage }) => {
   return residents ? (
     <ul className="residents-overview_profiles">
       {residents.map((resident, index) => {
-        return <OverviewProfile key={index} resident={resident} />;
+        return <OverviewProfile isMatchingPage={isMatchingPage} key={index} resident={resident} />;
       })}
     </ul>
   ) : residents === null ? (
