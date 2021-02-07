@@ -37,10 +37,14 @@
 
 .contact-info-wrapper {
   display: flex;
+}
+
+.contact-info-subwrapper {
+  display: flex;
   flex-direction: column;
   align-self: center;
 
-  margin-left: calc(0px - var(--spacerMain));
+  margin-left: var(--spacerMain);
 }
 
 .contact-info-btn {

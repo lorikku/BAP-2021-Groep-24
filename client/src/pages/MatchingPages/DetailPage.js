@@ -9,7 +9,7 @@ import {
   calculateResidentMatches,
   searchInterests,
 } from '../../global/interestsFuncs';
-import { fetchResident } from '../../services/ResidentsService';
+import { fetchResident } from '../../services/ResidentsService/index.js';
 import OverviewPage from '../ResidentsPages/OverviewPage';
 
 import './matchingpage.css';
@@ -111,7 +111,7 @@ const DetailPage = () => {
     getMatches();
 
     return () => (componentMounted = false);
-  }, [selectedInterests, setMatches]);
+  }, [selectedInterests, setMatches, resident]);
 
   /* --------- UI STUFF AND COMPONENT ---------  */
 
@@ -148,6 +148,7 @@ const DetailPage = () => {
         />
       ) : null}
       <MatchResultList
+        matchee={resident}
         matches={matches}
         selectedInterests={selectedInterests}
         matchesVisibility={matchesVisibility}

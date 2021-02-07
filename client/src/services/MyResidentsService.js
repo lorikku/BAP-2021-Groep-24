@@ -10,13 +10,13 @@ const myResidentExists = async (residentId) => {
     );
 
     if (!response.ok) {
-      return null;
+      return false;
     }
 
     return true;
   } catch (err) {
     console.log(err);
-    return null;
+    return false;
   }
 };
 
@@ -47,14 +47,14 @@ export { myResidentExists, fetchMyResidents };
 
 /* Posting to MY residents */
 
-const postMyResident = async (data) => {
+const postMyResident = async (resident) => {
   try {
     const response = await fetch(process.env.REACT_APP_API_URL + apiRoute, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
+      body: JSON.stringify(resident), // body data type must match "Content-Type" header
     });
 
     if (!response.ok) {

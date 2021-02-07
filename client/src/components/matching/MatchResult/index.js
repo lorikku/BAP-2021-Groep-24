@@ -1,9 +1,25 @@
 import * as React from 'react';
 import Tag from '../../../components/interests/Tag';
+import { postContact } from '../../../services/ResidentsService/ContactsService';
 import './matchresult.css';
 
-const MatchResult = ({ match }) => {
-  const {percentage, resident, matchedInterests} = match;
+const MatchResult = ({ matchee, match }) => {
+  const { percentage, resident, matchedInterests } = match;
+
+  const [addedContact, setAddedContact] = React.useState(false);
+
+  let loadingAddContact = false;
+  const addContactToProfile = async () => {
+    if (loadingAddContact) return;
+    //So that the 'add to contacts button' cant be spammed
+    loadingAddContact = true;
+
+    const succes = await postContact(matchee, match.resident, matchedInterests);
+    setAddedContact(succes); //If succes is true -> contact added
+
+    loadingAddContact = false;
+  };
+
   return (
     <li className="result-head-container">
       <div className="result-head-top-container">
@@ -19,18 +35,37 @@ const MatchResult = ({ match }) => {
             <img
               className="match-user-pic"
               alt="bewoner foto"
-              src={resident.photoUri ? resident.photoUri : '/assets/img/emptystate-profile.svg'}
+              src={
+                resident.photoUri
+                  ? resident.photoUri
+                  : '/assets/img/emptystate-profile.svg'
+              }
             ></img>
             <p className="result-name">{resident.name}</p>
           </div>
         </div>
-        <div className="result-add-btn">
+        <div
+          onClick={!addedContact ? addContactToProfile : null}
+          className={`result-add-btn${
+            addedContact ? ' result-add-btn--active' : ''
+          }`}
+        >
           <img
             className="add-icon"
             alt="add icon"
-            src="/assets/img/add-user-blue.svg"
+            src={
+              addedContact
+                ? '/assets/img/match-white.svg'
+                : '/assets/img/add-user-blue.svg'
+            }
           ></img>
-          <p className="result-add-btn-text">Voeg toe aan profiel</p>
+          <p
+            className={`result-add-btn-text${
+              addedContact ? ' result-add-btn-text--active' : ''
+            }`}
+          >
+            {addedContact ? 'Toegevoegd!' : 'Voeg toe aan profiel'}
+          </p>
         </div>
       </div>
       <div className="result-head-bottom-container">

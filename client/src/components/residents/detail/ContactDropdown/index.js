@@ -2,12 +2,14 @@ import * as React from 'react';
 import './contactdropdown.css';
 import Tag from '../../../interests/Tag';
 import { useGlobalState } from '../../../../global/states';
+import { format } from 'date-format-parse';
+import { locale } from '../../../../global/timeStampFuncs';
 
 const ContactDropdown = ({ contact, deleteContact }) => {
   const { matchedInterests } = contact;
 
   //Global state for handling the confirm dialog
-  const [,setConfirmDialog] = useGlobalState('confirmDialog');
+  const [, setConfirmDialog] = useGlobalState('confirmDialog');
 
   const confirmDeletion = () => {
     const dialog = {
@@ -48,7 +50,11 @@ const ContactDropdown = ({ contact, deleteContact }) => {
         ></img>
         <div className="dropdown-title-wrapper">
           <p className="dropdown-title">Match gemaakt op:</p>
-          <p className="dropdown-subtitle">12 November 2017</p>
+          <p className="dropdown-subtitle">
+            {format(new Date(contact.addedAt * 1000 /* convert sec to ms */), 'D MMMM YYYY', {
+              locale,
+            })}
+          </p>
         </div>
       </div>
       {/* alleen bij match --> */}
@@ -57,7 +63,7 @@ const ContactDropdown = ({ contact, deleteContact }) => {
           <p className="dropdown-tags-title">Gematched op</p>
           <ul className="dropdown-tags-list">
             {matchedInterests.map((interest, index) => (
-              <Tag key={index} name={interest.name} />
+              <Tag key={index} interest={interest} />
             ))}
           </ul>
         </div>

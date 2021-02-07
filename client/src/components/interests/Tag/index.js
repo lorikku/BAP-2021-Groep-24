@@ -12,7 +12,7 @@ const Tag = ({
   changedInput,
 }) => {
   const [selected, setSelected] = React.useState(false);
-
+  
   React.useEffect(() => {
     let componentMounted = true;
 
@@ -33,7 +33,13 @@ const Tag = ({
     }
 
     return () => (componentMounted = false);
-  }, [selectedInterests, setSelected, changedInput, interest._id, isMatchingPage]);
+  }, [
+    selectedInterests,
+    setSelected,
+    changedInput,
+    interest,
+    isMatchingPage,
+  ]);
 
   //Toggling interest (this is only availible in matching page)
   const localToggleInterest = () => {
@@ -52,6 +58,13 @@ const Tag = ({
     }
   };
 
+  const deleteInterest = () => {
+    toggleInterest({
+      type: 'delete',
+      interest,
+    });
+  };
+
   return (
     <li
       onClick={isMatchingPage ? localToggleInterest : null}
@@ -67,6 +80,7 @@ const Tag = ({
       </p>
       {isEdit ? (
         <img
+          onClick={deleteInterest}
           className="tag-delete-cross"
           alt="kruisje"
           src="/assets/img/cross-red.svg"

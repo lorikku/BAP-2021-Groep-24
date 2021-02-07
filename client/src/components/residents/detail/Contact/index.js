@@ -3,29 +3,31 @@ import './contact.css';
 import ContactDropdown from '../ContactDropdown';
 
 const Contact = ({ contact, deleteContact }) => {
+  const { photoUri, name, matchedInterests } = contact;
+
   const [isDropdownActive, setDropdownActive] = React.useState(false);
   const toggleDropdown = () => setDropdownActive((prevState) => !prevState);
 
   return (
     <>
       <li className="contact-container">
-        <img
-          className="contact-pic"
-          alt="fototje van contactpersoon"
-          src="https://1tsip9tt643kufi0v3m1s4is-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/accessories-for-elderly-women.jpg"
-        ></img>
         <div className="contact-info-wrapper">
-          <p className="contact-name">{contact.name}</p>
-          <div
-            className={`contact-type${
-              contact.matchedInterests.length > 0
-                ? '  contact-type--contact'
-                : ''
-            }`}
-          >
-            <p className="contact-type-text">
-              {contact.matchedInterests.length > 0 ? 'Match' : 'Vriend'}
-            </p>
+          <img
+            className="contact-pic"
+            alt="fototje van contactpersoon"
+            src={photoUri ? photoUri : '/assets/img/emptystate-profile.svg'}
+          ></img>
+          <div className="contact-info-subwrapper">
+            <p className="contact-name">{name}</p>
+            <div
+              className={`contact-type${
+                matchedInterests.length > 0 ? '  contact-type--contact' : ''
+              }`}
+            >
+              <p className="contact-type-text">
+                {matchedInterests.length > 0 ? 'Match' : 'Vriend'}
+              </p>
+            </div>
           </div>
         </div>
         <div onClick={toggleDropdown} className="contact-info-btn">

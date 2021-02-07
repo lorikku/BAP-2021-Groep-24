@@ -23,24 +23,25 @@
 
 .results-title--underline {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .results-list--hidden{
   position: absolute;
   width: 92%;
   left: 2.5%;
-  bottom: -93%;
+  bottom: -95%;
 }
 
- .results-list--partial
-
 .results-scrolllist {
+  margin-top: 5px;
   overflow: scroll;
-  padding-bottom: 12rem;
+  padding-bottom: 20rem;
 }
 
 .close-results {
   position: absolute;
   right: 20px;
   top: 20px;
+  cursor: pointer;
 }

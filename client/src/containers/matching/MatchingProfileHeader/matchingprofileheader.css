@@ -5,9 +5,3 @@
   justify-content: space-between;
 }
 
-.match-header-right {
-  height: 196px;
-  background-color: var(--colorBgLight);
-  width: 60%;
-  overflow: scroll;
-}

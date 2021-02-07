@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { useGlobalState } from '../../../../global/states';
-import { updateResident } from '../../../../services/ResidentsService';
+import { updateResident } from '../../../../services/ResidentsService/index.js';
 import {
   getSecUntilExpired,
   isTimestampNew,
@@ -12,8 +12,6 @@ import './residentspotlight.css';
 
 const ResidentSpotlight = ({ resident }) => {
   const { _id, spotlightTimestamp, name } = resident;
-
-  const [, setResident] = useGlobalState('resident');
 
   const [spotlightTimestampState, setSpotlightTimestamp] = React.useState(
     spotlightTimestamp
@@ -52,13 +50,6 @@ const ResidentSpotlight = ({ resident }) => {
     //If updatedResident returned something -> fetch was complete
     if (updatedResident) {
       setSpotlightTimestamp(updatedResident.spotlightTimestamp);
-
-      //setResident to newResident with update spotlightTimestamp
-      setResident((prevState) => {
-        const newResident = Object.assign({}, prevState);
-        newResident.spotlightTimestamp = updatedResident.spotlightTimestamp;
-        return newResident;
-      });
     }
 
     //Not loading -> calling this function allowed

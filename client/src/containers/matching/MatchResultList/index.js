@@ -4,6 +4,7 @@ import MatchResult from '../../../components/matching/MatchResult';
 
 const MatchResultList = ({
   selectedInterests,
+  matchee,
   matches,
   matchesVisibility,
   toggleMatchesVisibility,
@@ -22,7 +23,7 @@ const MatchResultList = ({
       <p
         onClick={toggleMatchesVisibility}
         className={`results-title${
-          matches.length !== 0 ? ' results-title--underline' : ''
+          selectedInterests.length !== 0 ? ' results-title--underline' : ''
         }`}
       >
         {selectedInterests.length === 0
@@ -41,7 +42,7 @@ const MatchResultList = ({
       ) : null}
       <ul className="results-scrolllist">
         {sortedMatches.map((match, index) => (
-          <MatchResult key={index} match={match} />
+          <MatchResult key={index} matchee={matchee} match={match} />
         ))}
       </ul>
     </div>

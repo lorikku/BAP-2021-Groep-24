@@ -8,8 +8,18 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--borderRadiusBig);
+
+  height: 196px;
+  background-color: var(--colorBgLight);
+  width: 60%;
+
+  margin-left: 1rem;
 }
 
 .match-header-right-tags {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 15px;
+  
+  overflow: scroll;
 }

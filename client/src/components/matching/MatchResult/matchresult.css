@@ -72,12 +72,23 @@
   align-items: center;
   padding: var(--spacerButtonNormal);
   margin-right: 2rem;
+
+  cursor: pointer;
+}
+
+.result-add-btn--active {
+  background-color: var(--colorCTA);
+  cursor: default;
 }
 
 .result-add-btn-text {
   font-weight: var(--fontWeightSemiBold);
   margin-left: 8px;
   color: var(--colorCTA);
+}
+
+.result-add-btn-text--active {
+  color: var(--colorBgMain);
 }
 
 .result-head-bottom-container {

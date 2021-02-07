@@ -4,7 +4,7 @@ import FloorInput from '../../../components/global/FloorInput';
 import NameInput from '../../../components/global/NameInput';
 import SortingInput from '../../../components/global/SortingInput';
 
-import { fetchResidents } from '../../../services/ResidentsService';
+import { fetchResidents } from '../../../services/ResidentsService/index.js';
 import { fetchMyResidents } from '../../../services/MyResidentsService';
 
 import {

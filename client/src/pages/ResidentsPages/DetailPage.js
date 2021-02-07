@@ -3,24 +3,44 @@ import { useParams } from 'react-router-dom';
 import GoBack from '../../components/global/GoBack';
 import paths from '../../consts/paths';
 import DetailHeader from '../../containers/residents/detail/DetailHeader';
+import {useGlobalState} from '../../global/states';
+import {fetchResident} from '../../services/ResidentsService';
 
 const DetailPage = ({
   showIcons,
   customImg,
-  resident,
-  setResidentId,
-  setResident,
   // props.children will return all children the parent component (DetailPage) has
   children,
+  navItems,
 }) => {
   const { residentId } = useParams();
 
+  //Fetching resident single from db
+  const [resident, setResident] = useGlobalState('resident');
+
   React.useEffect(() => {
-    setResidentId(residentId);
-  }, [setResidentId, residentId]);
+    let componentMounted = true;
+
+    if (!residentId) {
+      setResident(null);
+      return;
+    }
+
+    if (componentMounted) setResident(undefined);
+
+    const getResident = async () => {
+      const fetchedResident = await fetchResident(residentId);
+      if (componentMounted) setResident(fetchedResident);
+    };
+
+    getResident();
+
+    return () => (componentMounted = false);
+  }, [residentId, setResident]);
 
   return resident ? (
     <>
+    {/* This is header */}
       <GoBack path={paths.PATH_RESIDENTS.ROOT} text={'Terug naar overzicht'} />
       <DetailHeader
         customImg={customImg}
@@ -28,7 +48,11 @@ const DetailPage = ({
         resident={resident}
         setResident={setResident}
       />
-      {children}
+      {/* This is the actual detail page, depending on what was passed as child in parent component (./index.js) */}
+      {React.cloneElement(children, {
+        resident,
+        navItems: navItems ? navItems : null,
+      })}
     </>
   ) : resident === null ? (
     <p className="notification">

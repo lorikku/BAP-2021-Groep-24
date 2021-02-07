@@ -1,6 +1,6 @@
 import { fetchContactsByResidentId } from './ContactsService';
 import { fetchInterestByResidentId } from './InterestsService';
-import { fetchMyResidents } from './MyResidentsService';
+import { fetchMyResidents } from '../MyResidentsService';
 
 const apiRoute = '/app/residents';
 
@@ -85,7 +85,7 @@ export { fetchResidents, fetchResident };
 /* -------------- PUT FUNCTIONS -------------- */
 
 /* Update one resident */
-const updateResident = async (residentId, data) => {
+const updateResident = async (residentId, payload) => {
   try {
     const response = await fetch(
       process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`,
@@ -94,7 +94,7 @@ const updateResident = async (residentId, data) => {
         headers: {
           'Content-type': 'application/json',
         },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
+        body: JSON.stringify(payload), // body data type must match "Content-Type" header
       }
     );
     const result = await response.json();

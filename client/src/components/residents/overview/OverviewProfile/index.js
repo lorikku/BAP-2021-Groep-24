@@ -42,14 +42,7 @@ const OverviewProfile = ({ resident, isMatchingPage }) => {
     let myResidentUpdate;
     if (!isMyResident) {
       //If not my resident -> add to my residents
-      myResidentUpdate = await postMyResident({
-        _id,
-        name,
-        roomNr,
-        floor,
-        photoUri,
-        spotlightTimestamp,
-      });
+      myResidentUpdate = await postMyResident(resident);
     } else {
       //If my resident -> delete from my residents
       myResidentUpdate = await deleteMyResident(_id);

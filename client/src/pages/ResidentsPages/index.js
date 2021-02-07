@@ -1,21 +1,18 @@
-import * as React from "react";
-import { Redirect, Route, Switch, useParams } from "react-router-dom";
+import * as React from 'react';
+import { Redirect, Route, Switch, useParams } from 'react-router-dom';
 
-import MyResidentsPage from "./MyResidentsPage";
-import OverviewPage from "./OverviewPage";
-import DetailGeneralPage from "./DetailGeneralPage";
-import DetailPlanningPage from "./DetailPlanningPage";
-import DetailEditPage from "./DetailEditPage";
-import NewResidentPage from "./NewResidentPage";
-
-import PopUpContact from "../../containers/residents/detail/PopUpContact";
-import SubNav from "../../containers/residents/SubNav";
-
-import { getPagesObj } from "./pages";
-import { fetchResident } from "../../services/ResidentsService";
-import {useGlobalState} from '../../global/states';
-
+import MyResidentsPage from './MyResidentsPage';
+import OverviewPage from './OverviewPage';
+import DetailGeneralPage from './DetailGeneralPage';
+import DetailPlanningPage from './DetailPlanningPage';
+import DetailEditPage from './DetailEditPage';
+import NewResidentPage from './NewResidentPage';
 import DetailPage from './DetailPage';
+
+import PopUpContact from '../../containers/residents/detail/PopUpContact';
+import SubNav from '../../containers/residents/SubNav';
+
+import { getPagesObj } from './pages';
 
 import './residentspage.css';
 
@@ -26,32 +23,6 @@ const ResidentsPages = ({ paths }) => {
   //These will be used in the SubNavs
   const homePages = [pages.OVERVIEW, pages.MY_RESIDENTS];
   const detailPages = [pages.DETAIL_GENERAL, pages.DETAIL_PLANNING];
-
-  //Fetching resident single from db
-  const [resident, setResident] = useGlobalState('resident');
-  const [residentId, setResidentId] = React.useState(undefined);
-
-  React.useEffect(() => {
-    let componentMounted = true;
-
-    if (!residentId) {
-      setResident(null);
-      return;
-    }
-
-    if (componentMounted) setResident(undefined);
-
-    const getResident = async () => {
-      const fetchedResident = await fetchResident(residentId, setResident);
-      if (componentMounted) setResident(fetchedResident);
-    };
-
-    getResident();
-
-    return () => (componentMounted = false);
-  }, [residentId, setResident]);
-
-
 
   return (
     <Switch>
@@ -68,40 +39,27 @@ const ResidentsPages = ({ paths }) => {
       </Route>
       {/* Add new resident page */}
       <Route path={pages.NEW_RESIDENT.path()} exact>
-        <NewResidentPage/>
+        <NewResidentPage />
       </Route>
       {/* ---DETAIL PAGES--- */}
       <Route path={paths.ROOT + paths.DETAIL} strict>
         <Switch>
           {/* Detail page with general info */}
           <Route path={pages.DETAIL_GENERAL.path()} exact>
-            <DetailPage
-              showIcons={true}
-              resident={resident}
-              setResidentId={(residentId) => setResidentId(residentId)}
-            >
-              <DetailGeneralPage resident={resident} navItems={detailPages} />
+            <DetailPage showIcons={true} navItems={detailPages}>
+              <DetailGeneralPage />
             </DetailPage>
           </Route>
           {/* Detail page with personal planning */}
           <Route path={pages.DETAIL_PLANNING.path()} exact>
-            <DetailPage
-              showIcons={true}
-              resident={resident}
-              setResidentId={(residentId) => setResidentId(residentId)}
-            >
-              <DetailPlanningPage resident={resident} navItems={detailPages} />
+            <DetailPage showIcons={true} navItems={detailPages}>
+              <DetailPlanningPage />
             </DetailPage>
           </Route>
           {/* Edit resident */}
           <Route path={pages.DETAIL_EDIT.path()} exact>
-            <DetailPage
-              showIcons={false}
-              customImg={null}
-              resident={resident}
-              setResidentId={(residentId) => setResidentId(residentId)}
-            >
-              <DetailEditPage resident={resident} />
+            <DetailPage showIcons={false} customImg={null}>
+              <DetailEditPage />
             </DetailPage>
           </Route>
           {/* Add new contact to resident */}
@@ -129,7 +87,7 @@ const AddGeneralTrailingPath = ({ pathNameGenerator }) => {
   const params = useParams();
   const { residentId } = params;
 
-  return <Redirect to={pathNameGenerator("/" + residentId)} />;
+  return <Redirect to={pathNameGenerator('/' + residentId)} />;
 };
 
 export default ResidentsPages;
