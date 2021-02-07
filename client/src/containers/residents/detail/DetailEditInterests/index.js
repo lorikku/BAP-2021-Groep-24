@@ -5,8 +5,8 @@ import "./detaileditinterests.css";
 
 const DetailEditInterests = ({ resident }) => {
   return (
-    <div className="residents-editinterests fit-height">
-      <div className="add-new-tag-container fit-height">
+    <div className="residents-editinterests">
+      <div className="add-new-tag-container">
         <div className="add-new-tag-titles-wrapper">
           <p className="add-new-tag-title">Tag toevoegen</p>
           <p className="add-new-tag-subtext">
@@ -26,7 +26,7 @@ const DetailEditInterests = ({ resident }) => {
         <div className="add-new-tag-btn-div">
           <p className="add-new-tag-btn-notice">
             Deze tag bestaat nog niet. Selecteer een passende categorie om deze
-            aan te maken
+            aan te maken.
           </p>
           <div className="add-new-tag-btn">
             <p className="add-new-tag-btn-text">Tag creëren</p>

@@ -9,7 +9,7 @@ const NewResidentPage = () => {
   return (
     <>
       <h2 className="visually-hidden">Nieuwe bewoner aanmaken</h2>
-      <div className="new-resident-container fit-height">
+      <div className="new-resident-container">
         <GoBack text={'Annuleren'} />
         <BannerHeader
           title={'Hallo!'}

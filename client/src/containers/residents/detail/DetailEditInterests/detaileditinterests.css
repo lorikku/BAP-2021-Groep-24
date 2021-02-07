@@ -2,12 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  padding-bottom: 4rem;
-}
-
-.add-new-tag-container > div {
-  flex: 1;
+  height: 500px;
 }
 
 .residents-editinterests {
@@ -21,6 +16,12 @@
   margin-bottom: var(--spacerMain);
 }
 
+.add-new-tag-titles-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
 .add-new-tag-inputs-wrapper {
   display: flex;
   flex-direction: column;
@@ -29,6 +30,7 @@
 .label-wrap {
   display: flex;
   flex-direction: column;
+  font-weight: var(--fontWeightSemiBold);
 }
 
 .add-new-tag-search {
@@ -39,4 +41,28 @@
   height: 36px;
   background-color: var(--colorBgLight);
   margin-top: 0.5rem;
+}
+
+.add-new-tag-btn-div {
+  background-color: var(--colorBgLight);
+  padding: 1rem;
+}
+
+.add-new-tag-btn-notice {
+  font-size: var(--fontSizeSmall);
+  margin-bottom: 10px;
+}
+
+.add-new-tag-btn {
+  background-color: var(--colorCTA);
+  border-radius: var(--borderRadius);
+  padding: var(--spacerButtonNormal);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.add-new-tag-btn-text {
+    color: var(--colorBgMain);
+    font-weight: var(--fontWeightSemiBold);
 }
