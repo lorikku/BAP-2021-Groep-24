@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
-import paths from '../../../../consts/paths';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import paths from "../../../../consts/paths";
 
-import './popupcontact.css';
+import "./popupcontact.css";
 
 const PopUpContact = ({ addNewContact }) => {
   const { residentId, closeWindow } = addNewContact;
-  const path = paths.PATH_MATCHING.ROOT + '/' + residentId;
+  const path = paths.PATH_MATCHING.ROOT + "/" + residentId;
 
   return (
     <div className="popup-container">
@@ -35,7 +35,11 @@ const PopUpContact = ({ addNewContact }) => {
           </div>
         </div>
         <div className="popup-left-vector">
-          <p>Hier komt illustratie</p>
+          <img
+            className="popup-contacts-vector"
+            alt="nieuwe vriend toevoegen illustratie"
+            src="/assets/img/illustrations/network-resident.svg"
+          ></img>
         </div>
       </div>
       <div className="popup-right-container">
@@ -53,7 +57,11 @@ const PopUpContact = ({ addNewContact }) => {
           </Link>
         </div>
         <div className="popup-right-vector">
-          <p>Hier komt illustratie</p>
+          <img
+            className="popup-matching-vector"
+            alt="match vriend toevoegen illustratie"
+            src="/assets/img/illustrations/matching-uneven.svg"
+          ></img>
         </div>
       </div>
     </div>

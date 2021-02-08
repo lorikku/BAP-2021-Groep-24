@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 
-import BannerHeader from '../../components/global/BannerHeader';
-import OverviewPage from '../ResidentsPages/OverviewPage';
+import BannerHeader from "../../components/global/BannerHeader";
+import OverviewPage from "../ResidentsPages/OverviewPage";
 
-import './matchingpage.css';
+import "./matchingpage.css";
 
 const MatchingPage = () => {
   return (
@@ -12,6 +12,7 @@ const MatchingPage = () => {
         <BannerHeader
           title="Vind een match"
           subtext="Zoek of selecteer een bewoner"
+          img={"/assets/img/illustrations/matching-header.svg"}
         />
       </div>
 

@@ -1,10 +1,10 @@
-import * as React from 'react';
+import * as React from "react";
 
-import BannerHeader from '../../components/global/BannerHeader';
-import GoBack from '../../components/global/GoBack';
-import NewActivityOne from '../../containers/activities/NewActivityOne';
+import BannerHeader from "../../components/global/BannerHeader";
+import GoBack from "../../components/global/GoBack";
+import NewActivityOne from "../../containers/activities/NewActivityOne";
 
-import paths from '../../consts/paths';
+import paths from "../../consts/paths";
 
 const NewActivityStep1 = ({ inputs, changeInput, nextToInterests }) => {
   const [isInputValid, setIsInputValid] = React.useState(false);
@@ -22,12 +22,13 @@ const NewActivityStep1 = ({ inputs, changeInput, nextToInterests }) => {
 
   return (
     <>
-      <GoBack path={paths.PATH_ACTIVITIES.ROOT} text={'Terug naar agenda'} />
+      <GoBack path={paths.PATH_ACTIVITIES.ROOT} text={"Terug naar agenda"} />
       <BannerHeader
-        title={'Plan je activiteit'}
+        title={"Plan je activiteit"}
         subtext={
-          'Vul de nodige gegevens in om je activiteit tot leven te wekken.'
+          "Vul de nodige gegevens in om je activiteit tot leven te wekken."
         }
+        img={"/assets/img/illustrations/plan-activity.svg"}
       />
       <NewActivityOne
         inputs={inputs}
