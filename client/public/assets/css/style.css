@@ -1,0 +1,43 @@
+.warning-bg {
+  background-image: url(/assets/img/bg-turn-device.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5rem;
+}
+
+.turn-device-div {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 4rem;
+  border-radius: 20rem;
+}
+
+.warning-title {
+  color: var(--colorCTA);
+  font-size: 26px;
+  font-weight: var(--fontWeightMedium);
+  margin-right: 1rem;
+}
+
+.warning-text {
+  color: var(--colorCopyMain);
+  font-size: 26px;
+  font-weight: var(--fontWeightMedium);
+  margin-top: 2rem;
+  line-height: 1.9rem;
+  text-align: center;
+}
+
+.willem-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

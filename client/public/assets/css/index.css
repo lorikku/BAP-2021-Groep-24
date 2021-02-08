@@ -1,5 +1,6 @@
-@import 'reset.css';
-@import 'vars.css';
-@import 'font-faces.css';
-@import 'base.css';
-@import 'globals.css';
+@import "reset.css";
+@import "vars.css";
+@import "font-faces.css";
+@import "base.css";
+@import "globals.css";
+@import "style.css";
