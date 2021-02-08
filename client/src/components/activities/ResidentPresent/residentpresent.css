@@ -25,6 +25,11 @@
   margin-bottom: 6px;
 }
 
+.present-container--wrapper {
+  display: flex;
+  
+}
+
 .present-info-wrapper {
   display: flex;
   flex-direction: column;

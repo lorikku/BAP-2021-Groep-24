@@ -2,19 +2,17 @@ import { fetchContactsByResidentId } from './ContactsService';
 import { fetchInterestByResidentId } from './InterestsService';
 import { fetchMyResidents } from '../MyResidentsService';
 
-const apiRoute = '/app/residents';
+const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
 
 /* -------------- GET FUNCTIONS -------------- */
 
 /* Fetching single resident and their interests/contacts/planned activities/ */
-const fetchResident = async (residentId, isMatchingPage) => {
+const fetchResidentById = async (residentId, isMatchingPage) => {
   let fetchedResident = undefined;
 
   // FETCHING RESIDENT
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`
-    );
+    const response = await fetch(apiRoute + `/${residentId}`);
     const result = await response.json();
 
     if (!response.ok) {
@@ -43,9 +41,7 @@ const fetchResidents = async (name, floor, sorting, isMatchingPage) => {
   const query = `?name=${name}&floor=${floor}&sorting=${sorting.value}`;
 
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + query
-    );
+    const response = await fetch(apiRoute + query);
     const result = await response.json();
 
     if (!response.ok) {
@@ -78,7 +74,7 @@ const fetchResidents = async (name, floor, sorting, isMatchingPage) => {
   }
 };
 
-export { fetchResidents, fetchResident };
+export { fetchResidents, fetchResidentById };
 
 /* -------------- POST FUNCTIONS -------------- */
 
@@ -87,16 +83,13 @@ export { fetchResidents, fetchResident };
 /* Update one resident */
 const updateResident = async (residentId, payload) => {
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`,
-      {
-        method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify(payload), // body data type must match "Content-Type" header
-      }
-    );
+    const response = await fetch(apiRoute + `/${residentId}`, {
+      method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(payload), // body data type must match "Content-Type" header
+    });
     const result = await response.json();
 
     if (!response.ok) {

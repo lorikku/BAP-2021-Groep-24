@@ -3,6 +3,12 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  width: 50%;
+}
+
+.dtl-act-int-list-btn-wrapper {
+  width: 100%;
 }
 
 .dtl-act-int-title {

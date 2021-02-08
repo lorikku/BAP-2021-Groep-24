@@ -1,20 +1,30 @@
 import * as React from 'react';
 import './detailactivityheader.css';
 import Tag from './../../../components/interests/Tag';
+import { format } from 'date-fns';
+import { nlBE } from 'date-fns/locale';
 
-const DetailActivityHeader = () => {
+const DetailActivityHeader = ({ activity }) => {
+  const { title, location, startTimestamp, endTimestamp, interests } = activity;
+  const startDate = new Date(startTimestamp * 1000);
+  const endDate = new Date(endTimestamp * 1000);
+
   return (
     <div className="dtl-act-head-container">
       <div className="dtl-act-head-top-container">
         <div className="dtl-act-head-calendar">
-          <p className="dtl-act-calendar-day white">Donderdag</p>
-          <p className="dtl-act-calendar-date white">15</p>
-          <p className="dtl-act-calendar-month white">Januari</p>
+          <p className="dtl-act-calendar-day white">
+            {format(startDate, 'EEEE', nlBE)}
+          </p>
+          <p className="dtl-act-calendar-date white">
+            {format(startDate, 'dd', nlBE)}
+          </p>
+          <p className="dtl-act-calendar-month white">
+            {format(startDate, 'MMMM', nlBE)}
+          </p>
         </div>
         <div className="dtl-act-head-info">
-          <p className="dtl-act-head-title">
-            Wandeltocht: 't park van Kortrijk
-          </p>
+          <p className="dtl-act-head-title">{title}</p>
           <div className="dtl-act-head-time-loc-wrapper">
             <div className="dtl-act-head-time">
               <img
@@ -22,7 +32,10 @@ const DetailActivityHeader = () => {
                 alt="time icoontje"
                 src="/assets/img/clock-icon-dark.svg"
               ></img>
-              <p className="dtl-act-head-time">14:00 - 16:00</p>
+              <p className="dtl-act-head-time">
+                {format(startDate, 'HH:mm', nlBE)} -{' '}
+                {format(endDate, 'HH:mm', nlBE)}
+              </p>
             </div>
             <div className="dtl-act-head-loc">
               <img
@@ -30,7 +43,7 @@ const DetailActivityHeader = () => {
                 alt="location icon"
                 src="/assets/img/location-icon-dark.svg"
               ></img>
-              <p className="dtl-act-head-loc">Buda Kitchen</p>
+              <p className="dtl-act-head-loc">{location}</p>
             </div>
           </div>
         </div>
@@ -47,7 +60,9 @@ const DetailActivityHeader = () => {
           src="/assets/img/chevron-left.svg"
         ></img>
         <ul className="dtl-act-head-tags">
-          <Tag interest={{ name: 'test' }} className="dtl-act-head-tag" />
+          {interests.map((interest, index) => (
+            <Tag key={index} interest={interest} className="dtl-act-head-tag" />
+          ))}
         </ul>
         <img
           className="dtl-act-head-chevronright"

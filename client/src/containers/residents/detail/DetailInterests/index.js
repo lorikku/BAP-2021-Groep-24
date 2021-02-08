@@ -15,7 +15,6 @@ const DetailInterests = ({
   isMatchingPage,
   selectedInterests,
   toggleInterest,
-  changedInput
 }) => {
   const [categories, setCategories] = React.useState(undefined);
 
@@ -38,14 +37,15 @@ const DetailInterests = ({
 
   return (
     <>
+    <h2 className="visually-hidden">Interesses van bewoner</h2>
       <div className="detailresident-interests fit-height flex-content">
         {resident ? (
           <div className="detailresident-int-wrapper">
             {isMatchingPage ? null : (
-              <h3 className="detailresident-int-title">
+              <p className="detailresident-int-title">
                 {isEdit ? 'Verwijder ' : ''}Interesses
                 {isEdit ? '' : ` van ${resident.name}`}
-              </h3>
+              </p>
             )}
             {isMatchingPage ? null : (
               <div
@@ -75,7 +75,6 @@ const DetailInterests = ({
                   isMatchingPage={isMatchingPage}
                   selectedInterests={selectedInterests }
                   toggleInterest={toggleInterest}
-                  changedInput={changedInput}
                 />
               ))
             : categories === null

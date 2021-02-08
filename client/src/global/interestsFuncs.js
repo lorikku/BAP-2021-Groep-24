@@ -87,7 +87,6 @@ const calculateResidentMatches = async (matchee, selectedInterests) => {
 
   //Fetch resident's current contacts
   const matcheeContacts = await fetchContactsByResidentId(matchee._id);
-  console.log(matcheeContacts);
 
   //Loop through all residents
   residents.forEach((resident) => {

@@ -9,7 +9,6 @@ const InterestsCategory = ({
   isMatchingPage,
   selectedInterests,
   toggleInterest,
-  changedInput
 }) => {
   return (
     <li className="interests-category-container">
@@ -28,7 +27,6 @@ const InterestsCategory = ({
             selectedInterests={selectedInterests}
             toggleInterest={toggleInterest}
             isMatchingPage={isMatchingPage}
-            changedInput={changedInput}
           />
         ))}
       </ul>

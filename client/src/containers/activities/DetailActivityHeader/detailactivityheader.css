@@ -104,5 +104,8 @@
 }
 
 .dtl-act-head-tags {
-  margin-top: -10px;
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+
 }

@@ -8,9 +8,9 @@ const DetailActivities = ({ name }) => {
     <>
       <h2 className="visually-hidden">Activiteiten bewoner</h2>
       <div className="detailresident-activities">
-        <h3 className="detailresident-activities-title">
+        <p className="detailresident-activities-title">
           {name.first}'s Activiteiten
-        </h3>
+        </p>
 
         <ToggleBtn option1={"Gepland"} option2={"Afgelopen"} />
 

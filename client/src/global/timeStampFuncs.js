@@ -1,8 +1,8 @@
-import { format } from 'date-format-parse';
+import { format } from 'date-fns';
 
 const interval = 60 * 60 * 24 * 7 * 2; // 60s * 60h * 24d * 7w * 2 = 2 weeks
 
-const toSec = (timestamp) => parseInt(format(timestamp, 'X'));
+const toSec = (timestamp) => parseInt(format(timestamp, 't'));
 
 const generateTimestampInSec = (timestamp) => {
   if (timestamp) {
@@ -32,62 +32,4 @@ const getSecUntilExpired = (timestamp) => {
   return timestampFuture - timestampToday;
 };
 
-const locale = {
-  // MMMM
-  months: [
-    'Januari',
-    'Februari',
-    'Maart',
-    'April',
-    'Mei',
-    'Juni',
-    'Juli',
-    'Augustus',
-    'September',
-    'October',
-    'November',
-    'December',
-  ],
-  // MMM
-  monthsShort: [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'Mei',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ],
-  // dddd
-  weekdays: [
-    'Zondag',
-    'Maandag',
-    'Dinsdag',
-    'Woensdag',
-    'Donderdag',
-    'Vrijdag',
-    'Zaterdag',
-  ],
-  // ddd
-  weekdaysShort: ['Zon', 'Maa', 'Din', 'Woe', 'Don', 'Vri', 'Zat'],
-  // dd
-  weekdaysMin: ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'],
-  // [A a] format the ampm. The following is the default value
-  meridiem: (h, m, isLowercase) => {
-    const word = h < 12 ? 'AM' : 'PM';
-    return isLowercase ? word.toLocaleLowerCase() : word;
-  },
-  // [A a] used by parse to match the ampm. The following is the default value
-  meridiemParse: /[ap]\.?m?\.?/i,
-  // [A a] used by parse to determine if the matching string is pm. The following is the default value
-  isPM: (input) => {
-    return (input + '').toLowerCase().charAt(0) === 'p';
-  },
-};
-
-export { isTimestampNew, getSecUntilExpired, locale, toSec };
+export { isTimestampNew, getSecUntilExpired, toSec };

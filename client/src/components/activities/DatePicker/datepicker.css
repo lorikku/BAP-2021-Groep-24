@@ -1,0 +1,14 @@
+.nice-dates-grid {
+    height: 280px !important;
+}
+
+.nice-dates-day:before {
+    background-color: var(--colorCTA);
+    border-radius: 0;
+}
+
+.nice-dates-navigation {
+  background-color: var(--colorBgLight);
+  border-top-right-radius: var(--borderRadius);
+  border-top-left-radius: var(--borderRadius);
+}

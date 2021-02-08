@@ -9,10 +9,9 @@ const Tag = ({
   isMatchingPage,
   toggleInterest,
   selectedInterests,
-  changedInput,
 }) => {
   const [selected, setSelected] = React.useState(false);
-  
+
   React.useEffect(() => {
     let componentMounted = true;
 
@@ -33,13 +32,7 @@ const Tag = ({
     }
 
     return () => (componentMounted = false);
-  }, [
-    selectedInterests,
-    setSelected,
-    changedInput,
-    interest,
-    isMatchingPage,
-  ]);
+  }, [selectedInterests, setSelected, interest, isMatchingPage]);
 
   //Toggling interest (this is only availible in matching page)
   const localToggleInterest = () => {

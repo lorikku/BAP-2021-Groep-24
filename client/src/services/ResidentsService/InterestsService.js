@@ -1,11 +1,8 @@
-const apiRoute = '/app/residents';
+const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
 
 const fetchInterestByResidentId = async (residentId) => {
-
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/interests`
-    );
+    const response = await fetch(apiRoute + `/${residentId}/interests`);
     const result = await response.json();
 
     return result.interests;
@@ -15,4 +12,4 @@ const fetchInterestByResidentId = async (residentId) => {
   }
 };
 
-export {fetchInterestByResidentId}
+export { fetchInterestByResidentId };

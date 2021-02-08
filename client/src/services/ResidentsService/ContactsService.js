@@ -1,12 +1,10 @@
-import {toSec} from "../../global/timeStampFuncs";
+import { toSec } from '../../global/timeStampFuncs';
 
-const apiRoute = '/app/residents';
+const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
 
 const fetchContactsByResidentId = async (residentId) => {
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}/contacts`
-    );
+    const response = await fetch(apiRoute + `/${residentId}/contacts`);
     const result = await response.json();
 
     return result.contacts;
@@ -21,35 +19,32 @@ const postContact = async (matchee, match, matchedInterests = []) => {
   const resident = {
     _id: matchee._id,
     name: matchee.name,
-    photoUri: matchee.photoUri
-  }
+    photoUri: matchee.photoUri,
+  };
 
   //Setting contact (match)
   const contact = {
     _id: match._id,
     name: match.name,
-    photoUri: match.photoUri
-  }
+    photoUri: match.photoUri,
+  };
 
   //Get today's unix timestamp (in seconds)
   const addedAt = toSec(Date.now());
 
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${matchee._id}/contacts`,
-      {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          resident,
-          contact,
-          addedAt,
-          matchedInterests,
-        }), // body data type must match "Content-Type" header
-      }
-    );
+    const response = await fetch(apiRoute + `/${matchee._id}/contacts`, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        resident,
+        contact,
+        addedAt,
+        matchedInterests,
+      }), // body data type must match "Content-Type" header
+    });
 
     if (!response.ok) {
       return false;

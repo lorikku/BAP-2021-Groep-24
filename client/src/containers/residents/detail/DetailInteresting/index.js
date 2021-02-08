@@ -7,9 +7,9 @@ const DetailInteresting = ({ name }) => {
     <>
       <h2 className="visually-hidden">Wellicht interessante activiteiten</h2>
       <div className="detailresident-interesting">
-        <h3 className="detailresident-interesting-title">
+        <p className="detailresident-interesting-title">
           Wellicht interessant voor {name.first}
-        </h3>
+        </p>
         <ul className="interesting-list">
           {/* interesting-activity component */}
           <ActivityInteresting

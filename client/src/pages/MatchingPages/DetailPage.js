@@ -9,13 +9,13 @@ import {
   calculateResidentMatches,
   searchInterests,
 } from '../../global/interestsFuncs';
-import { fetchResident } from '../../services/ResidentsService/index.js';
+import { fetchResidentById } from '../../services/ResidentsService/index.js';
 import OverviewPage from '../ResidentsPages/OverviewPage';
 
 import './matchingpage.css';
 
 const DetailPage = () => {
-  /* --------- STEP 1: GETTING RESIDENT---------  */
+  /* --------- STEP 1: GETTING RESIDENT (AND HIS INTERESTS AKA TAGS) ---------  */
 
   const { residentId } = useParams();
 
@@ -33,7 +33,7 @@ const DetailPage = () => {
     if (componentMounted) setResident(undefined);
 
     const getResident = async () => {
-      const fetchedResident = await fetchResident(
+      const fetchedResident = await fetchResidentById(
         residentId,
         setResident,
         true
@@ -133,8 +133,8 @@ const DetailPage = () => {
         <NameInput
           name={name}
           setName={setName}
-          labelText="Zoek een interesse"
-          placeholderText="Krant"
+          labelText="Zoek een interessetag"
+          placeholderText="Golf"
         />
       </div>
       {!matchesVisibility ? (
@@ -144,7 +144,6 @@ const DetailPage = () => {
           isMatchingPage
           selectedInterests={selectedInterests}
           toggleInterest={toggleInterest}
-          changedInput={name}
         />
       ) : null}
       <MatchResultList

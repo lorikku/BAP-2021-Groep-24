@@ -6,6 +6,7 @@
 
 .match-header-right {
   display: flex;
+  align-items: center;
   flex-direction: column;
   border-radius: var(--borderRadiusBig);
 
@@ -16,10 +17,19 @@
   margin-left: 1rem;
 }
 
+.match-header-right--activity {
+  width: 90%;
+  height: 25rem;
+}
+
 .match-header-right-tags {
   display: flex;
+  align-content: flex-start;
   flex-wrap: wrap;
+
   margin: 0 15px;
+
+  flex: 0.9;
   
   overflow: scroll;
 }

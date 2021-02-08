@@ -1,22 +1,27 @@
-import * as React from "react";
-import "./residentinterested.css";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-const ResidentInterested = ({ name, room }) => {
+import paths from '../../../consts/paths';
+
+import './residentinterested.css';
+
+const ResidentInterested = ({ resident }) => {
+  const { _id, name, roomNr, photoUri } = resident;
   return (
     <li className="int-container">
-      <div className="int-top-half">
+      <Link to={paths.PATH_RESIDENTS.ROOT + `/${_id}`} className="int-top-half">
         <img
           className="int-pic"
           alt="fototje van intpersoon"
-          src="https://1tsip9tt643kufi0v3m1s4is-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/accessories-for-elderly-women.jpg"
+          src={photoUri ? photoUri : '/assets/img/emptystate-profile.svg'}
         ></img>
         <div className="int-info-wrapper">
-          <p className="int-name">{name.first + " " + name.last}</p>
+          <p className="int-name">{name}</p>
           <div className="int-type">
-            <p className="int-type-text">{room}</p>
+            <p className="int-type-text">Kamer {roomNr}</p>
           </div>
         </div>
-      </div>
+      </Link>
       <div className="int-yes-no-container">
         <div className="int-yes">
           <img

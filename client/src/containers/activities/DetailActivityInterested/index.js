@@ -1,17 +1,18 @@
-import * as React from "react";
-import ResidentInterested from "../../../components/activities/ResidentInterested";
-import "./detailactivityinterested.css";
+import * as React from 'react';
+import ResidentInterested from '../../../components/activities/ResidentInterested';
+import './detailactivityinterested.css';
 
-const DetailActivityInterested = () => {
+const DetailActivityInterested = ({ residents }) => {
   return (
     <div className="dtl-act-int-container">
-      <p className="dtl-act-int-title">Wellicht geïnteresseerd (32)</p>
+      <p className="dtl-act-int-title">
+        Wellicht geïnteresseerd ({residents.length})
+      </p>
       <div className="dtl-act-int-list-btn-wrapper">
         <ul className="dtl-act-int-list">
-          <ResidentInterested
-            name={{ first: "Fréderique", last: "Van Den Broucke" }}
-            room={"Kamer 201"}
-          />
+          {residents.map((resident, index) => (
+            <ResidentInterested key={index} resident={resident} />
+          ))}
         </ul>
         <div className="dtl-act-int-btn">
           <p className="dtl-act-int-btn-text">Bewoner uitnodigen</p>

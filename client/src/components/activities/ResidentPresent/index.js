@@ -1,20 +1,28 @@
-import * as React from "react";
-import "./residentpresent.css";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import paths from '../../../consts/paths';
+import './residentpresent.css';
 
-const ResidentPresent = ({ name, room }) => {
+const ResidentPresent = ({ resident }) => {
+  const { _id, name, roomNr, photoUri } = resident;
   return (
     <li className="present-container">
-      <img
-        className="present-pic"
-        alt="fototje van presentpersoon"
-        src="https://1tsip9tt643kufi0v3m1s4is-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/accessories-for-elderly-women.jpg"
-      ></img>
-      <div className="present-info-wrapper">
-        <p className="present-name">{name.first + " " + name.last}</p>
-        <div className="present-type">
-          <p className="present-type-text">{room}</p>
+      <Link
+        to={paths.PATH_RESIDENTS.ROOT + `/${_id}`}
+        className="present-container--wrapper"
+      >
+        <img
+          className="present-pic"
+          alt="fototje van presentpersoon"
+          src={photoUri ? photoUri : '/assets/img/emptystate-profile.svg'}
+        ></img>
+        <div className="present-info-wrapper">
+          <p className="present-name">{name}</p>
+          <div className="present-type">
+            <p className="present-type-text">Kamer {roomNr}</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="present-info-btn">
         <img
           className="present-info-btn-vector"

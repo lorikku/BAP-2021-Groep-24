@@ -34,6 +34,15 @@
   border-radius: var(--borderRadius);
 }
 
+.newactivity-one-next-btn--int {
+  width: unset;
+  margin: 0 10px;
+}
+
+.newactivity-one-next-btn--invalid{
+  opacity: .6;
+}
+
 .newactivity-one-next-btn-text {
   color: var(--colorBgMain);
   font-weight: var(--fontWeightSemiBold);
@@ -57,6 +66,8 @@
   height: 42px;
   color: var(--colorCopyMain);
   max-width: 406px;
+
+  padding: 5px 10px;
 }
 
 .newactivity-one-title-date {
@@ -113,6 +124,8 @@
   background-color: var(--colorBgLight);
   height: 36px;
   color: var(--colorCopyMain);
+
+  padding: 5px 10px;
 }
 
 .newactivity-one-to-input {
@@ -125,7 +138,9 @@
 }
 
 .newactivity-one-from-input {
-  font-weight: var(--fontWeightMedium);
+  text-align: center;
+
+  font-weight: var(--fontWeightSemiBold);
   font-size: var(--fontSizeBig);
   background-color: var(--colorBgLight);
   height: 36px;
@@ -158,8 +173,6 @@
 
 .newactivity-one-calendar {
   width: 406px;
-  height: 332px;
-  background-color: var(--colorBgLight);
 }
 
 .newactivity-one-right-section {

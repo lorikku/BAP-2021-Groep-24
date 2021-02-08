@@ -13,7 +13,7 @@ const DetailHeader = ({ resident, showIcons, customImg }) => {
         {customImg === undefined ? (
           <ResidentSpotlight resident={resident} />
         ) : customImg === null ? null : (
-          <img src={customImg}></img>
+          <img alt="Een afbeelding ter illustratie" src={customImg}></img>
         )}
       </div>
     </>

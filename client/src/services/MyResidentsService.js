@@ -1,13 +1,11 @@
-const apiRoute = '/app/my-residents';
+const apiRoute = process.env.REACT_APP_API_URL + '/app/my-residents';
 
 /* -------------- GET FUNCTIONS -------------- */
 
 /* Fetching MY resident */
 const myResidentExists = async (residentId) => {
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`
-    );
+    const response = await fetch(apiRoute + `/${residentId}`);
 
     if (!response.ok) {
       return false;
@@ -25,9 +23,7 @@ const fetchMyResidents = async (name, floor, sorting) => {
   const query = `?name=${name}&floor=${floor}&sorting=${sorting.value}`;
 
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + query
-    );
+    const response = await fetch(apiRoute + query);
     const result = await response.json();
 
     if (!response.ok) {
@@ -49,7 +45,7 @@ export { myResidentExists, fetchMyResidents };
 
 const postMyResident = async (resident) => {
   try {
-    const response = await fetch(process.env.REACT_APP_API_URL + apiRoute, {
+    const response = await fetch(apiRoute, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
         'Content-type': 'application/json',
@@ -79,12 +75,9 @@ export { postMyResident };
 /* Delete a resident from my residents */
 const deleteMyResident = async (residentId) => {
   try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL + apiRoute + `/${residentId}`,
-      {
-        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-      }
-    );
+    const response = await fetch(apiRoute + `/${residentId}`, {
+      method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+    });
 
     if (!response.ok) {
       return false;

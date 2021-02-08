@@ -1,9 +1,11 @@
 import * as React from 'react';
-import './contactdropdown.css';
 import Tag from '../../../interests/Tag';
+
 import { useGlobalState } from '../../../../global/states';
-import { format } from 'date-format-parse';
-import { locale } from '../../../../global/timeStampFuncs';
+import { format } from 'date-fns';
+import {nlBE} from 'date-fns/locale';
+
+import './contactdropdown.css';
 
 const ContactDropdown = ({ contact, deleteContact }) => {
   const { matchedInterests } = contact;
@@ -51,8 +53,8 @@ const ContactDropdown = ({ contact, deleteContact }) => {
         <div className="dropdown-title-wrapper">
           <p className="dropdown-title">Match gemaakt op:</p>
           <p className="dropdown-subtitle">
-            {format(new Date(contact.addedAt * 1000 /* convert sec to ms */), 'D MMMM YYYY', {
-              locale,
+            {format(new Date(contact.addedAt * 1000 /* convert sec to ms */), 'dd MMMM yyy', {
+              locale: nlBE,
             })}
           </p>
         </div>

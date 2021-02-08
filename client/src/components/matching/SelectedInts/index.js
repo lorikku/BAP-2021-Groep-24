@@ -2,9 +2,20 @@ import * as React from 'react';
 import './selectedints.css';
 import Tag from '../../../components/interests/Tag';
 
-const SelectedInts = ({ selectedInterests, toggleInterest }) => {
+const SelectedInts = ({
+  selectedInterests,
+  toggleInterest,
+  submitActivity,
+  steps,
+  step,
+}) => {
+  // IF SUBMITACTIVITY IS DEFINED -> we are on activity page
   return (
-    <div className="match-header-right">
+    <div
+      className={`match-header-right${
+        submitActivity ? ' match-header-right--activity' : ''
+      }`}
+    >
       <p className="match-header-right-title">Geselecteerde Interesses</p>
       <ul className="match-header-right-tags">
         {selectedInterests.length === 0 ? (
@@ -20,6 +31,27 @@ const SelectedInts = ({ selectedInterests, toggleInterest }) => {
           ))
         )}
       </ul>
+      {submitActivity ? (
+        <div
+          onClick={
+            selectedInterests.length === 0 || step === steps.SUBMITTING
+              ? null
+              : submitActivity
+          }
+          className={`newactivity-one-next-btn newactivity-one-next-btn--int${
+            selectedInterests.length === 0 || step === steps.SUBMITTING
+              ? ' newactivity-one-next-btn--invalid'
+              : ''
+          }`}
+        >
+          <p className="newactivity-one-next-btn-text">Activiteit aanmaken</p>
+          <img
+            className="newactivity-one-next-arrow"
+            alt="next arrow naar rechts"
+            src="/assets/img/arrow-right-white.svg"
+          ></img>
+        </div>
+      ) : null}
     </div>
   );
 };

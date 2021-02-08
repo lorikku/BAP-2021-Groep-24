@@ -4,7 +4,7 @@ import GoBack from '../../components/global/GoBack';
 import paths from '../../consts/paths';
 import DetailHeader from '../../containers/residents/detail/DetailHeader';
 import {useGlobalState} from '../../global/states';
-import {fetchResident} from '../../services/ResidentsService';
+import {fetchResidentById} from '../../services/ResidentsService';
 
 const DetailPage = ({
   showIcons,
@@ -29,7 +29,7 @@ const DetailPage = ({
     if (componentMounted) setResident(undefined);
 
     const getResident = async () => {
-      const fetchedResident = await fetchResident(residentId);
+      const fetchedResident = await fetchResidentById(residentId);
       if (componentMounted) setResident(fetchedResident);
     };
 

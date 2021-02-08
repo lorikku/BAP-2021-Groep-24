@@ -1,10 +1,17 @@
 .newactivity-header-container {
   background-color: var(--colorOrangeLight);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: 150px;
   align-items: center;
   border-radius: var(--borderRadiusBig);
+
+  padding: 0 calc(var(--spacerMain) * 1.5);
+}
+
+.newactivity-header-container--thinner {
+  margin-top: -20px;
+  min-height: 65px;
 }
 
 .newactivity-header-container.color-blue {

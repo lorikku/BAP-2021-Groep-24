@@ -49,7 +49,7 @@ const DetailContacts = ({ resident }) => {
     <>
       <h2 className="visually-hidden">Vriendschappen bewoner</h2>
       <div className="detailresident-contacts fit-height flex-content">
-        <h3 className="detailresident-contact-title">Vriendschappen</h3>
+        <p className="detailresident-contact-title">Vriendschappen</p>
         {/* contact lijstje, hier al de component */}
         <ul className="detailresident-contactslist">
           {contacts.length > 0
