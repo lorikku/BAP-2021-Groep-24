@@ -1,16 +1,27 @@
 import * as React from 'react';
+import { format, addDays, getDay, getWeek, setDay, getISODay, setISODay } from 'date-fns';
 import { Link } from 'react-router-dom';
 import DayActivity from '../../../components/activities/DayActivity';
-import WeekDiviser from '../../../components/activities/WeekDiviser';
 import paths from '../../../consts/paths';
+import { locale } from '../../../global/timeStampFuncs';
 import './overviewallactivities.css';
 
-const OverviewAllActivities = () => {
+const dayplanningOptions = {
+  YESTERDAY: 'Gisteren',
+  TODAY: 'Vandaag',
+  TOMORROW: 'Morgen',
+};
+
+const OverviewAllActivities = ({
+  activitiesPerDay,
+  selectedDate,
+  changeWeek,
+}) => {
   return (
-    <div className="all-activities-container">
+    <div className="all-activities-container fit-height flex-content">
       <div className="all-activities-btns">
         <div
-          onClick={() => console.log('back to today')}
+          onClick={() => changeWeek('present')}
           className="all-activities-now-btn"
         >
           <img
@@ -30,21 +41,99 @@ const OverviewAllActivities = () => {
           ></img>
         </Link>
       </div>
-      <WeekDiviser />
       {/* per dag deze section tonen met zijn activiteiten er in --> */}
-      <div className="dayplanning-section">
-        <p className="dayplanning-title">Vandaag</p>
-        {/* activity components for this day */}
-        <Link to={paths.PATH_ACTIVITIES.ROOT + '/insert-id-here'} className="dayplanning-container">
-          {/* colorbar classnames:
-                colorbar-today
-                colorbar-future
-                colorbar-unplanned
-            */}
-          <div className="dayactivity-colorbar colorbar-today"></div>
-          <DayActivity />
-        </Link>
-      </div>
+      <ul className="dayplanning-list">
+        {activitiesPerDay.map((day, index) => {
+          const dayIndex = index + 1;
+          const today = new Date();
+
+          let dayplanningTitle = '';
+
+          if (getWeek(today) === getWeek(selectedDate)) {
+            switch (dayIndex) {
+              case getDay(addDays(today, -1)):
+                dayplanningTitle = dayplanningOptions.YESTERDAY;
+                break;
+
+              case getDay(today):
+                dayplanningTitle = dayplanningOptions.TODAY;
+                break;
+
+              case getDay(addDays(today, 1)):
+                dayplanningTitle = dayplanningOptions.TOMORROW;
+                break;
+
+              default:
+                dayplanningTitle = format(
+                  setDay(selectedDate, dayIndex),
+                  'd MMMM',
+                  locale
+                );
+                break;
+            }
+          } else {
+            dayplanningTitle = format(
+              setDay(selectedDate, dayIndex),
+              'd MMMM',
+              locale
+            );
+          }
+
+          const isToday = dayplanningTitle === dayplanningOptions.TODAY;
+
+          return (
+            <li
+              key={dayIndex}
+              className="dayplanning-section"
+            >
+              <p className="dayplanning-title">{dayplanningTitle}</p>
+              {/* IF NO ACTIVITIES WERE FOUND FOR THIS DAY */}
+              {day.length === 0 ? (
+                <div className="dayplanning-container">
+                  <div className={`dayactivity-colorbar${isToday ? ' colorbar-today' : ' colorbar-unplanned'}`} />
+                  <DayActivity
+                  isToday={isToday}
+                    day={format(
+                      setISODay(selectedDate, dayIndex, locale),
+                      'EEEEEE',
+                      locale
+                    )}
+                    dayNumb={format(
+                      setISODay(selectedDate, dayIndex, locale),
+                      'dd',
+                      locale
+                    )}
+                  />
+                </div>
+              ) : (
+                // ELSE MAP THROUGH ACTIVITIES
+                day.map((activity) => (
+                  <Link
+                    to={paths.PATH_ACTIVITIES.ROOT + `/${activity._id}`}
+                    className="dayplanning-container"
+                  >
+                    <div className={`dayactivity-colorbar${isToday ? ' colorbar-today' : ' colorbar-planned'}`} />
+                    <DayActivity
+                      activity={activity}
+                      isToday={isToday}
+                      day={format(
+                        setISODay(selectedDate, dayIndex, locale),
+                        'EEEEEE',
+                        locale
+                      )}
+                      dayNumb={format(
+                        setISODay(selectedDate, dayIndex, locale),
+                        'dd',
+                        locale
+                      )}
+                    />
+                  </Link>
+                ))
+              )}
+            </li>
+          );
+        })}
+      </ul>
       {/* <-- tot hier */}
     </div>
   );

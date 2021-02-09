@@ -27,6 +27,25 @@
   min-height: 90px;
 }
 
+.dayactivity-noplanned-text {
+  color: var(--colorBgGreyDark);
+  font-weight: var(--fontWeightMedium);
+  font-size: var(--fontSizeBigger);
+  margin-left: var(--spacerMain);
+}
+
+.dayactivity-container.container-today {
+  background-color: var(--colorBgDark);
+}
+
+.dayactivity-container.container-planned {
+  background-color: var(--colorBgLight);
+}
+
+.dayactivity-container.container-unplanned {
+  background-color: var(--colorBgGreyLight);
+}
+
 .dayactivity-left-component {
   display: flex;
   margin-left: 15px;
@@ -44,7 +63,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  width: 55px;
+  height: 60px;
   margin: 12px 0px;
 }
 
@@ -52,16 +72,16 @@
   background-color: var(--colorCTA);
 }
 
-.calendar-future {
+.calendar-planned {
   background-color: var(--colorOrange);
+}
+
+.calendar-unplanned {
+  background-color: var(--colorBgGrey);
 }
 
 .date-future {
   color: var(--colorCopyMain);
-}
-
-.calendar-unplanned {
-  color: var(--colorBgGrey);
 }
 
 .date-today {
@@ -76,6 +96,7 @@
 .dayactivity-day {
   font-weight: var(--fontWeightSemiBold);
   font-size: var(--fontSizeSmall);
+  text-transform: capitalize;
 }
 
 .dayactivity-location-time-wrapper {

@@ -8,12 +8,12 @@ import SelectedInts from '../../components/matching/SelectedInts';
 import DetailInterests from '../../containers/residents/detail/DetailInterests';
 import { searchInterests } from '../../global/interestsFuncs';
 import { fetchResidentById } from '../../services/ResidentsService';
+import {detailSteps} from './detailSteps';
 
 const NewActivityStep2 = ({
   changeInput,
-  backToConfig,
+  changeStep,
   submitActivity,
-  steps,
   step
 }) => {
   /* --------- STEP 1: SEARCHING THROUGH INTERESTS ---------  */
@@ -86,7 +86,7 @@ const NewActivityStep2 = ({
 
   return resident ? (
     <>
-      <GoBack func={backToConfig} text={'Terug naar activiteit informatie'} />
+      <GoBack func={() => changeStep(detailSteps.CONFIG)} text={'Terug naar activiteit informatie'} />
       <BannerHeader title={'Kies de bijhorende interesses'} />
       <div className="matching__input">
         <NameInput
@@ -109,7 +109,6 @@ const NewActivityStep2 = ({
             selectedInterests={selectedInterests}
             toggleInterest={toggleInterest}
             submitActivity={submitActivity}
-            steps={steps}
             step={step}
           />
         </div>

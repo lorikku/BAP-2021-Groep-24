@@ -106,31 +106,3 @@ const updateResident = async (residentId, payload) => {
 export { updateResident };
 
 /* -------------- DELETE FUNCTIONS -------------- */
-
-/* Update one resident */
-const deleteContactFromResident = async (residentId, contactId) => {
-  try {
-    const response = await fetch(
-      process.env.REACT_APP_API_URL +
-        apiRoute +
-        `/${residentId}` +
-        `/contacts/${contactId}`,
-      {
-        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-      }
-    );
-    const result = await response.json();
-    console.log(result);
-
-    if (!response.ok) {
-      return false;
-    }
-
-    return true;
-  } catch (err) {
-    console.log(err);
-    return false;
-  }
-};
-
-export { deleteContactFromResident };

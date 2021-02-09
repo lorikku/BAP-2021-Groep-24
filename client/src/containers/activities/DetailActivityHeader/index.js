@@ -6,8 +6,8 @@ import { nlBE } from 'date-fns/locale';
 
 const DetailActivityHeader = ({ activity }) => {
   const { title, location, startTimestamp, endTimestamp, interests } = activity;
-  const startDate = new Date(startTimestamp * 1000);
-  const endDate = new Date(endTimestamp * 1000);
+  const startDate = new Date(startTimestamp);
+  const endDate = new Date(endTimestamp);
 
   return (
     <div className="dtl-act-head-container">

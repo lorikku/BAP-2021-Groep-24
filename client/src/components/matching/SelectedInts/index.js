@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './selectedints.css';
 import Tag from '../../../components/interests/Tag';
+import {detailSteps} from '../../../pages/ActivitiesPages/detailSteps';
 
 const SelectedInts = ({
   selectedInterests,
   toggleInterest,
   submitActivity,
-  steps,
   step,
 }) => {
   // IF SUBMITACTIVITY IS DEFINED -> we are on activity page
@@ -34,12 +34,12 @@ const SelectedInts = ({
       {submitActivity ? (
         <div
           onClick={
-            selectedInterests.length === 0 || step === steps.SUBMITTING
+            selectedInterests.length === 0 || step === detailSteps.SUBMITTING
               ? null
               : submitActivity
           }
           className={`newactivity-one-next-btn newactivity-one-next-btn--int${
-            selectedInterests.length === 0 || step === steps.SUBMITTING
+            selectedInterests.length === 0 || step === detailSteps.SUBMITTING
               ? ' newactivity-one-next-btn--invalid'
               : ''
           }`}

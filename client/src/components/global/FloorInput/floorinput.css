@@ -1,5 +1,13 @@
+.residents__filter--activitypage {
+    width: unset !important;
+}
+
 .residents__filter__floor {
     align-self: flex-end;
+}
+
+.residents__filter__floor--activitypage {
+    align-self: unset !important;
 }
 
 #filter__floor {

@@ -2,11 +2,18 @@ import * as React from 'react';
 
 import './floorinput.css';
 
-const FloorInput = ({options, floor, setFloor}) => {
-  
+const FloorInput = ({ options, floor, setFloor, isActivityPage }) => {
   return (
-    <div className="residents__filter">
-      <div className="residents__filter__floor">
+    <div
+      className={`residents__filter${
+        isActivityPage ? ' residents__filter--activitypage' : ''
+      }`}
+    >
+      <div
+        className={`residents__filter__floor${
+          isActivityPage ? ' residents__filter__floor--activitypage' : ''
+        }`}
+      >
         <label className="residents__filter__label" htmlFor="filter__floor">
           Floor
         </label>

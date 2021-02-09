@@ -1,5 +1,3 @@
-import { toSec } from '../global/timeStampFuncs';
-
 function convertTimeToNumb(duration) {
   const hours = parseInt(duration.split(':')[0]);
   const minutes = parseInt(duration.split(':')[1]);
@@ -9,6 +7,28 @@ function convertTimeToNumb(duration) {
 const apiRoute = process.env.REACT_APP_API_URL + '/app/activities';
 
 /* -------------- GET FUNCTIONS -------------- */
+
+const fetchAllActivitiesByDateAndFloor = async (
+  selectedDate = new Date(),
+  floor = 'all'
+) => {
+  try {
+    const response = await fetch(
+      apiRoute + `?selectedDate=${selectedDate.getTime()}&floor=${floor}`
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const result = await response.json();
+
+    return result.activities;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
 
 const fetchAcitivityById = async (activityId) => {
   try {
@@ -27,30 +47,32 @@ const fetchAcitivityById = async (activityId) => {
   }
 };
 
-export { fetchAcitivityById };
+export { fetchAllActivitiesByDateAndFloor, fetchAcitivityById };
 
 /* -------------- POST FUNCTIONS -------------- */
 
 const postActivity = async (data) => {
   //Extract all inputs
-  const { title, date, startTime, endTime, location, interests } = data;
+  const { title, location, floor, date, startTime, endTime, interests } = data;
 
   //Setting the start date (adding the hours)
   const startDate = new Date(date);
   startDate.setHours(...convertTimeToNumb(startTime));
-  const startTimestamp = toSec(startDate.getTime());
+  const startTimestamp = startDate.getTime();
 
   //Setting the end date (adding the hours)
   const endDate = new Date(date);
   endDate.setHours(...convertTimeToNumb(endTime));
-  const endTimestamp = toSec(endDate.getTime());
+  const endTimestamp = endDate.getTime();
 
   //Preparing activity object (for posting)
   const activity = {
     title,
     location,
+    floor: floor.toString(),
     startTimestamp,
     endTimestamp,
+    hasCalculated: false,
     interests,
     participatedResidents: [],
     interestedResidents: [],

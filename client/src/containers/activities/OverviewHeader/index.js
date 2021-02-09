@@ -1,28 +1,45 @@
-import * as React from "react";
-import "./overviewheader.css";
+import * as React from 'react';
+import { addWeeks, getWeek } from 'date-fns';
 
-const OverviewHeader = () => {
+import {
+  getFirstDayOfWeek,
+  getLastDayOfWeek,
+  locale,
+} from '../../../global/timeStampFuncs';
+
+import './overviewheader.css';
+
+const OverviewHeader = ({ selectedDate, changeWeek }) => {
+  const prevWeek = addWeeks(selectedDate, -1);
+  const nextWeek = addWeeks(selectedDate, 1);
+
   return (
     <div className="overview-header-container">
-      <div className="header-last-week">
+      <div onClick={() => changeWeek('prev')} className="header-last-week">
         <img
           className="chevron-left-pointer"
           alt="chevron links"
           src="/assets/img/chevron-left.svg"
         ></img>
         <div className="header-last-week-wrapper">
-          <p className="header-last-week-text">Week 7</p>
-          <p className="header-last-week-date">8 feb - 14 Feb</p>
+          <p className="header-last-week-text">Week {getWeek(prevWeek, locale)}</p>
+          <p className="header-last-week-date">
+            {getFirstDayOfWeek(prevWeek)} - {getLastDayOfWeek(prevWeek)}
+          </p>
         </div>
       </div>
       <div className="header-this-week-active">
-        <p className="header-this-week-text">Week 8</p>
-        <p className="header-this-week-date">15 feb - 21 feb</p>
+        <p className="header-this-week-text">Week {getWeek(selectedDate, locale)}</p>
+        <p className="header-this-week-date">
+          {getFirstDayOfWeek(selectedDate)} - {getLastDayOfWeek(selectedDate)}
+        </p>
       </div>
-      <div className="header-next-week">
+      <div onClick={() => changeWeek('next')} className="header-next-week">
         <div className="header-next-week-wrapper">
-          <p className="header-next-week-text">Week 9</p>
-          <p className="header-next-week-date">22 feb - 28 Feb</p>
+          <p className="header-next-week-text">Week {getWeek(nextWeek, locale)}</p>
+          <p className="header-next-week-date">
+            {getFirstDayOfWeek(nextWeek)} - {getLastDayOfWeek(nextWeek)}
+          </p>
         </div>
         <img
           className="chevron-right-pointer"

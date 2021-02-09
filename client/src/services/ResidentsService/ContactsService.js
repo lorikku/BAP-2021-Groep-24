@@ -1,5 +1,3 @@
-import { toSec } from '../../global/timeStampFuncs';
-
 const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
 
 const fetchContactsByResidentId = async (residentId) => {
@@ -30,7 +28,7 @@ const postContact = async (matchee, match, matchedInterests = []) => {
   };
 
   //Get today's unix timestamp (in seconds)
-  const addedAt = toSec(Date.now());
+  const addedAt = Date.now();
 
   try {
     const response = await fetch(apiRoute + `/${matchee._id}/contacts`, {
@@ -58,3 +56,30 @@ const postContact = async (matchee, match, matchedInterests = []) => {
 };
 
 export { fetchContactsByResidentId, postContact };
+
+/* -------------- DELETE FUNCTIONS -------------- */
+
+/* Update one resident */
+const deleteContactFromResident = async (residentId, contactId) => {
+  try {
+    const response = await fetch(
+      apiRoute + `/${residentId}/contacts/${contactId}`,
+      {
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+      }
+    );
+    const result = await response.json();
+    console.log(result);
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export { deleteContactFromResident };

@@ -1,31 +1,30 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import NewActivityStep1 from './NewActivityStep1';
 import NewActivityStep2 from './NewActivityStep2';
 
-import { postActivity } from '../../services/ActivitiesService';
-import { useHistory } from 'react-router-dom';
 import paths from '../../consts/paths';
-
-const steps = {
-  CONFIG: 'config',
-  INTERESTS_SELECTION: 'interests',
-  SUBMITTING: 'submitting',
-};
+import { floorOptions } from '../../containers/residents/ResidentsFilter/filterOptions';
+import { postActivity } from '../../services/ActivitiesService';
+import {detailSteps} from './detailSteps';
 
 const NewActivityPages = () => {
   const history = useHistory();
 
   //For changing steps (newActivityStep1/newActivitiyStep2)
-  const [step, setStep] = React.useState(steps.CONFIG);
+  const [step, setStep] = React.useState(detailSteps.CONFIG);
 
   //initial date is today but at 00:00:00
   const initialDate = new Date();
   initialDate.setHours(0, 0, 0, 0, 0);
 
+  const [floor, setFloor] = React.useState(floorOptions[0]);
+
   //useState with initial value
   const [inputs, setInput] = React.useState({
     title: '',
+    floor: 'all',
     date: initialDate,
     startTime: '10:00',
     endTime: '16:00',
@@ -41,20 +40,19 @@ const NewActivityPages = () => {
     });
   }, []);
 
-  const backToConfig = () => {
-    setStep(steps.CONFIG);
-  };
+  React.useEffect(() => {
+    changeInput('floor', floor);
+  }, [floor, changeInput]);
 
-  const nextToInterests = () => {
-    setStep(steps.INTERESTS_SELECTION);
-  };
+  const changeStep = (step) => {
+    setStep(step);
+  }
 
   //Submitting to database
   const submitActivity = async () => {
-    setStep(steps.SUBMITTING);
+    setStep(detailSteps.SUBMITTING);
 
     const activityId = await postActivity(inputs);
-    console.log(activityId);
 
     if (activityId) {
       history.push(paths.PATH_ACTIVITIES.ROOT + `/${activityId}`);
@@ -67,19 +65,20 @@ const NewActivityPages = () => {
     <>
       <h2 className="visually-hidden">Nieuwe activiteit toevoegen</h2>
       <div className="activities-new fit-height flex-content">
-        {step === steps.CONFIG ? (
+        {step === detailSteps.CONFIG ? (
           <NewActivityStep1
             inputs={inputs}
             changeInput={changeInput}
-            nextToInterests={nextToInterests}
+            changeStep={changeStep}
+            floor={floor}
+            setFloor={setFloor}
           />
         ) : (
           <NewActivityStep2
             inputs={inputs}
             changeInput={changeInput}
-            backToConfig={backToConfig}
+            changeStep={changeStep}
             submitActivity={submitActivity}
-            steps={steps}
             step={step}
           />
         )}

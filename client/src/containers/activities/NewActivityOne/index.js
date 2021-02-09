@@ -2,10 +2,21 @@ import * as React from 'react';
 import TimeField from 'react-simple-timefield';
 
 import DatePicker from '../../../components/activities/DatePicker';
+import FloorInput from '../../../components/global/FloorInput';
+import { detailSteps } from '../../../pages/ActivitiesPages/detailSteps';
+
+import { floorOptions } from '../../residents/ResidentsFilter/filterOptions';
 
 import './newactivityone.css';
 
-const NewActivityOne = ({ inputs, changeInput, isInputValid, nextToInterests }) => {
+const NewActivityOne = ({
+  inputs,
+  changeInput,
+  isInputValid,
+  changeStep,
+  floor,
+  setFloor,
+}) => {
   const { title, date, startTime, endTime, location } = inputs;
 
   return (
@@ -80,8 +91,18 @@ const NewActivityOne = ({ inputs, changeInput, isInputValid, nextToInterests }) 
               ></input>
             </div>
           </div>
+          <FloorInput
+            floor={floor}
+            setFloor={setFloor}
+            options={floorOptions}
+            isActivityPage
+          />
           <div
-            onClick={isInputValid ? nextToInterests : null}
+            onClick={
+              isInputValid
+                ? () => changeStep(detailSteps.INTERESTS_SELECTION)
+                : null
+            }
             className={`newactivity-one-next-btn${
               !isInputValid ? ' newactivity-one-next-btn--invalid' : ''
             }`}

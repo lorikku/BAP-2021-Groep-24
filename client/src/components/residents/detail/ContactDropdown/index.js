@@ -53,7 +53,7 @@ const ContactDropdown = ({ contact, deleteContact }) => {
         <div className="dropdown-title-wrapper">
           <p className="dropdown-title">Match gemaakt op:</p>
           <p className="dropdown-subtitle">
-            {format(new Date(contact.addedAt * 1000 /* convert sec to ms */), 'dd MMMM yyy', {
+            {format(new Date(contact.addedAt), 'dd MMMM yyy', {
               locale: nlBE,
             })}
           </p>

@@ -12,11 +12,20 @@
   padding: var(--spacerMain);
 }
 
+.progress-container {
+  margin-bottom: calc(var(--spacerMain) * 2);
+}
+
 .content-container {
   max-width: 1140px;
   margin: 0 auto;
   position: relative;
   height: 100%;
+}
+
+.wlp-title {
+  font-weight: var(--fontWeightBold);
+  font-size: 32px;
 }
 
 .wlp-input {

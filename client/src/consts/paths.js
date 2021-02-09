@@ -17,7 +17,6 @@ const paths = {
     // Root
     ROOT: '/activities',
     OVERVIEW: '/overview',
-    WEEK: '/:week',
     // Adding new activity
     NEW_ACTIVITY: '/new',
     // Activity detail

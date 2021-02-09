@@ -1,14 +1,23 @@
-import * as React from "react";
-import "./weekdiviser.css";
+import * as React from 'react';
 
-const WeekDiviser = () => {
+import { getWeek } from 'date-fns';
+import {
+  getFirstDayOfWeek,
+  getLastDayOfWeek,
+} from '../../../global/timeStampFuncs';
+
+import './weekdiviser.css';
+
+const WeekDiviser = ({ currentDate }) => {
   return (
     <div className="weekdiviser-container">
       <div className="weekdiviser">
         <div className="weekdiviser-border">
-          <p className="weekdiviser-week">Week 8</p>
+          <p className="weekdiviser-week">Week {getWeek(currentDate)}</p>
         </div>
-        <p className="weekdiviser-date">15 feb - 21 feb</p>
+        <p className="weekdiviser-date">
+          {getFirstDayOfWeek(currentDate)} - {getLastDayOfWeek(currentDate)}
+        </p>
       </div>
     </div>
   );

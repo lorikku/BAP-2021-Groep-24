@@ -8,11 +8,10 @@ import './activitiespage.css';
 import DetailPage from './DetailPage';
 
 const ActivitiesPages = ({ paths }) => {
-  
   return (
     <>
       <Switch>
-        <Route path={paths.ROOT + paths.OVERVIEW + paths.WEEK} exact>
+        <Route path={paths.ROOT + paths.OVERVIEW} exact>
           <OverviewPage />
         </Route>
         <Route path={paths.ROOT + paths.NEW_ACTIVITY} exact>
@@ -22,7 +21,9 @@ const ActivitiesPages = ({ paths }) => {
           <DetailPage />
         </Route>
         <Route>
-          <Redirect to={paths.ROOT + paths.OVERVIEW + '/' + Date.now()} />
+          <Redirect
+            to={paths.ROOT + paths.OVERVIEW}
+          />
         </Route>
       </Switch>
     </>

@@ -12,7 +12,7 @@
   background-color: var(--colorCTA);
 }
 
-.dayactivity-colorbar.colorbar-future {
+.dayactivity-colorbar.colorbar-planned {
   background-color: var(--colorOrange);
 }
 
@@ -20,8 +20,18 @@
   background-color: var(--colorBgGrey);
 }
 
+.dayplanning-list {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  padding-bottom: 10rem;
+}
+
+.dayplanning-section {
+  margin-bottom: var(--spacerMain);
+}
+
 .dayplanning-container {
-  background-color: var(--colorBgMain);
   height: max-content;
   display: flex;
   width: 100%;
@@ -37,7 +47,7 @@
   flex-direction: column;
   position: absolute;
   right: 20px;
-  bottom: 20px;
+  top: 65vh;
 }
 .all-activities-now-btn {
   background-color: var(--colorOrange);
@@ -48,6 +58,7 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0px 3px 10px var(--colorOrange);
+  cursor: pointer;
 }
 
 .all-activities-add-btn {

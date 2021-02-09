@@ -14,6 +14,7 @@
 
 .header-last-week {
     display: flex;
+    cursor: pointer;
 }
 
 .header-last-week-text {
@@ -52,6 +53,7 @@
 
 .header-next-week {
     display: flex;
+    cursor: pointer;
 }
 
 .header-this-week-active {

@@ -75,7 +75,11 @@ const searchInterests = (name, interests) => {
   return newInterests;
 };
 
-const calculateResidentMatches = async (matchee, selectedInterests) => {
+const calculateResidentMatches = async (
+  matchee,
+  selectedInterests,
+  isActivity
+) => {
   const newMatches = [];
 
   //Fetch ALL residents
@@ -85,15 +89,24 @@ const calculateResidentMatches = async (matchee, selectedInterests) => {
   const result = await response.json();
   const residents = result.residents;
 
+
   //Fetch resident's current contacts
-  const matcheeContacts = await fetchContactsByResidentId(matchee._id);
+  let matcheeContacts
+  if(!isActivity) matcheeContacts = await fetchContactsByResidentId(matchee._id);
 
   //Loop through all residents
   residents.forEach((resident) => {
-    //If comparing resident is the matchee, skip (can't match yourself)
-    if (matchee._id === resident._id) return;
-    //If comparing resident is in matchee's contact list, skip (can't match for people already in contact list)
-    if (matcheeContacts.findIndex((contact) => contact._id === resident._id) !== -1) return;
+    //This matching system could also be used for activity page -> skip checking for matchee if that's the case
+    if (!isActivity) {
+      //If comparing resident is the matchee, skip (can't match yourself)
+      if (matchee._id === resident._id) return;
+      //If comparing resident is in matchee's contact list, skip (can't match for people already in contact list)
+      if (
+        matcheeContacts.findIndex((contact) => contact._id === resident._id) !==
+        -1
+      )
+        return;
+    }
 
     //Create a new (potential) match between matchee and current resident (match)
     const newMatch = {
