@@ -1,71 +1,112 @@
-const ROOTPATHDEPENDENCIES = '/assets/img/illustrations/dependencies/';
+const ROOTPATH = "/assets/img/illustrations/categories/";
 
-const dependencies = {
-  test: {
-    _id: 'test',
-    name: 'test',
-    icon: `${ROOTPATHDEPENDENCIES}test.svg`,
+const subCategories = {
+  krant: {
+    _id: "krant",
+    name: "krant",
+    icon: `${ROOTPATH}wlp-news.svg`,
+  },
+  tijdschrift: {
+    _id: "tijdschrift",
+    name: "tijdschrift",
+    icon: `${ROOTPATH}wlp-mag.svg`,
+  },
+  boek: {
+    _id: "boek",
+    name: "boek",
+    icon: `${ROOTPATH}wlp-book.svg`,
   },
 };
 
-export { dependencies };
+const dependencies = {
+  lezen: {
+    _id: "lezen",
+    name: "lezen",
+    icon: 0,
+  },
+  tv: {
+    _id: "tv",
+    name: "televisie kijken",
+    icon: `${ROOTPATH}wlp-tv.svg`,
+  },
+  pc: {
+    _id: "pc",
+    name: "computer & tablet",
+    icon: `${ROOTPATH}wlp-pc.svg`,
+  },
+  denksport: {
+    _id: "denksport",
+    name: "denksportoefeningen",
+    icon: `${ROOTPATH}wlp-creative.svg`,
+  },
+  spel: {
+    _id: "spel",
+    name: "spelactiviteiten",
+    icon: `${ROOTPATH}wlp-games.svg`,
+  },
+  kaart: {
+    _id: "kaart",
+    name: "kaartspellen",
+    icon: `${ROOTPATH}wlp-cards.svg`,
+  }
+};
 
-const ROOTPATHCATEGORIES = '/assets/img/illustrations/categories/';
+export { dependencies, subCategories };
 
 const categories = {
   algemeen: {
-    _id: 'algemeen',
-    name: 'algemene informatie',
-    icon: `${ROOTPATHCATEGORIES}bewegings-activiteiten.svg`,
-    color: '#C0F794',
+    _id: "algemeen",
+    name: "algemene informatie",
+    icon: `${ROOTPATH}bewegings-activiteiten.svg`,
+    color: "#C0F794",
   },
   beweging: {
-    _id: 'beweging',
-    name: 'bewegings activiteiten',
-    icon: `${ROOTPATHCATEGORIES}bewegings-activiteiten.svg`,
-    color: '#C0F794',
+    _id: "beweging",
+    name: "bewegings activiteiten",
+    icon: `${ROOTPATH}bewegings-activiteiten.svg`,
+    color: "#C0F794",
   },
   creatief: {
-    _id: 'creatief',
-    name: 'creatieve activiteiten',
-    icon: `${ROOTPATHCATEGORIES}creatieve-activiteiten.svg`,
-    color: '#FDF889',
+    _id: "creatief",
+    name: "creatieve activiteiten",
+    icon: `${ROOTPATH}creatieve-activiteiten.svg`,
+    color: "#FDF889",
   },
   divers: {
-    _id: 'divers',
-    name: 'diverse activiteiten',
-    icon: `${ROOTPATHCATEGORIES}diverse-activiteiten.svg`,
-    color: '#E994F7',
+    _id: "divers",
+    name: "diverse activiteiten",
+    icon: `${ROOTPATH}diverse-activiteiten.svg`,
+    color: "#E994F7",
   },
   extern: {
-    _id: 'extern',
-    name: 'externe activiteiten',
-    icon: `${ROOTPATHCATEGORIES}externe-activiteiten.svg`,
-    color: '#C0F794',
+    _id: "extern",
+    name: "externe activiteiten",
+    icon: `${ROOTPATH}externe-activiteiten.svg`,
+    color: "#C0F794",
   },
   huishoud: {
-    _id: 'huishoud',
-    name: 'huishoudelijke activiteiten',
-    icon: `${ROOTPATHCATEGORIES}huishoudelijke-activiteiten.svg`,
-    color: '#94CEF7',
+    _id: "huishoud",
+    name: "huishoudelijke activiteiten",
+    icon: `${ROOTPATH}huishoudelijke-activiteiten.svg`,
+    color: "#94CEF7",
   },
   mentaal: {
-    _id: 'mentaal',
-    name: 'mentaal stimulerend',
-    icon: `${ROOTPATHCATEGORIES}mentaal-stimulerend.svg`,
-    color: '#F79494',
+    _id: "mentaal",
+    name: "mentaal stimulerend",
+    icon: `${ROOTPATH}mentaal-stimulerend.svg`,
+    color: "#F79494",
   },
   muzikaal: {
-    _id: 'muzikaal',
-    name: 'muzikale activiteiten',
-    icon: `${ROOTPATHCATEGORIES}muzikale-activiteiten.svg`,
-    color: '#F7CA94',
+    _id: "muzikaal",
+    name: "muzikale activiteiten",
+    icon: `${ROOTPATH}muzikale-activiteiten.svg`,
+    color: "#F7CA94",
   },
   religieus: {
-    _id: 'religieus',
-    name: 'religieuze activiteiten',
-    icon: `${ROOTPATHCATEGORIES}religieuze-activiteiten.svg`,
-    color: '#94F7E0',
+    _id: "religieus",
+    name: "religieuze activiteiten",
+    icon: `${ROOTPATH}religieuze-activiteiten.svg`,
+    color: "#94F7E0",
   },
 };
 
