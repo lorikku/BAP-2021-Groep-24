@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { format, addDays, getDay, getWeek, setDay, getISODay, setISODay } from 'date-fns';
+import {
+  format,
+  addDays,
+  getDay,
+  getWeek,
+  setDay,
+  getISODay,
+  setISODay,
+} from 'date-fns';
 import { Link } from 'react-router-dom';
 import DayActivity from '../../../components/activities/DayActivity';
 import paths from '../../../consts/paths';
@@ -82,17 +90,18 @@ const OverviewAllActivities = ({
           const isToday = dayplanningTitle === dayplanningOptions.TODAY;
 
           return (
-            <li
-              key={dayIndex}
-              className="dayplanning-section"
-            >
+            <li key={index} className="dayplanning-section">
               <p className="dayplanning-title">{dayplanningTitle}</p>
               {/* IF NO ACTIVITIES WERE FOUND FOR THIS DAY */}
               {day.length === 0 ? (
                 <div className="dayplanning-container">
-                  <div className={`dayactivity-colorbar${isToday ? ' colorbar-today' : ' colorbar-unplanned'}`} />
+                  <div
+                    className={`dayactivity-colorbar${
+                      isToday ? ' colorbar-today' : ' colorbar-unplanned'
+                    }`}
+                  />
                   <DayActivity
-                  isToday={isToday}
+                    isToday={isToday}
                     day={format(
                       setISODay(selectedDate, dayIndex, locale),
                       'EEEEEE',
@@ -107,12 +116,17 @@ const OverviewAllActivities = ({
                 </div>
               ) : (
                 // ELSE MAP THROUGH ACTIVITIES
-                day.map((activity) => (
+                day.map((activity, index) => (
                   <Link
+                    key={index}
                     to={paths.PATH_ACTIVITIES.ROOT + `/${activity._id}`}
                     className="dayplanning-container"
                   >
-                    <div className={`dayactivity-colorbar${isToday ? ' colorbar-today' : ' colorbar-planned'}`} />
+                    <div
+                      className={`dayactivity-colorbar${
+                        isToday ? ' colorbar-today' : ' colorbar-planned'
+                      }`}
+                    />
                     <DayActivity
                       activity={activity}
                       isToday={isToday}

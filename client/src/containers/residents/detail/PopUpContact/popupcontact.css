@@ -14,6 +14,10 @@
   bottom: var(--spacerMain);
 }
 
+.popup-container--nomatching { 
+  grid-template-columns: 1fr;
+}
+
 .popup-close {
   display: flex;
   width: max-content;

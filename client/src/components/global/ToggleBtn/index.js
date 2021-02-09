@@ -1,14 +1,14 @@
 import * as React from "react";
 import "./togglebtn.css";
 
-const ToggleBtn = ({option1, option2}) => {
+const ToggleBtn = ({setOption, option1, option2}) => {
   return (
     <div className="toggle-btn">
-      <div className="toggle-planned">
-        <p className="toggle-planned-text">{option1}</p>
+      <div onClick={() => setOption('option1')} className={!option1.isActive ? "toggle-passed" : "toggle-planned"}>
+        <p className={!option1.isActive ? "toggle-passed-text" : "toggle-planned-text"}>{option1.text}</p>
       </div>
-      <div className="toggle-passed">
-        <p className="toggle-passed-text">{option2}</p>
+      <div onClick={() => setOption('option2')} className={!option2.isActive ? "toggle-passed" : "toggle-planned"}>
+        <p className={!option2.isActive ? "toggle-passed-text" : "toggle-planned-text"}>{option2.text}</p>
       </div>
     </div>
   );

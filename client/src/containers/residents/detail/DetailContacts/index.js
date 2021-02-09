@@ -10,22 +10,22 @@ const DetailContacts = ({ resident }) => {
   //Global access of resident (and setting it)
   const [, setResident] = useGlobalState('resident');
   //Popup dialog
-  const [, setAddNewContact] = useGlobalState('addNewContact');
+  const [, setAddNewResident] = useGlobalState('addNewResident');
 
   const toggleAddNewContact = () => {
-    setAddNewContact({
-      residentId: resident._id,
-      closeWindow: () => setAddNewContact(null),
+    setAddNewResident({
+      matchingId: resident._id,
+      closeWindow: () => setAddNewResident(null),
     });
   };
 
-  let contactLoading = false;
+  let contactDeleting = false;
   const deleteContact = async (contactId) => {
-    if (contactLoading) {
+    if (contactDeleting) {
       return;
     }
 
-    contactLoading = true;
+    contactDeleting = true;
 
     const succes = await deleteContactFromResident(resident._id, contactId);
 
@@ -42,7 +42,7 @@ const DetailContacts = ({ resident }) => {
       });
     }
 
-    contactLoading = false;
+    contactDeleting = false;
   };
 
   return (

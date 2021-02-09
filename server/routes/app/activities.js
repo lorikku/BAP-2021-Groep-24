@@ -39,8 +39,8 @@ route.get('/', async (req, res) => {
       .find(query, {
         projection: {
           //We don't need the interests in the overview
-          interests: false
-        }
+          interests: false,
+        },
       })
       .toArray();
   } catch (err) {
@@ -57,7 +57,8 @@ route.get('/', async (req, res) => {
     });
   } else {
     res.status(404).json({
-      message: 'Activities were not found! Or something was wrong with the server',
+      message:
+        'Activities were not found! Or something was wrong with the server',
     });
   }
 });
@@ -94,7 +95,50 @@ route.get('/:activityId', async (req, res) => {
   }
 });
 
-/* -------------- GET QUERIES -------------- */
+/* -------------- PUT QUERIES -------------- */
+
+route.put('/:activityId/interestedResidents', async (req, res) => {
+  const { activityId } = req.params;
+  const _activityId = convertToObjectId(activityId, res);
+
+  const { interestedResidents } = req.body;
+  //Convert all resident _id to ObjectIds
+  const _interestedResidents = interestedResidents.map((resident) => {
+    return {
+      ...resident,
+      _id: convertToObjectId(resident._id, res),
+    };
+  });
+
+  try {
+    //Add activity to activities collection
+    await req.app.mongodb
+      .db('app')
+      .collection('activities')
+      .updateOne(
+        {
+          _id: _activityId,
+        },
+        {
+          $set: {
+            interestedResidents: _interestedResidents,
+            hasCalculated: true,
+          },
+        }
+      );
+
+    res.status(200).json({
+      message: 'interestedResidents were added to activity!',
+    });
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    return;
+  }
+});
+
+/* -------------- POST QUERIES -------------- */
 
 route.post('/', async (req, res) => {
   try {
@@ -117,5 +161,121 @@ route.post('/', async (req, res) => {
     return;
   }
 });
+
+//Posting resident to participatedResidents
+route.post('/:activityId/participatedResidents', async (req, res) => {
+  const { activityId } = req.params;
+  const _activityId = convertToObjectId(activityId, res);
+
+  const resident = {
+    ...req.body,
+    _id: convertToObjectId(req.body._id, res),
+  };
+
+  try {
+    //Add activity to activities collection
+    const result = await req.app.mongodb
+      .db('app')
+      .collection('activities')
+      .updateOne(
+        {
+          _id: _activityId,
+        },
+        {
+          $push: {
+            participatedResidents: resident,
+          },
+        }
+      );
+
+    res.status(200).json({
+      message: 'Resident was added to participating residents!',
+      activityId: result.insertedId,
+    });
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
+    return;
+  }
+});
+
+/* -------------- DELETE QUERIES -------------- */
+
+/* DELETE ONE RESIDENT FROM INTERESTED RESIDENTS */
+route.delete(
+  '/:activityId/participatedResidents/:residentId',
+  async (req, res) => {
+    const { activityId, residentId } = req.params;
+
+    const _activityId = convertToObjectId(activityId, res);
+    const _residentId = convertToObjectId(residentId, res);
+
+    try {
+      const pointer = req.app.mongodb.db('app').collection('activities');
+
+      //Remove contact from resident's contacts list
+      await pointer.updateOne(
+        {
+          _id: _activityId,
+        },
+        {
+          $pull: {
+            participatedResidents: {
+              _id: _residentId,
+            },
+          },
+        }
+      );
+
+      res.status(200).json({
+        message: 'Resident is removed from participated residents list!',
+      });
+    } catch (err) {
+      res
+        .status(statusMessages.INTERNAL_ERROR.statusCode)
+        .json({ message: statusMessages.INTERNAL_ERROR.message });
+      return;
+    }
+  }
+);
+
+/* DELETE ONE RESIDENT FROM INTERESTED RESIDENTS */
+route.delete(
+  '/:activityId/interestedResidents/:residentId',
+  async (req, res) => {
+    const { activityId, residentId } = req.params;
+
+    const _activityId = convertToObjectId(activityId, res);
+    const _residentId = convertToObjectId(residentId, res);
+
+    try {
+      const pointer = req.app.mongodb.db('app').collection('activities');
+
+      //Remove contact from resident's contacts list
+      await pointer.updateOne(
+        {
+          _id: _activityId,
+        },
+        {
+          $pull: {
+            interestedResidents: {
+              _id: _residentId,
+            },
+          },
+        }
+      );
+
+      res.status(200).json({
+        message: 'Resident is removed from interested residents list!',
+      });
+    } catch (err) {
+      res
+        .status(statusMessages.INTERNAL_ERROR.statusCode)
+        .json({ message: statusMessages.INTERNAL_ERROR.message });
+      return;
+    }
+  }
+);
 
 module.exports = route;

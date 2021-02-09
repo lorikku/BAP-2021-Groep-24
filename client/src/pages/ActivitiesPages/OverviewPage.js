@@ -33,14 +33,14 @@ const OverviewPage = () => {
 
   React.useEffect(() => {
     if (!selectedDate) return;
-    let componentLoaded = true;
+    let componentMounted = true;
 
-    if(componentLoaded) setActivitiesPerDay(null);
+    if(componentMounted) setActivitiesPerDay(null);
 
     let fetchedActivities;
     const fetchActivities = async () => {
       fetchedActivities = await generateArrayFromActivities(selectedDate);
-      if (componentLoaded) setActivitiesPerDay(fetchedActivities);
+      if (componentMounted) setActivitiesPerDay(fetchedActivities);
     };
     fetchActivities();
   }, [selectedDate]);

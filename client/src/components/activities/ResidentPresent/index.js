@@ -1,10 +1,37 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import paths from '../../../consts/paths';
+import {deleteParticipatedResidentFromActivity} from '../../../services/ActivitiesService';
 import './residentpresent.css';
 
-const ResidentPresent = ({ resident }) => {
+const ResidentPresent = ({ resident, activityId, setParticipatedResidents }) => {
   const { _id, name, roomNr, photoUri } = resident;
+
+  let residentDeleting = false;
+  const deleteCurrentResident = async () => {
+    //If resident is deleting (request already made) -> ignore
+    if (residentDeleting) return;
+
+    residentDeleting = true;
+
+    const succes = await deleteParticipatedResidentFromActivity(activityId, _id);
+
+    if (succes) {
+      setParticipatedResidents((prevState) => {
+        const newParticipatedResidents = [...prevState];
+
+        const index = newParticipatedResidents.findIndex(
+          (resident) => resident._id === _id
+        );
+
+        newParticipatedResidents.splice(index, 1);
+        return newParticipatedResidents;
+      });
+    }
+
+    residentDeleting = false;
+  };
+
   return (
     <li className="present-container">
       <Link
@@ -23,7 +50,7 @@ const ResidentPresent = ({ resident }) => {
           </div>
         </div>
       </Link>
-      <div className="present-info-btn">
+      <div onClick={deleteCurrentResident} className="present-info-btn">
         <img
           className="present-info-btn-vector"
           alt="minus in cirkel icoon"

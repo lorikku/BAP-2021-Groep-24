@@ -1,4 +1,5 @@
 const express = require('express');
+const {ObjectId} = require('mongodb');
 const route = express.Router();
 
 const statusMessages = require('../statusMessages');
@@ -37,7 +38,11 @@ route.get('/', async (req, res) => {
 /* /app/interests/:interestId */
 route.get('/:interestId', async (req, res) => {
   const interestId = req.params.interestId;
-  const _id = convertToObjectId(interestId, res);
+
+  let _id = interestId;
+  if(ObjectId.isValid(interestId)) {
+    _id = convertToObjectId(interestId, res);
+  }
 
   const query = {
     _id,

@@ -89,10 +89,11 @@ const calculateResidentMatches = async (
   const result = await response.json();
   const residents = result.residents;
 
-
   //Fetch resident's current contacts
-  let matcheeContacts
-  if(!isActivity) matcheeContacts = await fetchContactsByResidentId(matchee._id);
+  let matcheeContacts;
+  //This matching system could also be used for activity page -> skip fetching contact's if that's the case
+  if (!isActivity)
+    matcheeContacts = await fetchContactsByResidentId(matchee._id);
 
   //Loop through all residents
   residents.forEach((resident) => {
@@ -110,7 +111,12 @@ const calculateResidentMatches = async (
 
     //Create a new (potential) match between matchee and current resident (match)
     const newMatch = {
-      resident: resident,
+      resident: {
+        _id: resident._id,
+        name: resident.name,
+        roomNr: resident.roomNr,
+        photoUri: resident.photoUri
+      },
       matchedInterests: [],
       percentage: 0,
     };
@@ -160,7 +166,11 @@ const calculateResidentMatches = async (
       newMatch.percentage = parseInt(
         (noDependencyInterests.length / selectedInterests.length) * 100
       );
-      newMatches.push(newMatch);
+      if (isActivity) {
+        newMatches.push(newMatch.resident);
+      } else {
+        newMatches.push(newMatch);
+      }
     }
   });
 

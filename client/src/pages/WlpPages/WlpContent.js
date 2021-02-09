@@ -18,7 +18,7 @@ import './wlppage.css';
 import {defaultInterests} from './wlpFuncs';
 
 const WlpContent = () => {
-    console.log(defaultInterests);
+    console.log(JSON.stringify(defaultInterests));
   return (
     <div className="wlp-bg fit-height">
       <div className="content-container">

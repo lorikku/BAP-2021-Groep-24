@@ -68,8 +68,6 @@ const deleteContactFromResident = async (residentId, contactId) => {
         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
       }
     );
-    const result = await response.json();
-    console.log(result);
 
     if (!response.ok) {
       return false;

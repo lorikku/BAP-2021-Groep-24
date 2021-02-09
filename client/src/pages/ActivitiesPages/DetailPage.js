@@ -7,12 +7,20 @@ import DetailActivityInterested from '../../containers/activities/DetailActivity
 import GoBack from '../../components/global/GoBack';
 import paths from '../../consts/paths';
 import { useParams } from 'react-router-dom';
-import {fetchAcitivityById} from '../../services/ActivitiesService';
+import { fetchAcitivityById } from '../../services/ActivitiesService';
 
 const DetailPage = () => {
   const { activityId } = useParams();
 
-  //Fetching resident single from db
+  /* ------------ PARTICIPATED RESIDENTS HANDLER ------------ */
+
+  const [participatedResidents, setParticipatedResidents] = React.useState([]);
+
+  /* ------------ INTERESTED RESIDENTS HANDLER ------------ */
+
+  const [interestedResidents, setInterestedResidents] = React.useState([]);
+
+  /* ------------ FETCHING ACTIVITY FROM DB ------------ */
   const [activity, setActivity] = React.useState(undefined);
 
   React.useEffect(() => {
@@ -27,13 +35,25 @@ const DetailPage = () => {
 
     const getActivity = async () => {
       const fetchedActivity = await fetchAcitivityById(activityId);
+      //Setting local activity
       if (componentMounted) setActivity(fetchedActivity);
+      //Setting local participatedResidents
+      if (componentMounted)
+        setParticipatedResidents(fetchedActivity.participatedResidents);
+        //Setting local interestedResidents
+      if (componentMounted)
+        setInterestedResidents(fetchedActivity.interestedResidents);
     };
 
     getActivity();
 
     return () => (componentMounted = false);
-  }, [activityId, setActivity]);
+  }, [
+    activityId,
+    setActivity,
+    setParticipatedResidents,
+    setInterestedResidents,
+  ]);
 
   return activity ? (
     <>
@@ -42,8 +62,19 @@ const DetailPage = () => {
         <GoBack path={paths.PATH_ACTIVITIES.ROOT} text={'Terug naar agenda'} />
         <DetailActivityHeader activity={activity} />
         <div className="dtl-act-present-int-container">
-          <DetailActivityPresent residents={activity.participatedResidents} />
-          <DetailActivityInterested residents={activity.interestedResidents} />
+          <DetailActivityPresent
+            activity={activity}
+            participatedResidents={participatedResidents}
+            setParticipatedResidents={setParticipatedResidents}
+            setInterestedResidents={setInterestedResidents}
+          />
+          <DetailActivityInterested
+            activity={activity}
+            setActivity={setActivity}
+            interestedResidents={interestedResidents}
+            setInterestedResidents={setInterestedResidents}
+            setParticipatedResidents={setParticipatedResidents}
+          />
         </div>
       </div>
     </>

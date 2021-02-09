@@ -26,18 +26,14 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
         >
           <p
             className={`dayactivity-date${
-              isToday
-                ? ' date-today'
-                : ' date-future'
+              isToday ? ' date-today' : ' date-future'
             }`}
           >
             {dayNumb}
           </p>
           <p
             className={`dayactivity-day${
-              isToday
-                ? ' date-today'
-                : ' date-future'
+              isToday ? ' date-today' : ' date-future'
             }`}
           >
             {day}
@@ -56,7 +52,11 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
               </p>
             </div>
           </div>
-        ) : <p className="dayactivity-noplanned-text">Nog geen activiteit gepland</p>}
+        ) : (
+          <p className="dayactivity-noplanned-text">
+            Nog geen activiteit gepland
+          </p>
+        )}
       </div>
 
       {activity ? (
@@ -67,38 +67,59 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
             </p>
             <div className="dayactivity-bubbles">
               {/* max 2, 3de is bubble met aantal */}
-              <img
-                className="radius interested-bubble"
-                alt="geïnteresseerde persoon"
-                src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
-              ></img>
-              <img
-                className="radius interested-bubble"
-                alt="geïnteresseerde persoon"
-                src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
-              ></img>
-              <div className="radius interested-bubble bubble-rest">
-                <p className="interested-plus-amount">15+</p>
-              </div>
+
+              {activity.interestedResidents.map((resident, index) =>
+                index < 1 ? (
+                  <img
+                    key={index}
+                    className="radius interested-bubble"
+                    alt="geïnteresseerde persoon"
+                    src={
+                      resident.photoUri
+                        ? resident.photoUri
+                        : '/assets/img/emptystate-profile.svg'
+                    }
+                  ></img>
+                ) : null
+              )}
+              {activity.interestedResidents.length < 2 ? null : (
+                <div className="radius interested-bubble bubble-rest">
+                  <p className="interested-plus-amount">
+                    {activity.interestedResidents.length > 15
+                      ? '15+'
+                      : activity.interestedResidents.length}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
           <div className="dayactivity-present-container">
             <p className="present-title bubbles-title">Aanwezigen</p>
             <div className="dayactivity-bubbles">
               {/* max 2, 3de is bubble met aantal */}
-              <img
-                className="radius present-bubble"
-                alt="geïnteresseerde persoon"
-                src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
-              ></img>
-              <img
-                className="radius present-bubble"
-                alt="geïnteresseerde persoon"
-                src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc="
-              ></img>
-              <div className="radius present-bubble bubble-rest">
-                <p className="present-plus-amount">15+</p>
-              </div>
+              {activity.participatedResidents.map((resident, index) =>
+                index < 1 ? (
+                  <img
+                    key={index}
+                    className="radius interested-bubble"
+                    alt="geïnteresseerde persoon"
+                    src={
+                      resident.photoUri
+                        ? resident.photoUri
+                        : '/assets/img/emptystate-profile.svg'
+                    }
+                  ></img>
+                ) : null
+              )}
+              {activity.participatedResidents.length < 2 ? null : (
+                <div className="radius interested-bubble bubble-rest">
+                  <p className="interested-plus-amount">
+                    {activity.participatedResidents.length > 15
+                      ? '15+'
+                      : activity.participatedResidents.length}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>

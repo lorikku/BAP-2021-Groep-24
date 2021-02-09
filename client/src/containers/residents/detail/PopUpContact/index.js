@@ -4,12 +4,12 @@ import paths from "../../../../consts/paths";
 
 import "./popupcontact.css";
 
-const PopUpContact = ({ addNewContact }) => {
-  const { residentId, closeWindow } = addNewContact;
-  const path = paths.PATH_MATCHING.ROOT + "/" + residentId;
+const PopUpContact = ({ addNewResident }) => {
+  const { matchingId, callbackFunc, closeWindow } = addNewResident;
+  const path = paths.PATH_MATCHING.ROOT + "/" + matchingId;
 
   return (
-    <div className="popup-container">
+    <div className={`popup-container`}>
       <div onClick={closeWindow} className="popup-close">
         <p className="popup-close-text">Sluiten</p>
         <img

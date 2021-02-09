@@ -20,8 +20,7 @@ route.get('/', async (req, res) => {
         {
           participatedResidents: {
             $elemMatch: {
-              isGoing: true,
-              residentId: _residentId,
+              _id: _residentId,
             },
           },
         },

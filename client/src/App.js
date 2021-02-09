@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Div100vh from 'react-div-100vh';
 
 import paths from './consts/paths';
-import { useGlobalState } from './global/states';
 
 import Header from './containers/header/Header';
 import ResidentsPage from './pages/ResidentsPages';
@@ -16,18 +15,6 @@ import PopUp from './containers/global/PopUp';
 import './App.css';
 
 const App = () => {
-  const path = useLocation();
-
-  //Global state that handles the popups
-  const [confirmDialog, setConfirmDialog] = useGlobalState('confirmDialog');
-  const [addNewContact, setAddNewContact] = useGlobalState('addNewContact');
-
-  //When path changes => remove any active dialogs
-  React.useEffect(() => {
-    setConfirmDialog(null);
-    setAddNewContact(null);
-  }, [path, setConfirmDialog, setAddNewContact]);
-
   return (
     /* Div100vh calculates div height for accurate display */
     <Div100vh className="content">
@@ -41,10 +28,7 @@ const App = () => {
           <Header />
           <main className="page fit-height">
             <section className="fit-height">
-              <PopUp
-                confirmDialog={confirmDialog}
-                addNewContact={addNewContact}
-              />
+              <PopUp />
               <Switch>
                 {/* Activities pages */}
                 <Route path={paths.PATH_ACTIVITIES.ROOT}>

@@ -3,7 +3,7 @@ import { createGlobalState } from 'react-hooks-global-state';
 
 const initialState = {
   confirmDialog: null,
-  addNewContact: null,
+  addNewResident: null,
   resident: undefined,
 };
 const { useGlobalState } = createGlobalState(initialState);

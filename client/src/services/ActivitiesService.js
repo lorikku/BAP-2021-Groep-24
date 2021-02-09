@@ -49,6 +49,33 @@ const fetchAcitivityById = async (activityId) => {
 
 export { fetchAllActivitiesByDateAndFloor, fetchAcitivityById };
 
+/* -------------- PUT FUNCTIONS -------------- */
+
+const updateInterestedMatches = async (activityId, interestedResidents) => {
+  try {
+    const response = await fetch(apiRoute + `/${activityId}/interestedResidents`, {
+      method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        interestedResidents
+      }), // body data type must match "Content-Type" header
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export { updateInterestedMatches };
+
 /* -------------- POST FUNCTIONS -------------- */
 
 const postActivity = async (data) => {
@@ -100,4 +127,72 @@ const postActivity = async (data) => {
   }
 };
 
-export { postActivity };
+const postParticipatedResident = async (activityId, resident) => {
+  try {
+    const response = await fetch(apiRoute + `/${activityId}/participatedResidents`, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(resident), // body data type must match "Content-Type" header
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const result = await response.json();
+    console.log(result);
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export { postActivity, postParticipatedResident };
+
+/* -------------- DELETE FUNCTIONS -------------- */
+
+const deleteParticipatedResidentFromActivity = async (activityId, residentId) => {
+  try {
+    const response = await fetch(
+      apiRoute + `/${activityId}/participatedResidents/${residentId}`,
+      {
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+      }
+    );
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+const deleteInterestedResidentFromActivity = async (activityId, residentId) => {
+  try {
+    const response = await fetch(
+      apiRoute + `/${activityId}/interestedResidents/${residentId}`,
+      {
+        method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
+      }
+    );
+
+    if (!response.ok) {
+      return false;
+    }
+
+    return true;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+};
+
+export { deleteParticipatedResidentFromActivity, deleteInterestedResidentFromActivity };
