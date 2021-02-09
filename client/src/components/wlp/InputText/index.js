@@ -4,7 +4,7 @@ import "./inputtext.css";
 const InputText = ({ inputId, title, placeholder, icon }) => {
   return (
     <div className="input-wlp-container">
-      <label className="wlp-input-title" for={inputId}>
+      <label className="wlp-input-title" htmlFor={inputId}>
         {title}
       </label>
       <div>

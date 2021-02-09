@@ -5,7 +5,6 @@ import NextPrev from '../../components/wlp/NextPrev';
 import ProgressBar from '../../containers/wlp/ProgressBar';
 // import WlpContainerEight from "../../containers/wlp/WlpContainerEight";
 import WlpContainerActivity from '../../containers/wlp/WlpContainerActivity';
-import {dependencies} from '../../global/categoriesAndDependencies';
 // import WlpContainerEleven from "../../containers/wlp/WlpContainerEleven";
 // import WlpContainerFive from "../../containers/wlp/WlpContainerFive";
 // import WlpContainerFour from "../../containers/wlp/WlpContainerFour";
@@ -16,10 +15,10 @@ import {dependencies} from '../../global/categoriesAndDependencies';
 // import WlpStepDivision from "../../containers/wlp/WlpStepDivision";
 // import WlpContainerTwo from "../../containers/wlp/WlpStepDivision";
 import './wlppage.css';
-import {defaultInterests} from './wplFuncs';
+import {defaultInterests} from './wlpFuncs';
 
 const WlpContent = () => {
-    console.log(defaultInterests)
+    console.log(defaultInterests);
   return (
     <div className="wlp-bg fit-height">
       <div className="content-container">

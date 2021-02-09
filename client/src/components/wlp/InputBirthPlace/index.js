@@ -4,7 +4,7 @@ import "./inputbirthplace.css";
 const InputBirthPlace = () => {
   return (
     <div className="input-wlp-container">
-      <label className="wlp-input-title" for="place">
+      <label className="wlp-input-title" htmlFor="place">
         Geboorteplaats
       </label>
       <div>

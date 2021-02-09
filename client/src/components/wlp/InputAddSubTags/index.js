@@ -5,7 +5,7 @@ import "./inputaddsubtags.css";
 const InputAddSubtags = ({ title, icon, placeholder, inputId }) => {
   return (
     <div className="input-wlp-container">
-      <label className="wlp-input-title" for={inputId}>
+      <label className="wlp-input-title" htmlFor={inputId}>
         {title}
       </label>
       <div className="input-tags-wrapper">

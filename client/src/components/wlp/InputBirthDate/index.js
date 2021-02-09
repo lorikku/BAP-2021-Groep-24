@@ -4,7 +4,7 @@ import "./inputbirthdate.css";
 const InputBirthDate = () => {
   return (
     <div className="input-wlp-container">
-      <label className="wlp-input-title" for="birth">
+      <label className="wlp-input-title" htmlFor="birth">
         Geboortedatum
       </label>
       <div>

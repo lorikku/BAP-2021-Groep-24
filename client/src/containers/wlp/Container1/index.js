@@ -20,7 +20,7 @@ const Container1 = () => {
         <p className="_1-title">Hallo, mijn naam is "Willem"</p>
 
         <div className="_1-input-wrapper">
-          <label className="_1-input-label" for="name">
+          <label className="_1-input-label" htmlFor="name">
             Wat is uw naam?
           </label>
           <div className="_1-input-btn-wrapper">
