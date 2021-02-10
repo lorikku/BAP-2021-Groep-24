@@ -32,6 +32,7 @@
 .activity-small-day {
   font-weight: var(--fontWeightSemiBold);
   font-size: var(--fontSizeSmall);
+  text-transform: capitalize;
 }
 
 .activity-small-info {

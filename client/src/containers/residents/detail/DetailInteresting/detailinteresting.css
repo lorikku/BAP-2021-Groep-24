@@ -6,4 +6,5 @@
 
 .detailresident-interesting {
   padding-left: var(--spacerMain);
+  flex: 1;
 }

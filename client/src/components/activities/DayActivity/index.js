@@ -69,7 +69,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
               {/* max 2, 3de is bubble met aantal */}
 
               {activity.interestedResidents.map((resident, index) =>
-                index < 1 ? (
+                index < 2 ? (
                   <img
                     key={index}
                     className="radius interested-bubble"
@@ -82,7 +82,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
                   ></img>
                 ) : null
               )}
-              {activity.interestedResidents.length < 2 ? null : (
+              {activity.interestedResidents.length < 3 ? null : (
                 <div className="radius interested-bubble bubble-rest">
                   <p className="interested-plus-amount">
                     {activity.interestedResidents.length > 15
@@ -98,7 +98,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
             <div className="dayactivity-bubbles">
               {/* max 2, 3de is bubble met aantal */}
               {activity.participatedResidents.map((resident, index) =>
-                index < 1 ? (
+                index < 2 ? (
                   <img
                     key={index}
                     className="radius interested-bubble"
@@ -111,7 +111,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
                   ></img>
                 ) : null
               )}
-              {activity.participatedResidents.length < 2 ? null : (
+              {activity.participatedResidents.length < 3 ? null : (
                 <div className="radius interested-bubble bubble-rest">
                   <p className="interested-plus-amount">
                     {activity.participatedResidents.length > 15

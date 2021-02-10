@@ -7,6 +7,10 @@
   margin-bottom: 10px;
 }
 
+.activity-interesting-container-wrapper {
+  display: flex;
+}
+
 .activity-interesting-add-btn {
   background-color: var(--colorOrange);
   display: flex;

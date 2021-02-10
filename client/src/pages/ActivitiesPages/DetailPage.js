@@ -40,7 +40,7 @@ const DetailPage = () => {
       //Setting local participatedResidents
       if (componentMounted)
         setParticipatedResidents(fetchedActivity.participatedResidents);
-        //Setting local interestedResidents
+      //Setting local interestedResidents
       if (componentMounted)
         setInterestedResidents(fetchedActivity.interestedResidents);
     };

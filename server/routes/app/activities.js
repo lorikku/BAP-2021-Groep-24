@@ -9,11 +9,18 @@ const { convertToObjectId } = require('../util');
 
 /* OVERVIEW FETCH */
 route.get('/', async (req, res) => {
-  const { selectedDate, floor } = req.query;
+  const { floor, selectedDate} = req.query;
 
   let query = {};
 
-  //Extract activities per week (for overview)
+  // If floor is in boundaries (0 - 3), use it to query, otherwise ignore floor
+  if (floor) {
+    if (-1 < floor && floor < 4) {
+      query.floor = floor;
+    }
+  }
+
+  //Extract activities PER WEEK (for overview)
   if (selectedDate) {
     const dateInt = parseInt(selectedDate);
 
@@ -21,13 +28,6 @@ route.get('/', async (req, res) => {
       $gte: startOfISOWeek(dateInt).getTime(), //Bigger or equal than timestamp of first day of week (ISO week follows the right european standards)
       $lt: endOfISOWeek(dateInt).getTime(), //Less than timestamp of last day of week (ISO week follows the right european standards)
     };
-  }
-
-  // If floor is in boundaries (0 - 3), use it to query, otherwise ignore floor
-  if (floor) {
-    if (-1 < floor && floor < 4) {
-      query.floor = floor;
-    }
   }
 
   let activities;
@@ -50,7 +50,7 @@ route.get('/', async (req, res) => {
     return;
   }
 
-  if (activities.length !== 0) {
+  if (activities) {
     res.status(200).json({
       message: 'Activities were found!',
       activities,
@@ -97,6 +97,7 @@ route.get('/:activityId', async (req, res) => {
 
 /* -------------- PUT QUERIES -------------- */
 
+//Updating the whole interestedResidents array (based off of the calculated matches)
 route.put('/:activityId/interestedResidents', async (req, res) => {
   const { activityId } = req.params;
   const _activityId = convertToObjectId(activityId, res);
@@ -140,6 +141,7 @@ route.put('/:activityId/interestedResidents', async (req, res) => {
 
 /* -------------- POST QUERIES -------------- */
 
+//Posting activity (new)
 route.post('/', async (req, res) => {
   try {
     //Add activity to activities collection
@@ -202,7 +204,7 @@ route.post('/:activityId/participatedResidents', async (req, res) => {
 
 /* -------------- DELETE QUERIES -------------- */
 
-/* DELETE ONE RESIDENT FROM INTERESTED RESIDENTS */
+/* DELETE ONE RESIDENT FROM PARTICIPATED RESIDENTS */
 route.delete(
   '/:activityId/participatedResidents/:residentId',
   async (req, res) => {

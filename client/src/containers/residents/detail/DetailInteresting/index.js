@@ -1,37 +1,51 @@
-import * as React from "react";
-import ActivityInteresting from "../../../../components/residents/detail/ActivityInteresting";
-import "./detailinteresting.css";
+import * as React from 'react';
+import ActivityInteresting from '../../../../components/residents/detail/ActivityInteresting';
+import {fetchInterestingActivitiesByResidentId} from '../../../../services/ResidentsService/ActivitiesService';
+import './detailinteresting.css';
 
-const DetailInteresting = ({ name }) => {
+const DetailInteresting = ({
+  resident,
+  activities,
+  setInterestingActivities,
+  setParticipatingActivities,
+}) => {
+
+  /* ------------- ACTIVITIES FETCHING ------------- */
+
+  React.useEffect(() => {
+    let componentMounted = true;
+
+    const fetchActivities = async () => {
+      const fetchedActivities = await fetchInterestingActivitiesByResidentId(
+        resident._id
+      );
+
+      if (componentMounted) setInterestingActivities(fetchedActivities);
+    };
+
+    fetchActivities();
+
+    return () => (componentMounted = false);
+  }, [resident._id, setInterestingActivities]);
+
   return (
     <>
       <h2 className="visually-hidden">Wellicht interessante activiteiten</h2>
       <div className="detailresident-interesting">
         <p className="detailresident-interesting-title">
-          Wellicht interessant voor {name.first}
+          Wellicht interessant voor {resident.name}
         </p>
         <ul className="interesting-list">
           {/* interesting-activity component */}
-          <ActivityInteresting
-            activity={{
-              title: "Een uitstapje met de meiden langs het strand",
-              hour: "14:00 - 16:00",
-              location: "Centrum Kortrijk",
-              day: "Maandag",
-              dateNr: "15",
-              month: "November",
-            }}
-          />
-          <ActivityInteresting
-            activity={{
-              title: "Een uitstapje met de meiden langs het strand",
-              hour: "14:00 - 16:00",
-              location: "Centrum Kortrijk",
-              day: "Maandag",
-              dateNr: "15",
-              month: "November",
-            }}
-          />
+          {activities.map((activity, index) => (
+            <ActivityInteresting
+              key={index}
+              activity={activity}
+              resident={resident}
+              setInterestingActivities={setInterestingActivities}
+              setParticipatingActivities={setParticipatingActivities}
+            />
+          ))}
         </ul>
       </div>
     </>

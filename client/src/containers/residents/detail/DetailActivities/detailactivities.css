@@ -2,6 +2,7 @@
     min-width: 423px;
     padding-right: var(--spacerMain);
     border-right: solid 2px var(--colorBgDark);
+    flex: 1.5;
 }
 
 .detailresident-activities-title {

@@ -4,9 +4,30 @@ import { useParams } from 'react-router-dom';
 import DetailActivities from '../../containers/residents/detail/DetailActivities';
 import DetailInteresting from '../../containers/residents/detail/DetailInteresting';
 
+import { fetchParticipatingActivitiesByResidentId } from '../../services/ResidentsService/ActivitiesService';
+
 import SubNav from '../../containers/residents/SubNav';
 
 const DetailPlanningPage = ({ navItems, resident }) => {
+  const { _id } = resident;
+
+  /* ------------ ACTIVITIES STATES ------------ */
+
+  const [participatingActivities, setParticipatingActivities] = React.useState(
+    []
+  );
+
+  const [interestingActivities, setInterestingActivities] = React.useState([]);
+
+  /* ------------ ACTIIVTIES HANDLER ------------ */
+
+  const [activitiesLoaded, setActivitiesLoaded] = React.useState(false);
+
+  React.useEffect(() => {
+    //Re-render after previous states have been set
+    setActivitiesLoaded(true)
+  }, [setActivitiesLoaded]);
+
   return (
     <>
       <h2 className="visually-hidden">
@@ -14,10 +35,21 @@ const DetailPlanningPage = ({ navItems, resident }) => {
       </h2>
       <div className="residents-detailresident fit-height">
         <SubNav navItems={navItems} />
-        <div className="detailresident-personal-planning">
-          <DetailActivities name={{ first: 'Mathilda' }} />
-          <DetailInteresting name={{ first: 'Mathilda' }} />
-        </div>
+        {activitiesLoaded ? (
+          <div className="detailresident-personal-planning">
+            <DetailActivities
+              resident={resident}
+              activities={participatingActivities}
+              setParticipatingActivities={setParticipatingActivities}
+            />
+            <DetailInteresting
+              resident={resident}
+              activities={interestingActivities}
+              setInterestingActivities={setInterestingActivities}
+              setParticipatingActivities={setParticipatingActivities}
+            />
+          </div>
+        ) : null}
       </div>
     </>
   );

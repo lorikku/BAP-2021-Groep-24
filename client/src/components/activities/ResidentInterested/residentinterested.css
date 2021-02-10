@@ -27,7 +27,7 @@
   background-color: var(--colorBgLight);
   border-top-left-radius: var(--borderRadiusBig);
   border-top-right-radius: var(--borderRadiusBig);
-  margin-bottom: 6px;
+  margin-bottom: var(--spacerMain);
 }
 
 .int-yes-no-container {
