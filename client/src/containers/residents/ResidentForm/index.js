@@ -1,9 +1,36 @@
-import * as React from "react";
-import ToggleBtn from "../../../components/global/ToggleBtn";
+import * as React from 'react';
+import ToggleBtn from '../../../components/global/ToggleBtn';
 
-import "./residentform.css";
+import './residentform.css';
 
-const ResidentForm = ({ isEdit, confirmText }) => {
+const ResidentForm = ({
+  isEdit,
+  confirmText,
+  inputs,
+  changeInput,
+  filter,
+  setOption,
+  submitResident,
+  step,
+  steps,
+}) => {
+  //Extracting possible inputs from 'inputs' state
+  const { name, roomNr, photoUri } = inputs;
+
+  const [isInputValid, setIsInputValid] = React.useState(false);
+
+  //Checks input validity
+  React.useEffect(() => {
+    const componentMounted = true;
+    if (!inputs) return;
+
+    if (!inputs.name || !inputs.roomNr || inputs.roomNr.split('').length < 3) {
+      if (componentMounted) setIsInputValid(false);
+    } else {
+      if (componentMounted) setIsInputValid(true);
+    }
+  }, [inputs, setIsInputValid]);
+
   return (
     <div className="residentform-container">
       <div className="residentform-left">
@@ -21,7 +48,7 @@ const ResidentForm = ({ isEdit, confirmText }) => {
           </div>
         </div>
         {isEdit ? (
-          ""
+          ''
         ) : (
           <p className="pic-notice">Dit kan later nog toegevoegd worden</p>
         )}
@@ -31,7 +58,7 @@ const ResidentForm = ({ isEdit, confirmText }) => {
             <p className="delete-wlp-btn-text">Verwijder bewoner</p>
           </div>
         ) : (
-          ""
+          ''
         )}
 
         {}
@@ -42,24 +69,44 @@ const ResidentForm = ({ isEdit, confirmText }) => {
           <label className="residentform-title residentform-name">
             Naam bewoner
             <input
+              value={name}
+              onChange={(e) => changeInput('name', e.currentTarget.value)}
               className="residentform-input residentform-input--name"
               type="text"
+              placeholder="Gerda Willems"
             ></input>
           </label>
           <label className="residentform-title residentform-room">
             Kamernummer
             <input
+              value={roomNr}
+              onChange={(e) => changeInput('roomNr', e.currentTarget.value)}
               className="residentform-input residentform-input--room"
-              type="text"
+              placeholder="bv. 002"
             ></input>
           </label>
 
           <div className="residentform-stay">
             <p className=" form-title residentform-status-title">Verblijf</p>
-            <ToggleBtn option1={"Vast verblijf"} option2={"Kort verblijf"} />
+            <ToggleBtn
+              setOption={setOption}
+              option1={filter.option1}
+              option2={filter.option2}
+            />
           </div>
         </div>
-        <div className="create-wlp-btn">
+        <div
+          onClick={
+            !isInputValid || step === steps.SUBMITTING ? null : submitResident
+          }
+          className={`
+            create-wlp-btn${
+              !isInputValid || step === steps.SUBMITTING
+                ? ' create-wlp-btn--disabled'
+                : ''
+            }
+          `}
+        >
           <p className="create-wlp-btn-text">{confirmText}</p>
           <img
             className="create-wlp-arrow"

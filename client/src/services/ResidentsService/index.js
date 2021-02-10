@@ -78,6 +78,31 @@ export { fetchResidents, fetchResidentById };
 
 /* -------------- POST FUNCTIONS -------------- */
 
+const postNewResident = async (resident) => {
+  try {
+    const response = await fetch(apiRoute, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(resident), // body data type must match "Content-Type" header
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const result = await response.json();
+
+    return result.residentId;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
+
+export {postNewResident}
+
 /* -------------- PUT FUNCTIONS -------------- */
 
 /* Update one resident */

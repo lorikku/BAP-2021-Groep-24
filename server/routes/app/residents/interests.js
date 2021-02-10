@@ -20,7 +20,7 @@ route.get('/', async (req, res) => {
   }
 
   //Send found resident's interests, else 404
-  if (resident.interests && resident.interests.length > 0) {
+  if (resident.interests) {
     res.status(200).json({
       message: 'Resident interests found!',
       interests: resident.interests,

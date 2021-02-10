@@ -1,8 +1,23 @@
 import * as React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import ResidentProfilePicture from '../../../../components/residents/detail/ResidentProfilePicture';
+import paths from '../../../../consts/paths';
 import './newresidentcreated.css';
 
-const NewResidentCreated = () => {
+const NewResidentCreated = ({ resident }) => {
+  const { _id, name, roomNr, isPermanent, photoUri } = resident;
+
+  //Generating WLP link
+  const location = window.location;
+  const wlpLink =
+    location.origin +
+    '/wlp/' +
+    _id;
+
+  const copyToClipbard = () => {
+    navigator.clipboard.writeText(wlpLink);
+  };
+
   return (
     <div className="newresident-header-wrapper flex-content fit-height">
       <div className="newresident-container">
@@ -11,13 +26,13 @@ const NewResidentCreated = () => {
             Welkom bij het Heilig Hart:
           </p>
           <div className="newresident-profile">
-            <ResidentProfilePicture src="https://media.istockphoto.com/photos/happy-senior-woman-picture-id1029340496?k=6&m=1029340496&s=612x612&w=0&h=4ScjIFlsN8uVI2xxijOegNZaiYn4_toD0AGciS4bejc=" />
-            <p className="newresident-name">
-              Mathilda <br></br> Dejonckheere
+            <ResidentProfilePicture src={photoUri} />
+            <p className="newresident-name">{name}</p>
+            <p className="newresident-status">
+              {isPermanent ? 'Vast verblijf' : 'Kort verblijf'}
             </p>
-            <p className="newresident-status">Vast verblijf</p>
             <div className="newresident-room-div">
-              <p className="newresident-room">Kamer 102</p>
+              <p className="newresident-room">Kamer {roomNr}</p>
             </div>
           </div>
         </div>
@@ -29,10 +44,8 @@ const NewResidentCreated = () => {
           <div>
             <p className="newresident-link-title">Woon- en leef link:</p>
             <div className="newresident-link-wrapper">
-              <p className="newresident-link">
-                https://Hhart.be/wlp/34568433567
-              </p>
-              <div className="clipboard-btn">
+              <p className="newresident-link">{wlpLink}</p>
+              <div onClick={copyToClipbard} className="clipboard-btn">
                 <img
                   className="clipboard-vector"
                   alt="clipboard icoon"
@@ -41,9 +54,9 @@ const NewResidentCreated = () => {
               </div>
             </div>
           </div>
-          <div className="back-home-btn">
+          <Link to={paths.PATH_RESIDENTS.ROOT} className="back-home-btn">
             <p className="back-home-btn-text">Terug naar overzicht</p>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

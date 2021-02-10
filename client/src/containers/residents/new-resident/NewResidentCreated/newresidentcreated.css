@@ -96,7 +96,6 @@
 
 .newresident-link {
   border-radius: var(--borderRadius);
-  width: 296px;
   background-color: var(--colorBgMain);
   padding: 0.9rem;
 }

@@ -23,18 +23,17 @@ route.get('/', async (req, res) => {
           interests: true,
           name: true,
           photoUri: true,
-
         },
       }
     : {
         projection: {
           interests: false,
           contacts: false,
-          isActive: false
+          isActive: false,
         },
       };
 
-  /* Setting the query */
+  /* Setting the query (only select active residents -> inactive still have to fill in WLP) */
   const query = {
     isActive: true,
   };
@@ -62,6 +61,7 @@ route.get('/', async (req, res) => {
     case 'spotlight':
       sorting = {
         spotlightTimestamp: -1,
+        _id: -1
       };
       break;
 
@@ -77,9 +77,11 @@ route.get('/', async (req, res) => {
       };
       break;
 
+    //defaults to 'spotlight'
     default:
       sorting = {
         spotlightTimestamp: -1,
+        _id: -1
       };
       break;
   }
@@ -129,6 +131,30 @@ route.get('/:residentId', async (req, res) => {
     });
   } else {
     res.status(404).json({ message: 'Resident not found!' });
+    return;
+  }
+});
+
+/* -------------- POST QUERIES -------------- */
+
+route.post('/', async (req, res) => {
+  //Fetch resident from app database. If an error occured in the query, send 500 with error message and return
+  try {
+    const result = await req.app.mongodb
+      .db('app')
+      .collection('residents')
+      .insertOne(req.body);
+
+    if (result.insertedId) {
+      res.status(200).json({
+        message: 'Activity was added to database!',
+        residentId: result.insertedId,
+      });
+    }
+  } catch (err) {
+    res
+      .status(statusMessages.INTERNAL_ERROR.statusCode)
+      .json({ message: statusMessages.INTERNAL_ERROR.message });
     return;
   }
 });

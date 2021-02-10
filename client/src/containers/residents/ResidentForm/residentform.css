@@ -120,6 +120,10 @@
   align-self: flex-end;
 }
 
+.create-wlp-btn--disabled {
+  opacity: 0.7;
+}
+
 .create-wlp-btn-text {
   color: var(--colorBgMain);
   font-weight: var(--fontWeightMedium);
