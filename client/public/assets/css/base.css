@@ -95,7 +95,7 @@ button {
   }
 
   #warning-message {
-    display: block;
+    display: flex;
   }
 }
 

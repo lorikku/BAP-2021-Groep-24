@@ -1,19 +1,10 @@
 import * as React from 'react';
 import NextPrev from '../../components/wlp/NextPrev';
-// import Container1 from "../../containers/wlp/Container1";
-// import LandingContainer from "../../containers/wlp/LandingContainer";
 import ProgressBar from '../../containers/wlp/ProgressBar';
-// import WlpContainerEight from "../../containers/wlp/WlpContainerEight";
 import WlpContainerActivity from '../../containers/wlp/WlpContainerActivity';
-// import WlpContainerEleven from "../../containers/wlp/WlpContainerEleven";
-// import WlpContainerFive from "../../containers/wlp/WlpContainerFive";
-// import WlpContainerFour from "../../containers/wlp/WlpContainerFour";
-// import WlpContainerNine from "../../containers/wlp/WlpContainerNine";
-// import WlpContainerOne from "../../containers/wlp/WlpContainerOne";
-// import WlpContainerSeven from "../../containers/wlp/WlpContainerSeven";
-// import WlpContainerThree from "../../containers/wlp/WlpContainerThree";
-// import WlpStepDivision from "../../containers/wlp/WlpStepDivision";
-// import WlpContainerTwo from "../../containers/wlp/WlpStepDivision";
+import LandingContainer from '../../containers/wlp/LandingContainer';
+import WlpSubmitted from '../../containers/wlp/WlpSubmitted';
+
 import './wlppage.css';
 import './wlpcontainer.css';
 
@@ -23,7 +14,6 @@ import {
   fetchResidentById,
   updateResident,
 } from '../../services/ResidentsService';
-import LandingContainer from '../../containers/wlp/LandingContainer';
 
 //All steps will get imported/listed here
 const contentArr = contentGenerator();
@@ -122,6 +112,8 @@ const WlpContent = () => {
 
   /* --------- STEP 4: SUBMIT HANDLER ---------  */
 
+  const [submitted, setSubmitted] = React.useState(false);
+
   const submitResident = async () => {
     const interestsForDb = selectedInterests.map(
       (selectedInterest) => selectedInterest.toDb
@@ -133,13 +125,17 @@ const WlpContent = () => {
       interests: interestsForDb,
     });
 
+    if (newResident) setSubmitted(true);
+
     console.log(newResident);
   };
 
   return resident ? (
     <div className="wlp-bg fit-height">
       <div className="content-container">
-        {actualStep === steps.START ? (
+        {submitted ? (
+          <WlpSubmitted name={resident.name} />
+        ) : actualStep === steps.START ? (
           <LandingContainer onClick={incrStep} />
         ) : (
           <>

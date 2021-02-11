@@ -1,0 +1,34 @@
+
+.wlp-submitted-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .wlp-submitted-wrapper {
+    margin-top: var(--spacerMain);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    gap: var(--spacerBig);
+  }
+  
+  .wlp-submitted-img {
+    width: 80vw;
+    margin-bottom: -20px;
+  }
+  
+  .wlp-submitted-title {
+    font-size: 34px;
+    font-weight: var(--fontWeightBold);
+  }
+  
+  .wlp-submitted-text {
+    font-size: var(--fontSizeBigger);
+    font-weight: var(--fontWeightMedium);
+    text-align: center;
+  }

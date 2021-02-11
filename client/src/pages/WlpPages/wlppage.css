@@ -39,9 +39,7 @@
   font-size: var(--fontSizeBody);
 }
 
-
 .wlp-input-title {
-    font-size: var(--fontSizeBig);
-    height: max-content;
-  }
-
+  font-size: var(--fontSizeBig);
+  height: max-content;
+}

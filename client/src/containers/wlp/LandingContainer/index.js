@@ -37,7 +37,10 @@ const LandingContainer = ({onClick}) => {
           ></img>
         </div>
       </div>
-      <div className="landing-right"></div>
+      <div className="landing-right">
+        <img alt="illustratie" className="landing-img--top" src="/assets/img/wlp-start-top.svg" />
+        <img alt="illustratie" className="landing-img--bottom" src="/assets/img/wlp-start-bottom.svg" />
+      </div>
     </div>
   );
 };

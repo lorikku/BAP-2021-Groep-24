@@ -7,10 +7,14 @@
 }
 
 .landing-right {
-  display: block;
+  display: flex;
   grid-column: 2;
   grid-row: 1;
   background-color: var(--colorCopyMisc);
+
+  padding-top: var(--spacerBig);
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .landing-left {
@@ -64,4 +68,13 @@
   font-size: var(--fontSizeBig);
   font-weight: var(--fontWeightSemiBold);
   margin-right: 1rem;
+}
+
+.landing-img--top {
+  width: 35vw;
+  align-self: flex-end;
+}
+
+.landing-img--bottom {
+  width: 40vw;
 }
