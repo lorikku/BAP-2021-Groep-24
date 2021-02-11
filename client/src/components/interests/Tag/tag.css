@@ -9,6 +9,7 @@
   align-items: center;
   margin-right: 6px;
   margin-top: 10px;
+  white-space: nowrap;
 }
 
 .tag-container--selected {

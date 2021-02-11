@@ -47,7 +47,11 @@
 
 .dtl-act-head-time {
   display: flex;
-  margin-right: 40px;
+  margin-right: var(--spacerMain);
+}
+
+.dtl-act-head-floor {
+  margin-top: var(--spacerMain);
 }
 
 .dtl-act-head-time-icon {
@@ -97,21 +101,21 @@
 }
 
 .dtl-act-head-chevronleft {
-  display: none;
   margin-left: var(--spacerMain);
 }
 
 .dtl-act-head-chevronright {
-  display: none;
   margin-right: var(--spacerMain);
 }
 
 .dtl-act-head-tags {
+  margin: 0 calc(var(--spacerMain) / 2);
+  margin-top: -10px;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow: scroll;
-  margin: calc(var(--spacerMain) / 2);
-  max-height: 100px;
 
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+ 
+  flex: 1;
+  width: 0;
 }

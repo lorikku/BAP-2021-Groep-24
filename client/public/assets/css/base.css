@@ -49,16 +49,19 @@ ul {
 
 ul::-webkit-scrollbar {
   width: 0;
+  height: 0;
 }
 
 ul::-webkit-scrollbar-thumb {
   width: 0;
+  height: 0;
   border-radius: 0rem;
   background: var(--colorSpotlight);
 }
 
 ul::-webkit-scrollbar-track {
   width: 0;
+  height: 0;
 }
 
 /* END SCROLLBAR */

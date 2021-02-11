@@ -23,6 +23,7 @@ route.get('/', async (req, res) => {
           interests: true,
           name: true,
           photoUri: true,
+          roomNr: true
         },
       }
     : {

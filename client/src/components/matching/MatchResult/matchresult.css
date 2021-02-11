@@ -110,8 +110,16 @@
 }
 
 .result-head-tags {
+  margin: 0 calc(var(--spacerMain) / 2);
   margin-top: -10px;
   display: flex;
+
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+ 
+  flex: 1;
+
+  width: 0;
 }
 
 .main-info-wrapper {

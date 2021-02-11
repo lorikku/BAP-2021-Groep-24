@@ -20,12 +20,15 @@ const DetailInterests = ({
 }) => {
   const [categories, setCategories] = React.useState(undefined);
 
-  //Path for editting resident interests
-  const path =
-    paths.PATH_RESIDENTS.ROOT +
-    '/' +
-    resident._id +
-    paths.PATH_RESIDENTS.DETAIL_EDIT_INTERESTS;
+  let path;
+  if (!isMatchingPage) {
+    //Path for editting resident interests
+    path =
+      paths.PATH_RESIDENTS.ROOT +
+      '/' +
+      resident._id +
+      paths.PATH_RESIDENTS.DETAIL_EDIT_INTERESTS;
+  }
 
   React.useEffect(() => {
     //If no interests exists => return

@@ -116,16 +116,16 @@
 .dayactivity-location {
   color: var(--colorCopyMisc);
   font-weight: var(--fontWeightMedium);
-  padding-right: var(--spacerMain);
 }
 
 .dayactivity-location-border {
   border-right: 1.5px solid var(--colorCopyMisc);
+  margin-right: var(--spacerMain);
+  padding-right: var(--spacerMain);
 }
 .dayactivity-time {
   color: var(--colorCopyMisc);
   font-weight: var(--fontWeightMedium);
-  margin-left: var(--spacerMain);
 }
 
 .dayactivity-present-container {

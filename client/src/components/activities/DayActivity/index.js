@@ -46,9 +46,14 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
               <div className="dayactivity-location-border">
                 <p className="dayactivity-location">{activity.location}</p>
               </div>
+              <div className="dayactivity-location-border">
               <p className="dayactivity-time">
                 {format(activity.startTimestamp, 'HH:mm', locale)} -{' '}
                 {format(activity.endTimestamp, 'HH:mm', locale)}
+              </p>
+              </div>
+              <p className="dayactivity-time">
+               Floor {activity.floor}
               </p>
             </div>
           </div>

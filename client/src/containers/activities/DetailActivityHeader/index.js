@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import { nlBE } from 'date-fns/locale';
 
 const DetailActivityHeader = ({ activity }) => {
-  const { title, location, startTimestamp, endTimestamp, interests } = activity;
+  const { title, location, startTimestamp, endTimestamp, interests, floor } = activity;
   const startDate = new Date(startTimestamp);
   const endDate = new Date(endTimestamp);
 
@@ -36,6 +36,7 @@ const DetailActivityHeader = ({ activity }) => {
                 {format(startDate, 'HH:mm', nlBE)} -{' '}
                 {format(endDate, 'HH:mm', nlBE)}
               </p>
+
             </div>
             <div className="dtl-act-head-loc">
               <img
@@ -46,6 +47,9 @@ const DetailActivityHeader = ({ activity }) => {
               <p className="dtl-act-head-loc">{location}</p>
             </div>
           </div>
+          <p className="dtl-act-head-floor">
+                Floor {floor}
+              </p>
         </div>
         <img
           className="dtl-act-head-edit"
