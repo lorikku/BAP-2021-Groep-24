@@ -21,7 +21,7 @@ process.on('unhandledRejection', (err) => {
 
 */
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 //Set Access-Control-Allow-Origin header for all requests
 app.use(bodyParser.json());
