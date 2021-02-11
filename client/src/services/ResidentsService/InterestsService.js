@@ -1,4 +1,6 @@
-const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
+import {apiUrl} from "../../global/states";
+
+const apiRoute = apiUrl + 'app/residents';
 
 const fetchInterestByResidentId = async (residentId) => {
   try {

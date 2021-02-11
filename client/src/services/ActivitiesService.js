@@ -1,10 +1,12 @@
+import {apiUrl} from "../global/states";
+
 function convertTimeToNumb(duration) {
   const hours = parseInt(duration.split(':')[0]);
   const minutes = parseInt(duration.split(':')[1]);
   return [hours, minutes];
 }
 
-const apiRoute = process.env.REACT_APP_API_URL + '/app/activities';
+const apiRoute = apiUrl + 'app/activities';
 
 /* -------------- GET FUNCTIONS -------------- */
 

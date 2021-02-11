@@ -8,4 +8,10 @@ const initialState = {
 };
 const { useGlobalState } = createGlobalState(initialState);
 
-export { useGlobalState };
+//Api url extracted from .env file: else default api url is heroku deployment
+const apiUrl =
+  process.env.REACT_APP_API_URI ||
+  'https://radiant-harbor-10229.herokuapp.com/';
+
+
+export { useGlobalState, apiUrl };

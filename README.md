@@ -1,13 +1,28 @@
 # Vita
 Devine Bachelorproef voor het woonzorgcentrum Heilig Hart
 
-## Omschrijving
+## Core project statement
 
-### Core Project Statement
+A ReactJS platform that assists the staff of Heilig Hart residential care center in bringing together and empowering the residents. This platform offers several useful tools such as: matching residents, creating and offering activities per resident, ...
 
-Een ReactJS platform dat het personeel van het woonzorgcentrum Heilig Hart assisteert in het samenbrengen en empoweren van de bewoners. Dit platform biedt verschillende handige tools aan zoals: bewoners matchen, activiteiten aanmaken en aanbieden per bewoner, ...
+## Online deployments
 
-## Installation
+### Client
+
+The deployed client can currently be found at: https://vita-heilighart-devine.herokuapp.com/  
+This client uses the server deployed on heroku as well. Just visit it and you can view the page.
+
+### Server (API)
+
+The deployed server can currently be found at: https://radiant-harbor-10229.herokuapp.com/  
+This serves data (like an API) to the client. Example endpoints are:
+```js
+/app/residents/:residentId //to fetch resident(s)
+/app/activities/:activityId //to fetch activities(s)
+/app/interests/:interestId //to fetch interests(s)
+```
+
+## Local installation
 
 This web app has front-end development that is meant to be used on **tablets** or **computers**.
 This project consists of two parts, namely the 'client' (front-end) side and 'server' (back-end) side.
@@ -17,12 +32,14 @@ Start off by cloning this repo.
 ### ENV Files
 You will first need to make two `.env` files inside these two folders.
 
-1. `/client` folder  
-This env file needs to contain an env variable called `REACT_APP_API_URL`.  
-You can set this to the URI of the API (server) will be running at, defaults to http://localhost:3001 (NO TRAILING SLASH!)  
-Example: `REACT_APP_API_URL="http://localhost:3001"`
+1. `/client` **folder**  
+This env file needs to contain an env variable called `REACT_APP_API_URI`.  
+You can set this to the URI of the API (server) will be running at, is normally http://localhost:3001/ (INCLUDE TRAILING SLASH!)  
+Example: `REACT_APP_API_URI="http://localhost:3001/"`
 
-2. `/server` folder  
+**NOTE**: If the API URI is NOT provided, the client will do fetches to the [deployed server](https://radiant-harbor-10229.herokuapp.com/) instead.
+
+2. `/server` **folder**  
 This env file needs to contain an env variable called `MONGO_URI`.  
 You can set this to the URI the database will be running at.  
 Example: `MONGO_URI="mongodb+srv://user-name:password@clusterName.mongodb.net/clusterName?retryWrites=true&w=majority"`
@@ -31,7 +48,7 @@ Example: `MONGO_URI="mongodb+srv://user-name:password@clusterName.mongodb.net/cl
 
 ### Starting project
 
-We will have to start the server AND the client for this web app to work.  
+We will have to start the server AND the client seperately.  
 After cloning this repo, follow the following steps.
 
 #### Step 1: Start server
@@ -50,7 +67,7 @@ You will see a message saying "Login was succesful!" if it succesfuly connected 
 cd ./client
 yarn && yarn start
 ```
-The client should now download its dependencies, and then start. Make sure you provided the `REACT_APP_API_URL` link in the `.env` file before starting it up.
+The client should now download its dependencies, and then start. Make sure you provided the `REACT_APP_API_URI` link in the `.env` file before starting it up, otherwise it will default and do requests to the [deployed server](https://radiant-harbor-10229.herokuapp.com/) instead.
 
 Your default browser should open up if everything went right, and you should be greeted with the default 'residents overview' homepage.
 

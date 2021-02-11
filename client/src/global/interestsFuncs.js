@@ -1,5 +1,6 @@
 import { fetchContactsByResidentId } from '../services/ResidentsService/ContactsService';
 import { categories } from './categoriesAndDependencies';
+import {apiUrl} from './states';
 
 const getCategoriesFromInterests = (interests, extractDependency) => {
   //Create empty newCategories object
@@ -86,7 +87,7 @@ const calculateResidentMatches = async (
 
   //Fetch ALL residents
   const response = await fetch(
-    process.env.REACT_APP_API_URL + '/app/residents?interests=true'
+    apiUrl + 'app/residents?interests=true'
   );
   const result = await response.json();
   const residents = result.residents;

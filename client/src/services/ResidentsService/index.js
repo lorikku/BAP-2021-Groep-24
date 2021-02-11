@@ -1,8 +1,9 @@
 import { fetchContactsByResidentId } from './ContactsService';
 import { fetchInterestByResidentId } from './InterestsService';
 import { fetchMyResidents } from '../MyResidentsService';
+import {apiUrl} from '../../global/states';
 
-const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
+const apiRoute = apiUrl + 'app/residents';
 
 /* -------------- GET FUNCTIONS -------------- */
 
