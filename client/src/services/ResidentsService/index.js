@@ -7,7 +7,7 @@ const apiRoute = process.env.REACT_APP_API_URL + '/app/residents';
 /* -------------- GET FUNCTIONS -------------- */
 
 /* Fetching single resident and their interests/contacts/planned activities/ */
-const fetchResidentById = async (residentId, isMatchingPage) => {
+const fetchResidentById = async (residentId, noContacts) => {
   let fetchedResident = undefined;
 
   // FETCHING RESIDENT
@@ -28,7 +28,7 @@ const fetchResidentById = async (residentId, isMatchingPage) => {
   // FETCHING RESIDENT INTERESTS
   fetchedResident.interests = await fetchInterestByResidentId(residentId);
 
-  if (!isMatchingPage) {
+  if (!noContacts) {
     // FETCHING RESIDENT CONACTS
     fetchedResident.contacts = await fetchContactsByResidentId(residentId);
   }

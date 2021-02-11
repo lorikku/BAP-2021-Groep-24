@@ -23,4 +23,5 @@
 
 .notification {
   margin-top: var(--spacerMain);
+  margin-left: var(--spacerMain);
 }

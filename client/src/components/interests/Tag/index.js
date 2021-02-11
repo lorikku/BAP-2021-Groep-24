@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { categories } from '../../../global/categoriesAndDependencies';
 import './tag.css';
 
 const Tag = ({
@@ -10,6 +11,12 @@ const Tag = ({
   toggleInterest,
   selectedInterests,
 }) => {
+  const { name, category } = interest;
+
+  //Extracting color for tag
+  let categoryColor;
+  if (category) categoryColor = categories[category._id].color;
+
   const [selected, setSelected] = React.useState(false);
 
   React.useEffect(() => {
@@ -64,11 +71,16 @@ const Tag = ({
       className={`tag-container${selected ? ' tag-container--selected' : ''}${
         isMatchingPage ? ' tag-container--matching' : ''
       }`}
+      style={{ borderColor: categoryColor }}
     >
       <div
         className={`tag-color${selected ? ' tag-color--selected' : ''}`}
+        style={{ backgroundColor: categoryColor }}
       ></div>
-      <p className={`tag-name${selected ? ' tag-name--selected' : ''}`}>
+      <p
+        className={`tag-name${selected ? ' tag-name--selected' : ''}`}
+        style={{ color: categoryColor }}
+      >
         {interest.name}
       </p>
       {isEdit ? (

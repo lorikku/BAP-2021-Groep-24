@@ -16,6 +16,8 @@
   border-radius: var(--borderRadius);
   color: var(--colorCopyMisc);
   font-size: var(--fontSizeBig);
+
+  padding: var(--spacerMain);
 }
 
 .birth-wrapper {

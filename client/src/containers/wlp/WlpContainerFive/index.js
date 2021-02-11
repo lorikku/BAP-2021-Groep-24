@@ -4,7 +4,6 @@ import InputAmountBox from "../../../components/wlp/InputAmountBox";
 import InputBirthDate from "../../../components/wlp/InputBirthDate";
 import InputBirthPlace from "../../../components/wlp/InputBirthPlace";
 import InputText from "../../../components/wlp/InputText";
-import "./wlpcontainer.css";
 
 const WlpContainerFive = ({ section }) => {
   return (

@@ -23,7 +23,7 @@ route.get('/', async (req, res) => {
   }
 
   //Send found interests, else 404
-  if (interests.length === 0) {
+  if (!interests) {
     res.status(404).json({
       message: 'Interests not found, or something was wrong with the databse.',
     });

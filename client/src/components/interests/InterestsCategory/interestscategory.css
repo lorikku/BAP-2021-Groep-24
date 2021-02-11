@@ -1,18 +1,22 @@
 .interests-category {
   background-color: var(--colorSpotlight);
-  width: 120px;
+  width: 140px;
+  min-height: 160px;
   border-radius: var(--borderRadiusBig);
   margin: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .interests-category-name {
   font-weight: var(--fontWeightBold);
   text-align: center;
-  margin-bottom: 10px;
+  margin: 10px 0;
   line-height: 1.2rem;
+
+  text-transform: capitalize;
 }
 
 .interests-category-container {
@@ -23,8 +27,7 @@
 }
 
 .interest-tags {
-  margin-top: 5px;
-  margin-left: 10px;
+  margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
@@ -33,7 +36,7 @@
 }
 
 .category-vector {
-  width: 100px;
-  height: 100px;
-  text-align: center;
+  width: 140px;
+  height: 70px;
+
 }

@@ -50,7 +50,15 @@ const DetailContacts = ({ resident }) => {
       <h2 className="visually-hidden">Vriendschappen bewoner</h2>
       <div className="detailresident-contacts fit-height flex-content">
         <p className="detailresident-contact-title">Vriendschappen</p>
-        {/* contact lijstje, hier al de component */}
+
+        <div
+          onClick={toggleAddNewContact}
+          className="detailresident-add-contact-btn"
+        >
+          <p className="detailresident-add-contact-text">
+            Nieuw contactpersoon
+          </p>
+        </div>
         <ul className="detailresident-contactslist">
           {contacts.length > 0
             ? contacts.map((contact, index) => (
@@ -62,15 +70,6 @@ const DetailContacts = ({ resident }) => {
               ))
             : 'Geen vriendschappen gevonden'}
         </ul>
-
-        <div
-          onClick={toggleAddNewContact}
-          className="detailresident-add-contact-btn"
-        >
-          <p className="detailresident-add-contact-text">
-            Nieuw contactpersoon
-          </p>
-        </div>
       </div>
     </>
   );

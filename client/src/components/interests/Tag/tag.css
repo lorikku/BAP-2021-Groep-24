@@ -12,8 +12,8 @@
 }
 
 .tag-container--selected {
-  background-color: var(--colorCTA);
-  border: solid 2px var(--colorCTA);
+  background-color: var(--colorCTA) !important;
+  border-color: var(--colorCTA) !important;
 }
 
 .tag-container--matching {
@@ -28,7 +28,7 @@
 }
 
 .tag-color--selected{
-  background-color: var(--colorBgMain)
+  background-color: var(--colorBgMain) !important;
 }
 
 .tag-name {
@@ -38,10 +38,12 @@
   text-align: bottom;
   padding-left: 8px;
   margin-top: 1px;
+
+  text-transform: capitalize;
 }
 
 .tag-name--selected {
-  color: var(--colorBgMain);
+  color: var(--colorBgMain) !important;
 }
 
 .tag-delete-cross {

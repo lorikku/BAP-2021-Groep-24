@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./landingcontainer.css";
 
-const LandingContainer = () => {
+const LandingContainer = ({onClick}) => {
   return (
     <div className="landing-container">
       <div className="landing-left">
@@ -28,7 +28,7 @@ const LandingContainer = () => {
             begeleiden.
           </p>
         </div>
-        <div className="landing-next-btn">
+        <div onClick={onClick} className="landing-next-btn">
           <p className="landing-next-btn-text">Aan de slag!</p>
           <img
             className="landing-next-btn-arrow"

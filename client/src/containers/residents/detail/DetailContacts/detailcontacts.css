@@ -18,7 +18,7 @@
   background-color: var(--colorBgMain);
   border: solid 2px var(--colorCTA);
   border-radius: var(--borderRadius);
-  margin-top: var(--spacerMain);
+  margin-bottom: var(--spacerMain);
 
   cursor: pointer;
 }

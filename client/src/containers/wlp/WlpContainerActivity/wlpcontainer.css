@@ -1,11 +1,10 @@
 .wlp-activity-container {
-  margin-top: var(--spacerMain);
   display: flex;
 }
 
 .wlp-activities-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, .8fr);
   grid-template-rows: min-content;
   width: 100%;
   gap: var(--spacerMain);
@@ -16,6 +15,56 @@
   display: flex;
   flex-direction: column;
   margin-top: 32px;
+}
+
+.wlp-input-deptitle {
+  text-transform: uppercase;
+  word-break: break-all;
+  font-size: var(--fontSizeHuge);
+  font-weight: var(--fontWeightBold);
+  color: var(--colorCopyMain);
+
+  margin-bottom: 10px;
+}
+
+.wlp-input-title--subcat {
+  text-transform: capitalize;
+  background-color: var(--colorRed);
+  color: var(--colorBgMain);
+
+  font-size: var(--fontSizeBigger);
+  font-weight: var(--fontWeightBold);
+
+  border-radius: var(--borderRadiusBig);
+
+  padding: var(--spacerButtonNormal);
+
+}
+
+.wlp-activity-container-subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 320px;
+  width: 180px;
+  margin-right: var(--spacerMain);
+  border-radius: var(--borderRadiusBig);
+
+  padding: var(--spacerMain);
+  background-color: var(--colorOrangeLight);
+}
+
+.wlp-activity-suncontainer-subtitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-vector {
+  width: 100%;
 }
 
 .activities-list-wrapper {

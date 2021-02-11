@@ -84,7 +84,8 @@ const DetailPage = () => {
       setSelectedInterests((prevState) => {
         const newState = [...prevState];
 
-        const index = newState.indexOf(interest);
+        //Bug was detected here -> never use indexOf again
+        const index = newState.findIndex(selectedInterest => selectedInterest._id === interest._id);
         newState.splice(index, 1);
         return newState;
       });

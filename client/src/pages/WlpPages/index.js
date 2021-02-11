@@ -9,11 +9,11 @@ const WlpPages = ({ paths }) => {
   return (
     <section className="wlp-page">
       <Switch>
-        <Route path={paths.ROOT} exact>
+        <Route path={paths.ROOT + paths.DETAIL} exact>
           <WlpContent />
         </Route>
         <Route>
-          <Redirect to={paths.ROOT} />
+          <p className="notification">Bewoner niet gevonden</p>
         </Route>
       </Switch>
     </section>

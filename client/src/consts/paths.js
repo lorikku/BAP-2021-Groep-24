@@ -30,6 +30,7 @@ const paths = {
   PATH_WLP: {
     //Woon-en-leefplan
     ROOT: '/wlp',
+    DETAIL: '/:residentId'
   },
   PATH_LOGOUT: {
     ROOT: '/logout',

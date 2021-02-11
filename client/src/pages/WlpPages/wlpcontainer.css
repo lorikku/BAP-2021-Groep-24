@@ -2,11 +2,6 @@
   margin-top: 80px;
 }
 
-.wlp-title {
-  font-size: 34px;
-  font-weight: var(--fontWeightBold);
-}
-
 .wlp-input-container {
   margin-top: 50px;
   display: flex;
@@ -41,4 +36,19 @@
   margin-top: 3rem;
   width: 387px;
   line-height: 1.2rem;
+}
+
+.input-checkboxes-small {
+  margin-top: 10px;
+  display: flex;
+}
+
+.input-check-container-big {
+  width: 100%;
+  height: 100%;
+}
+
+.input-checkboxes {
+  margin-top: 10px;
+  display: flex;
 }

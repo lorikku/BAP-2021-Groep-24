@@ -2,7 +2,6 @@ import * as React from "react";
 import InputAddSubtags from "../../../components/wlp/InputAddSubTags";
 import InputBirthDate from "../../../components/wlp/InputBirthDate";
 import InputBirthPlace from "../../../components/wlp/InputBirthPlace";
-import "./wlpcontainer.css";
 
 const WlpContainerOne = ({ section }) => {
   return (

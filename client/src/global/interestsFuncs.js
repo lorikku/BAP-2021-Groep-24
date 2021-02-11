@@ -1,4 +1,5 @@
 import { fetchContactsByResidentId } from '../services/ResidentsService/ContactsService';
+import { categories } from './categoriesAndDependencies';
 
 const getCategoriesFromInterests = (interests, extractDependency) => {
   //Create empty newCategories object
@@ -8,13 +9,14 @@ const getCategoriesFromInterests = (interests, extractDependency) => {
   So we will check if the category exists in the newCategories{} object and make
   one if it doesn't, with the interests in it. */
 
-  interests.forEach((interest) => {
+  interests.forEach((interest, index) => {
+    if(interests[index].noExtraction === true) return;
     let newCategory = newCategories[interest.category._id];
 
     //If category does not exist in newCategories{} object yet => create one and add it
     if (!newCategory) {
       newCategory = {
-        name: interest.category.name,
+        ...categories[interest.category._id],
         interests: [],
       };
       newCategories[interest.category._id] = newCategory;
@@ -23,7 +25,7 @@ const getCategoriesFromInterests = (interests, extractDependency) => {
     /* Dependency is basically an interest that is included if another certain child interest is selected.
     Het Laatste Nieuws (child interest) => Krant (parent interest AKA dependency) */
 
-    if (extractDependency) {
+    if (extractDependency && interests[0].noExtraction !== true) {
       const { dependency } = interest;
 
       if (dependency) {
@@ -45,7 +47,7 @@ const getCategoriesFromInterests = (interests, extractDependency) => {
 };
 
 const searchInterests = (name, interests) => {
-  const newInterests = [];
+  const newInterests = [{noExtraction: true}];
 
   interests.forEach((interest) => {
     if (interest.name.toLowerCase().includes(name)) {
@@ -53,23 +55,23 @@ const searchInterests = (name, interests) => {
     }
 
     // Extraction of dependencies was wrong here. Extraction already happens in 'getCategoriesFromInterests'
-    // const { dependency } = interest;
+    const { dependency } = interest;
 
-    // if (dependency) {
-    //   //Dependency interests can be present in multiple other child presents (duplicate possible) => so check if dependency is not in newCategory yet before pushing
-    //   if (
-    //     newInterests.findIndex(
-    //       (newInterest) => newInterest._id === dependency._id
-    //     ) === -1
-    //   ) {
-    //     if (dependency.name.toLowerCase().includes(name)) {
-    //       const newDependency = Object.assign({}, dependency);
-    //       newDependency.category = interest.category;
-    //       newDependency.dependency = interest.dependency;
-    //       newInterests.push(newDependency);
-    //     }
-    //   }
-    // }
+    if (dependency) {
+      //Dependency interests can be present in multiple other child presents (duplicate possible) => so check if dependency is not in newCategory yet before pushing
+      if (
+        newInterests.findIndex(
+          (newInterest) => newInterest._id === dependency._id
+        ) === -1
+      ) {
+        if (dependency.name.toLowerCase().includes(name)) {
+          const newDependency = Object.assign({}, dependency);
+          newDependency.category = interest.category;
+          newDependency.dependency = interest.dependency;
+          newInterests.push(newDependency);
+        }
+      }
+    }
   });
 
   return newInterests;
@@ -115,7 +117,7 @@ const calculateResidentMatches = async (
         _id: resident._id,
         name: resident.name,
         roomNr: resident.roomNr,
-        photoUri: resident.photoUri
+        photoUri: resident.photoUri,
       },
       matchedInterests: [],
       percentage: 0,
@@ -145,6 +147,7 @@ const calculateResidentMatches = async (
                   (interest) => interest._id === selectedDependency._id //BUG: turned '=' into '==='
                 ) === -1
               ) {
+                residentDependency.category = residentInterest.category;
                 newMatch.matchedInterests.push(residentDependency);
               }
             }

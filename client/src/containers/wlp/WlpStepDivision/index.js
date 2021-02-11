@@ -4,7 +4,6 @@ import InputAmountBox from "../../../components/wlp/InputAmountBox";
 import InputBirthDate from "../../../components/wlp/InputBirthDate";
 import InputBirthPlace from "../../../components/wlp/InputBirthPlace";
 import WillemImg from "../../../components/wlp/WillemImg";
-import "./wlpcontainer.css";
 
 const WlpStepDivision = ({ stepTitle, p1, p2 }) => {
   return (

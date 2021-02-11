@@ -3,7 +3,6 @@ import InputAddSubtags from "../../../components/wlp/InputAddSubTags";
 import InputAmountBox from "../../../components/wlp/InputAmountBox";
 import InputBirthDate from "../../../components/wlp/InputBirthDate";
 import InputBirthPlace from "../../../components/wlp/InputBirthPlace";
-import "./wlpcontainer.css";
 
 const WlpContainerTwo = ({ section }) => {
   return (

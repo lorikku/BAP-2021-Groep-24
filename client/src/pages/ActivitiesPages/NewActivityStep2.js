@@ -7,6 +7,7 @@ import SelectedInts from '../../components/matching/SelectedInts';
 
 import DetailInterests from '../../containers/residents/detail/DetailInterests';
 import { searchInterests } from '../../global/interestsFuncs';
+import {fetchAllInterests} from '../../services/InterestsService';
 import { fetchResidentById } from '../../services/ResidentsService';
 import {detailSteps} from './detailSteps';
 
@@ -19,8 +20,8 @@ const NewActivityStep2 = ({
   /* --------- STEP 1: SEARCHING THROUGH INTERESTS ---------  */
 
   const [name, setName] = React.useState('');
-  const [resident, setResident] = React.useState(undefined);
   const [interests, setInterests] = React.useState(undefined);
+  const [originalInterests, setOriginalInterests] = React.useState(undefined);
 
   //Interests fetched from 1 resident for testing purposes
 
@@ -28,29 +29,25 @@ const NewActivityStep2 = ({
     let componentMounted = true;
 
     const getInterests = async () => {
-      const fetchedResident = await fetchResidentById(
-        '600889e5f2a5381fee15405b',
-        true
-      );
-      if (componentMounted) setResident(fetchedResident);
-      if (componentMounted) setInterests(fetchedResident.interests);
+      const fetchedInterests = await fetchAllInterests();
+      if (componentMounted) setOriginalInterests(fetchedInterests);
     };
 
     getInterests();
 
     return () => (componentMounted = false);
-  }, [setResident, setInterests]);
+  }, [setOriginalInterests]);
 
   React.useEffect(() => {
     let componentMounted = true;
-    if (!resident) return;
+    if (!originalInterests) return;
     if (!name) {
-      if (componentMounted) setInterests(resident.interests);
+      if (componentMounted) setInterests(originalInterests);
     }
 
     const getNewInterests = () => {
       if (componentMounted)
-        setInterests(searchInterests(name, resident.interests));
+        setInterests(searchInterests(name, originalInterests));
     };
 
     const interval = setTimeout(getNewInterests, 100);
@@ -58,7 +55,7 @@ const NewActivityStep2 = ({
       clearTimeout(interval);
       componentMounted = false;
     };
-  }, [name, resident, setInterests]);
+  }, [name, originalInterests, setInterests]);
 
   /* --------- STEP 2: SELECTING INTERESTS ---------  */
 
@@ -73,7 +70,8 @@ const NewActivityStep2 = ({
       setSelectedInterests((prevState) => {
         const newState = [...prevState];
 
-        const index = newState.indexOf(interest);
+        //Bug was detected here -> never use indexOf again
+        const index = newState.findIndex(selectedInterest => selectedInterest._id === interest._id);
         newState.splice(index, 1);
         return newState;
       });
@@ -84,7 +82,7 @@ const NewActivityStep2 = ({
     changeInput('interests', selectedInterests);
   }, [selectedInterests, changeInput]);
 
-  return resident ? (
+  return interests ? (
     <>
       <GoBack func={() => changeStep(detailSteps.CONFIG)} text={'Terug naar activiteit informatie'} />
       <BannerHeader title={'Kies de bijhorende interesses'} />

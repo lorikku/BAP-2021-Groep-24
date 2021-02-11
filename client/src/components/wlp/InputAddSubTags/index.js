@@ -11,13 +11,13 @@ const InputAddSubtags = ({ title, icon, placeholder, inputId }) => {
       <div className="input-tags-wrapper">
         <div className="input-plus-wrapper">
           <div className="wlp-input-wrapper wlp-input">
-            <div className="wlp-icon-div">
+            {/* <div className="wlp-icon-div">
               <img
                 className="wlp-icon"
                 alt="present icon"
                 src={`/assets/img/wlp-` + icon + `.svg`}
               ></img>
-            </div>
+            </div> */}
             <input
               className="birth-input wlp-input-style"
               id={inputId}

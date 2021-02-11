@@ -1,15 +1,18 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
-import paths from "../../../../consts/paths";
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import paths from '../../../../consts/paths';
 
-import "./popupcontact.css";
+import './popupcontact.css';
 
 const PopUpContact = ({ addNewResident }) => {
-  const { matchingId, callbackFunc, closeWindow } = addNewResident;
-  const path = paths.PATH_MATCHING.ROOT + "/" + matchingId;
+  const { callbackFunc, closeWindow } = addNewResident;
 
   return (
-    <div className={`popup-container`}>
+    <div
+      className={`popup-container${
+        !addNewResident.matchingId ? ' popup-container--nomatching' : ''
+      }`}
+    >
       <div onClick={closeWindow} className="popup-close">
         <p className="popup-close-text">Sluiten</p>
         <img
@@ -42,28 +45,33 @@ const PopUpContact = ({ addNewResident }) => {
           ></img>
         </div>
       </div>
-      <div className="popup-right-container">
-        <div className="popup-right-wrapper">
-          <p className="popup-title">
-            Vind een bewoner met <br></br> gemeenschappelijke interesses
-          </p>
-          <Link to={path} className="popup-right-match-btn">
-            <p className="popup-right-btn-text">Matching</p>
+      {addNewResident.matchingId ? (
+        <div className="popup-right-container">
+          <div className="popup-right-wrapper">
+            <p className="popup-title">
+              Vind een bewoner met <br></br> gemeenschappelijke interesses
+            </p>
+            <Link
+              to={paths.PATH_MATCHING.ROOT + '/' + addNewResident.matchingId}
+              className="popup-right-match-btn"
+            >
+              <p className="popup-right-btn-text">Matching</p>
+              <img
+                className="popup-right-btn-icon"
+                alt="matching icoon"
+                src="/assets/img/matching-white.svg"
+              ></img>
+            </Link>
+          </div>
+          <div className="popup-right-vector">
             <img
-              className="popup-right-btn-icon"
-              alt="matching icoon"
-              src="/assets/img/matching-white.svg"
+              className="popup-matching-vector"
+              alt="match vriend toevoegen illustratie"
+              src="/assets/img/illustrations/matching-uneven.svg"
             ></img>
-          </Link>
+          </div>
         </div>
-        <div className="popup-right-vector">
-          <img
-            className="popup-matching-vector"
-            alt="match vriend toevoegen illustratie"
-            src="/assets/img/illustrations/matching-uneven.svg"
-          ></img>
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 };

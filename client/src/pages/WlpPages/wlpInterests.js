@@ -8,36 +8,51 @@ class Interest {
   constructor(_id, name, category, dependency = null, subCat = null) {
     this._id = _id;
     this.name = name;
-    this.category = {
-      _id: category._id,
-      name: category.name,
+    this.category = category;
+    this.dependency = dependency;
+    this.subCat = subCat;
+  }
+
+  //Extracting useful information for submitting to database
+  get toDb() {
+    const info = {
+      _id: this._id,
+      name: this.name,
+      category: {
+        _id: this.category._id,
+        name: this.category.name,
+      },
     };
 
-    if (dependency) {
-      this.dependency = {
-        _id: dependency._id,
-        name: dependency.name
+    //If interest has a dependency -> add _id and name
+    if (this.dependency) {
+      info.dependency = {
+        _id: this.dependency._id,
+        name: this.dependency.name,
       };
+    } else {
+      //If dependency was null -> use category as dependency for this interest (exceptional for basic interests)
+      info.dependency = info.category;
     }
 
-    if (subCat) {
-        this.subCat = subCat;
-    }
+    return info;
   }
 }
 
-// new Interest('', '', categories, dependencies, '') <- use as template
-
-const defaultInterests = [
+// These are all default interests (which will be also included in database)
+const checkboxInterests = [
+  //Krant subcategory
   new Interest('krant-nieuwsblad', 'Het Nieuwsblad', categories.mentaal, dependencies.lezen, subCategories.krant),
   new Interest('krant-standaard', 'De Standaard', categories.mentaal, dependencies.lezen, subCategories.krant),
   new Interest('krant-morgen', 'De Morgen', categories.mentaal, dependencies.lezen, subCategories.krant),
   new Interest('krant-laatstenieuws', 'Het Laatste Nieuws', categories.mentaal, dependencies.lezen, subCategories.krant),
+  //Tijdschrijft subcategory
   new Interest('schrift-humo', 'Humo', categories.mentaal, dependencies.lezen, subCategories.tijdschrift),
   new Interest('schrift-story', 'Story', categories.mentaal, dependencies.lezen, subCategories.tijdschrift),
   new Interest('schrift-tvfamilie', 'TV Familie', categories.mentaal, dependencies.lezen, subCategories.tijdschrift),
   new Interest('schrift-libelle', 'Libelle', categories.mentaal, dependencies.lezen, subCategories.tijdschrift),
   new Interest('schrift-dagallemaal', 'Dag Allemaal', categories.mentaal, dependencies.lezen, subCategories.tijdschrift),
+  //Boek subcategory
   new Interest('boek-poezie', 'poëzie', categories.mentaal, dependencies.lezen, subCategories.boek),
   new Interest('boek-humor', 'humor', categories.mentaal, dependencies.lezen, subCategories.boek),
   new Interest('boek-detective', 'detective (boek)', categories.mentaal, dependencies.lezen, subCategories.boek),
@@ -46,6 +61,7 @@ const defaultInterests = [
   new Interest('boek-roman', 'roman', categories.mentaal, dependencies.lezen, subCategories.boek),
   new Interest('boek-biografie', 'biografie', categories.mentaal, dependencies.lezen, subCategories.boek),
   new Interest('boek-fantasie', 'fantasie', categories.mentaal, dependencies.lezen, subCategories.boek),
+  //TV dependency
   new Interest('tv-natuur', 'natuur', categories.mentaal, dependencies.tv),
   new Interest('tv-geschiedenis', 'geschiedenis', categories.mentaal, dependencies.tv),
   new Interest('tv-talentenjacht', 'talentenjacht', categories.mentaal, dependencies.tv),
@@ -60,17 +76,20 @@ const defaultInterests = [
   new Interest('tv-sport', 'sport', categories.mentaal, dependencies.tv),
   new Interest('tv-films', 'films', categories.mentaal, dependencies.tv),
   new Interest('tv-politiek', 'politiek', categories.mentaal, dependencies.tv),
+  //PC dependency
   new Interest('pc-spelletjes', 'spelletjes', categories.mentaal, dependencies.pc),
   new Interest('pc-films', 'films', categories.mentaal, dependencies.pc),
   new Interest('pc-email', 'e-mail', categories.mentaal, dependencies.pc),
   new Interest('pc-nieuws', 'nieuws', categories.mentaal, dependencies.pc),
   new Interest('pc-socialemedia', 'sociale-media', categories.mentaal, dependencies.pc),
   new Interest('pc-muziek', 'muziek', categories.mentaal, dependencies.pc),
+  //Denksport dependency
   new Interest('denk-sudoku', 'sudoku', categories.mentaal, dependencies.denksport),
   new Interest('denk-woordzoekers', 'woordzoekers', categories.mentaal, dependencies.denksport),
   new Interest('denk-zweedsepuzzel', 'zweedse puzzel', categories.mentaal, dependencies.denksport),
   new Interest('denk-puzzelen', 'puzzelen', categories.mentaal, dependencies.denksport),
   new Interest('denk-kruiswoordraadsels', 'kruiswoordraadsels', categories.mentaal, dependencies.denksport),
+  //TV dependency
   new Interest('spel-rummikub', 'Rummikub', categories.mentaal, dependencies.spel),
   new Interest('spel-ganzenbord', 'Ganzenbord', categories.mentaal, dependencies.spel),
   new Interest('spel-levensweg', 'Levensweg', categories.mentaal, dependencies.spel),
@@ -83,6 +102,7 @@ const defaultInterests = [
   new Interest('kaart-bridge', 'Bridge', categories.mentaal, dependencies.kaart),
   new Interest('kaart-poker', 'Poker', categories.mentaal, dependencies.kaart),
   new Interest('kaart-patience', 'Patience', categories.mentaal, dependencies.kaart),
+  //Music dependency
   new Interest('muziek-klassiek', 'klassiek', categories.muzikaal),
   new Interest('muziek-folk', 'folk', categories.muzikaal),
   new Interest('muziek-jazz', 'jazz', categories.muzikaal),
@@ -91,6 +111,7 @@ const defaultInterests = [
   new Interest('muziek-rock', 'rock', categories.muzikaal),
   new Interest('muziek-schlager', 'schlager', categories.muzikaal),
   new Interest('muziek-opera', 'opera', categories.muzikaal),
+  //Creatief dependency
   new Interest('creatief-knutselen', 'knutselen', categories.creatief),
   new Interest('creatief-tekenen', 'tekenen', categories.creatief),
   new Interest('creatief-schilderen', 'schilderen', categories.creatief),
@@ -103,6 +124,7 @@ const defaultInterests = [
   new Interest('creatief-breien', 'breien', categories.creatief),
   new Interest('creatief-naaien', 'naaien', categories.creatief),
   new Interest('creatief-kleiboetseren', 'kleiboetseren', categories.creatief),
+  //Beweging dependency
   new Interest('beweging-wandelen', 'wandelen', categories.beweging),
   new Interest('beweging-fietsen', 'fietsen', categories.beweging),
   new Interest('beweging-minigolf', 'minigolf', categories.beweging),
@@ -113,6 +135,7 @@ const defaultInterests = [
   new Interest('beweging-jeu de boules', 'jeu de boules', categories.beweging),
   new Interest('beweging-biljarten', 'biljarten', categories.beweging),
   new Interest('beweging-paardrijden', 'paardrijden', categories.beweging),
+  //Religieus dependency
   new Interest('religieus-eucharistie', 'eucharistie', categories.religieus),
   new Interest('religieus-bedevaart', 'bedevaart', categories.religieus),
   new Interest('religieus-ziekenzalving', 'ziekenzalving', categories.religieus),
@@ -121,9 +144,11 @@ const defaultInterests = [
   new Interest('religieus-islamitisch', 'Islamitisch', categories.religieus),
   new Interest('religieus-hindoeistisch', 'hindoeïstisch', categories.religieus),
   new Interest('religieus-boeddhistisch', 'boeddhistisch', categories.religieus),
+  //Huishoud dependency
   new Interest('huishoud-huisdierenverzorgen', 'huisdieren verzorgen', categories.huishoud),
   new Interest('huishoud-plantenverzorgen', 'planten verzorgen', categories.huishoud),
   new Interest('huishoud-koken', 'koken', categories.huishoud),
+  //Extern dependency
   new Interest('extern-marktbezoek', 'marktbezoek', categories.extern),
   new Interest('extern-bioscoop', 'bioscoop', categories.extern),
   new Interest('extern-toneeltheater', 'toneel/theater', categories.extern),
@@ -135,4 +160,4 @@ const defaultInterests = [
   new Interest('extern-kerkbezoek', 'kerkbezoek', categories.extern),
 ];
 
-export { defaultInterests };
+export { checkboxInterests };

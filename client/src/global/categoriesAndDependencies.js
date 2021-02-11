@@ -32,16 +32,16 @@ const dependencies = {
   pc: {
     _id: "pc",
     name: "computer & tablet",
-    icon: `${ROOTPATH}wlp-pc.svg`,
+    icon: `${ROOTPATH}wlp-computer.svg`,
   },
   denksport: {
     _id: "denksport",
-    name: "denksportoefeningen",
+    name: "denksport oefeningen",
     icon: `${ROOTPATH}wlp-creative.svg`,
   },
   spel: {
     _id: "spel",
-    name: "spelactiviteiten",
+    name: "spel activiteiten",
     icon: `${ROOTPATH}wlp-games.svg`,
   },
   kaart: {

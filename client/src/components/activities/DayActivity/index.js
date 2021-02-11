@@ -87,7 +87,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
                   <p className="interested-plus-amount">
                     {activity.interestedResidents.length > 15
                       ? '15+'
-                      : activity.interestedResidents.length}
+                      : activity.interestedResidents.length - 2}
                   </p>
                 </div>
               )}
@@ -116,7 +116,7 @@ const DayActivity = ({ activity, day, dayNumb, isToday }) => {
                   <p className="interested-plus-amount">
                     {activity.participatedResidents.length > 15
                       ? '15+'
-                      : activity.participatedResidents.length}
+                      : activity.participatedResidents.length - 2}
                   </p>
                 </div>
               )}
