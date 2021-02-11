@@ -58,10 +58,10 @@ const DetailPage = () => {
   return activity ? (
     <>
       <h2 className="visually-hidden">Activteitnaam</h2>
-      <div className="activities-detail fit-height flex-content">
+      <div className="activities-detail fit-height">
         <GoBack path={paths.PATH_ACTIVITIES.ROOT} text={'Terug naar agenda'} />
         <DetailActivityHeader activity={activity} />
-        <div className="dtl-act-present-int-container">
+        <div className="dtl-act-present-int-container fit-height">
           <DetailActivityPresent
             activity={activity}
             participatedResidents={participatedResidents}

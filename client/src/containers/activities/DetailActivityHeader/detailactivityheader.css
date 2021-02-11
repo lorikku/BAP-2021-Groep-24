@@ -96,16 +96,21 @@
 }
 
 .dtl-act-head-chevronleft {
+  display: none;
   margin-left: var(--spacerMain);
 }
 
 .dtl-act-head-chevronright {
+  display: none;
   margin-right: var(--spacerMain);
 }
 
 .dtl-act-head-tags {
   display: flex;
   align-items: center;
-  overflow-x: scroll;
+  flex-wrap: wrap;
+  overflow: scroll;
+  margin: calc(var(--spacerMain) / 2);
+  max-height: 100px;
 
 }

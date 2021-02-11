@@ -14,12 +14,7 @@ import './residentprofile.css';
 const ResidentProfile = ({ resident, showIcons }) => {
   const { _id, name, roomNr, floor, photoUri, isPermanent } = resident;
 
-  const { residentId } = useParams();
-  const path =
-    paths.PATH_RESIDENTS.ROOT +
-    '/' +
-    residentId +
-    paths.PATH_RESIDENTS.DETAIL_EDIT;
+
 
   let isMyResidentLoading = false;
   const [isMyResident, setIsMyResident] = React.useState(false);
@@ -90,13 +85,11 @@ const ResidentProfile = ({ resident, showIcons }) => {
         <div className="res-profile-room-edit-wrapper">
           <div className="res-profile-room">{`Kamer ${roomNr}`}</div>
           {showIcons ? (
-            <Link to={path}>
-              <img
-                className="res-profile-edit-btn"
-                alt="profiel van bewoner wijzigen"
-                src="/assets/img/edit-resident.svg"
-              ></img>
-            </Link>
+            <img
+              className="res-profile-edit-btn"
+              alt="profiel van bewoner wijzigen"
+              src="/assets/img/edit-resident.svg"
+            ></img>
           ) : null}
         </div>
       </div>

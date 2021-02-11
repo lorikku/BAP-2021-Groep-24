@@ -42,7 +42,7 @@ const MatchResultList = ({
       ) : null}
       <ul className="results-scrolllist">
         {sortedMatches.map((match, index) => (
-          <MatchResult key={index} matchee={matchee} match={match} />
+          <MatchResult key={index} index={index} matchee={matchee} match={match} />
         ))}
       </ul>
     </div>

@@ -55,16 +55,16 @@ const DetailActivityInterested = ({
   ]);
 
   return (
-    <div className="dtl-act-int-container">
+    <div className="dtl-act-int-container fit-height">
       <p className="dtl-act-int-title">
         Wellicht geïnteresseerd ({interestedResidents.length})
       </p>
-      <div className="dtl-act-int-list-btn-wrapper">
+      <div className="dtl-act-int-list-btn-wrapper fit-height flex-content">
         <div
           onClick={() =>
             setAddNewResident({
               matchingId: 'test',
-              closeWindow: () => setAddNewResident(null)
+              closeWindow: () => setAddNewResident(null),
             })
           }
           className="dtl-act-int-btn"

@@ -57,7 +57,7 @@ const ResidentsPages = ({ paths }) => {
             </DetailPage>
           </Route>
           {/* Edit resident */}
-          <Route path={pages.DETAIL_EDIT.path()} exact>
+          <Route path={pages.DETAIL_EDIT_INTERESTS.path()} exact>
             <DetailPage showIcons={false} customImg={null}>
               <DetailEditPage />
             </DetailPage>

@@ -70,7 +70,7 @@ const categories = {
     _id: "creatief",
     name: "creatieve activiteiten",
     icon: `${ROOTPATH}creatieve-activiteiten.svg`,
-    color: "#FDF889",
+    color: "#FAE264",
   },
   divers: {
     _id: "divers",
@@ -82,7 +82,7 @@ const categories = {
     _id: "extern",
     name: "externe activiteiten",
     icon: `${ROOTPATH}externe-activiteiten.svg`,
-    color: "#C0F794",
+    color: "#9C94F7",
   },
   huishoud: {
     _id: "huishoud",

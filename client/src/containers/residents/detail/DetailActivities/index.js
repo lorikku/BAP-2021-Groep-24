@@ -69,7 +69,7 @@ const DetailActivities = ({
   return (
     <>
       <h2 className="visually-hidden">Activiteiten bewoner</h2>
-      <div className="detailresident-activities">
+      <div className="detailresident-activities fit-height flex-content">
         <p className="detailresident-activities-title">
           {name.split(' ')[0]}'s Activiteiten
         </p>

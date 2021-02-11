@@ -79,7 +79,7 @@ const Tag = ({
       ></div>
       <p
         className={`tag-name${selected ? ' tag-name--selected' : ''}`}
-        style={{ color: categoryColor }}
+
       >
         {interest.name}
       </p>

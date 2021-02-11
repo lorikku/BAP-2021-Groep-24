@@ -23,9 +23,9 @@ const getPagesObj = (paths) => {
       text: 'contact toevoegen',
       path: () => paths.ROOT + paths.DETAIL + paths.DETAIL_ADD_CONTACT,
     },
-    DETAIL_EDIT: {
-      text: 'bewoner aanpassen',
-      path: () => paths.ROOT + paths.DETAIL + paths.DETAIL_EDIT,
+    DETAIL_EDIT_INTERESTS: {
+      text: 'bewoner interesses aanpassen',
+      path: () => paths.ROOT + paths.DETAIL + paths.DETAIL_EDIT_INTERESTS,
     },
     NEW_RESIDENT: {
       path: () => paths.ROOT + paths.NEW_RESIDENT,

@@ -11,7 +11,10 @@ const myResidentExists = async (residentId) => {
       return false;
     }
 
-    return true;
+    const result = await response.json();
+
+    //Does exist, yes or no
+    return result.found;
   } catch (err) {
     console.log(err);
     return false;
@@ -30,7 +33,11 @@ const fetchMyResidents = async (name, floor, sorting) => {
       return null;
     }
 
-    return result.myResidents;
+    if(result.myResidents.length === 0) {
+      return null;
+    } else {
+      return result.myResidents;
+    }
   } catch (err) {
     console.log(err);
     return null;

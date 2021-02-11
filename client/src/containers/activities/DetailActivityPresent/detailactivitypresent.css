@@ -7,7 +7,6 @@
 .dtl-act-present-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   width: 50%;
@@ -17,6 +16,8 @@
   padding-right: 34px;
   border-right: 2px solid var(--colorBgDark);
   min-height: 510px;
+  overflow: scroll;
+  padding-bottom: 20rem;
 
   width: 100%;
 }

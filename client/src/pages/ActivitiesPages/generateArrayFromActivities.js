@@ -1,10 +1,10 @@
 import { getISODay } from 'date-fns';
 import { fetchAllActivitiesByDateAndFloor } from '../../services/ActivitiesService';
 
-const generateArrayFromActivities = async (selectedDate) => {
+const generateArrayFromActivities = async (selectedDate, floor) => {
   const newActivities = [[], [], [], [], [], [], []]; // 7 days (1 week)
 
-  const activities = await fetchAllActivitiesByDateAndFloor(selectedDate);
+  const activities = await fetchAllActivitiesByDateAndFloor(selectedDate, floor);
 
   if (activities) {
     activities.forEach((activity) => {

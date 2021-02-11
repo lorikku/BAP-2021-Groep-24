@@ -3,7 +3,7 @@ import Tag from '../../../components/interests/Tag';
 import { postContact } from '../../../services/ResidentsService/ContactsService';
 import './matchresult.css';
 
-const MatchResult = ({ matchee, match }) => {
+const MatchResult = ({ matchee, index, match }) => {
   const { percentage, resident, matchedInterests } = match;
 
   const [addedContact, setAddedContact] = React.useState(false);
@@ -25,7 +25,7 @@ const MatchResult = ({ matchee, match }) => {
       <div className="result-head-top-container">
         <div className="main-info-wrapper">
           <div className="result-head-percentage">
-            <p className="result-top-match">Top Match</p>
+            {index === 0 ? <p className="result-top-match">Top Match</p> : null}
             <div className="result-circle">
               <p className="result-percentage">{percentage}%</p>
             </div>

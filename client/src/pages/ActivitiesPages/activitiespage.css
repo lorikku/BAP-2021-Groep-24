@@ -10,3 +10,7 @@
 .activities__selectedints {
     flex: 0.5;
 }
+
+.all-activities-filter {
+    display: flex;
+}

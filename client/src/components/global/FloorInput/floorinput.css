@@ -2,6 +2,10 @@
     width: unset !important;
 }
 
+.residents__filter--activityoverview {
+    margin-left: auto;
+}
+
 .residents__filter__floor {
     align-self: flex-end;
 }

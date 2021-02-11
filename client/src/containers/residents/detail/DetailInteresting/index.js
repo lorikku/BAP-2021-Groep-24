@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ActivityInteresting from '../../../../components/residents/detail/ActivityInteresting';
-import {fetchInterestingActivitiesByResidentId} from '../../../../services/ResidentsService/ActivitiesService';
+import { fetchInterestingActivitiesByResidentId } from '../../../../services/ResidentsService/ActivitiesService';
 import './detailinteresting.css';
 
 const DetailInteresting = ({
@@ -9,7 +9,6 @@ const DetailInteresting = ({
   setInterestingActivities,
   setParticipatingActivities,
 }) => {
-
   /* ------------- ACTIVITIES FETCHING ------------- */
 
   React.useEffect(() => {
@@ -31,7 +30,7 @@ const DetailInteresting = ({
   return (
     <>
       <h2 className="visually-hidden">Wellicht interessante activiteiten</h2>
-      <div className="detailresident-interesting">
+      <div className="detailresident-interesting fit-height flex-content">
         <p className="detailresident-interesting-title">
           Wellicht interessant voor {resident.name}
         </p>

@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import InterestsCategory from '../../../../components/interests/InterestsCategory';
+import paths from '../../../../consts/paths';
 
 import { getCategoriesFromInterests } from '../../../../global/interestsFuncs';
 
@@ -17,6 +19,13 @@ const DetailInterests = ({
   toggleInterest,
 }) => {
   const [categories, setCategories] = React.useState(undefined);
+
+  //Path for editting resident interests
+  const path =
+    paths.PATH_RESIDENTS.ROOT +
+    '/' +
+    resident._id +
+    paths.PATH_RESIDENTS.DETAIL_EDIT_INTERESTS;
 
   React.useEffect(() => {
     //If no interests exists => return
@@ -37,7 +46,7 @@ const DetailInterests = ({
 
   return (
     <>
-    <h2 className="visually-hidden">Interesses van bewoner</h2>
+      <h2 className="visually-hidden">Interesses van bewoner</h2>
       <div className="detailresident-interests fit-height flex-content">
         {resident ? (
           <div className="detailresident-int-wrapper">
@@ -53,13 +62,15 @@ const DetailInterests = ({
                   isEdit ? ' edit-confirm-btn' : ''
                 }`}
               >
-                <p
-                  className={`detailresident-edit-int-text${
-                    isEdit ? ' edit-confirm-btn-text' : ''
-                  }`}
-                >
-                  {isEdit ? 'Wijzigingen toepassen' : 'Wijzig interesses'}
-                </p>
+                <Link to={path}>
+                  <p
+                    className={`detailresident-edit-int-text${
+                      isEdit ? ' edit-confirm-btn-text' : ''
+                    }`}
+                  >
+                    {isEdit ? 'Wijzigingen toepassen' : 'Wijzig interesses'}
+                  </p>
+                </Link>
               </div>
             )}
           </div>
@@ -71,9 +82,8 @@ const DetailInterests = ({
                   key={key}
                   category={categories[key]}
                   isEdit={isEdit}
-
                   isMatchingPage={isMatchingPage}
-                  selectedInterests={selectedInterests }
+                  selectedInterests={selectedInterests}
                   toggleInterest={toggleInterest}
                 />
               ))

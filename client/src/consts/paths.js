@@ -8,10 +8,11 @@ const paths = {
     NEW_RESIDENT: '/new',
     // Resident detail
     DETAIL: '/:residentId',
+    DETAIL_EDIT: '/edit',
     DETAIL_GENERAL: '/general',
     DETAIL_PLANNING: '/planning',
     DETAIL_ADD_CONTACT: '/add-contact',
-    DETAIL_EDIT: '/edit'
+    DETAIL_EDIT_INTERESTS: '/edit-interests'
   },
   PATH_ACTIVITIES: {
     // Root

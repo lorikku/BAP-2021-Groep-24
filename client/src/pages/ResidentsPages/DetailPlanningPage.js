@@ -36,7 +36,7 @@ const DetailPlanningPage = ({ navItems, resident }) => {
       <div className="residents-detailresident fit-height">
         <SubNav navItems={navItems} />
         {activitiesLoaded ? (
-          <div className="detailresident-personal-planning">
+          <div className="detailresident-personal-planning fit-height">
             <DetailActivities
               resident={resident}
               activities={participatingActivities}

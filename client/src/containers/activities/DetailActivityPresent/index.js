@@ -5,7 +5,7 @@ import './detailactivitypresent.css';
 const DetailActivityPresent = ({ activity, participatedResidents, setParticipatedResidents }) => {
 
   return (
-    <div className="dtl-act-present-container">
+    <div className="dtl-act-present-container fit-height flex-content">
       <p className="dtl-act-present-title">Aanwezigen ({participatedResidents.length})</p>
       {/* <div className="dtl-act-present-emptystate">
             emptystate illustratie 

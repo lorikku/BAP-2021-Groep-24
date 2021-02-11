@@ -27,28 +27,6 @@ const OverviewAllActivities = ({
 }) => {
   return (
     <div className="all-activities-container fit-height flex-content">
-      <div className="all-activities-btns">
-        <div
-          onClick={() => changeWeek('present')}
-          className="all-activities-now-btn"
-        >
-          <img
-            className="all-activities-now-vector"
-            alt="chevron omhoog"
-            src="/assets/img/chevron-up-white.svg"
-          ></img>
-        </div>
-        <Link
-          to={paths.PATH_ACTIVITIES.ROOT + paths.PATH_ACTIVITIES.NEW_ACTIVITY}
-          className="all-activities-add-btn"
-        >
-          <img
-            className="all-activities-add-vector"
-            alt="plusje"
-            src="/assets/img/plus-white.svg"
-          ></img>
-        </Link>
-      </div>
       {/* per dag deze section tonen met zijn activiteiten er in --> */}
       <ul className="dayplanning-list">
         {activitiesPerDay.map((day, index) => {

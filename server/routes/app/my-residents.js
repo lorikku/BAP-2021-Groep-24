@@ -99,7 +99,7 @@ route.get('', async (req, res) => {
   }
 
   //Send found myResidents, else 404
-  if (myResidents.length === 0) {
+  if (!myResidents) {
     res.status(404).json({
       message:
         'My residents not found, or something was wrong with the databse.',
@@ -154,10 +154,12 @@ route.get('/:residentId', async (req, res) => {
   if (myResident) {
     res.status(200).json({
       message: 'My resident found!',
+      found: true
     });
   } else {
-    res.status(404).json({
+    res.status(200).json({
       message: 'This resident is not in my residents list',
+      found: false
     });
   }
 });
@@ -165,7 +167,7 @@ route.get('/:residentId', async (req, res) => {
 /* -------------- POST QUERIES -------------- */
 
 /* ADDING RESIDENT TO MY RESIDENTS */
-route.post('', async (req, res) => {
+route.post('/', async (req, res) => {
   const _id = convertToObjectId(req.body._id, res);
 
   const myResident = await getMyResidentById(_id, req, res);

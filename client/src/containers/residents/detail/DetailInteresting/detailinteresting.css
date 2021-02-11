@@ -8,3 +8,8 @@
   padding-left: var(--spacerMain);
   flex: 1;
 }
+
+.interesting-list {
+  overflow: scroll;
+  padding-bottom: 20rem;
+}

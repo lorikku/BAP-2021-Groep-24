@@ -48,4 +48,6 @@
 
 .activities-list {
     margin-top: var(--spacerMain);
+    overflow: scroll;
+    padding-bottom: 20rem;
 }

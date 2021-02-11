@@ -27,7 +27,7 @@ route.get('/', async (req, res) => {
   if (afterDate) {
     const dateInt = parseInt(afterDate);
 
-    query.startTimestamp = {
+    query.endTimestamp = {
       $gte: dateInt,
     };
   }
