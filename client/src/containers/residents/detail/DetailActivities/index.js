@@ -80,9 +80,13 @@ const DetailActivities = ({
         />
 
         <ul className="activities-list">
-          {activities.map((activity, index) => (
-            <ActivitySmall key={index} activity={activity} />
-          ))}
+          {activities.length === 0 ? (
+            <p>Geen activiteitein gevonden</p>
+          ) : (
+            activities.map((activity, index) => (
+              <ActivitySmall key={index} activity={activity} />
+            ))
+          )}
         </ul>
       </div>
     </>

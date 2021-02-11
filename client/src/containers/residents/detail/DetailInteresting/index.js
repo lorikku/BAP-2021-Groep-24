@@ -36,15 +36,19 @@ const DetailInteresting = ({
         </p>
         <ul className="interesting-list">
           {/* interesting-activity component */}
-          {activities.map((activity, index) => (
-            <ActivityInteresting
-              key={index}
-              activity={activity}
-              resident={resident}
-              setInterestingActivities={setInterestingActivities}
-              setParticipatingActivities={setParticipatingActivities}
-            />
-          ))}
+          {activities.length === 0 ? (
+            <p>Geen interessante activiteiten gevonden</p>
+          ) : (
+            activities.map((activity, index) => (
+              <ActivityInteresting
+                key={index}
+                activity={activity}
+                resident={resident}
+                setInterestingActivities={setInterestingActivities}
+                setParticipatingActivities={setParticipatingActivities}
+              />
+            ))
+          )}
         </ul>
       </div>
     </>

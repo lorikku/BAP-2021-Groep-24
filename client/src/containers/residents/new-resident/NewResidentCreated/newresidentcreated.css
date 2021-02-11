@@ -96,8 +96,11 @@
 
 .newresident-link {
   border-radius: var(--borderRadius);
-  background-color: var(--colorBgMain);
-  padding: 0.9rem;
+    background-color: var(--colorBgMain);
+    padding: .9rem;
+    overflow-x: scroll;
+    white-space: nowrap;
+    max-width: 20rem;
 }
 
 .newresident-link-title {
