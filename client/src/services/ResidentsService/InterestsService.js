@@ -7,7 +7,7 @@ const fetchInterestByResidentId = async (residentId) => {
 
     return result.interests;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };

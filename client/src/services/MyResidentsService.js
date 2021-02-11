@@ -16,7 +16,7 @@ const myResidentExists = async (residentId) => {
     //Does exist, yes or no
     return result.found;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -39,7 +39,7 @@ const fetchMyResidents = async (name, floor, sorting) => {
       return result.myResidents;
     }
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -68,7 +68,7 @@ const postMyResident = async (resident) => {
       newValue: true,
     };
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -94,7 +94,7 @@ const deleteMyResident = async (residentId) => {
       newValue: false,
     };
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };

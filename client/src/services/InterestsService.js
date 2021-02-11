@@ -12,7 +12,7 @@ const fetchAllInterests = async () => {
 
     return result.interests;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };

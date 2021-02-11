@@ -25,7 +25,7 @@ const fetchAllActivitiesByDateAndFloor = async (
 
     return result.activities;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -42,7 +42,7 @@ const fetchAcitivityById = async (activityId) => {
 
     return result.activity;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -69,7 +69,7 @@ const updateInterestedMatches = async (activityId, interestedResidents) => {
 
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -122,7 +122,7 @@ const postActivity = async (data) => {
 
     return result.activityId;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -141,12 +141,9 @@ const postParticipatedResident = async (activityId, resident) => {
       return false;
     }
 
-    const result = await response.json();
-    console.log(result);
-
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -170,7 +167,7 @@ const deleteParticipatedResidentFromActivity = async (activityId, residentId) =>
 
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -190,7 +187,7 @@ const deleteInterestedResidentFromActivity = async (activityId, residentId) => {
 
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };

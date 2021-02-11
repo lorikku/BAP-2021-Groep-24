@@ -7,7 +7,7 @@ const fetchContactsByResidentId = async (residentId) => {
 
     return result.contacts;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -50,7 +50,7 @@ const postContact = async (matchee, match, matchedInterests = []) => {
 
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };
@@ -75,7 +75,7 @@ const deleteContactFromResident = async (residentId, contactId) => {
 
     return true;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };

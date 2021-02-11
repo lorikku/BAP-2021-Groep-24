@@ -21,7 +21,7 @@ const fetchResidentById = async (residentId, noContacts) => {
 
     fetchedResident = result.resident;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 
@@ -69,7 +69,7 @@ const fetchResidents = async (name, floor, sorting, isMatchingPage) => {
 
     return residents;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -96,7 +96,7 @@ const postNewResident = async (resident) => {
 
     return result.residentId;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 }
@@ -123,7 +123,7 @@ const updateResident = async (residentId, payload) => {
 
     return result.newResident;
   } catch (err) {
-    console.log(err);
+    
     return false;
   }
 };

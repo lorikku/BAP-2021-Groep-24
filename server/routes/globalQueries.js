@@ -24,7 +24,7 @@ const getResidentData = async (req, res, residentId, projection) => {
       .collection('residents')
       .findOne(query, options);
   } catch (err) {
-      console.log(err);
+      
     res
       .status(statusMessages.INTERNAL_ERROR.statusCode)
       .json({ message: statusMessages.INTERNAL_ERROR.message });

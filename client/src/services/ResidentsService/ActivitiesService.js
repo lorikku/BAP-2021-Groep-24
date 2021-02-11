@@ -26,7 +26,7 @@ const fetchParticipatingActivitiesByResidentId = async (residentId, isBeforeDate
 
     return result.activities;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
@@ -48,7 +48,7 @@ const fetchInterestingActivitiesByResidentId = async (residentId) => {
 
     return result.activities;
   } catch (err) {
-    console.log(err);
+    
     return null;
   }
 };
