@@ -9,9 +9,9 @@ const LandingContainer = ({onClick}) => {
           <img
             className="left-logo"
             alt="heilig hart logo"
-            src="/assets/img/logo.png"
+            src="/assets/img/logo.svg"
           ></img>
-          <a className="left-link" href="https://www.h-hart.be/">
+          <a className="left-link" href="https://www.h-hart.be/" target="_blank" rel="noreferrer">
             Heilig Hart Zorggroep
           </a>
         </div>

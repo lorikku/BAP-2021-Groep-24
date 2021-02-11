@@ -42,6 +42,7 @@
   align-items: center;
   background-color: var(--colorCTA);
   border-bottom-left-radius: var(--borderRadiusBig);
+  cursor: pointer;
 }
 
 .int-no {
@@ -50,6 +51,7 @@
   align-items: center;
   background-color: var(--colorRed);
   border-bottom-right-radius: var(--borderRadiusBig);
+  cursor: pointer;
 }
 
 .int-no-text {

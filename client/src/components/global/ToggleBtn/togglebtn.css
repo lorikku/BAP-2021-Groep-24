@@ -5,6 +5,7 @@
   padding: 2px;
   border-radius: var(--borderRadiusBig);
   align-items: center;
+  cursor: pointer;
 }
 
 /* active style btn -> */

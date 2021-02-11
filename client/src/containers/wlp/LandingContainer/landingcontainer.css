@@ -25,7 +25,7 @@
 .left-logo-wrapper {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
 }
 
@@ -56,6 +56,7 @@
   align-items: center;
   border-radius: var(--borderRadius);
   width: max-content;
+  cursor: pointer;
 }
 
 .landing-next-btn-text {

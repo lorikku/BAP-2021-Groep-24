@@ -83,6 +83,7 @@
   align-self: flex-start;
   justify-self: flex-end;
   margin: 1rem;
+  cursor: pointer;
 }
 
 .dtl-act-head-bottom-container {

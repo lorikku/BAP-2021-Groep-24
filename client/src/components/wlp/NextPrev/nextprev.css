@@ -6,6 +6,7 @@
   align-items: center;
   border-radius: var(--borderRadius);
   width: max-content;
+  cursor: pointer;
 }
 
 .wlp-next-btn-text {
@@ -25,6 +26,7 @@
   border-radius: var(--borderRadius);
   width: max-content;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .wlp-btns {

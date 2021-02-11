@@ -32,6 +32,7 @@
   width: max-content;
   padding: var(--spacerButtonNormal);
   border-radius: var(--borderRadius);
+  cursor: pointer;
 }
 
 .newactivity-one-next-btn--int {

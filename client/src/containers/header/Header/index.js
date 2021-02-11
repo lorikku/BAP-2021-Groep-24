@@ -13,12 +13,11 @@ const Header = () => {
       <h1 className="visually-hidden">Heilig Hart</h1>
       <div className="header__wrapper">
         <img
-          src="/assets/img/logo.png"
+          src="/assets/img/logo.svg"
           alt="Het logo van Heilig Hart."
           width="63"
           height="36"
         />
-        <p className="header__title">Heilig Hart</p>
         <Link
           to={paths.PATH_RESIDENTS.ROOT + paths.PATH_RESIDENTS.NEW_RESIDENT}
           className="button header__newresident"

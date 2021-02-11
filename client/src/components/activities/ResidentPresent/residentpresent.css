@@ -49,4 +49,5 @@
   justify-self: flex-end;
   border-top-right-radius: var(--borderRadiusBig);
   border-bottom-right-radius: var(--borderRadiusBig);
+  cursor: pointer;
 }

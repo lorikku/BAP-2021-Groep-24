@@ -96,6 +96,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--colorBgMain);
+  cursor: pointer;
 }
 
 .pic-btn-text {
@@ -118,6 +119,7 @@
   align-items: center;
   max-width: max-content;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .create-wlp-btn--disabled {
@@ -140,6 +142,7 @@
 
   border: 2px solid var(--colorRed);
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 .delete-wlp-btn-text {

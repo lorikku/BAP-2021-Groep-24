@@ -18,6 +18,7 @@
   align-items: center;
   border-top-left-radius: var(--borderRadiusBig);
   border-bottom-left-radius: var(--borderRadiusBig);
+  cursor: pointer;
 }
 
 .activity-interesting-add-vector {
